@@ -1,0 +1,16 @@
+# Godot 4 generated data
+.godot/
+*.translation
+export.cfg
+export_presets.cfg
+*.tmp
+*.log
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local verification captures (regenerate with tests/CLI flags)
+shots/
