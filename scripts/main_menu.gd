@@ -381,6 +381,7 @@ func _render_armory() -> void:
 		child.queue_free()
 	var credits := int(_profile.get("credits", 0))
 	var selected := String(_profile.get("selected_weapon", WeaponCatalog.DEFAULT_SELECTED))
+	var equipped := MetaProfile.equipped_weapons(_profile)
 	if _armory_credits != null:
 		_armory_credits.text = str(credits)
 	var ids := WeaponCatalog.ordered_ids()
@@ -389,16 +390,17 @@ func _render_armory() -> void:
 		var weapon := WeaponCatalog.data(weapon_id)
 		var owned := MetaProfile.owns_weapon(_profile, weapon_id)
 		var active: bool = weapon_id == selected
+		var in_loadout: bool = equipped.has(weapon_id)
 		var price := WeaponCatalog.price_of(weapon_id)
 		var accent := WeaponCatalog.accent(weapon_id)
 		var card := PanelContainer.new()
-		card.custom_minimum_size = Vector2(168, 0)
+		card.custom_minimum_size = Vector2(132, 0)
 		card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		var border := accent if active else Color(accent.r, accent.g, accent.b, 0.5 if owned else 0.24)
 		var fill := Color(0.06, 0.1, 0.11, 0.95) if active else Color(0.04, 0.062, 0.072, 0.85 if owned else 0.5)
 		var style := DeadCityUI.panel_style(fill, 9, border, 2 if active else 1)
-		style.content_margin_left = 13.0
-		style.content_margin_right = 13.0
+		style.content_margin_left = 10.0
+		style.content_margin_right = 10.0
 		style.content_margin_top = 13.0
 		style.content_margin_bottom = 13.0
 		card.add_theme_stylebox_override("panel", style)
@@ -406,12 +408,13 @@ func _render_armory() -> void:
 		var box := VBoxContainer.new()
 		box.add_theme_constant_override("separation", 5)
 		card.add_child(box)
-		box.add_child(_label("SLOT %d" % (index + 1), 10, accent))
-		box.add_child(_label(String(weapon.get("name", "未知")), 16, DeadCityUI.TEXT if owned else Color(0.6, 0.66, 0.68)))
+		var kind_text := "近战" if WeaponCatalog.is_melee(weapon_id) else "枪械"
+		box.add_child(_label("%s · %s" % [kind_text, "出战" if in_loadout else "库存"], 10, accent if owned else Color(0.44, 0.5, 0.52)))
+		box.add_child(_label(String(weapon.get("name", "未知")), 15, DeadCityUI.TEXT if owned else Color(0.6, 0.66, 0.68)))
 		box.add_child(_label(String(weapon.get("tag", "")), 10, accent if owned else Color(0.44, 0.5, 0.52)))
 		var stat := _label(WeaponCatalog.stat_line(weapon_id), 10, Color(0.6, 0.72, 0.73) if owned else Color(0.44, 0.5, 0.52))
 		stat.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		stat.custom_minimum_size = Vector2(0, 54)
+		stat.custom_minimum_size = Vector2(0, 50)
 		box.add_child(stat)
 		var gap := Control.new()
 		gap.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -421,14 +424,16 @@ func _render_armory() -> void:
 		button.focus_mode = Control.FOCUS_NONE
 		if active:
 			box.add_child(_label("当前出战", 10, DeadCityUI.GREEN))
-			button.text = "已装备"
+			button.text = "使用中"
 			button.disabled = true
 			DeadCityUI.style_button(button, accent, false)
 		elif owned:
-			button.text = "装备"
+			box.add_child(_label("出战编成 %d/%d" % [equipped.size(), WeaponCatalog.MAX_CARRY], 10, DeadCityUI.MUTED))
+			button.text = "切换" if in_loadout else ("替换出战" if equipped.size() >= WeaponCatalog.MAX_CARRY else "装备")
 			DeadCityUI.style_button(button, accent, true)
 			button.pressed.connect(_on_equip_pressed.bind(weapon_id))
 		else:
+			box.add_child(_label("售价 %d 信用点" % price, 10, DeadCityUI.AMBER))
 			if price <= 0:
 				button.text = "解锁"
 				DeadCityUI.style_button(button, accent, true)
@@ -596,7 +601,7 @@ func _build_briefing(parent: VBoxContainer) -> void:
 	body.add_child(_divider())
 	body.add_child(_brief_row("01", "随机死城", "每个种子生成不同街区。楼宇即掩体，街口就是交火线。", DeadCityUI.CYAN))
 	body.add_child(_brief_row("02", "尸潮递增", "每回收一枚核心，尸潮生成更快、数量更多，威胁倍率持续上涨。", DeadCityUI.AMBER))
-	body.add_child(_brief_row("03", "深入回收", "从市中心喷泉下到 B1，抱回 3 枚核心；搬运时无法开枪。", Color("#ffc861")))
+	body.add_child(_brief_row("03", "深入回收", "沿市中心公园坡道步行下到 B1，抱回 3 枚核心；搬运时无法开枪。", Color("#ffc861")))
 	body.add_child(_brief_row("04", "交付抽卡", "核心交付立即弹出 3 选 1 全队强化；战力写入局外档案，累积血脉加成。", DeadCityUI.GREEN))
 	body.add_child(_divider())
 	body.add_child(_label("色彩识别", 13, DeadCityUI.MUTED))

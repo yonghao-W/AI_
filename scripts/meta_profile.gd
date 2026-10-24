@@ -1,7 +1,7 @@
 class_name MetaProfile
 extends RefCounted
 
-const SAVE_VERSION := 2
+const SAVE_VERSION := 3
 const SAVE_PATH := "user://deadcity_profile.json"
 const HISTORY_LIMIT := 6
 const CORES_PER_LEGACY := 3
@@ -23,6 +23,7 @@ static func empty_profile() -> Dictionary:
 		"credits": 0,
 		"total_credits": 0,
 		"owned_weapons": WeaponCatalog.default_owned(),
+		"equipped_weapons": WeaponCatalog.default_loadout(),
 		"selected_weapon": WeaponCatalog.DEFAULT_SELECTED,
 		"last_run": {},
 		"current_run": {},
@@ -47,7 +48,10 @@ static func load_profile(path: String = SAVE_PATH) -> Dictionary:
 		profile[key] = maxi(0, int(data.get(key, 0)))
 	profile["owned_weapons"] = _sanitize_owned(data.get("owned_weapons", []))
 	var selected := String(data.get("selected_weapon", WeaponCatalog.DEFAULT_SELECTED))
-	profile["selected_weapon"] = selected if profile["owned_weapons"].has(selected) else String(profile["owned_weapons"][0])
+	if not profile["owned_weapons"].has(selected):
+		selected = String(profile["owned_weapons"][0])
+	profile["selected_weapon"] = selected
+	profile["equipped_weapons"] = _sanitize_equipped(data.get("equipped_weapons", []), profile["owned_weapons"], selected)
 	if data.get("last_run") is Dictionary:
 		profile["last_run"] = _sanitize_run(data["last_run"])
 	if data.get("current_run") is Dictionary:
@@ -87,6 +91,39 @@ static func _sanitize_owned(raw: Variant) -> Array:
 		if not ordered.has(id):
 			ordered.append(id)
 	return ordered
+
+
+static func _sanitize_equipped(raw: Variant, owned: Array, selected: String) -> Array:
+	var equipped: Array = []
+	if raw is Array:
+		for entry in raw:
+			var id := String(entry)
+			if owned.has(id) and not equipped.has(id):
+				equipped.append(id)
+			if equipped.size() >= WeaponCatalog.MAX_CARRY:
+				break
+	if not equipped.has(selected) and owned.has(selected):
+		if equipped.size() >= WeaponCatalog.MAX_CARRY:
+			equipped[equipped.size() - 1] = selected
+		else:
+			equipped.append(selected)
+	if equipped.is_empty():
+		for id in WeaponCatalog.default_loadout():
+			if owned.has(id) and not equipped.has(id):
+				equipped.append(id)
+			if equipped.size() >= WeaponCatalog.MAX_CARRY:
+				break
+	return equipped
+
+
+static func equipped_weapons(profile: Dictionary) -> Array:
+	var owned: Array = profile.get("owned_weapons", [])
+	var selected := String(profile.get("selected_weapon", ""))
+	return _sanitize_equipped(profile.get("equipped_weapons", []), owned, selected)
+
+
+static func is_equipped(profile: Dictionary, id: String) -> bool:
+	return equipped_weapons(profile).has(id)
 
 
 static func _sanitize_run(raw: Dictionary) -> Dictionary:
@@ -147,16 +184,33 @@ static func buy_weapon(profile: Dictionary, id: String) -> Dictionary:
 	var owned: Array = profile.get("owned_weapons", [])
 	owned.append(id)
 	profile["owned_weapons"] = owned
+	var equipped := equipped_weapons(profile)
+	if equipped.size() < WeaponCatalog.MAX_CARRY:
+		equipped.append(id)
+		profile["equipped_weapons"] = equipped
 	if String(profile.get("selected_weapon", "")) == "":
 		profile["selected_weapon"] = id
-	return {"ok": true, "message": "已解锁 %s · 可在军械库装备" % String(weapon["name"]), "weapon": id}
+	return {"ok": true, "message": "已解锁 %s · 出战编成最多携带两件" % String(weapon["name"]), "weapon": id}
 
 
 static func select_weapon(profile: Dictionary, id: String) -> Dictionary:
 	if not owns_weapon(profile, id):
 		return {"ok": false, "message": "尚未解锁该武器"}
+	var equipped := equipped_weapons(profile)
+	if not equipped.has(id):
+		if equipped.size() >= WeaponCatalog.MAX_CARRY:
+			var active := String(profile.get("selected_weapon", ""))
+			var replace_index := equipped.find(active)
+			if replace_index < 0:
+				replace_index = equipped.size() - 1
+			equipped[replace_index] = id
+		else:
+			equipped.append(id)
+		profile["equipped_weapons"] = equipped
 	profile["selected_weapon"] = id
-	return {"ok": true, "message": "已装备 %s" % WeaponCatalog.display_name(id), "weapon": id}
+	return {"ok": true, "message": "出战中 · %s（%d/%d 件）" % [
+		WeaponCatalog.display_name(id), equipped.size(), WeaponCatalog.MAX_CARRY,
+	], "weapon": id}
 
 
 static func run_reward(run: Dictionary, victory: bool, abandoned: bool = false) -> int:

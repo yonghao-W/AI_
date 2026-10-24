@@ -81,6 +81,16 @@ var _carry_ring: MeshInstance3D
 var _materials: Dictionary = {}
 var _unit_box: BoxMesh
 var _unit_cylinder: CylinderMesh
+var _third_person := false
+var _tp_root: Node3D
+var _tp_weapon_pivot: Node3D
+var _tp_weapon: Node3D
+var _tp_left_leg: Node3D
+var _tp_right_leg: Node3D
+var _tp_body: Node3D
+var _melee_swing_left := 0.0
+var _melee_swing_total := 0.5
+var _melee_weapon_id := ""
 
 
 func _ready() -> void:
@@ -105,8 +115,9 @@ func _ready() -> void:
 	_unit_cylinder.radial_segments = 10
 	_build_camera()
 	_build_weapon_rigs()
+	_build_third_person()
 	_build_carry_visual()
-	set_loadout(WeaponCatalog.default_owned(), WeaponCatalog.DEFAULT_SELECTED)
+	set_loadout(WeaponCatalog.default_loadout(), WeaponCatalog.DEFAULT_SELECTED)
 
 
 func _build_camera() -> void:
@@ -255,14 +266,86 @@ func _assign_viewmodel_layer(node: Node) -> void:
 		_assign_viewmodel_layer(child)
 
 
+func _build_third_person() -> void:
+	_tp_root = Node3D.new()
+	_tp_root.visible = false
+	add_child(_tp_root)
+	_tp_body = Node3D.new()
+	_tp_root.add_child(_tp_body)
+	var jacket := _mat(Color("#2d4a43"), 0.95)
+	var jacket_dark := _mat(Color("#20352f"), 0.98)
+	var pants := _mat(Color("#26343a"), 0.98)
+	var skin := _mat(Color("#b98d68"), 0.9)
+	var hair := _mat(Color("#2a2521"), 1.0)
+	var strap := _mat(Color("#b08743"), 0.7, 0.15)
+	var glove := _mat(Color("#1b2624"), 0.9)
+	var boots := _mat(Color("#171d20"), 0.95)
+	_part(_tp_body, Vector3(0.52, 0.58, 0.34), Vector3(0.0, 1.24, 0.0), jacket)
+	_part(_tp_body, Vector3(0.42, 0.34, 0.38), Vector3(0.0, 1.3, 0.0), jacket_dark)
+	_part(_tp_body, Vector3(0.54, 0.1, 0.36), Vector3(0.0, 0.94, 0.0), strap)
+	_part(_tp_body, Vector3(0.36, 0.44, 0.2), Vector3(0.0, 1.27, 0.27), strap)
+	_part(_tp_body, Vector3(0.3, 0.32, 0.3), Vector3(0.0, 1.64, 0.0), skin)
+	_part(_tp_body, Vector3(0.32, 0.1, 0.31), Vector3(0.0, 1.81, 0.0), hair)
+	for side in [-1.0, 1.0]:
+		var arm := Node3D.new()
+		arm.position = Vector3(0.34 * side, 1.46, 0.0)
+		_tp_body.add_child(arm)
+		_part(arm, Vector3(0.15, 0.42, 0.19), Vector3(0.0, -0.18, 0.0), jacket)
+		_part(arm, Vector3(0.13, 0.13, 0.15), Vector3(0.0, -0.42, 0.0), glove)
+		_tp_body.set_meta("arm_%s" % ("l" if side < 0.0 else "r"), arm)
+	_tp_left_leg = Node3D.new()
+	_tp_left_leg.position = Vector3(-0.16, 0.88, 0.0)
+	_tp_body.add_child(_tp_left_leg)
+	_part(_tp_left_leg, Vector3(0.21, 0.76, 0.25), Vector3(0.0, -0.38, 0.0), pants)
+	_part(_tp_left_leg, Vector3(0.23, 0.16, 0.32), Vector3(0.0, -0.8, -0.04), boots)
+	_tp_right_leg = Node3D.new()
+	_tp_right_leg.position = Vector3(0.16, 0.88, 0.0)
+	_tp_body.add_child(_tp_right_leg)
+	_part(_tp_right_leg, Vector3(0.21, 0.76, 0.25), Vector3(0.0, -0.38, 0.0), pants)
+	_part(_tp_right_leg, Vector3(0.23, 0.16, 0.32), Vector3(0.0, -0.8, -0.04), boots)
+	_tp_weapon_pivot = Node3D.new()
+	_tp_weapon_pivot.position = Vector3(0.36, 1.3, -0.12)
+	_tp_body.add_child(_tp_weapon_pivot)
+
+
+func _build_tp_weapon(id: String) -> void:
+	if _tp_weapon != null:
+		_tp_weapon.queue_free()
+	_tp_weapon = Node3D.new()
+	_tp_weapon_pivot.add_child(_tp_weapon)
+	var accent := _mat(WeaponCatalog.accent(id), 0.45, 0.25, 0.8)
+	var steel := _mat(Color("#c3ccd0"), 0.35, 0.7)
+	var dark := _mat(Color("#1b2226"), 0.8, 0.25)
+	var wood := _mat(Color("#5a3d27"), 0.9)
+	_part(_tp_weapon, Vector3(0.09, 0.1, 0.32), Vector3(0.0, 0.0, 0.08), wood)
+	_part(_tp_weapon, Vector3(0.13, 0.13, 0.12), Vector3(0.0, -0.02, -0.08), dark)
+	if id == "sledge":
+		_add_barrel(_tp_weapon, -0.16, 0.0, 0.78, 0.04, wood)
+		_part(_tp_weapon, Vector3(0.18, 0.5, 0.24), Vector3(0.0, 0.0, -0.82), steel)
+		_part(_tp_weapon, Vector3(0.2, 0.14, 0.26), Vector3(0.0, 0.28, -0.82), accent)
+	else:
+		_part(_tp_weapon, Vector3(0.055, 0.16, 0.9), Vector3(0.0, 0.03, -0.48), steel).rotation.x = -0.06
+		_part(_tp_weapon, Vector3(0.07, 0.1, 0.2), Vector3(0.0, 0.02, -0.93), accent)
+		_part(_tp_weapon, Vector3(0.035, 0.05, 0.5), Vector3(0.0, 0.1, -0.5), accent)
+	_tp_weapon.rotation = Vector3(0.2, -0.2, -0.12)
+	_melee_weapon_id = id
+
+
 func set_loadout(owned: Array, selected: String) -> void:
 	var cleaned: Array[String] = []
 	for raw in owned:
 		var id := String(raw)
 		if WeaponCatalog.has_weapon(id) and not cleaned.has(id):
 			cleaned.append(id)
+		if cleaned.size() >= WeaponCatalog.MAX_CARRY:
+			break
+	if not cleaned.has(selected) and WeaponCatalog.has_weapon(selected):
+		if cleaned.size() >= WeaponCatalog.MAX_CARRY:
+			cleaned[cleaned.size() - 1] = selected
+		else:
+			cleaned.append(selected)
 	if cleaned.is_empty():
-		cleaned = WeaponCatalog.default_owned()
+		cleaned.assign(WeaponCatalog.default_loadout())
 	weapons_owned = cleaned
 	for id in weapons_owned:
 		if not _ammo_states.has(id):
@@ -272,6 +355,10 @@ func set_loadout(owned: Array, selected: String) -> void:
 			}
 	var index := weapons_owned.find(selected)
 	_equip_index(maxi(index, 0), false)
+
+
+func is_melee_equipped() -> bool:
+	return not _weapon.is_empty() and String(_weapon.get("kind", "gun")) == "melee"
 
 
 func current_weapon_id() -> String:
@@ -294,6 +381,8 @@ func loadout_summary() -> Array:
 			"full_name": WeaponCatalog.display_name(id),
 			"accent": WeaponCatalog.accent(id),
 			"active": i == weapon_index,
+			"kind": String(WeaponCatalog.data(id).get("kind", "gun")),
+			"melee": WeaponCatalog.is_melee(id),
 			"mag": int(state.get("mag", 0)),
 			"reserve": int(state.get("reserve", 0)),
 			"mag_size": _mag_size_for(id),
@@ -342,17 +431,32 @@ func _equip_index(index: int, announce: bool) -> void:
 		var other_root: Node3D = other.get("root") as Node3D
 		if other_root != null:
 			other_root.visible = false
-	var rig: Dictionary = _rig_data.get(id, {})
-	if not rig.is_empty():
-		_viewmodel = rig.get("root") as Node3D
-		_muzzle = rig.get("muzzle") as Node3D
-		_flash_mesh = rig.get("flash") as MeshInstance3D
-		_flash_light = rig.get("light") as OmniLight3D
-		_magazine = rig.get("magazine") as MeshInstance3D
-		_magazine_base = rig.get("mag_base", Vector3.ZERO)
-		_magazine_rot_base = _magazine.rotation.x if _magazine != null else -0.22
-		if _viewmodel != null:
-			_viewmodel.visible = alive and not carrying_core
+	_third_person = WeaponCatalog.is_melee(id)
+	if _third_person:
+		_viewmodel = null
+		_muzzle = null
+		_flash_mesh = null
+		_flash_light = null
+		_magazine = null
+		_build_tp_weapon(id)
+		if _tp_root != null:
+			_tp_root.visible = alive and not carrying_core
+		if _melee_swing_left <= 0.0:
+			_melee_swing_left = 0.0
+	else:
+		if _tp_root != null:
+			_tp_root.visible = false
+		var rig: Dictionary = _rig_data.get(id, {})
+		if not rig.is_empty():
+			_viewmodel = rig.get("root") as Node3D
+			_muzzle = rig.get("muzzle") as Node3D
+			_flash_mesh = rig.get("flash") as MeshInstance3D
+			_flash_light = rig.get("light") as OmniLight3D
+			_magazine = rig.get("magazine") as MeshInstance3D
+			_magazine_base = rig.get("mag_base", Vector3.ZERO)
+			_magazine_rot_base = _magazine.rotation.x if _magazine != null else -0.22
+			if _viewmodel != null:
+				_viewmodel.visible = alive and not carrying_core
 	ammo_changed.emit(mag, reserve, false)
 	weapon_changed.emit(id, weapon_index + 1)
 	if announce:
@@ -361,6 +465,14 @@ func _equip_index(index: int, announce: bool) -> void:
 
 func _apply_weapon_stats() -> void:
 	var id := current_weapon_id()
+	if WeaponCatalog.is_melee(id):
+		mag_size = 0
+		reserve_cap = 0
+		reload_time = 0.0
+		fire_interval = _melee_interval_for(id)
+		mag = 0
+		reserve = 0
+		return
 	mag_size = _mag_size_for(id)
 	reserve_cap = _reserve_cap_for(id)
 	reload_time = _reload_time_for(id)
@@ -389,6 +501,12 @@ func _fire_interval_for(id: String) -> float:
 	var data := WeaponCatalog.data(id)
 	var level := int(_upgrades.get("rate", 0))
 	return maxf(0.042, float(data.get("interval", 0.12)) * (1.0 - 0.07 * level))
+
+
+func _melee_interval_for(id: String) -> float:
+	var data := WeaponCatalog.data(id)
+	var level := int(_upgrades.get("rate", 0))
+	return maxf(0.32, float(data.get("interval", 0.6)) * (1.0 - 0.06 * level))
 
 
 func _play_ui(kind: String, volume: float = 0.0, pitch: float = 1.0) -> void:
@@ -555,8 +673,10 @@ func _process(delta: float) -> void:
 	_fire_cooldown = maxf(0.0, _fire_cooldown - delta)
 	_flash_time = maxf(0.0, _flash_time - delta)
 	_gun_kick = move_toward(_gun_kick, 0.0, delta * 7.0)
-	_flash_mesh.visible = _flash_time > 0.0
-	_flash_light.light_energy = 3.2 if _flash_time > 0.0 else 0.0
+	if _flash_mesh != null:
+		_flash_mesh.visible = _flash_time > 0.0
+	if _flash_light != null:
+		_flash_light.light_energy = 3.2 if _flash_time > 0.0 else 0.0
 	if reloading:
 		_reload_left -= delta
 		if _reload_left <= 0.0:
@@ -582,9 +702,20 @@ func _update_visuals(delta: float) -> void:
 	var bob := sin(_bob_time * 2.6) * 0.018 * clampf(horizontal_speed / WALK_SPEED, 0.0, 1.3)
 	var sway := cos(_bob_time * 1.3) * 0.012 * clampf(horizontal_speed / WALK_SPEED, 0.0, 1.3)
 	_head.position.y = lerpf(_head.position.y, 1.55 + bob - (0.05 if carrying_core else 0.0), delta * 12.0)
-	var ads_pose := aiming and not reloading and not carrying_core
-	var target_fov := 58.0 if ads_pose else 78.0
+	var ads_pose := aiming and not reloading and not carrying_core and not _third_person
+	var target_fov := 58.0 if ads_pose else (72.0 if _third_person else 78.0)
 	_camera.fov = lerpf(_camera.fov, target_fov, delta * 11.0)
+	var camera_target := Vector3.ZERO
+	if _third_person and alive and not carrying_core:
+		camera_target = Vector3(0.62, 0.5, 3.35)
+		var desired := _head.global_transform * camera_target
+		var query := PhysicsRayQueryParameters3D.create(_head.global_position, desired, 1, [get_rid()])
+		var hit := get_world_3d().direct_space_state.intersect_ray(query)
+		if not hit.is_empty():
+			var safe: Vector3 = hit["position"] + Vector3(hit["normal"]) * 0.22
+			camera_target = _head.global_transform.affine_inverse() * safe
+			camera_target.z = maxf(0.4, camera_target.z)
+	_camera.position = _camera.position.lerp(camera_target, delta * (9.0 if _third_person else 13.0))
 
 	var reload_t := 0.0
 	if reloading:
@@ -605,12 +736,34 @@ func _update_visuals(delta: float) -> void:
 		_viewmodel.position = _viewmodel.position.lerp(target_pos, delta * (18.0 if reloading else 14.0))
 		_viewmodel.rotation.x = _gun_kick * 0.075 + sin(_bob_time * 0.7) * 0.003 - 0.3 * tilt
 		_viewmodel.rotation.z = 0.3 * tilt
-		_viewmodel.visible = alive and not carrying_core
+		_viewmodel.visible = alive and not carrying_core and not _third_person
 	if _magazine != null:
 		_magazine.visible = alive and mag_visible
 		_magazine.position = _magazine_base + Vector3(0.015 * mag_off, -0.42 * mag_off, 0.02 * mag_off)
 		_magazine.rotation.x = _magazine_rot_base + 0.55 * mag_off
 		_magazine.rotation.z = 0.35 * mag_off
+
+	if _tp_root != null:
+		var show_body := alive and _third_person and not carrying_core
+		_tp_root.visible = show_body
+		if show_body:
+			_melee_swing_left = maxf(0.0, _melee_swing_left - delta)
+			var stride := sin(_bob_time * 2.2) * clampf(horizontal_speed / WALK_SPEED, 0.0, 1.2)
+			_tp_left_leg.rotation.x = stride * 0.6
+			_tp_right_leg.rotation.x = -stride * 0.6
+			var swing_t := 0.0
+			if _melee_swing_left > 0.0:
+				swing_t = 1.0 - _melee_swing_left / maxf(0.01, _melee_swing_total)
+			var smooth := _smooth01(swing_t)
+			var arc := sin(clampf(swing_t * 1.15, 0.0, 1.0) * PI)
+			_tp_weapon_pivot.rotation.y = lerpf(0.6, -1.25, smooth)
+			_tp_weapon_pivot.rotation.z = -0.32 - arc * 0.8
+			_tp_weapon_pivot.rotation.x = 0.18 + arc * 0.55
+			_tp_body.rotation.y = sin(swing_t * PI) * -0.15
+			_tp_body.rotation.x = arc * 0.08
+		else:
+			_tp_weapon_pivot.rotation = Vector3(0.18, 0.6, -0.32)
+			_tp_body.rotation = Vector3.ZERO
 
 	if _carry_rig != null:
 		var carry_pose := carrying_core and alive
@@ -634,6 +787,9 @@ func _smooth01(value: float) -> float:
 
 func _fire() -> void:
 	if not alive or reloading or carrying_core or _fire_cooldown > 0.0 or not game_active or _switch_lock > 0.0:
+		return
+	if is_melee_equipped():
+		_fire_melee()
 		return
 	if mag <= 0:
 		if not _trigger_was_down:
@@ -701,9 +857,58 @@ func _fire() -> void:
 
 
 func _sync_ammo_state() -> void:
-	if _weapon.is_empty():
+	if _weapon.is_empty() or is_melee_equipped():
 		return
 	_ammo_states[current_weapon_id()] = {"mag": mag, "reserve": reserve}
+
+
+func _fire_melee() -> void:
+	var weapon_id := current_weapon_id()
+	var weapon_range := float(_weapon.get("range", 2.6))
+	var half_arc := float(_weapon.get("arc", 0.65))
+	_fire_cooldown = fire_interval
+	_melee_swing_left = fire_interval
+	_melee_swing_total = fire_interval
+	_gun_kick = clampf(float(_weapon.get("kick", 1.0)), 0.7, 2.0)
+	var forward := -global_transform.basis.z
+	forward.y = 0.0
+	if forward.length_squared() < 0.01:
+		forward = Vector3.FORWARD
+	forward = forward.normalized()
+	var origin := global_position + Vector3.UP
+	var candidates: Array = []
+	for node in get_tree().get_nodes_in_group("zombie_proxies"):
+		if not is_instance_valid(node) or not node is Node3D:
+			continue
+		if node.has_method("is_targetable") and not bool(node.call("is_targetable")):
+			continue
+		var target := node as Node3D
+		var offset := target.global_position - origin
+		offset.y = 0.0
+		var distance := offset.length()
+		if distance > weapon_range + 0.35 or distance < 0.01:
+			continue
+		if forward.dot(offset / distance) < cos(half_arc):
+			continue
+		candidates.append({"id": int(target.get("zombie_id")), "pos": target.global_position, "distance": distance})
+	candidates.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		return float(a["distance"]) < float(b["distance"])
+	)
+	var strikes := mini(2, candidates.size())
+	var hit_any := false
+	for i in range(strikes):
+		var entry: Dictionary = candidates[i]
+		hit_any = true
+		if effects != null:
+			effects.impact(Vector3(entry["pos"]) + Vector3.UP * 1.1, Vector3.UP, true)
+		if main_ref != null and main_ref.has_method("request_zombie_hit"):
+			main_ref.call("request_zombie_hit", int(entry["id"]), false, weapon_id)
+	if hit_any:
+		hit_marker.emit(false)
+	if is_on_floor():
+		velocity += forward * (2.6 if weapon_id == "sledge" else 3.2)
+	_play_ui("melee", -1.0, randf_range(0.9, 1.08))
+	ammo_changed.emit(mag, reserve, false)
 
 
 func _auto_pilot_step(delta: float) -> void:
@@ -724,7 +929,10 @@ func _auto_pilot_step(delta: float) -> void:
 	if nearest == null:
 		return
 	aim_at(nearest.global_position + Vector3.UP * 1.1)
-	if _auto_fire_timer <= 0.0 and nearest_distance < 90.0 * 90.0:
+	var fire_range := 90.0
+	if is_melee_equipped():
+		fire_range = float(_weapon.get("range", 2.6))
+	if _auto_fire_timer <= 0.0 and nearest_distance < fire_range * fire_range:
 		_auto_fire_timer = 0.14
 		_fire()
 
@@ -741,7 +949,7 @@ func aim_at(target: Vector3) -> void:
 
 
 func start_reload() -> void:
-	if reloading or carrying_core or mag >= mag_size or reserve <= 0 or not alive:
+	if is_melee_equipped() or reloading or carrying_core or mag >= mag_size or reserve <= 0 or not alive:
 		return
 	reloading = true
 	_reload_left = reload_time
@@ -771,14 +979,20 @@ func refill_ammo() -> void:
 		return
 	reloading = false
 	for id in weapons_owned:
+		if WeaponCatalog.is_melee(id):
+			continue
 		_ammo_states[id] = {
 			"mag": _mag_size_for(id),
 			"reserve": _reserve_cap_for(id),
 		}
 	_apply_weapon_stats()
-	mag = mag_size
-	reserve = reserve_cap
-	_sync_ammo_state()
+	if is_melee_equipped():
+		mag = 0
+		reserve = 0
+	else:
+		mag = mag_size
+		reserve = reserve_cap
+		_sync_ammo_state()
 	_play_ui("supply", -4.0)
 	ammo_changed.emit(mag, reserve, false)
 
@@ -816,6 +1030,8 @@ func set_down() -> void:
 		_viewmodel.visible = false
 	if _carry_rig != null:
 		_carry_rig.visible = false
+	if _tp_root != null:
+		_tp_root.visible = false
 	died.emit()
 
 
@@ -832,7 +1048,9 @@ func respawn_at(pos: Vector3, face_yaw: float = 0.0) -> void:
 	_head.rotation.x = 0.0
 	_head.position.y = 1.55
 	if _viewmodel != null:
-		_viewmodel.visible = true
+		_viewmodel.visible = not _third_person
+	if _tp_root != null:
+		_tp_root.visible = _third_person
 	if _carry_rig != null:
 		_carry_rig.visible = false
 	refill_ammo()
@@ -851,6 +1069,8 @@ func set_carrying(value: bool) -> void:
 			_flash_mesh.visible = false
 	if _viewmodel != null:
 		_viewmodel.visible = alive and not value
+	if _tp_root != null:
+		_tp_root.visible = alive and not value and _third_person
 	if _carry_rig != null:
 		_carry_rig.visible = value and alive
 
@@ -899,6 +1119,8 @@ func is_reloading() -> bool:
 
 
 func get_spread_normalized() -> float:
+	if is_melee_equipped():
+		return 0.0
 	var value := clampf(float(_weapon.get("spread", 0.012)) / 0.03, 0.15, 1.0) * 0.6
 	if aiming:
 		value = 0.05
