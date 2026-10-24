@@ -14,6 +14,15 @@ var state := 0
 var _cooldown := 0.0
 var _steer_side := 1.0
 var _stuck_time := 0.0
+var _frenzy := false
+
+
+func set_frenzy(value: bool) -> void:
+	_frenzy = value
+
+
+func speed_now() -> float:
+	return speed * (1.35 if _frenzy else 1.0)
 
 
 func setup(id: int, kind_id: String, wave: int) -> void:
@@ -71,33 +80,34 @@ func step(delta: float, target_pos: Vector3, target_id: int, has_target: bool) -
 		velocity = Vector3.ZERO
 		return
 	var direction := to_target / distance
+	var move_speed := speed_now()
 	rotation.y = lerp_angle(rotation.y, atan2(-direction.x, -direction.z), clampf(delta * 8.0, 0.0, 1.0))
 	if distance <= 1.9:
 		state = 1
 		velocity.x = 0.0
 		velocity.z = 0.0
 		if _cooldown <= 0.0:
-			_cooldown = attack_interval
-			attacked_player.emit(target_id, attack_damage)
+			_cooldown = attack_interval * (0.62 if _frenzy else 1.0)
+			attacked_player.emit(target_id, attack_damage * (1.2 if _frenzy else 1.0))
 		return
 	state = 0
-	var step_motion := direction * speed * delta
-	if test_move(global_transform, direction * speed * 0.18):
+	var step_motion := direction * move_speed * delta
+	if test_move(global_transform, direction * move_speed * 0.18):
 		direction = direction.rotated(Vector3.UP, 1.0 * _steer_side)
-		if test_move(global_transform, direction * speed * 0.18):
+		if test_move(global_transform, direction * move_speed * 0.18):
 			_steer_side *= -1.0
 			direction = direction.rotated(Vector3.UP, -1.6 * _steer_side)
 		_stuck_time += delta
 	else:
 		_stuck_time = maxf(0.0, _stuck_time - delta * 2.0)
-	step_motion = direction * speed * delta
+	step_motion = direction * move_speed * delta
 	velocity.x = step_motion.x / maxf(delta, 0.0001)
 	velocity.z = step_motion.z / maxf(delta, 0.0001)
 	velocity.y = 0.0
 	var before := global_position
 	move_and_slide()
 	global_position.y = 0.06
-	if global_position.distance_to(before) < speed * delta * 0.15:
+	if global_position.distance_to(before) < move_speed * delta * 0.15:
 		_stuck_time += delta * 0.5
 		if _stuck_time > 0.45:
 			_steer_side *= -1.0

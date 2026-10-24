@@ -14,6 +14,7 @@ var _spawn_delay := 0.0
 var _spawn_interval := 1.2
 var _escalation := 0
 var _active := false
+var _frenzy := false
 var _rng := RandomNumberGenerator.new()
 
 
@@ -32,6 +33,7 @@ func start(delay: float = 4.0) -> void:
 	_to_spawn = 0
 	_spawn_delay = 0.0
 	_escalation = 0
+	_frenzy = false
 	_active = true
 
 
@@ -41,6 +43,22 @@ func set_escalation(value: int) -> void:
 
 func escalation() -> int:
 	return _escalation
+
+
+func set_frenzy(value: bool) -> void:
+	if _frenzy == value:
+		return
+	_frenzy = value
+	for zombie in _zombies.values():
+		if is_instance_valid(zombie):
+			zombie.set_frenzy(value)
+	if value:
+		_spawn_delay = minf(_spawn_delay, 0.1)
+		_to_spawn += 8 + _escalation * 2
+
+
+func is_frenzy() -> bool:
+	return _frenzy
 
 
 func stop() -> void:
@@ -74,19 +92,35 @@ func tick(delta: float, players: Array) -> void:
 
 func _begin_wave() -> void:
 	_phase = "fight"
-	var quota := roundi((5 + _wave * 2) * (1.0 + 0.22 * _escalation))
-	_to_spawn = mini(34, quota)
+	var quota := roundi((7 + _wave * 3) * (1.0 + 0.26 * _escalation))
+	if _frenzy:
+		quota = roundi(quota * 1.35)
+	_to_spawn = mini(52, quota)
 	_spawn_delay = 0.2
-	_spawn_interval = maxf(0.45, 1.25 - _wave * 0.07)
+	_spawn_interval = maxf(0.32, 0.95 - _wave * 0.06)
 
 
 func _tick_spawning(delta: float, players: Array) -> void:
-	var alive_cap := mini(32, int(floor((9 + _wave * 2) * (1.0 + 0.15 * _escalation))))
+	var alive_cap := int(floor((12 + _wave * 3) * (1.0 + 0.2 * _escalation)))
+	if _frenzy:
+		alive_cap += 10
+	alive_cap = mini(44, alive_cap)
 	if _to_spawn <= 0 or _zombies.size() >= alive_cap:
 		return
 	_spawn_delay -= delta
 	if _spawn_delay > 0.0:
 		return
+	var burst := 2 if _frenzy else 1
+	for i in range(burst):
+		if _to_spawn <= 0 or _zombies.size() >= alive_cap:
+			break
+		_spawn_one(players)
+	_spawn_delay = _spawn_interval * pow(0.8, _escalation)
+	if _frenzy:
+		_spawn_delay *= 0.62
+
+
+func _spawn_one(players: Array) -> void:
 	var pos := _choose_spawn(players)
 	var kind := _choose_kind()
 	var zombie := ServerZombie.new()
@@ -95,21 +129,27 @@ func _tick_spawning(delta: float, players: Array) -> void:
 	add_child(zombie)
 	zombie.global_position = Vector3(pos.x, 0.06, pos.z)
 	zombie.setup(_next_id, kind, _wave)
+	zombie.set_frenzy(_frenzy)
 	zombie.attacked_player.connect(_on_zombie_attack)
 	_zombies[_next_id] = zombie
 	_next_id += 1
 	_to_spawn -= 1
-	_spawn_delay = _spawn_interval * pow(0.8, _escalation)
 
 
 func _choose_kind() -> String:
 	var roll := _rng.randf()
-	if _wave >= 3 and roll < 0.15:
+	var brute_chance := 0.14 if _wave >= 3 else (0.08 if _wave >= 2 else 0.0)
+	if _frenzy:
+		brute_chance += 0.06
+	if roll < brute_chance:
 		return "brute"
-	if _wave >= 2 and roll < 0.3:
+	roll = _rng.randf()
+	if roll < 0.3:
 		return "crawler"
-	if _wave >= 2 and roll < 0.56:
+	if roll < 0.58:
 		return "runner"
+	if _frenzy and roll < 0.72:
+		return "crawler"
 	return "walker"
 
 
@@ -207,6 +247,7 @@ func summary() -> Dictionary:
 		"active": _active,
 		"threat": _escalation,
 		"threat_mult": 1.0 + 0.22 * _escalation,
+		"frenzy": _frenzy,
 	}
 
 
