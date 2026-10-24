@@ -19,6 +19,10 @@ static func generate(seed_value: int, grid_size: int = 5, block_size: float = 28
 	grid_size = maxi(3, grid_size)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = seed_value
+	var district_index := rng.randi_range(0, 2)
+	var district: String = ["downtown", "industrial", "residential"][district_index]
+	var park_chances: Array[float] = [0.13, 0.18, 0.28]
+	var park_chance: float = park_chances[district_index]
 	var pitch := block_size + road_width
 	var total_size := grid_size * pitch + road_width
 	var origin := -total_size * 0.5
@@ -32,6 +36,8 @@ static func generate(seed_value: int, grid_size: int = 5, block_size: float = 28
 	var streetlights: Array[Vector3] = []
 	var cars: Array = []
 	var buildings_flat: Array = []
+	var terrain_features: Array = []
+	var cover_list: Array = []
 
 	for gx in range(grid_size):
 		for gz in range(grid_size):
@@ -40,7 +46,7 @@ static func generate(seed_value: int, grid_size: int = 5, block_size: float = 28
 				origin + road_width + gz * pitch + block_size * 0.5
 			)
 			var central := gx == center_cell and gz == center_cell
-			var is_park := central or rng.randf() < 0.2
+			var is_park := central or rng.randf() < park_chance
 			var block := {
 				"center": center,
 				"kind": "park" if is_park else "building",
@@ -50,12 +56,54 @@ static func generate(seed_value: int, grid_size: int = 5, block_size: float = 28
 			}
 			if is_park:
 				block["trees"] = _make_trees(rng, center, block_size, central)
-				block["fountain"] = central
+				block["fountain"] = false
+				if not central and rng.randf() < 0.55:
+					terrain_features.append({
+						"center": center + Vector2(rng.randf_range(-3.0, 3.0), rng.randf_range(-3.0, 3.0)),
+						"size": Vector2(rng.randf_range(6.8, 9.6), rng.randf_range(6.8, 9.6)),
+						"height": rng.randf_range(0.9, 1.7),
+						"ramp_side": rng.randi_range(0, 1),
+						"color_index": rng.randi_range(0, 2),
+					})
 			else:
-				var made: Array = _make_buildings(rng, center, block_size)
+				var made: Array = _make_buildings(rng, center, block_size, district)
 				block["buildings"] = made
 				for building in made:
 					buildings_flat.append(building)
+				var cover_count := rng.randi_range(1, 3)
+				for c in range(cover_count):
+					var cover_side := rng.randi_range(0, 3)
+					var reach := block_size * 0.5 - rng.randf_range(1.2, 2.6)
+					var along := rng.randf_range(-block_size * 0.3, block_size * 0.3)
+					var offset := Vector2.ZERO
+					var rot := 0.0
+					match cover_side:
+						0:
+							offset = Vector2(along, -reach)
+						1:
+							offset = Vector2(along, reach)
+						2:
+							offset = Vector2(-reach, along)
+							rot = PI * 0.5
+						3:
+							offset = Vector2(reach, along)
+							rot = PI * 0.5
+					var point := center + offset
+					var blocked := false
+					for building in made:
+						var b_center: Vector2 = building["center"]
+						var b_size: Vector3 = building["size"]
+						if Rect2(b_center - Vector2(b_size.x, b_size.z) * 0.5, Vector2(b_size.x, b_size.z)).grow(1.0).has_point(point):
+							blocked = true
+							break
+					if blocked:
+						continue
+					cover_list.append({
+						"pos": Vector3(point.x, 0.18, point.y),
+						"size": Vector3(rng.randf_range(2.0, 3.0), rng.randf_range(0.9, 1.25), rng.randf_range(0.45, 0.7)),
+						"rot": rot + rng.randf_range(-0.2, 0.2),
+						"color_index": rng.randi_range(0, 2),
+					})
 			blocks.append(block)
 
 			var inset := block_size * 0.5 - 1.4
@@ -113,6 +161,7 @@ static func generate(seed_value: int, grid_size: int = 5, block_size: float = 28
 
 	return {
 		"seed": seed_value,
+		"district": district,
 		"grid": grid_size,
 		"block_size": block_size,
 		"road_width": road_width,
@@ -121,6 +170,8 @@ static func generate(seed_value: int, grid_size: int = 5, block_size: float = 28
 		"road_centers": road_centers,
 		"blocks": blocks,
 		"buildings": buildings_flat,
+		"terrain": terrain_features,
+		"cover": cover_list,
 		"spawn_points": spawn_points,
 		"zombie_spawns": zombie_spawns,
 		"streetlights": streetlights,
@@ -128,15 +179,35 @@ static func generate(seed_value: int, grid_size: int = 5, block_size: float = 28
 	}
 
 
-static func _make_buildings(rng: RandomNumberGenerator, block_center: Vector2, block_size: float) -> Array:
+static func _make_buildings(rng: RandomNumberGenerator, block_center: Vector2, block_size: float, district: String = "downtown") -> Array:
 	var usable := block_size - 8.0
 	var wanted := rng.randi_range(1, 3)
+	var floors_min := 2
+	var floors_max := 6
+	var size_min := 6.4
+	var size_max := 13.0
+	var enterable_chance := 0.3
+	match district:
+		"industrial":
+			wanted = rng.randi_range(1, 2)
+			floors_min = 1
+			floors_max = 3
+			size_min = 8.0
+			size_max = 14.5
+			enterable_chance = 0.55
+		"residential":
+			wanted = rng.randi_range(1, 3)
+			floors_min = 2
+			floors_max = 5
+			size_min = 6.0
+			size_max = 10.5
+			enterable_chance = 0.36
 	var rects: Array[Rect2] = []
 	var result: Array = []
 	for i in range(wanted):
 		for attempt in range(18):
-			var w := rng.randf_range(6.4, minf(13.0, usable * 0.68))
-			var d := rng.randf_range(6.4, minf(13.0, usable * 0.68))
+			var w := rng.randf_range(size_min, minf(size_max, usable * 0.7))
+			var d := rng.randf_range(size_min, minf(size_max, usable * 0.7))
 			var min_x := block_center.x - usable * 0.5 + w * 0.5
 			var max_x := block_center.x + usable * 0.5 - w * 0.5
 			var min_z := block_center.y - usable * 0.5 + d * 0.5
@@ -151,13 +222,16 @@ static func _make_buildings(rng: RandomNumberGenerator, block_center: Vector2, b
 					break
 			if blocked:
 				continue
-			var floors := rng.randi_range(2, 6)
+			var floors := rng.randi_range(floors_min, floors_max)
+			var enterable := rng.randf() < enterable_chance and w >= 7.2 and d >= 7.2
 			result.append({
 				"center": Vector2(cx, cz),
 				"size": Vector3(w, floors * 3.2 + rng.randf_range(0.1, 1.1), d),
 				"floors": floors,
 				"color_index": rng.randi_range(0, BUILDING_COLORS.size() - 1),
 				"roof_variant": rng.randi_range(0, 2),
+				"enterable": enterable,
+				"door_side": rng.randi_range(0, 3),
 			})
 			rects.append(rect)
 			break
@@ -169,6 +243,8 @@ static func _make_buildings(rng: RandomNumberGenerator, block_center: Vector2, b
 			"floors": 3,
 			"color_index": rng.randi_range(0, BUILDING_COLORS.size() - 1),
 			"roof_variant": 0,
+			"enterable": false,
+			"door_side": 0,
 		})
 	return result
 

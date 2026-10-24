@@ -56,7 +56,13 @@ func _test_bounds_and_content() -> void:
 	_check(layout["buildings"].size() >= 25, "city has a dense set of buildings")
 	var central: Dictionary = layout["blocks"][12]
 	_check(bool(central["central"]) and central["kind"] == "park", "central block is a park")
-	_check(bool(central["fountain"]), "central park has a fountain")
+	_check(not bool(central["fountain"]), "central park reserved for the vault plaza")
+	var plaza_clear := true
+	for tree in central["trees"]:
+		var flat := Vector2(tree["pos"].x, tree["pos"].z)
+		if flat.length() < 5.8:
+			plaza_clear = false
+	_check(plaza_clear, "vault plaza stays clear of trees")
 	_check(layout["cars"].size() >= 5, "cars scattered through streets")
 	_check(layout["streetlights"].size() == 50, "two streetlights per block")
 

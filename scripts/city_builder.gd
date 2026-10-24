@@ -9,6 +9,7 @@ const WALL_COLOR := Color("#3c444c")
 const WALL_STRIPE := Color("#c74b45")
 const POLE_COLOR := Color("#4b555e")
 const TRUNK_COLOR := Color("#5c4938")
+const VAULT_HOLE_RECT := Rect2(-3.8, -8.6, 7.6, 21.2)
 
 var _layout: Dictionary = {}
 var _rng := RandomNumberGenerator.new()
@@ -33,6 +34,7 @@ func build(layout: Dictionary) -> void:
 	_unit_box.size = Vector3.ONE
 	_build_ground()
 	_build_blocks()
+	_build_terrain()
 	_build_buildings()
 	_build_props()
 	_build_boundaries()
@@ -42,10 +44,18 @@ func build(layout: Dictionary) -> void:
 func _build_ground() -> void:
 	var total := float(_layout["total_size"])
 	var ground_size := total + 36.0
-	_static_box(Vector3(ground_size, 1.0, ground_size), Vector3(0.0, -0.5, 0.0), ROAD_COLOR, 0.98)
+	var half := ground_size * 0.5
+	var hole := VAULT_HOLE_RECT
+	var hx0 := hole.position.x
+	var hx1 := hole.end.x
+	var hz0 := hole.position.y
+	var hz1 := hole.end.y
+	_static_box(Vector3(hx0 + half, 1.0, ground_size), Vector3((-half + hx0) * 0.5, -0.5, 0.0), ROAD_COLOR, 0.98)
+	_static_box(Vector3(half - hx1, 1.0, ground_size), Vector3((hx1 + half) * 0.5, -0.5, 0.0), ROAD_COLOR, 0.98)
+	_static_box(Vector3(hx1 - hx0, 1.0, hz0 + half), Vector3(0.0, -0.5, (-half + hz0) * 0.5), ROAD_COLOR, 0.98)
+	_static_box(Vector3(hx1 - hx0, 1.0, half - hz1), Vector3(0.0, -0.5, (hz1 + half) * 0.5), ROAD_COLOR, 0.98)
 	var markings: Array[Transform3D] = []
 	var road_centers: Array = _layout["road_centers"]
-	var half := total * 0.5
 	for x in road_centers:
 		var z := -half + 7.0
 		while z < half - 6.0:
@@ -75,13 +85,12 @@ func _build_blocks() -> void:
 	var blocks: Array = _layout["blocks"]
 	for block in blocks:
 		var center: Vector2 = block["center"]
+		if bool(block.get("central", false)):
+			continue
 		var is_park: bool = block["kind"] == "park"
 		_add_box(self, Vector3(block_size, 0.14, block_size), Vector3(center.x, 0.07, center.y), SIDEWALK_COLOR, 0.95)
 		if is_park:
 			_add_box(self, Vector3(block_size - 2.2, 0.08, block_size - 2.2), Vector3(center.x, 0.16, center.y), PARK_COLOR, 1.0)
-			if bool(block.get("central", false)):
-				_add_box(self, Vector3(block_size - 3.0, 0.05, 2.6), Vector3(center.x, 0.205, center.y), PARK_PATH_COLOR, 1.0)
-				_add_box(self, Vector3(2.6, 0.05, block_size - 3.0), Vector3(center.x, 0.205, center.y), PARK_PATH_COLOR, 1.0)
 		else:
 			_add_box(self, Vector3(block_size - 1.2, 0.04, block_size - 1.2), Vector3(center.x, 0.155, center.y), Color("#59636c"), 1.0)
 
@@ -93,6 +102,9 @@ func _build_buildings() -> void:
 		var size: Vector3 = building["size"]
 		var color: Color = CityLayout.BUILDING_COLORS[int(building["color_index"])]
 		var base_y := 0.14
+		if bool(building.get("enterable", false)):
+			_build_enterable(building, color, base_y)
+			continue
 		var full_center := Vector3(center.x, base_y + size.y * 0.5, center.y)
 		_static_box(size, full_center, color, 0.94)
 		_add_box(self, Vector3(size.x + 0.45, 0.34, size.z + 0.45),
@@ -111,6 +123,148 @@ func _build_buildings() -> void:
 				_cool_windows.append(t)
 			else:
 				_warm_windows.append(t)
+
+
+func _build_enterable(building: Dictionary, color: Color, base_y: float) -> void:
+	var center: Vector2 = building["center"]
+	var size: Vector3 = building["size"]
+	var door_side := int(building.get("door_side", 0))
+	var wall := 0.42
+	var door_w := 2.6
+	var door_h := 2.9
+	var wall_h := size.y
+	var roof_y := base_y + wall_h + 0.18
+	_static_box(Vector3(size.x, 0.2, size.z), Vector3(center.x, base_y + 0.02, center.y), color.darkened(0.42), 0.95)
+	_static_box(Vector3(size.x + 0.5, 0.4, size.z + 0.5), Vector3(center.x, roof_y, center.y), color.darkened(0.34), 0.9)
+	for side in range(4):
+		var along_x := side < 2
+		var span := size.x if along_x else size.z
+		var wall_x := center.x
+		var wall_z := center.y
+		if along_x:
+			wall_z = center.y + (-1.0 if side == 0 else 1.0) * (size.z * 0.5 - wall * 0.5)
+		else:
+			wall_x = center.x + (-1.0 if side == 2 else 1.0) * (size.x * 0.5 - wall * 0.5)
+		var is_door := side == door_side
+		if not is_door:
+			if along_x:
+				_wall_static(Vector3(span, wall_h, wall), Vector3(wall_x, base_y + wall_h * 0.5, wall_z), color)
+			else:
+				_wall_static(Vector3(wall, wall_h, span), Vector3(wall_x, base_y + wall_h * 0.5, wall_z), color)
+			continue
+		var seg_len := (span - door_w) * 0.5
+		if seg_len > 0.5:
+			if along_x:
+				_wall_static(Vector3(seg_len, wall_h, wall), Vector3(center.x - span * 0.5 + seg_len * 0.5, base_y + wall_h * 0.5, wall_z), color)
+				_wall_static(Vector3(seg_len, wall_h, wall), Vector3(center.x + span * 0.5 - seg_len * 0.5, base_y + wall_h * 0.5, wall_z), color)
+			else:
+				_wall_static(Vector3(wall, wall_h, seg_len), Vector3(wall_x, base_y + wall_h * 0.5, center.y - span * 0.5 + seg_len * 0.5), color)
+				_wall_static(Vector3(wall, wall_h, seg_len), Vector3(wall_x, base_y + wall_h * 0.5, center.y + span * 0.5 - seg_len * 0.5), color)
+		var lintel_h := wall_h - door_h
+		if lintel_h > 0.1:
+			if along_x:
+				_wall_static(Vector3(door_w, lintel_h, wall), Vector3(center.x, base_y + door_h + lintel_h * 0.5, wall_z), color.darkened(0.12))
+			else:
+				_wall_static(Vector3(wall, lintel_h, door_w), Vector3(wall_x, base_y + door_h + lintel_h * 0.5, center.y), color.darkened(0.12))
+	var door_pos := Vector3(center.x, base_y, center.y)
+	var door_yaw := 0.0
+	match door_side:
+		0:
+			door_pos.z -= size.z * 0.5 + 0.05
+		1:
+			door_pos.z += size.z * 0.5 + 0.05
+		2:
+			door_pos.x -= size.x * 0.5 + 0.05
+			door_yaw = PI * 0.5
+		3:
+			door_pos.x += size.x * 0.5 + 0.05
+			door_yaw = PI * 0.5
+	var sign := _add_box(self, Vector3(1.8, 0.34, 0.1), door_pos + Vector3(0.0, door_h + 0.35, 0.0), Color("#8fd8dc"), 0.4, 0.0, 1.4)
+	sign.rotation.y = door_yaw
+	var frame_l := _add_box(self, Vector3(0.12, door_h, 0.12), door_pos + Vector3(-door_w * 0.5 - 0.08 if door_yaw == 0.0 else 0.0, door_h * 0.5, door_w * 0.5 + 0.08 if door_yaw != 0.0 else 0.0), Color("#31474d"), 0.8)
+	frame_l.rotation.y = door_yaw
+	var frame_r := _add_box(self, Vector3(0.12, door_h, 0.12), door_pos + Vector3(door_w * 0.5 + 0.08 if door_yaw == 0.0 else 0.0, door_h * 0.5, -door_w * 0.5 - 0.08 if door_yaw != 0.0 else 0.0), Color("#31474d"), 0.8)
+	frame_r.rotation.y = door_yaw
+	_add_windows(center, size, base_y, int(building["floors"]))
+	_add_rooftop(center, size, base_y, color, int(building.get("roof_variant", 0)))
+	var light := OmniLight3D.new()
+	light.position = Vector3(center.x, base_y + minf(wall_h - 1.0, 3.2), center.y)
+	light.light_color = Color("#ffd9a0")
+	light.light_energy = 1.5
+	light.omni_range = minf(11.0, maxf(5.5, size.x * 0.9))
+	light.shadow_enabled = false
+	add_child(light)
+	var crate_size := Vector3(1.1, 0.95, 1.1)
+	var crate_pos := Vector3(center.x + size.x * 0.22, base_y + crate_size.y * 0.5 + 0.1, center.y - size.z * 0.18)
+	_static_box(crate_size, crate_pos, Color("#3a4648"), 0.9)
+	_add_box(self, Vector3(1.16, 0.08, 1.16), crate_pos + Vector3(0.0, crate_size.y * 0.5, 0.0), Color("#8fd8dc"), 0.5, 0.0, 1.1)
+
+
+func _wall_static(size: Vector3, pos: Vector3, color: Color) -> void:
+	_static_box(size, pos, color, 0.94)
+
+
+func _build_terrain() -> void:
+	var terrain: Array = _layout.get("terrain", [])
+	var colors := [Color("#59656b"), Color("#4e5a52"), Color("#665c50")]
+	for feature in terrain:
+		var center: Vector2 = feature["center"]
+		var feature_size: Vector2 = feature["size"]
+		var height := float(feature["height"])
+		var color: Color = colors[int(feature["color_index"]) % colors.size()]
+		var top := 0.16 + height
+		_static_box(Vector3(feature_size.x, height, feature_size.y), Vector3(center.x, 0.16 + height * 0.5, center.y), color, 0.93)
+		_add_box(self, Vector3(feature_size.x + 0.3, 0.14, feature_size.y + 0.3), Vector3(center.x, top + 0.04, center.y), color.lightened(0.08), 0.9)
+		_add_box(self, Vector3(feature_size.x, 0.12, 0.12), Vector3(center.x, top + 0.6, center.y - feature_size.y * 0.5 + 0.3), Color("#2f3c41"), 0.7, 0.4)
+		var ramp_side := int(feature.get("ramp_side", 0))
+		var ramp_len := 3.8
+		var angle := atan2(height, ramp_len)
+		var direction := -1.0 if ramp_side == 0 else 1.0
+		var ramp := StaticBody3D.new()
+		ramp.position = Vector3(center.x, 0.16 + height * 0.5, center.y + direction * (feature_size.y * 0.5 + ramp_len * 0.5))
+		ramp.rotation.x = angle if direction > 0.0 else -angle
+		ramp.collision_layer = 1
+		ramp.collision_mask = 0
+		var mesh := MeshInstance3D.new()
+		mesh.mesh = _unit_box
+		mesh.scale = Vector3(2.9, 0.4, sqrt(ramp_len * ramp_len + height * height))
+		mesh.material_override = _mat(color.darkened(0.08), 0.0, 0.93)
+		ramp.add_child(mesh)
+		var shape := CollisionShape3D.new()
+		var box := BoxShape3D.new()
+		box.size = mesh.scale
+		shape.shape = box
+		ramp.add_child(shape)
+		add_child(ramp)
+		_add_box(self, Vector3(2.9, 0.06, 0.25), Vector3(center.x, top + 0.06, center.y + direction * (feature_size.y * 0.5 - 0.1)), Color("#c9b87a"), 0.6, 0.0, 0.8)
+		for i in range(3):
+			_add_box(self, Vector3(0.55, 0.55, 0.55), Vector3(center.x - 1.6 + i * 1.7, top + 0.3, center.y + 1.0), Color("#3a4648"), 0.9)
+
+
+func _build_cover() -> void:
+	var covers: Array = _layout.get("cover", [])
+	var colors := [Color("#5a6268"), Color("#6b5a49"), Color("#3d4a50")]
+	for cover in covers:
+		var pos: Vector3 = cover["pos"]
+		var size: Vector3 = cover["size"]
+		var color: Color = colors[int(cover["color_index"]) % colors.size()]
+		var body := StaticBody3D.new()
+		body.position = pos + Vector3(0.0, size.y * 0.5, 0.0)
+		body.rotation.y = float(cover["rot"])
+		body.collision_layer = 1
+		body.collision_mask = 0
+		var mesh := MeshInstance3D.new()
+		mesh.mesh = _unit_box
+		mesh.scale = size
+		mesh.material_override = _mat(color, 0.0, 0.9)
+		body.add_child(mesh)
+		var shape := CollisionShape3D.new()
+		var box := BoxShape3D.new()
+		box.size = size
+		shape.shape = box
+		body.add_child(shape)
+		add_child(body)
+		_add_box(body, Vector3(size.x, 0.1, size.z * 1.04), Vector3(0.0, size.y * 0.5 - 0.05, 0.0), Color("#d8c37a"), 0.8, 0.0, 0.5)
 
 
 func _add_windows(center: Vector2, size: Vector3, base_y: float, floors: int) -> void:
@@ -173,11 +327,30 @@ func _add_rooftop(center: Vector2, size: Vector3, base_y: float, color: Color, v
 
 
 func _build_props() -> void:
+	var terrain_rects: Array[Rect2] = []
+	for feature in _layout.get("terrain", []):
+		var feature_center: Vector2 = feature["center"]
+		var fsize: Vector2 = feature["size"]
+		var rect := Rect2(feature_center - fsize * 0.5, fsize).grow(0.8)
+		if int(feature.get("ramp_side", 0)) == 0:
+			rect = rect.merge(Rect2(rect.position.x, rect.position.y - 3.8, rect.size.x, 3.8))
+		else:
+			rect = rect.merge(Rect2(rect.position.x, rect.end.y, rect.size.x, 3.8))
+		terrain_rects.append(rect)
 	var blocks: Array = _layout["blocks"]
 	for block in blocks:
 		var trees: Array = block.get("trees", [])
 		for tree in trees:
 			var pos: Vector3 = tree["pos"]
+			if bool(block.get("central", false)) and VAULT_HOLE_RECT.grow(1.6).has_point(Vector2(pos.x, pos.z)):
+				continue
+			var on_terrain := false
+			for terrain_rect in terrain_rects:
+				if terrain_rect.has_point(Vector2(pos.x, pos.z)):
+					on_terrain = true
+					break
+			if on_terrain:
+				continue
 			var tree_scale := float(tree["scale"])
 			var foliage_color: Color = CityLayout.TREE_COLORS[int(tree["color_index"])]
 			var trunk := _cylinder(0.18 * tree_scale, 2.1 * tree_scale, 6)
@@ -194,8 +367,10 @@ func _build_props() -> void:
 				leaves.position = Vector3(pos.x, 0.16 + (2.6 + layer * 1.35) * tree_scale, pos.z)
 				leaves.material_override = _mat(foliage_color.lightened(layer * 0.06), 0.0, 1.0)
 				add_child(leaves)
-		if bool(block.get("fountain", false)):
+		if bool(block.get("fountain", false)) and not bool(block.get("central", false)):
 			_build_fountain(block["center"])
+
+	_build_cover()
 
 	var lights: Array = _layout["streetlights"]
 	var pole := _cylinder(0.075, 5.8, 6)
