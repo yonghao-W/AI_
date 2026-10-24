@@ -166,7 +166,7 @@ func _build_root() -> void:
 		_nav_items.append(item)
 		if bool(entry["disabled"]):
 			item.disabled = true
-			item.modulate.a = 0.4
+			item.modulate.a = 0.72
 
 	var flex := Control.new()
 	flex.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -843,10 +843,10 @@ func _lobby_empty_row() -> Control:
 	bar.custom_minimum_size = Vector2(3, 24)
 	bar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	line.add_child(bar)
-	var name_label := DeadCityUI.make_label("等待队员加入…", 13, Color(0.45, 0.44, 0.41), DeadCityUI.display_font())
+	var name_label := DeadCityUI.make_label("等待队员加入…", 13, Color(0.58, 0.56, 0.51), DeadCityUI.display_font())
 	name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	line.add_child(name_label)
-	line.add_child(DeadCityUI.make_label("空位", 9, Color(0.45, 0.44, 0.41), DeadCityUI.display_font()))
+	line.add_child(DeadCityUI.make_label("空位", 9, Color(0.58, 0.56, 0.51), DeadCityUI.display_font()))
 	return row
 
 

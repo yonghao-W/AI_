@@ -1,0 +1,122 @@
+{
+	"engine_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+	"generated_at": "2026-10-24T12:56:45",
+	"git_commit": "db0b452",
+	"godot_version": "4.7.2-stable (official)",
+	"gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+	"renderer": "forward_plus",
+	"stages": [
+		{
+			"draw_calls": {
+				"avg": 320.0,
+				"max": 320.0,
+				"p50": 320.0,
+				"p95": 320.0,
+				"p99": 320.0
+			},
+			"frame_ms": {
+				"avg": 140.327,
+				"max": 1000.755,
+				"p50": 36.109,
+				"p95": 1000.755,
+				"p99": 1000.755
+			},
+			"frames": 300,
+			"primitives": {
+				"avg": 14042.0,
+				"max": 14042.0,
+				"p50": 14042.0,
+				"p95": 14042.0,
+				"p99": 14042.0
+			},
+			"stage": "menu_visible"
+		},
+		{
+			"draw_calls": {
+				"avg": 0.0,
+				"max": 0.0,
+				"p50": 0.0,
+				"p95": 0.0,
+				"p99": 0.0
+			},
+			"frame_ms": {
+				"avg": 33.19,
+				"max": 55.733,
+				"p50": 35.127,
+				"p95": 55.733,
+				"p99": 55.733
+			},
+			"frames": 300,
+			"primitives": {
+				"avg": 0.0,
+				"max": 0.0,
+				"p50": 0.0,
+				"p95": 0.0,
+				"p99": 0.0
+			},
+			"stage": "menu_hidden"
+		},
+		{
+			"draw_calls": {
+				"avg": 821.267,
+				"max": 851.0,
+				"p50": 816.0,
+				"p95": 848.0,
+				"p99": 851.0
+			},
+			"frame_ms": {
+				"avg": 13.916,
+				"max": 15.281,
+				"p50": 13.758,
+				"p95": 15.281,
+				"p99": 15.281
+			},
+			"frames": 300,
+			"primitives": {
+				"avg": 23668.34,
+				"max": 24533.0,
+				"p50": 23527.0,
+				"p95": 24425.0,
+				"p99": 24533.0
+			},
+			"stage": "hud_visible"
+		},
+		{
+			"draw_calls": {
+				"avg": 812.357,
+				"max": 879.0,
+				"p50": 817.0,
+				"p95": 870.0,
+				"p99": 879.0
+			},
+			"frame_ms": {
+				"avg": 11.526,
+				"max": 17.675,
+				"p50": 8.174,
+				"p95": 17.675,
+				"p99": 17.675
+			},
+			"frames": 300,
+			"primitives": {
+				"avg": 20635.84,
+				"max": 22280.0,
+				"p50": 20744.0,
+				"p95": 21980.0,
+				"p99": 22280.0
+			},
+			"stage": "hud_hidden"
+		}
+	],
+	"ui_delta": {
+		"hud": {
+			"draw_calls": 0.0,
+			"frame_ms": 0.0,
+			"primitives": 2445.0
+		},
+		"menu": {
+			"draw_calls": 320.0,
+			"frame_ms": 945.022,
+			"primitives": 14042.0
+		}
+	}
+}

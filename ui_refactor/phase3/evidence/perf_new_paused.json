@@ -1,0 +1,147 @@
+{
+	"engine_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+	"generated_at": "2026-10-24T13:04:59",
+	"git_commit": "3d513f3",
+	"godot_version": "4.7.2-stable (official)",
+	"gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+	"renderer": "forward_plus",
+	"stages": [
+		{
+			"draw_calls": {
+				"avg": 41.0,
+				"max": 41.0,
+				"p50": 41.0,
+				"p95": 41.0,
+				"p99": 41.0
+			},
+			"frame_ms": {
+				"avg": 20.563,
+				"max": 20.563,
+				"p50": 20.563,
+				"p95": 20.563,
+				"p99": 20.563
+			},
+			"frames": 300,
+			"primitives": {
+				"avg": 828.0,
+				"max": 828.0,
+				"p50": 828.0,
+				"p95": 828.0,
+				"p99": 828.0
+			},
+			"stage": "menu_visible"
+		},
+		{
+			"draw_calls": {
+				"avg": 0.0,
+				"max": 0.0,
+				"p50": 0.0,
+				"p95": 0.0,
+				"p99": 0.0
+			},
+			"frame_ms": {
+				"avg": 12.813,
+				"max": 12.813,
+				"p50": 12.813,
+				"p95": 12.813,
+				"p99": 12.813
+			},
+			"frames": 300,
+			"primitives": {
+				"avg": 0.0,
+				"max": 0.0,
+				"p50": 0.0,
+				"p95": 0.0,
+				"p99": 0.0
+			},
+			"stage": "menu_hidden"
+		},
+		{
+			"draw_calls": {
+				"avg": 762.013,
+				"max": 764.0,
+				"p50": 764.0,
+				"p95": 764.0,
+				"p99": 764.0
+			},
+			"frame_ms": {
+				"avg": 18.827,
+				"max": 19.618,
+				"p50": 19.618,
+				"p95": 19.618,
+				"p99": 19.618
+			},
+			"frames": 300,
+			"primitives": {
+				"avg": 19310.2,
+				"max": 19340.0,
+				"p50": 19340.0,
+				"p95": 19340.0,
+				"p99": 19340.0
+			},
+			"stage": "hud_visible"
+		},
+		{
+			"draw_calls": {
+				"avg": 698.0,
+				"max": 698.0,
+				"p50": 698.0,
+				"p95": 698.0,
+				"p99": 698.0
+			},
+			"frame_ms": {
+				"avg": 10.664,
+				"max": 16.951,
+				"p50": 5.236,
+				"p95": 16.951,
+				"p99": 16.951
+			},
+			"frames": 300,
+			"primitives": {
+				"avg": 17944.0,
+				"max": 17944.0,
+				"p50": 17944.0,
+				"p95": 17944.0,
+				"p99": 17944.0
+			},
+			"stage": "hud_hidden"
+		},
+		{
+			"draw_calls": {
+				"avg": 820.0,
+				"max": 820.0,
+				"p50": 820.0,
+				"p95": 820.0,
+				"p99": 820.0
+			},
+			"frame_ms": {
+				"avg": 31.743,
+				"max": 33.548,
+				"p50": 33.548,
+				"p95": 33.548,
+				"p99": 33.548
+			},
+			"frames": 300,
+			"primitives": {
+				"avg": 19924.627,
+				"max": 19926.0,
+				"p50": 19924.0,
+				"p95": 19926.0,
+				"p99": 19926.0
+			},
+			"stage": "hud_squad_four"
+		}
+	],
+	"ui_delta": {
+		"hud": {
+			"draw_calls": 66.0,
+			"frame_ms": 2.667,
+			"primitives": 1396.0
+		},
+		"menu": {
+			"draw_calls": 41.0,
+			"frame_ms": 7.75,
+			"primitives": 828.0
+		}
+	}
+}

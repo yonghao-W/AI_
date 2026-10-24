@@ -120,7 +120,7 @@ func set_enabled_visual(value: bool) -> void:
 
 
 func _apply_enabled() -> void:
-	modulate.a = 1.0 if not disabled else 0.40
+	modulate.a = 1.0 if not disabled else 0.72
 	if _sub != null:
 		_sub.add_theme_color_override("font_color", DeadCityUI.MUTED_2 if not disabled else Color(0.55, 0.5, 0.45))
 

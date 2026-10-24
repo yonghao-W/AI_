@@ -14,3 +14,6 @@ Thumbs.db
 
 # Local verification captures (regenerate with tests/CLI flags)
 shots/
+
+# Visual regression baselines (regenerate with capture_ui_matrix.gd)
+ui_refactor/phase3/baselines/

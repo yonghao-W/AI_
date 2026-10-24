@@ -1,0 +1,8370 @@
+{
+	"generated_at": "2026-10-24T15:13:01",
+	"git_commit": "3d513f3",
+	"godot_version": "4.7.2-stable (official)",
+	"states": [
+		{
+			"background": "ui_refactor/phase3/shots/contrast/menu_bg.png",
+			"background_saved": true,
+			"elements": [
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@Label@30",
+					"rect": [
+						66.5599975585938,
+						75.5999984741211,
+						435.0,
+						24.0
+					],
+					"shadow": true,
+					"text": "低多边形协作生存  //  1–4 人"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 64,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@Label@31",
+					"rect": [
+						66.5599975585938,
+						99.5999984741211,
+						435.0,
+						93.0
+					],
+					"shadow": true,
+					"text": "死城突围"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@Label@32",
+					"rect": [
+						66.5599975585938,
+						192.600006103516,
+						435.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "在崩塌的世界，寻找回家的路"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.720000028610229
+					],
+					"font_size": 25,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@35/@Label@36",
+					"rect": [
+						66.5599975585938,
+						292.600006103516,
+						395.0,
+						34.0
+					],
+					"shadow": true,
+					"text": "继续行动"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						0.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@35/@Label@37",
+					"rect": [
+						178.559997558594,
+						293.600006103516,
+						28.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "›"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						0.720000028610229
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@35/@Label@38",
+					"rect": [
+						66.5599975585938,
+						325.600006103516,
+						411.0,
+						22.0
+					],
+					"shadow": true,
+					"text": "当前版本不保存行动进度"
+				},
+				{
+					"color": [
+						1.0,
+						1.0,
+						1.0,
+						1.0
+					],
+					"font_size": 21,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@39/@Label@40",
+					"rect": [
+						71.5599975585938,
+						350.600006103516,
+						395.0,
+						32.0
+					],
+					"shadow": true,
+					"text": "单人行动"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@39/@Label@41",
+					"rect": [
+						167.559997558594,
+						351.600006103516,
+						28.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "›"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 21,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@43/@Label@44",
+					"rect": [
+						66.5599975585938,
+						396.600006103516,
+						395.0,
+						32.0
+					],
+					"shadow": true,
+					"text": "联机作战"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@43/@Label@45",
+					"rect": [
+						162.559997558594,
+						397.600006103516,
+						28.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "›"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 18,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@50/@Label@51",
+					"rect": [
+						66.5599975585938,
+						503.600006103516,
+						395.0,
+						32.0
+					],
+					"shadow": true,
+					"text": "角色整备"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@50/@Label@52",
+					"rect": [
+						150.559997558594,
+						504.600006103516,
+						28.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "›"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 18,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@54/@Label@55",
+					"rect": [
+						66.5599975585938,
+						549.599975585938,
+						395.0,
+						32.0
+					],
+					"shadow": true,
+					"text": "设置"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@54/@Label@56",
+					"rect": [
+						114.559997558594,
+						550.599975585938,
+						28.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "›"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 18,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@58/@Label@59",
+					"rect": [
+						66.5599975585938,
+						595.599975585938,
+						395.0,
+						32.0
+					],
+					"shadow": true,
+					"text": "退出"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@58/@Label@60",
+					"rect": [
+						114.559997558594,
+						596.599975585938,
+						28.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "›"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@Label@63",
+					"rect": [
+						66.5599975585938,
+						641.599975585938,
+						435.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "幸存者血脉 Lv.7  ·  信用点 1411"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@HBoxContainer@65/@Label@67",
+					"rect": [
+						78.5599975585938,
+						669.599975585938,
+						133.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "第一章 · E-07 高架信号维护站"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@HBoxContainer@65/@Label@69",
+					"rect": [
+						234.559997558594,
+						669.599975585938,
+						73.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "UI v3 · 场景背景"
+				},
+				{
+					"color": [
+						0.850000023841858,
+						0.819999992847443,
+						0.759999990463257,
+						0.620000004768372
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/InputHint",
+					"rect": [
+						950.0,
+						686.0,
+						306.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "↑ ↓ 选择  ·  Enter 确认  ·  Esc 返回"
+				}
+			],
+			"height": 720,
+			"state": "menu",
+			"width": 1280
+		},
+		{
+			"background": "ui_refactor/phase3/shots/contrast/menu_coop_bg.png",
+			"background_saved": true,
+			"elements": [
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.259999990463257
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@Label@30",
+					"rect": [
+						66.5599975585938,
+						75.5999984741211,
+						435.0,
+						24.0
+					],
+					"shadow": true,
+					"text": "低多边形协作生存  //  1–4 人"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						0.259999990463257
+					],
+					"font_size": 64,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@Label@31",
+					"rect": [
+						66.5599975585938,
+						99.5999984741211,
+						435.0,
+						93.0
+					],
+					"shadow": true,
+					"text": "死城突围"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.259999990463257
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@Label@32",
+					"rect": [
+						66.5599975585938,
+						192.600006103516,
+						435.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "在崩塌的世界，寻找回家的路"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.187199994921684
+					],
+					"font_size": 25,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@35/@Label@36",
+					"rect": [
+						66.5599975585938,
+						292.600006103516,
+						395.0,
+						34.0
+					],
+					"shadow": true,
+					"text": "继续行动"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						0.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@35/@Label@37",
+					"rect": [
+						178.559997558594,
+						293.600006103516,
+						28.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "›"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						0.187199994921684
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@35/@Label@38",
+					"rect": [
+						66.5599975585938,
+						325.600006103516,
+						411.0,
+						22.0
+					],
+					"shadow": true,
+					"text": "当前版本不保存行动进度"
+				},
+				{
+					"color": [
+						1.0,
+						1.0,
+						1.0,
+						0.259999990463257
+					],
+					"font_size": 21,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@39/@Label@40",
+					"rect": [
+						71.5599975585938,
+						350.600006103516,
+						395.0,
+						32.0
+					],
+					"shadow": true,
+					"text": "单人行动"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.259999990463257
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@39/@Label@41",
+					"rect": [
+						167.559997558594,
+						351.600006103516,
+						28.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "›"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.259999990463257
+					],
+					"font_size": 21,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@43/@Label@44",
+					"rect": [
+						66.5599975585938,
+						396.600006103516,
+						395.0,
+						32.0
+					],
+					"shadow": true,
+					"text": "联机作战"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@43/@Label@45",
+					"rect": [
+						162.559997558594,
+						397.600006103516,
+						28.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "›"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.259999990463257
+					],
+					"font_size": 18,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@50/@Label@51",
+					"rect": [
+						66.5599975585938,
+						503.600006103516,
+						395.0,
+						32.0
+					],
+					"shadow": true,
+					"text": "角色整备"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@50/@Label@52",
+					"rect": [
+						150.559997558594,
+						504.600006103516,
+						28.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "›"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.259999990463257
+					],
+					"font_size": 18,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@54/@Label@55",
+					"rect": [
+						66.5599975585938,
+						549.599975585938,
+						395.0,
+						32.0
+					],
+					"shadow": true,
+					"text": "设置"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@54/@Label@56",
+					"rect": [
+						114.559997558594,
+						550.599975585938,
+						28.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "›"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.259999990463257
+					],
+					"font_size": 18,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@58/@Label@59",
+					"rect": [
+						66.5599975585938,
+						595.599975585938,
+						395.0,
+						32.0
+					],
+					"shadow": true,
+					"text": "退出"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@58/@Label@60",
+					"rect": [
+						114.559997558594,
+						596.599975585938,
+						28.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "›"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						0.259999990463257
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@Label@63",
+					"rect": [
+						66.5599975585938,
+						641.599975585938,
+						435.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "幸存者血脉 Lv.7  ·  信用点 1411"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.259999990463257
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@HBoxContainer@65/@Label@67",
+					"rect": [
+						78.5599975585938,
+						669.599975585938,
+						133.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "第一章 · E-07 高架信号维护站"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						0.259999990463257
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@HBoxContainer@65/@Label@69",
+					"rect": [
+						234.559997558594,
+						669.599975585938,
+						73.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "UI v3 · 场景背景"
+				},
+				{
+					"color": [
+						0.850000023841858,
+						0.819999992847443,
+						0.759999990463257,
+						0.161200001835823
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/InputHint",
+					"rect": [
+						950.0,
+						686.0,
+						306.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "↑ ↓ 选择  ·  Enter 确认  ·  Esc 返回"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 30,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@273/@VBoxContainer@274/@Label@275",
+					"rect": [
+						718.320007324219,
+						112.400001525879,
+						459.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "联机作战"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@273/@VBoxContainer@274/@Label@276",
+					"rect": [
+						718.320007324219,
+						168.399993896484,
+						459.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "ENET · 1–4 人  //  主机创建房间，队友加入"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@273/@VBoxContainer@274/@HBoxContainer@284/@VBoxContainer@280/@Label@278",
+					"rect": [
+						718.320007324219,
+						208.399993896484,
+						224.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "行动呼号"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@273/@VBoxContainer@274/@HBoxContainer@284/@VBoxContainer@283/@Label@281",
+					"rect": [
+						952.320007324219,
+						208.399993896484,
+						225.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "地图种子"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@273/@VBoxContainer@274/@HBoxContainer@291/@VBoxContainer@287/@Label@285",
+					"rect": [
+						718.320007324219,
+						282.399993896484,
+						299.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "主机地址"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@273/@VBoxContainer@274/@HBoxContainer@291/@VBoxContainer@290/@Label@288",
+					"rect": [
+						1027.32006835938,
+						282.399993896484,
+						150.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "端口"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@273/@VBoxContainer@274/@Label@292",
+					"rect": [
+						718.320007324219,
+						356.399993896484,
+						459.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "同一局域网内：主机创建房间后，把本机 IP 与端口告诉队友。"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@273/@VBoxContainer@274/@HBoxContainer@295/@Button@296",
+					"rect": [
+						718.320007324219,
+						421.399993896484,
+						177.0,
+						46.0
+					],
+					"shadow": true,
+					"text": "创建房间"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@273/@VBoxContainer@274/@HBoxContainer@295/@Button@297",
+					"rect": [
+						905.320007324219,
+						421.399993896484,
+						178.0,
+						46.0
+					],
+					"shadow": true,
+					"text": "加入房间"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@273/@VBoxContainer@274/@HBoxContainer@295/@Button@298",
+					"rect": [
+						1093.32006835938,
+						421.399993896484,
+						84.0,
+						46.0
+					],
+					"shadow": true,
+					"text": "返回"
+				}
+			],
+			"height": 720,
+			"state": "menu_coop",
+			"width": 1280
+		},
+		{
+			"background": "ui_refactor/phase3/shots/contrast/menu_armory_bg.png",
+			"background_saved": true,
+			"elements": [
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 32,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@100/@VBoxContainer@101/@Label@102",
+					"rect": [
+						108.0,
+						74.0,
+						242.0,
+						47.0
+					],
+					"shadow": true,
+					"text": "角色整备"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@100/@VBoxContainer@101/@Label@103",
+					"rect": [
+						108.0,
+						122.0,
+						242.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "ARMORY / LOADOUT  //  真实装备 · 信用点永久解锁"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@100/@VBoxContainer@105/@Label@106",
+					"rect": [
+						982.0,
+						74.0,
+						56.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "可用信用点"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 24,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@100/@VBoxContainer@105/@Label@107",
+					"rect": [
+						982.0,
+						87.0,
+						56.0,
+						33.0
+					],
+					"shadow": true,
+					"text": "1411"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@100/@Button@108",
+					"rect": [
+						1054.0,
+						83.0,
+						118.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "关闭  Esc"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@Label@112",
+					"rect": [
+						108.0,
+						157.0,
+						307.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "幸存者档案"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 20,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@Label@113",
+					"rect": [
+						108.0,
+						182.0,
+						307.0,
+						28.0
+					],
+					"shadow": true,
+					"text": "幸存者血脉 Lv.7"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@Label@114",
+					"rect": [
+						108.0,
+						218.0,
+						307.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "行动 10 次 · 完成 8 次 · 最佳战力 18 · 信用点 1411"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@Label@116",
+					"rect": [
+						108.0,
+						249.0,
+						307.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "出战编成"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@299/@HBoxContainer@300/@Label@301",
+					"rect": [
+						118.0,
+						284.0,
+						6.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "1"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 13,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@299/@HBoxContainer@300/@Label@302",
+					"rect": [
+						132.0,
+						282.0,
+						247.0,
+						18.0
+					],
+					"shadow": true,
+					"text": "MG-7 轻机枪"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@299/@HBoxContainer@300/@Label@303",
+					"rect": [
+						387.0,
+						284.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "当前"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@304/@HBoxContainer@305/@Label@306",
+					"rect": [
+						118.0,
+						324.0,
+						6.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "2"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 13,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@304/@HBoxContainer@305/@Label@307",
+					"rect": [
+						132.0,
+						322.0,
+						273.0,
+						18.0
+					],
+					"shadow": true,
+					"text": "M-2 开山砍刀"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@Label@118",
+					"rect": [
+						108.0,
+						356.0,
+						307.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "未拥有角色模型 / 技能系统：本页只展示工程中真实存在的装备与档案数据。"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@Label@121",
+					"rect": [
+						437.0,
+						157.0,
+						735.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "武器库"
+				},
+				{
+					"color": [
+						0.662745118141174,
+						0.764705896377563,
+						0.823529422283173,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@308/@VBoxContainer@309/@Label@310",
+					"rect": [
+						447.0,
+						190.0,
+						156.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "枪械 · 库存"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 14,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@308/@VBoxContainer@309/@Label@311",
+					"rect": [
+						447.0,
+						207.0,
+						156.0,
+						19.0
+					],
+					"shadow": true,
+					"text": "P-19 手枪"
+				},
+				{
+					"color": [
+						0.662745118141174,
+						0.764705896377563,
+						0.823529422283173,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@308/@VBoxContainer@309/@Label@312",
+					"rect": [
+						447.0,
+						230.0,
+						156.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "半自动"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@308/@VBoxContainer@309/@Label@313",
+					"rect": [
+						447.0,
+						247.0,
+						156.0,
+						42.0
+					],
+					"shadow": true,
+					"text": "伤害 32 · 射速 316 RPM · 弹匣 12 · 备弹 72 · 半自动"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@308/@VBoxContainer@309/@Button@315",
+					"rect": [
+						447.0,
+						334.0,
+						156.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "替换出战"
+				},
+				{
+					"color": [
+						0.34901961684227,
+						0.847058832645416,
+						0.7843137383461,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@316/@VBoxContainer@317/@Label@318",
+					"rect": [
+						631.0,
+						190.0,
+						156.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "枪械 · 库存"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 14,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@316/@VBoxContainer@317/@Label@319",
+					"rect": [
+						631.0,
+						207.0,
+						156.0,
+						19.0
+					],
+					"shadow": true,
+					"text": "VX-9 冲锋枪"
+				},
+				{
+					"color": [
+						0.34901961684227,
+						0.847058832645416,
+						0.7843137383461,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@316/@VBoxContainer@317/@Label@320",
+					"rect": [
+						631.0,
+						230.0,
+						156.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "全自动"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@316/@VBoxContainer@317/@Label@321",
+					"rect": [
+						631.0,
+						247.0,
+						156.0,
+						42.0
+					],
+					"shadow": true,
+					"text": "伤害 19 · 射速 882 RPM · 弹匣 36 · 备弹 144 · 全自动"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@316/@VBoxContainer@317/@Button@323",
+					"rect": [
+						631.0,
+						334.0,
+						156.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "替换出战"
+				},
+				{
+					"color": [
+						1.0,
+						0.796078443527222,
+						0.400000005960464,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@324/@VBoxContainer@325/@Label@326",
+					"rect": [
+						815.0,
+						190.0,
+						156.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "枪械 · 库存"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 14,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@324/@VBoxContainer@325/@Label@327",
+					"rect": [
+						815.0,
+						207.0,
+						156.0,
+						19.0
+					],
+					"shadow": true,
+					"text": "MK-3 突击步枪"
+				},
+				{
+					"color": [
+						1.0,
+						0.796078443527222,
+						0.400000005960464,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@324/@VBoxContainer@325/@Label@328",
+					"rect": [
+						815.0,
+						230.0,
+						156.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "全自动"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@324/@VBoxContainer@325/@Label@329",
+					"rect": [
+						815.0,
+						247.0,
+						156.0,
+						42.0
+					],
+					"shadow": true,
+					"text": "伤害 33 · 射速 577 RPM · 弹匣 30 · 备弹 150 · 全自动"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@324/@VBoxContainer@325/@Button@331",
+					"rect": [
+						815.0,
+						334.0,
+						156.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "替换出战"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@332/@VBoxContainer@333/@Label@334",
+					"rect": [
+						999.0,
+						190.0,
+						156.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "枪械 · 库存"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.600000023841858,
+						0.560000002384186,
+						1.0
+					],
+					"font_size": 14,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@332/@VBoxContainer@333/@Label@335",
+					"rect": [
+						999.0,
+						207.0,
+						156.0,
+						19.0
+					],
+					"shadow": true,
+					"text": "SG-12 战术霰弹"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@332/@VBoxContainer@333/@Label@336",
+					"rect": [
+						999.0,
+						230.0,
+						156.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "泵动"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@332/@VBoxContainer@333/@Label@337",
+					"rect": [
+						999.0,
+						247.0,
+						156.0,
+						42.0
+					],
+					"shadow": true,
+					"text": "伤害 13 · 射速 83 RPM · 弹匣 7 · 备弹 42 · 泵动"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@332/@VBoxContainer@333/@Button@339",
+					"rect": [
+						999.0,
+						334.0,
+						156.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "解锁 · 320"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@340/@VBoxContainer@341/@Label@342",
+					"rect": [
+						447.0,
+						406.0,
+						156.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "枪械 · 出战"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 14,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@340/@VBoxContainer@341/@Label@343",
+					"rect": [
+						447.0,
+						423.0,
+						156.0,
+						19.0
+					],
+					"shadow": true,
+					"text": "MG-7 轻机枪"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@340/@VBoxContainer@341/@Label@344",
+					"rect": [
+						447.0,
+						446.0,
+						156.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "全自动"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@340/@VBoxContainer@341/@Label@345",
+					"rect": [
+						447.0,
+						463.0,
+						156.0,
+						42.0
+					],
+					"shadow": true,
+					"text": "伤害 27 · 射速 1000 RPM · 弹匣 80 · 备弹 240 · 全自动"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@340/@VBoxContainer@341/@Button@347",
+					"rect": [
+						447.0,
+						550.0,
+						156.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "使用中"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.705882370471954,
+						0.415686279535294,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@348/@VBoxContainer@349/@Label@350",
+					"rect": [
+						631.0,
+						406.0,
+						156.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "近战 · 出战"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 14,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@348/@VBoxContainer@349/@Label@351",
+					"rect": [
+						631.0,
+						423.0,
+						156.0,
+						19.0
+					],
+					"shadow": true,
+					"text": "M-2 开山砍刀"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.705882370471954,
+						0.415686279535294,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@348/@VBoxContainer@349/@Label@352",
+					"rect": [
+						631.0,
+						446.0,
+						156.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "近战 · 横扫"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@348/@VBoxContainer@349/@Label@353",
+					"rect": [
+						631.0,
+						463.0,
+						156.0,
+						42.0
+					],
+					"shadow": true,
+					"text": "伤害 74 · 挥速 111/分 · 范围 2.9 m · 近战 · 横扫"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@348/@VBoxContainer@349/@Button@355",
+					"rect": [
+						631.0,
+						550.0,
+						156.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "切换"
+				},
+				{
+					"color": [
+						0.847058832645416,
+						0.537254929542542,
+						0.372549027204514,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@356/@VBoxContainer@357/@Label@358",
+					"rect": [
+						815.0,
+						406.0,
+						156.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "近战 · 库存"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 14,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@356/@VBoxContainer@357/@Label@359",
+					"rect": [
+						815.0,
+						423.0,
+						156.0,
+						19.0
+					],
+					"shadow": true,
+					"text": "S-6 破拆大锤"
+				},
+				{
+					"color": [
+						0.847058832645416,
+						0.537254929542542,
+						0.372549027204514,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@356/@VBoxContainer@357/@Label@360",
+					"rect": [
+						815.0,
+						446.0,
+						156.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "近战 · 重击"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@356/@VBoxContainer@357/@Label@361",
+					"rect": [
+						815.0,
+						463.0,
+						156.0,
+						42.0
+					],
+					"shadow": true,
+					"text": "伤害 168 · 挥速 65/分 · 范围 3.1 m · 近战 · 重击"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@356/@VBoxContainer@357/@Button@363",
+					"rect": [
+						815.0,
+						550.0,
+						156.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "替换出战"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@Label@123",
+					"rect": [
+						437.0,
+						632.0,
+						735.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "击杀感染者与回收核心可获得信用点。"
+				}
+			],
+			"height": 720,
+			"state": "menu_armory",
+			"width": 1280
+		},
+		{
+			"background": "ui_refactor/phase3/shots/contrast/lobby_bg.png",
+			"background_saved": true,
+			"elements": [
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 34,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@HBoxContainer@436/@VBoxContainer@437/@Label@438",
+					"rect": [
+						262.0,
+						112.0,
+						210.0,
+						50.0
+					],
+					"shadow": true,
+					"text": "行动准备"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@HBoxContainer@436/@VBoxContainer@437/@Label@439",
+					"rect": [
+						262.0,
+						164.0,
+						210.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "READY CHECK  //  所有队员就绪后由房主开始"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@HBoxContainer@436/@VBoxContainer@441/@Label@442",
+					"rect": [
+						863.0,
+						112.0,
+						155.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "小队频道"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@HBoxContainer@436/@VBoxContainer@441/@Label@443",
+					"rect": [
+						863.0,
+						126.0,
+						155.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "PORT 17940  ·  MAP #4242"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 13,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@HBoxContainer@445/@Label@446",
+					"rect": [
+						262.0,
+						203.0,
+						52.0,
+						18.0
+					],
+					"shadow": true,
+					"text": "小队状态"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@HBoxContainer@445/@Label@448",
+					"rect": [
+						895.0,
+						205.0,
+						123.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "最多 4 人  ·  中途加入将被拒绝"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@VBoxContainer@449/@PanelContainer@647/@HBoxContainer@642/@Label@644",
+					"rect": [
+						289.0,
+						244.0,
+						621.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "HOST（你）"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@VBoxContainer@449/@PanelContainer@647/@HBoxContainer@642/@Label@645",
+					"rect": [
+						920.0,
+						247.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "房主"
+				},
+				{
+					"color": [
+						0.607843160629272,
+						0.760784327983856,
+						0.517647087574005,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@VBoxContainer@449/@PanelContainer@647/@HBoxContainer@642/@Label@646",
+					"rect": [
+						948.0,
+						246.0,
+						56.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "已就绪"
+				},
+				{
+					"color": [
+						0.579999983310699,
+						0.560000002384186,
+						0.509999990463257,
+						1.0
+					],
+					"font_size": 13,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@VBoxContainer@449/@PanelContainer@652/@HBoxContainer@648/@Label@650",
+					"rect": [
+						289.0,
+						292.0,
+						687.0,
+						18.0
+					],
+					"shadow": true,
+					"text": "等待队员加入…"
+				},
+				{
+					"color": [
+						0.579999983310699,
+						0.560000002384186,
+						0.509999990463257,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@VBoxContainer@449/@PanelContainer@652/@HBoxContainer@648/@Label@651",
+					"rect": [
+						986.0,
+						294.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "空位"
+				},
+				{
+					"color": [
+						0.579999983310699,
+						0.560000002384186,
+						0.509999990463257,
+						1.0
+					],
+					"font_size": 13,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@VBoxContainer@449/@PanelContainer@657/@HBoxContainer@653/@Label@655",
+					"rect": [
+						289.0,
+						339.0,
+						687.0,
+						18.0
+					],
+					"shadow": true,
+					"text": "等待队员加入…"
+				},
+				{
+					"color": [
+						0.579999983310699,
+						0.560000002384186,
+						0.509999990463257,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@VBoxContainer@449/@PanelContainer@657/@HBoxContainer@653/@Label@656",
+					"rect": [
+						986.0,
+						341.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "空位"
+				},
+				{
+					"color": [
+						0.579999983310699,
+						0.560000002384186,
+						0.509999990463257,
+						1.0
+					],
+					"font_size": 13,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@VBoxContainer@449/@PanelContainer@662/@HBoxContainer@658/@Label@660",
+					"rect": [
+						289.0,
+						386.0,
+						687.0,
+						18.0
+					],
+					"shadow": true,
+					"text": "等待队员加入…"
+				},
+				{
+					"color": [
+						0.579999983310699,
+						0.560000002384186,
+						0.509999990463257,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@VBoxContainer@449/@PanelContainer@662/@HBoxContainer@658/@Label@661",
+					"rect": [
+						986.0,
+						388.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "空位"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@Label@450",
+					"rect": [
+						262.0,
+						483.0,
+						756.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "局外档案 · 行动 10 次 · 完成 8 次 · 最佳战力 18 · 血脉 Lv.7 · 信用点 1411"
+				},
+				{
+					"color": [
+						0.607843160629272,
+						0.760784327983856,
+						0.517647087574005,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@Label@451",
+					"rect": [
+						262.0,
+						509.0,
+						756.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "全员已准备，等待房主开始行动。"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@HBoxContainer@453/@Button@454",
+					"rect": [
+						262.0,
+						564.0,
+						150.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "离开房间"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@364/Main/UI/MainMenu/Lobby/@CenterContainer@433/@PanelContainer@434/@VBoxContainer@435/@HBoxContainer@453/@Button@457",
+					"rect": [
+						808.0,
+						564.0,
+						210.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "开始行动"
+				}
+			],
+			"height": 720,
+			"state": "lobby",
+			"width": 1280
+		},
+		{
+			"background": "ui_refactor/phase3/shots/contrast/hud_normal_bg.png",
+			"background_saved": true,
+			"elements": [
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@HBoxContainer@799/@Label@801",
+					"rect": [
+						38.0,
+						25.0,
+						40.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "核心回收"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@HBoxContainer@799/@Label@802",
+					"rect": [
+						86.0,
+						22.0,
+						33.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "0 / 3"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@Label@805",
+					"rect": [
+						28.0,
+						45.0,
+						300.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "第一章 · E-07 三楼观察室"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.779999971389771,
+						0.759999990463257,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@Label@810",
+					"rect": [
+						28.0,
+						67.0,
+						300.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "经西侧楼梯下楼 → 青色基地补给 → 公园 B1 回收核心"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@813",
+					"rect": [
+						545.0,
+						20.0,
+						39.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "第 1 波"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@815",
+					"rect": [
+						605.0,
+						22.0,
+						79.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "间歇 4 秒 · 剩余 0"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.680000007152557,
+						0.660000026226044,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@817",
+					"rect": [
+						705.0,
+						22.0,
+						29.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "得分 0"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@823",
+					"rect": [
+						30.0,
+						634.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "生命"
+				},
+				{
+					"color": [
+						0.607843160629272,
+						0.760784327983856,
+						0.517647087574005,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@825",
+					"rect": [
+						260.0,
+						634.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "稳定"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 26,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@827",
+					"rect": [
+						30.0,
+						649.0,
+						46.0,
+						35.0
+					],
+					"shadow": true,
+					"text": "100"
+				},
+				{
+					"color": [
+						0.550000011920929,
+						0.600000023841858,
+						0.579999983310699,
+						0.850000023841858
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@828",
+					"rect": [
+						80.0,
+						670.0,
+						25.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "/ 100"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@833/@Label@835",
+					"rect": [
+						1223.0,
+						631.0,
+						27.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "全自动"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 30,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@838",
+					"rect": [
+						1171.0,
+						645.0,
+						35.0,
+						40.0
+					],
+					"shadow": true,
+					"text": "80"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.720000028610229,
+						0.680000007152557,
+						0.949999988079071
+					],
+					"font_size": 16,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@839",
+					"rect": [
+						1211.0,
+						663.0,
+						7.0,
+						22.0
+					],
+					"shadow": true,
+					"text": "/"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.660000026226044,
+						0.620000004768372,
+						0.899999976158142
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@840",
+					"rect": [
+						1223.0,
+						665.0,
+						27.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "254"
+				},
+				{
+					"color": [
+						0.660000026226044,
+						0.680000007152557,
+						0.639999985694885,
+						0.899999976158142
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@841/@Label@842",
+					"rect": [
+						982.0,
+						686.0,
+						55.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "MG-7 轻机枪"
+				},
+				{
+					"color": [
+						0.607843160629272,
+						0.760784327983856,
+						0.517647087574005,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@841/@Label@844",
+					"rect": [
+						1230.0,
+						686.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "就绪"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						0.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2169/@Label@2170",
+					"rect": [
+						1143.0,
+						550.0,
+						6.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "1"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						0.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2169/@Label@2171",
+					"rect": [
+						1154.0,
+						550.0,
+						28.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "MG-7"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						0.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2172/@Label@2173",
+					"rect": [
+						1198.0,
+						550.0,
+						6.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "2"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2172/@Label@2174",
+					"rect": [
+						1209.0,
+						550.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "砍刀"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@852",
+					"rect": [
+						320.0,
+						88.0,
+						640.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "第 1 波"
+				},
+				{
+					"color": [
+						0.819999992847443,
+						0.850000023841858,
+						0.819999992847443,
+						0.899999976158142
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@853",
+					"rect": [
+						320.0,
+						119.0,
+						640.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "感染者正在逼近"
+				}
+			],
+			"height": 720,
+			"state": "hud_normal",
+			"width": 1280
+		},
+		{
+			"background": "ui_refactor/phase3/shots/contrast/hud_low_health_bg.png",
+			"background_saved": true,
+			"elements": [
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@HBoxContainer@799/@Label@801",
+					"rect": [
+						38.0,
+						25.0,
+						40.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "核心回收"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@HBoxContainer@799/@Label@802",
+					"rect": [
+						86.0,
+						22.0,
+						33.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "0 / 3"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@Label@805",
+					"rect": [
+						28.0,
+						45.0,
+						300.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "第一章 · E-07 三楼观察室"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.779999971389771,
+						0.759999990463257,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@Label@810",
+					"rect": [
+						28.0,
+						67.0,
+						300.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "经西侧楼梯下楼 → 青色基地补给 → 公园 B1 回收核心"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@813",
+					"rect": [
+						545.0,
+						20.0,
+						39.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "第 1 波"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@815",
+					"rect": [
+						605.0,
+						22.0,
+						79.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "间歇 3 秒 · 剩余 0"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.680000007152557,
+						0.660000026226044,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@817",
+					"rect": [
+						705.0,
+						22.0,
+						29.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "得分 0"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@823",
+					"rect": [
+						30.0,
+						634.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "生命"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						0.591641485691071
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@825",
+					"rect": [
+						260.0,
+						634.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "危险"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 26,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@827",
+					"rect": [
+						30.0,
+						649.0,
+						31.0,
+						35.0
+					],
+					"shadow": true,
+					"text": "21"
+				},
+				{
+					"color": [
+						0.550000011920929,
+						0.600000023841858,
+						0.579999983310699,
+						0.850000023841858
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@828",
+					"rect": [
+						65.0,
+						670.0,
+						25.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "/ 100"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@833/@Label@835",
+					"rect": [
+						1223.0,
+						631.0,
+						27.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "全自动"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 30,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@838",
+					"rect": [
+						1171.0,
+						645.0,
+						35.0,
+						40.0
+					],
+					"shadow": true,
+					"text": "80"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.720000028610229,
+						0.680000007152557,
+						0.949999988079071
+					],
+					"font_size": 16,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@839",
+					"rect": [
+						1211.0,
+						663.0,
+						7.0,
+						22.0
+					],
+					"shadow": true,
+					"text": "/"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.660000026226044,
+						0.620000004768372,
+						0.899999976158142
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@840",
+					"rect": [
+						1223.0,
+						665.0,
+						27.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "254"
+				},
+				{
+					"color": [
+						0.660000026226044,
+						0.680000007152557,
+						0.639999985694885,
+						0.899999976158142
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@841/@Label@842",
+					"rect": [
+						982.0,
+						686.0,
+						55.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "MG-7 轻机枪"
+				},
+				{
+					"color": [
+						0.607843160629272,
+						0.760784327983856,
+						0.517647087574005,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@841/@Label@844",
+					"rect": [
+						1230.0,
+						686.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "就绪"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						0.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2169/@Label@2170",
+					"rect": [
+						1143.0,
+						550.0,
+						6.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "1"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						0.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2169/@Label@2171",
+					"rect": [
+						1154.0,
+						550.0,
+						28.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "MG-7"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						0.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2172/@Label@2173",
+					"rect": [
+						1198.0,
+						550.0,
+						6.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "2"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2172/@Label@2174",
+					"rect": [
+						1209.0,
+						550.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "砍刀"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.269841253757477
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@852",
+					"rect": [
+						320.0,
+						88.0,
+						640.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "第 1 波"
+				},
+				{
+					"color": [
+						0.819999992847443,
+						0.850000023841858,
+						0.819999992847443,
+						0.242857128381729
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@853",
+					"rect": [
+						320.0,
+						119.0,
+						640.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "感染者正在逼近"
+				}
+			],
+			"height": 720,
+			"state": "hud_low_health",
+			"width": 1280
+		},
+		{
+			"background": "ui_refactor/phase3/shots/contrast/hud_squad_four_bg.png",
+			"background_saved": true,
+			"elements": [
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@HBoxContainer@793/@Label@794",
+					"rect": [
+						32.0,
+						160.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "小队"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@HBoxContainer@793/@Label@796",
+					"rect": [
+						275.0,
+						160.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "4 人"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2256/@VBoxContainer@2258/@HBoxContainer@2259/@Label@2260",
+					"rect": [
+						41.0,
+						177.0,
+						57.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "SOLO（你）"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2256/@VBoxContainer@2258/@HBoxContainer@2259/@Label@2262",
+					"rect": [
+						274.0,
+						177.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "危险"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2264/@VBoxContainer@2266/@HBoxContainer@2267/@Label@2268",
+					"rect": [
+						41.0,
+						204.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "林昭"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2264/@VBoxContainer@2266/@HBoxContainer@2267/@Label@2270",
+					"rect": [
+						275.0,
+						204.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "7 杀"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.550000011920929,
+						0.519999980926514,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2272/@VBoxContainer@2274/@HBoxContainer@2275/@Label@2276",
+					"rect": [
+						41.0,
+						231.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "周野"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2272/@VBoxContainer@2274/@HBoxContainer@2275/@Label@2278",
+					"rect": [
+						252.0,
+						231.0,
+						40.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "倒地 12m"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2280/@VBoxContainer@2282/@HBoxContainer@2283/@Label@2284",
+					"rect": [
+						41.0,
+						258.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "陈默"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2280/@VBoxContainer@2282/@HBoxContainer@2283/@Label@2286",
+					"rect": [
+						275.0,
+						258.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "3 杀"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@HBoxContainer@799/@Label@801",
+					"rect": [
+						38.0,
+						25.0,
+						40.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "核心回收"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@HBoxContainer@799/@Label@802",
+					"rect": [
+						86.0,
+						22.0,
+						33.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "0 / 3"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@Label@805",
+					"rect": [
+						28.0,
+						45.0,
+						300.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "第一章 · E-07 三楼观察室"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.779999971389771,
+						0.759999990463257,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@Label@810",
+					"rect": [
+						28.0,
+						67.0,
+						300.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "经西侧楼梯下楼 → 青色基地补给 → 公园 B1 回收核心"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@813",
+					"rect": [
+						545.0,
+						20.0,
+						39.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "第 1 波"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@815",
+					"rect": [
+						605.0,
+						22.0,
+						79.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "间歇 3 秒 · 剩余 0"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.680000007152557,
+						0.660000026226044,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@817",
+					"rect": [
+						705.0,
+						22.0,
+						29.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "得分 0"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@823",
+					"rect": [
+						30.0,
+						634.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "生命"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						0.601851880550385
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@825",
+					"rect": [
+						260.0,
+						634.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "危险"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 26,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@827",
+					"rect": [
+						30.0,
+						649.0,
+						31.0,
+						35.0
+					],
+					"shadow": true,
+					"text": "22"
+				},
+				{
+					"color": [
+						0.550000011920929,
+						0.600000023841858,
+						0.579999983310699,
+						0.850000023841858
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@828",
+					"rect": [
+						65.0,
+						670.0,
+						25.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "/ 100"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@833/@Label@835",
+					"rect": [
+						1223.0,
+						631.0,
+						27.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "全自动"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 30,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@838",
+					"rect": [
+						1171.0,
+						645.0,
+						35.0,
+						40.0
+					],
+					"shadow": true,
+					"text": "80"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.720000028610229,
+						0.680000007152557,
+						0.949999988079071
+					],
+					"font_size": 16,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@839",
+					"rect": [
+						1211.0,
+						663.0,
+						7.0,
+						22.0
+					],
+					"shadow": true,
+					"text": "/"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.660000026226044,
+						0.620000004768372,
+						0.899999976158142
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@840",
+					"rect": [
+						1223.0,
+						665.0,
+						27.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "254"
+				},
+				{
+					"color": [
+						0.660000026226044,
+						0.680000007152557,
+						0.639999985694885,
+						0.899999976158142
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@841/@Label@842",
+					"rect": [
+						982.0,
+						686.0,
+						55.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "MG-7 轻机枪"
+				},
+				{
+					"color": [
+						0.607843160629272,
+						0.760784327983856,
+						0.517647087574005,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@841/@Label@844",
+					"rect": [
+						1230.0,
+						686.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "就绪"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						0.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2169/@Label@2170",
+					"rect": [
+						1143.0,
+						550.0,
+						6.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "1"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						0.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2169/@Label@2171",
+					"rect": [
+						1154.0,
+						550.0,
+						28.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "MG-7"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						0.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2172/@Label@2173",
+					"rect": [
+						1198.0,
+						550.0,
+						6.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "2"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2172/@Label@2174",
+					"rect": [
+						1209.0,
+						550.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "砍刀"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@852",
+					"rect": [
+						320.0,
+						88.0,
+						640.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "第 1 波"
+				},
+				{
+					"color": [
+						0.819999992847443,
+						0.850000023841858,
+						0.819999992847443,
+						0.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@853",
+					"rect": [
+						320.0,
+						119.0,
+						640.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "感染者正在逼近"
+				}
+			],
+			"height": 720,
+			"state": "hud_squad_four",
+			"width": 1280
+		},
+		{
+			"background": "ui_refactor/phase3/shots/contrast/pause_bg.png",
+			"background_saved": true,
+			"elements": [
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@HBoxContainer@793/@Label@794",
+					"rect": [
+						32.0,
+						160.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "小队"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@HBoxContainer@793/@Label@796",
+					"rect": [
+						275.0,
+						160.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "4 人"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2296/@VBoxContainer@2298/@HBoxContainer@2299/@Label@2300",
+					"rect": [
+						41.0,
+						177.0,
+						57.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "SOLO（你）"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2296/@VBoxContainer@2298/@HBoxContainer@2299/@Label@2302",
+					"rect": [
+						274.0,
+						177.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "危险"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2304/@VBoxContainer@2306/@HBoxContainer@2307/@Label@2308",
+					"rect": [
+						41.0,
+						204.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "林昭"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2304/@VBoxContainer@2306/@HBoxContainer@2307/@Label@2310",
+					"rect": [
+						275.0,
+						204.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "7 杀"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.550000011920929,
+						0.519999980926514,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2312/@VBoxContainer@2314/@HBoxContainer@2315/@Label@2316",
+					"rect": [
+						41.0,
+						231.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "周野"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2312/@VBoxContainer@2314/@HBoxContainer@2315/@Label@2318",
+					"rect": [
+						252.0,
+						231.0,
+						40.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "倒地 12m"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2320/@VBoxContainer@2322/@HBoxContainer@2323/@Label@2324",
+					"rect": [
+						41.0,
+						258.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "陈默"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2320/@VBoxContainer@2322/@HBoxContainer@2323/@Label@2326",
+					"rect": [
+						275.0,
+						258.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "3 杀"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@HBoxContainer@799/@Label@801",
+					"rect": [
+						38.0,
+						25.0,
+						40.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "核心回收"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@HBoxContainer@799/@Label@802",
+					"rect": [
+						86.0,
+						22.0,
+						33.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "0 / 3"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@Label@805",
+					"rect": [
+						28.0,
+						45.0,
+						300.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "第一章 · E-07 三楼观察室"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.779999971389771,
+						0.759999990463257,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@Label@810",
+					"rect": [
+						28.0,
+						67.0,
+						300.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "经西侧楼梯下楼 → 青色基地补给 → 公园 B1 回收核心"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@813",
+					"rect": [
+						545.0,
+						20.0,
+						39.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "第 1 波"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@815",
+					"rect": [
+						605.0,
+						22.0,
+						79.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "间歇 2 秒 · 剩余 0"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.680000007152557,
+						0.660000026226044,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@817",
+					"rect": [
+						705.0,
+						22.0,
+						29.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "得分 0"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@823",
+					"rect": [
+						30.0,
+						634.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "生命"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						0.590000033378601
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@825",
+					"rect": [
+						260.0,
+						634.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "危险"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 26,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@827",
+					"rect": [
+						30.0,
+						649.0,
+						31.0,
+						35.0
+					],
+					"shadow": true,
+					"text": "22"
+				},
+				{
+					"color": [
+						0.550000011920929,
+						0.600000023841858,
+						0.579999983310699,
+						0.850000023841858
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@828",
+					"rect": [
+						65.0,
+						670.0,
+						25.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "/ 100"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@833/@Label@835",
+					"rect": [
+						1223.0,
+						631.0,
+						27.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "全自动"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 30,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@838",
+					"rect": [
+						1171.0,
+						645.0,
+						35.0,
+						40.0
+					],
+					"shadow": true,
+					"text": "80"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.720000028610229,
+						0.680000007152557,
+						0.949999988079071
+					],
+					"font_size": 16,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@839",
+					"rect": [
+						1211.0,
+						663.0,
+						7.0,
+						22.0
+					],
+					"shadow": true,
+					"text": "/"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.660000026226044,
+						0.620000004768372,
+						0.899999976158142
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@840",
+					"rect": [
+						1223.0,
+						665.0,
+						27.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "254"
+				},
+				{
+					"color": [
+						0.660000026226044,
+						0.680000007152557,
+						0.639999985694885,
+						0.899999976158142
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@841/@Label@842",
+					"rect": [
+						982.0,
+						686.0,
+						55.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "MG-7 轻机枪"
+				},
+				{
+					"color": [
+						0.607843160629272,
+						0.760784327983856,
+						0.517647087574005,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@841/@Label@844",
+					"rect": [
+						1230.0,
+						686.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "就绪"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						0.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2169/@Label@2170",
+					"rect": [
+						1143.0,
+						550.0,
+						6.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "1"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						0.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2169/@Label@2171",
+					"rect": [
+						1154.0,
+						550.0,
+						28.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "MG-7"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						0.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2172/@Label@2173",
+					"rect": [
+						1198.0,
+						550.0,
+						6.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "2"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2172/@Label@2174",
+					"rect": [
+						1209.0,
+						550.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "砍刀"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@852",
+					"rect": [
+						320.0,
+						88.0,
+						640.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "第 1 波"
+				},
+				{
+					"color": [
+						0.819999992847443,
+						0.850000023841858,
+						0.819999992847443,
+						0.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@853",
+					"rect": [
+						320.0,
+						119.0,
+						640.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "感染者正在逼近"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 30,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@873/@PanelContainer@874/@VBoxContainer@875/@Label@876",
+					"rect": [
+						416.0,
+						214.0,
+						448.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "行动暂停"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@873/@PanelContainer@874/@VBoxContainer@875/@Label@877",
+					"rect": [
+						416.0,
+						268.0,
+						448.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "单人行动已暂停 · 服务器模拟停止"
+				},
+				{
+					"color": [
+						0.680000007152557,
+						0.699999988079071,
+						0.660000026226044,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@873/@PanelContainer@874/@VBoxContainer@875/@Label@879",
+					"rect": [
+						416.0,
+						304.0,
+						448.0,
+						65.0
+					],
+					"shadow": true,
+					"text": "WASD 移动   ·   Shift 冲刺   ·   Space 跳跃\n鼠标左键 攻击   ·   右键 瞄准   ·   R 换弹\nE 互动 / 补给  "
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@873/@PanelContainer@874/@VBoxContainer@875/@Label@880",
+					"rect": [
+						416.0,
+						379.0,
+						448.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "换弹与奔跑时准星会扩散；搬运核心时无法开火。"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@873/@PanelContainer@874/@VBoxContainer@875/@Button@881",
+					"rect": [
+						416.0,
+						403.0,
+						448.0,
+						46.0
+					],
+					"shadow": true,
+					"text": "继续行动  (ESC)"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@873/@PanelContainer@874/@VBoxContainer@875/@Button@882",
+					"rect": [
+						416.0,
+						459.0,
+						448.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "返回行动大厅"
+				}
+			],
+			"height": 720,
+			"state": "pause",
+			"width": 1280
+		},
+		{
+			"background": "ui_refactor/phase3/shots/contrast/draw_bg.png",
+			"background_saved": true,
+			"elements": [
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@HBoxContainer@793/@Label@794",
+					"rect": [
+						32.0,
+						160.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "小队"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@HBoxContainer@793/@Label@796",
+					"rect": [
+						275.0,
+						160.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "4 人"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2440/@VBoxContainer@2442/@HBoxContainer@2443/@Label@2444",
+					"rect": [
+						41.0,
+						177.0,
+						57.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "SOLO（你）"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2440/@VBoxContainer@2442/@HBoxContainer@2443/@Label@2446",
+					"rect": [
+						274.0,
+						177.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "危险"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2448/@VBoxContainer@2450/@HBoxContainer@2451/@Label@2452",
+					"rect": [
+						41.0,
+						204.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "林昭"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2448/@VBoxContainer@2450/@HBoxContainer@2451/@Label@2454",
+					"rect": [
+						275.0,
+						204.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "7 杀"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.550000011920929,
+						0.519999980926514,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2456/@VBoxContainer@2458/@HBoxContainer@2459/@Label@2460",
+					"rect": [
+						41.0,
+						231.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "周野"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2456/@VBoxContainer@2458/@HBoxContainer@2459/@Label@2462",
+					"rect": [
+						252.0,
+						231.0,
+						40.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "倒地 12m"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2464/@VBoxContainer@2466/@HBoxContainer@2467/@Label@2468",
+					"rect": [
+						41.0,
+						258.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "陈默"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2464/@VBoxContainer@2466/@HBoxContainer@2467/@Label@2470",
+					"rect": [
+						275.0,
+						258.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "3 杀"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@HBoxContainer@799/@Label@801",
+					"rect": [
+						38.0,
+						25.0,
+						40.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "核心回收"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@HBoxContainer@799/@Label@802",
+					"rect": [
+						86.0,
+						22.0,
+						33.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "0 / 3"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@Label@805",
+					"rect": [
+						28.0,
+						45.0,
+						300.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "第一章 · E-07 三楼观察室"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.779999971389771,
+						0.759999990463257,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@Label@810",
+					"rect": [
+						28.0,
+						67.0,
+						300.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "经西侧楼梯下楼 → 青色基地补给 → 公园 B1 回收核心"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@813",
+					"rect": [
+						545.0,
+						20.0,
+						39.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "第 1 波"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@815",
+					"rect": [
+						605.0,
+						22.0,
+						79.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "间歇 2 秒 · 剩余 0"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.680000007152557,
+						0.660000026226044,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@817",
+					"rect": [
+						705.0,
+						22.0,
+						29.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "得分 0"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@823",
+					"rect": [
+						30.0,
+						634.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "生命"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						0.575925946235657
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@825",
+					"rect": [
+						260.0,
+						634.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "危险"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 26,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@827",
+					"rect": [
+						30.0,
+						649.0,
+						31.0,
+						35.0
+					],
+					"shadow": true,
+					"text": "22"
+				},
+				{
+					"color": [
+						0.550000011920929,
+						0.600000023841858,
+						0.579999983310699,
+						0.850000023841858
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@828",
+					"rect": [
+						65.0,
+						670.0,
+						25.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "/ 100"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@833/@Label@835",
+					"rect": [
+						1223.0,
+						631.0,
+						27.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "全自动"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 30,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@838",
+					"rect": [
+						1171.0,
+						645.0,
+						35.0,
+						40.0
+					],
+					"shadow": true,
+					"text": "80"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.720000028610229,
+						0.680000007152557,
+						0.949999988079071
+					],
+					"font_size": 16,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@839",
+					"rect": [
+						1211.0,
+						663.0,
+						7.0,
+						22.0
+					],
+					"shadow": true,
+					"text": "/"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.660000026226044,
+						0.620000004768372,
+						0.899999976158142
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@840",
+					"rect": [
+						1223.0,
+						665.0,
+						27.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "254"
+				},
+				{
+					"color": [
+						0.660000026226044,
+						0.680000007152557,
+						0.639999985694885,
+						0.899999976158142
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@841/@Label@842",
+					"rect": [
+						982.0,
+						686.0,
+						55.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "MG-7 轻机枪"
+				},
+				{
+					"color": [
+						0.607843160629272,
+						0.760784327983856,
+						0.517647087574005,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@841/@Label@844",
+					"rect": [
+						1230.0,
+						686.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "就绪"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						0.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2169/@Label@2170",
+					"rect": [
+						1143.0,
+						550.0,
+						6.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "1"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						0.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2169/@Label@2171",
+					"rect": [
+						1154.0,
+						550.0,
+						28.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "MG-7"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						0.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2172/@Label@2173",
+					"rect": [
+						1198.0,
+						550.0,
+						6.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "2"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2172/@Label@2174",
+					"rect": [
+						1209.0,
+						550.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "砍刀"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@852",
+					"rect": [
+						320.0,
+						88.0,
+						640.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "第 1 波"
+				},
+				{
+					"color": [
+						0.819999992847443,
+						0.850000023841858,
+						0.819999992847443,
+						0.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@853",
+					"rect": [
+						320.0,
+						119.0,
+						640.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "感染者正在逼近"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 26,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@896/@VBoxContainer@897/@Label@898",
+					"rect": [
+						230.0,
+						208.0,
+						323.0,
+						38.0
+					],
+					"shadow": true,
+					"text": "战术强化"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@896/@VBoxContainer@897/@Label@899",
+					"rect": [
+						230.0,
+						247.0,
+						323.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "选择一份强化，作用于全队  ·  点击或按 1 / 2 / 3 / 方向键 + Enter"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@896/@Label@901",
+					"rect": [
+						936.0,
+						227.0,
+						114.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "从 3 份强化中选择 1 份"
+				},
+				{
+					"color": [
+						1.0,
+						0.796078443527222,
+						0.400000005960464,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2368/@MarginContainer@2369/@VBoxContainer@2370/@Label@2371",
+					"rect": [
+						266.0,
+						299.0,
+						220.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "强化  01"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 21,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2368/@MarginContainer@2369/@VBoxContainer@2370/@Label@2372",
+					"rect": [
+						266.0,
+						318.0,
+						220.0,
+						29.0
+					],
+					"shadow": true,
+					"text": "磁轨弹匣"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2368/@MarginContainer@2369/@VBoxContainer@2370/@Label@2373",
+					"rect": [
+						266.0,
+						353.0,
+						220.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "Lv 2  →  Lv 3"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.740000009536743,
+						0.699999988079071,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2368/@MarginContainer@2369/@VBoxContainer@2370/@Label@2374",
+					"rect": [
+						266.0,
+						374.0,
+						220.0,
+						54.0
+					],
+					"shadow": true,
+					"text": "弹匣容量 +2，换弹速度 -8%。"
+				},
+				{
+					"color": [
+						1.0,
+						0.796078443527222,
+						0.400000005960464,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2368/@MarginContainer@2369/@VBoxContainer@2370/@Label@2375",
+					"rect": [
+						266.0,
+						434.0,
+						220.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "按 1 选择"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2376/@MarginContainer@2377/@VBoxContainer@2378/@Label@2379",
+					"rect": [
+						530.0,
+						299.0,
+						220.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "强化  02"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 21,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2376/@MarginContainer@2377/@VBoxContainer@2378/@Label@2380",
+					"rect": [
+						530.0,
+						318.0,
+						220.0,
+						29.0
+					],
+					"shadow": true,
+					"text": "肾上腺素"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2376/@MarginContainer@2377/@VBoxContainer@2378/@Label@2381",
+					"rect": [
+						530.0,
+						353.0,
+						220.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "Lv 1  →  Lv 2"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.740000009536743,
+						0.699999988079071,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2376/@MarginContainer@2377/@VBoxContainer@2378/@Label@2382",
+					"rect": [
+						530.0,
+						374.0,
+						220.0,
+						54.0
+					],
+					"shadow": true,
+					"text": "低生命时移动速度 +12%。"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2376/@MarginContainer@2377/@VBoxContainer@2378/@Label@2383",
+					"rect": [
+						530.0,
+						434.0,
+						220.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "按 2 选择"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2384/@MarginContainer@2385/@VBoxContainer@2386/@Label@2387",
+					"rect": [
+						794.0,
+						299.0,
+						220.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "强化  03"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 21,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2384/@MarginContainer@2385/@VBoxContainer@2386/@Label@2388",
+					"rect": [
+						794.0,
+						318.0,
+						220.0,
+						29.0
+					],
+					"shadow": true,
+					"text": "回收协议"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2384/@MarginContainer@2385/@VBoxContainer@2386/@Label@2389",
+					"rect": [
+						794.0,
+						353.0,
+						220.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "Lv 0  →  Lv 1"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.740000009536743,
+						0.699999988079071,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2384/@MarginContainer@2385/@VBoxContainer@2386/@Label@2390",
+					"rect": [
+						794.0,
+						374.0,
+						220.0,
+						54.0
+					],
+					"shadow": true,
+					"text": "每回收一个核心，回复 8 点生命。"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@903/@Button@2384/@MarginContainer@2385/@VBoxContainer@2386/@Label@2391",
+					"rect": [
+						794.0,
+						434.0,
+						220.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "按 3 选择"
+				},
+				{
+					"color": [
+						0.479999989271164,
+						0.519999980926514,
+						0.5,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@904/@Label@905",
+					"rect": [
+						230.0,
+						490.0,
+						140.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "选择期间角色原地读取核心数据"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@893/@PanelContainer@894/@VBoxContainer@895/@HBoxContainer@904/@Button@907",
+					"rect": [
+						820.0,
+						475.0,
+						230.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "放弃抽卡（返还核心券）"
+				}
+			],
+			"height": 720,
+			"state": "draw",
+			"width": 1280
+		},
+		{
+			"background": "ui_refactor/phase3/shots/contrast/backpack_bg.png",
+			"background_saved": true,
+			"elements": [
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@HBoxContainer@793/@Label@794",
+					"rect": [
+						32.0,
+						160.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "小队"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@HBoxContainer@793/@Label@796",
+					"rect": [
+						275.0,
+						160.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "4 人"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2578/@VBoxContainer@2580/@HBoxContainer@2581/@Label@2582",
+					"rect": [
+						41.0,
+						177.0,
+						57.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "SOLO（你）"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2578/@VBoxContainer@2580/@HBoxContainer@2581/@Label@2584",
+					"rect": [
+						274.0,
+						177.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "危险"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2586/@VBoxContainer@2588/@HBoxContainer@2589/@Label@2590",
+					"rect": [
+						41.0,
+						204.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "林昭"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2586/@VBoxContainer@2588/@HBoxContainer@2589/@Label@2592",
+					"rect": [
+						275.0,
+						204.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "7 杀"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.550000011920929,
+						0.519999980926514,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2594/@VBoxContainer@2596/@HBoxContainer@2597/@Label@2598",
+					"rect": [
+						41.0,
+						231.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "周野"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2594/@VBoxContainer@2596/@HBoxContainer@2597/@Label@2600",
+					"rect": [
+						252.0,
+						231.0,
+						40.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "倒地 12m"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2602/@VBoxContainer@2604/@HBoxContainer@2605/@Label@2606",
+					"rect": [
+						41.0,
+						258.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "陈默"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2602/@VBoxContainer@2604/@HBoxContainer@2605/@Label@2608",
+					"rect": [
+						275.0,
+						258.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "3 杀"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@HBoxContainer@799/@Label@801",
+					"rect": [
+						38.0,
+						25.0,
+						40.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "核心回收"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@HBoxContainer@799/@Label@802",
+					"rect": [
+						86.0,
+						22.0,
+						33.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "0 / 3"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@Label@805",
+					"rect": [
+						28.0,
+						45.0,
+						300.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "第一章 · E-07 三楼观察室"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.779999971389771,
+						0.759999990463257,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@Label@810",
+					"rect": [
+						28.0,
+						67.0,
+						300.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "经西侧楼梯下楼 → 青色基地补给 → 公园 B1 回收核心"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@813",
+					"rect": [
+						545.0,
+						20.0,
+						39.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "第 1 波"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@815",
+					"rect": [
+						605.0,
+						22.0,
+						79.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "间歇 1 秒 · 剩余 0"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.680000007152557,
+						0.660000026226044,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@817",
+					"rect": [
+						705.0,
+						22.0,
+						29.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "得分 0"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@823",
+					"rect": [
+						30.0,
+						634.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "生命"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						0.590000033378601
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@825",
+					"rect": [
+						260.0,
+						634.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "危险"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 26,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@827",
+					"rect": [
+						30.0,
+						649.0,
+						31.0,
+						35.0
+					],
+					"shadow": true,
+					"text": "22"
+				},
+				{
+					"color": [
+						0.550000011920929,
+						0.600000023841858,
+						0.579999983310699,
+						0.850000023841858
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@828",
+					"rect": [
+						65.0,
+						670.0,
+						25.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "/ 100"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@833/@Label@835",
+					"rect": [
+						1223.0,
+						631.0,
+						27.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "全自动"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 30,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@838",
+					"rect": [
+						1171.0,
+						645.0,
+						35.0,
+						40.0
+					],
+					"shadow": true,
+					"text": "80"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.720000028610229,
+						0.680000007152557,
+						0.949999988079071
+					],
+					"font_size": 16,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@839",
+					"rect": [
+						1211.0,
+						663.0,
+						7.0,
+						22.0
+					],
+					"shadow": true,
+					"text": "/"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.660000026226044,
+						0.620000004768372,
+						0.899999976158142
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@840",
+					"rect": [
+						1223.0,
+						665.0,
+						27.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "254"
+				},
+				{
+					"color": [
+						0.660000026226044,
+						0.680000007152557,
+						0.639999985694885,
+						0.899999976158142
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@841/@Label@842",
+					"rect": [
+						982.0,
+						686.0,
+						55.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "MG-7 轻机枪"
+				},
+				{
+					"color": [
+						0.607843160629272,
+						0.760784327983856,
+						0.517647087574005,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@841/@Label@844",
+					"rect": [
+						1230.0,
+						686.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "就绪"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						0.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2169/@Label@2170",
+					"rect": [
+						1143.0,
+						550.0,
+						6.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "1"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						0.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2169/@Label@2171",
+					"rect": [
+						1154.0,
+						550.0,
+						28.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "MG-7"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						0.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2172/@Label@2173",
+					"rect": [
+						1198.0,
+						550.0,
+						6.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "2"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2172/@Label@2174",
+					"rect": [
+						1209.0,
+						550.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "砍刀"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						0.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@852",
+					"rect": [
+						320.0,
+						88.0,
+						640.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "第 1 波"
+				},
+				{
+					"color": [
+						0.819999992847443,
+						0.850000023841858,
+						0.819999992847443,
+						0.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@853",
+					"rect": [
+						320.0,
+						119.0,
+						640.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "感染者正在逼近"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 26,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@924/@VBoxContainer@925/@Label@926",
+					"rect": [
+						186.0,
+						194.0,
+						293.0,
+						38.0
+					],
+					"shadow": true,
+					"text": "战术背包 · 装备切换"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@924/@VBoxContainer@925/@Label@927",
+					"rect": [
+						186.0,
+						233.0,
+						293.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "选择携带的武器；搬运核心或换弹时无法切换  |  B 关闭"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@924/@Button@929",
+					"rect": [
+						948.0,
+						194.0,
+						146.0,
+						56.0
+					],
+					"shadow": true,
+					"text": "关闭  B"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@931/@PanelContainer@2512/@VBoxContainer@2513/@Label@2514",
+					"rect": [
+						198.0,
+						281.0,
+						425.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "出战槽位 1"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@931/@PanelContainer@2512/@VBoxContainer@2513/@Label@2515",
+					"rect": [
+						198.0,
+						301.0,
+						425.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "MG-7 轻机枪"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@931/@PanelContainer@2512/@VBoxContainer@2513/@Label@2516",
+					"rect": [
+						198.0,
+						327.0,
+						425.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "全自动"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@931/@PanelContainer@2512/@VBoxContainer@2513/@Label@2517",
+					"rect": [
+						198.0,
+						347.0,
+						425.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "伤害 27 · 射速 1000 RPM · 弹匣 80 · 备弹 240 · 全自动"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@931/@PanelContainer@2512/@VBoxContainer@2513/@Label@2519",
+					"rect": [
+						198.0,
+						426.0,
+						425.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "弹匣 80/80  ·  备弹 254"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@931/@PanelContainer@2512/@VBoxContainer@2513/@Button@2520",
+					"rect": [
+						198.0,
+						446.0,
+						425.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "使用中"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.705882370471954,
+						0.415686279535294,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@931/@PanelContainer@2521/@VBoxContainer@2522/@Label@2523",
+					"rect": [
+						657.0,
+						281.0,
+						425.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "出战槽位 2"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@931/@PanelContainer@2521/@VBoxContainer@2522/@Label@2524",
+					"rect": [
+						657.0,
+						301.0,
+						425.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "M-2 开山砍刀"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.705882370471954,
+						0.415686279535294,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@931/@PanelContainer@2521/@VBoxContainer@2522/@Label@2525",
+					"rect": [
+						657.0,
+						327.0,
+						425.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "近战 · 横扫"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@931/@PanelContainer@2521/@VBoxContainer@2522/@Label@2526",
+					"rect": [
+						657.0,
+						347.0,
+						425.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "伤害 74 · 挥速 111/分 · 范围 2.9 m · 近战 · 横扫"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@931/@PanelContainer@2521/@VBoxContainer@2522/@Label@2528",
+					"rect": [
+						657.0,
+						426.0,
+						425.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "近战 · 第三人称搏杀 · 无需弹药"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@HBoxContainer@931/@PanelContainer@2521/@VBoxContainer@2522/@Button@2529",
+					"rect": [
+						657.0,
+						446.0,
+						425.0,
+						44.0
+					],
+					"shadow": true,
+					"text": "切换装备"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@921/@PanelContainer@922/@VBoxContainer@923/@Label@932",
+					"rect": [
+						186.0,
+						511.0,
+						908.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "出战编成最多携带两件 · 枪械第一人称 / 近战第三人称     |     队内强化  弹匣 0 · 换弹 0 · 伤害 0 · 射速 0 · 移速 0 · "
+				}
+			],
+			"height": 720,
+			"state": "backpack",
+			"width": 1280
+		},
+		{
+			"background": "ui_refactor/phase3/shots/contrast/intel_bg.png",
+			"background_saved": true,
+			"elements": [
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@HBoxContainer@793/@Label@794",
+					"rect": [
+						32.0,
+						160.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "小队"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@HBoxContainer@793/@Label@796",
+					"rect": [
+						275.0,
+						160.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "4 人"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2819/@VBoxContainer@2821/@HBoxContainer@2822/@Label@2823",
+					"rect": [
+						41.0,
+						177.0,
+						57.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "SOLO（你）"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2819/@VBoxContainer@2821/@HBoxContainer@2822/@Label@2825",
+					"rect": [
+						274.0,
+						177.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "危险"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2827/@VBoxContainer@2829/@HBoxContainer@2830/@Label@2831",
+					"rect": [
+						41.0,
+						204.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "林昭"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2827/@VBoxContainer@2829/@HBoxContainer@2830/@Label@2833",
+					"rect": [
+						275.0,
+						204.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "7 杀"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.550000011920929,
+						0.519999980926514,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2835/@VBoxContainer@2837/@HBoxContainer@2838/@Label@2839",
+					"rect": [
+						41.0,
+						231.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "周野"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2835/@VBoxContainer@2837/@HBoxContainer@2838/@Label@2841",
+					"rect": [
+						252.0,
+						231.0,
+						40.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "倒地 12m"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2843/@VBoxContainer@2845/@HBoxContainer@2846/@Label@2847",
+					"rect": [
+						41.0,
+						258.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "陈默"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2843/@VBoxContainer@2845/@HBoxContainer@2846/@Label@2849",
+					"rect": [
+						275.0,
+						258.0,
+						17.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "3 杀"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@HBoxContainer@799/@Label@801",
+					"rect": [
+						38.0,
+						25.0,
+						40.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "核心回收"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@HBoxContainer@799/@Label@802",
+					"rect": [
+						86.0,
+						22.0,
+						33.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "0 / 3"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@Label@805",
+					"rect": [
+						28.0,
+						45.0,
+						300.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "第一章 · E-07 三楼观察室"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.779999971389771,
+						0.759999990463257,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@798/@Label@810",
+					"rect": [
+						28.0,
+						67.0,
+						300.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "经西侧楼梯下楼 → 青色基地补给 → 公园 B1 回收核心"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@813",
+					"rect": [
+						529.0,
+						20.0,
+						39.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "第 1 波"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.541176497936249,
+						0.43529412150383,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@815",
+					"rect": [
+						589.0,
+						22.0,
+						111.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "交战中 · 场上 2 · 剩余 14"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.680000007152557,
+						0.660000026226044,
+						0.899999976158142
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@812/@Label@817",
+					"rect": [
+						721.0,
+						22.0,
+						29.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "得分 0"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@823",
+					"rect": [
+						30.0,
+						634.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "生命"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						0.631448090076447
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@825",
+					"rect": [
+						260.0,
+						634.0,
+						18.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "危险"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.419607847929001,
+						0.352941185235977,
+						1.0
+					],
+					"font_size": 26,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@827",
+					"rect": [
+						30.0,
+						649.0,
+						31.0,
+						35.0
+					],
+					"shadow": true,
+					"text": "22"
+				},
+				{
+					"color": [
+						0.550000011920929,
+						0.600000023841858,
+						0.579999983310699,
+						0.850000023841858
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@828",
+					"rect": [
+						65.0,
+						670.0,
+						25.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "/ 100"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@833/@Label@835",
+					"rect": [
+						1223.0,
+						631.0,
+						27.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "全自动"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 30,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@838",
+					"rect": [
+						1171.0,
+						645.0,
+						35.0,
+						40.0
+					],
+					"shadow": true,
+					"text": "80"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.720000028610229,
+						0.680000007152557,
+						0.949999988079071
+					],
+					"font_size": 16,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@839",
+					"rect": [
+						1211.0,
+						663.0,
+						7.0,
+						22.0
+					],
+					"shadow": true,
+					"text": "/"
+				},
+				{
+					"color": [
+						0.620000004768372,
+						0.660000026226044,
+						0.620000004768372,
+						0.899999976158142
+					],
+					"font_size": 15,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@836/@Label@840",
+					"rect": [
+						1223.0,
+						665.0,
+						27.0,
+						20.0
+					],
+					"shadow": true,
+					"text": "254"
+				},
+				{
+					"color": [
+						0.660000026226044,
+						0.680000007152557,
+						0.639999985694885,
+						0.899999976158142
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@841/@Label@842",
+					"rect": [
+						982.0,
+						686.0,
+						55.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "MG-7 轻机枪"
+				},
+				{
+					"color": [
+						0.607843160629272,
+						0.760784327983856,
+						0.517647087574005,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@832/@HBoxContainer@841/@Label@844",
+					"rect": [
+						1230.0,
+						686.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "就绪"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						0.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2169/@Label@2170",
+					"rect": [
+						1143.0,
+						550.0,
+						6.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "1"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						0.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2169/@Label@2171",
+					"rect": [
+						1154.0,
+						550.0,
+						28.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "MG-7"
+				},
+				{
+					"color": [
+						0.588235318660736,
+						0.545098066329956,
+						0.490196079015732,
+						0.0
+					],
+					"font_size": 9,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2172/@Label@2173",
+					"rect": [
+						1198.0,
+						550.0,
+						6.0,
+						13.0
+					],
+					"shadow": true,
+					"text": "2"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						0.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@HBoxContainer@846/@HBoxContainer@2172/@Label@2174",
+					"rect": [
+						1209.0,
+						550.0,
+						20.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "砍刀"
+				},
+				{
+					"color": [
+						0.878431379795074,
+						0.541176497936249,
+						0.43529412150383,
+						1.0
+					],
+					"font_size": 22,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@852",
+					"rect": [
+						320.0,
+						88.0,
+						640.0,
+						30.0
+					],
+					"shadow": true,
+					"text": "接触开始"
+				},
+				{
+					"color": [
+						0.819999992847443,
+						0.850000023841858,
+						0.819999992847443,
+						0.899999976158142
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": true,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@853",
+					"rect": [
+						320.0,
+						119.0,
+						640.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "清空这一波感染者"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 26,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@912/@VBoxContainer@913/@Label@914",
+					"rect": [
+						196.0,
+						134.0,
+						195.0,
+						38.0
+					],
+					"shadow": true,
+					"text": "战术情报"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@912/@VBoxContainer@913/@Label@915",
+					"rect": [
+						196.0,
+						173.0,
+						195.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "任务 · 小队 · 幸存者档案  |  TAB 关闭"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 15,
+					"kind": "button",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@912/@Button@917",
+					"rect": [
+						938.0,
+						134.0,
+						146.0,
+						56.0
+					],
+					"shadow": true,
+					"text": "关闭  TAB"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 14,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@Label@2652",
+					"rect": [
+						211.0,
+						222.0,
+						256.0,
+						19.0
+					],
+					"shadow": true,
+					"text": "行动目标"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 24,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@Label@2654",
+					"rect": [
+						211.0,
+						252.0,
+						256.0,
+						33.0
+					],
+					"shadow": true,
+					"text": "核心回收  0 / 3"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@Label@2655",
+					"rect": [
+						211.0,
+						290.0,
+						256.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "第一章 · E-07 三楼观察室"
+				},
+				{
+					"color": [
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@Label@2656",
+					"rect": [
+						211.0,
+						312.0,
+						256.0,
+						48.0
+					],
+					"shadow": true,
+					"text": "经西侧楼梯下楼 → 青色基地补给 → 公园 B1 回收核心"
+				},
+				{
+					"color": [
+						0.720000028610229,
+						0.819999992847443,
+						0.829999983310699,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@Label@2657",
+					"rect": [
+						211.0,
+						365.0,
+						256.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "街区压力  第 1 波"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@Label@2658",
+					"rect": [
+						211.0,
+						387.0,
+						256.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "队内得分  0"
+				},
+				{
+					"color": [
+						0.550000011920929,
+						0.699999988079071,
+						0.699999988079071,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@Label@2659",
+					"rect": [
+						211.0,
+						409.0,
+						256.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "尸潮状态  常规推进"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@Label@2660",
+					"rect": [
+						211.0,
+						431.0,
+						256.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "抽卡券 ×0"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@Label@2662",
+					"rect": [
+						211.0,
+						458.0,
+						256.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "战术强化"
+				},
+				{
+					"color": [
+						0.560000002384186,
+						0.680000007152557,
+						0.689999997615814,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@HBoxContainer@2663/@Label@2664",
+					"rect": [
+						211.0,
+						480.0,
+						22.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "弹匣"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@HBoxContainer@2663/@Label@2666",
+					"rect": [
+						446.0,
+						480.0,
+						21.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "Lv 0"
+				},
+				{
+					"color": [
+						0.560000002384186,
+						0.680000007152557,
+						0.689999997615814,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@HBoxContainer@2667/@Label@2668",
+					"rect": [
+						211.0,
+						500.0,
+						22.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "换弹"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@HBoxContainer@2667/@Label@2670",
+					"rect": [
+						446.0,
+						500.0,
+						21.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "Lv 0"
+				},
+				{
+					"color": [
+						0.560000002384186,
+						0.680000007152557,
+						0.689999997615814,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@HBoxContainer@2671/@Label@2672",
+					"rect": [
+						211.0,
+						520.0,
+						22.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "伤害"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@HBoxContainer@2671/@Label@2674",
+					"rect": [
+						446.0,
+						520.0,
+						21.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "Lv 0"
+				},
+				{
+					"color": [
+						0.560000002384186,
+						0.680000007152557,
+						0.689999997615814,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@HBoxContainer@2675/@Label@2676",
+					"rect": [
+						211.0,
+						540.0,
+						22.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "射速"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@HBoxContainer@2675/@Label@2678",
+					"rect": [
+						446.0,
+						540.0,
+						21.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "Lv 0"
+				},
+				{
+					"color": [
+						0.560000002384186,
+						0.680000007152557,
+						0.689999997615814,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@HBoxContainer@2679/@Label@2680",
+					"rect": [
+						211.0,
+						560.0,
+						22.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "移速"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@HBoxContainer@2679/@Label@2682",
+					"rect": [
+						446.0,
+						560.0,
+						21.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "Lv 0"
+				},
+				{
+					"color": [
+						0.560000002384186,
+						0.680000007152557,
+						0.689999997615814,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@HBoxContainer@2683/@Label@2684",
+					"rect": [
+						211.0,
+						580.0,
+						22.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "护甲"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@HBoxContainer@2683/@Label@2686",
+					"rect": [
+						446.0,
+						580.0,
+						21.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "Lv 0"
+				},
+				{
+					"color": [
+						0.901960790157318,
+						0.65490198135376,
+						0.368627458810806,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2650/@VBoxContainer@2651/@Label@2687",
+					"rect": [
+						211.0,
+						600.0,
+						256.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "团队战力  0"
+				},
+				{
+					"color": [
+						0.498039215803146,
+						0.764705896377563,
+						0.729411780834198,
+						1.0
+					],
+					"font_size": 14,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2688/@VBoxContainer@2689/@Label@2690",
+					"rect": [
+						511.0,
+						222.0,
+						257.0,
+						19.0
+					],
+					"shadow": true,
+					"text": "小队状态"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 13,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2688/@VBoxContainer@2689/@HBoxContainer@2692/@VBoxContainer@2694/@Label@2695",
+					"rect": [
+						522.0,
+						252.0,
+						209.0,
+						18.0
+					],
+					"shadow": true,
+					"text": "CONTRAST"
+				},
+				{
+					"color": [
+						0.560000002384186,
+						0.660000026226044,
+						0.670000016689301,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2688/@VBoxContainer@2689/@HBoxContainer@2692/@VBoxContainer@2694/@Label@2696",
+					"rect": [
+						522.0,
+						270.0,
+						209.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "生命 100  ·  击杀 0"
+				},
+				{
+					"color": [
+						0.607843160629272,
+						0.760784327983856,
+						0.517647087574005,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2688/@VBoxContainer@2689/@HBoxContainer@2692/@Label@2697",
+					"rect": [
+						738.0,
+						261.0,
+						30.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "在阵线"
+				},
+				{
+					"color": [
+						0.419999986886978,
+						0.519999980926514,
+						0.540000021457672,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2688/@VBoxContainer@2689/@Label@2699",
+					"rect": [
+						511.0,
+						603.0,
+						257.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "空余席位 3  ·  可从大厅邀请"
+				},
+				{
+					"color": [
+						0.607843160629272,
+						0.760784327983856,
+						0.517647087574005,
+						1.0
+					],
+					"font_size": 14,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2700/@VBoxContainer@2701/@Label@2702",
+					"rect": [
+						812.0,
+						222.0,
+						257.0,
+						19.0
+					],
+					"shadow": true,
+					"text": "幸存者档案"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 20,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2700/@VBoxContainer@2701/@Label@2704",
+					"rect": [
+						812.0,
+						252.0,
+						257.0,
+						28.0
+					],
+					"shadow": true,
+					"text": "CONTRAST"
+				},
+				{
+					"color": [
+						0.680000007152557,
+						0.800000011920929,
+						0.800000011920929,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2700/@VBoxContainer@2701/@Label@2705",
+					"rect": [
+						812.0,
+						285.0,
+						257.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "生命 100 / 100  ·  击杀 0"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 16,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2700/@VBoxContainer@2701/@Label@2706",
+					"rect": [
+						812.0,
+						307.0,
+						257.0,
+						22.0
+					],
+					"shadow": true,
+					"text": "MG-7 轻机枪"
+				},
+				{
+					"color": [
+						0.660000026226044,
+						0.779999971389771,
+						0.790000021457672,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2700/@VBoxContainer@2701/@Label@2707",
+					"rect": [
+						812.0,
+						334.0,
+						257.0,
+						33.0
+					],
+					"shadow": true,
+					"text": "伤害 27 · 射速 1000 RPM · 弹匣 80 · 备弹 240 · 全自动"
+				},
+				{
+					"color": [
+						0.952941179275513,
+						0.929411768913269,
+						0.890196084976196,
+						1.0
+					],
+					"font_size": 12,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2700/@VBoxContainer@2701/@Label@2709",
+					"rect": [
+						812.0,
+						541.0,
+						257.0,
+						17.0
+					],
+					"shadow": true,
+					"text": "携带装备"
+				},
+				{
+					"color": [
+						0.725490212440491,
+						0.592156887054443,
+						1.0,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2700/@VBoxContainer@2701/@Label@2710",
+					"rect": [
+						812.0,
+						563.0,
+						257.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "1  MG-7  80/254  ◀ 当前"
+				},
+				{
+					"color": [
+						0.600000023841858,
+						0.720000028610229,
+						0.730000019073486,
+						1.0
+					],
+					"font_size": 11,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2700/@VBoxContainer@2701/@Label@2711",
+					"rect": [
+						812.0,
+						583.0,
+						257.0,
+						15.0
+					],
+					"shadow": true,
+					"text": "2  砍刀  近战"
+				},
+				{
+					"color": [
+						0.5,
+						0.620000004768372,
+						0.629999995231628,
+						1.0
+					],
+					"font_size": 10,
+					"kind": "label",
+					"outline": false,
+					"path": "/root/@SubViewport@663/Main/UI/GameHUD/@Control@909/@PanelContainer@910/@VBoxContainer@911/@HBoxContainer@919/@PanelContainer@2700/@VBoxContainer@2701/@Label@2712",
+					"rect": [
+						812.0,
+						603.0,
+						257.0,
+						14.0
+					],
+					"shadow": true,
+					"text": "血脉备弹加成  +14"
+				}
+			],
+			"height": 720,
+			"state": "intel",
+			"width": 1280
+		}
+	],
+	"viewport": [
+		1280,
+		720
+	]
+}

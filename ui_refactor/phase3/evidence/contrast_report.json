@@ -1,0 +1,479 @@
+{
+  "generated_at": "2026-10-24T15:13:01",
+  "git_commit": "3d513f3",
+  "godot_version": "4.7.2-stable (official)",
+  "method": "text hidden before capture; per-element background pixels sampled from real rendered frame",
+  "thresholds": {
+    "body": 4.5,
+    "large": 3.0,
+    "large_font_px": 24
+  },
+  "states": [
+    {
+      "state": "menu",
+      "elements": 15,
+      "failures": 1,
+      "worst": [
+        {
+          "state": "menu",
+          "path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@35/@Label@38",
+          "text": "当前版本不保存行动进度",
+          "kind": "label",
+          "font_size": 11,
+          "threshold": 4.5,
+          "p05": 3.45,
+          "min": 2.85,
+          "median": 3.57,
+          "shadow": true,
+          "outline": false,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "state": "menu_coop",
+      "elements": 10,
+      "failures": 0,
+      "worst": []
+    },
+    {
+      "state": "menu_armory",
+      "elements": 52,
+      "failures": 0,
+      "worst": []
+    },
+    {
+      "state": "lobby",
+      "elements": 19,
+      "failures": 0,
+      "worst": []
+    },
+    {
+      "state": "hud_normal",
+      "elements": 19,
+      "failures": 2,
+      "worst": [
+        {
+          "state": "hud_normal",
+          "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@823",
+          "text": "生命",
+          "kind": "label",
+          "font_size": 9,
+          "threshold": 4.5,
+          "p05": 3.9,
+          "min": 3.9,
+          "median": 4.02,
+          "shadow": true,
+          "outline": true,
+          "passed": false
+        },
+        {
+          "state": "hud_normal",
+          "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@828",
+          "text": "/ 100",
+          "kind": "label",
+          "font_size": 10,
+          "threshold": 4.5,
+          "p05": 4.32,
+          "min": 4.32,
+          "median": 4.44,
+          "shadow": true,
+          "outline": true,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "state": "hud_low_health",
+      "elements": 19,
+      "failures": 5,
+      "worst": [
+        {
+          "state": "hud_low_health",
+          "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@852",
+          "text": "第 1 波",
+          "kind": "label",
+          "font_size": 22,
+          "threshold": 4.5,
+          "p05": 1.72,
+          "min": 1.72,
+          "median": 1.73,
+          "shadow": true,
+          "outline": true,
+          "passed": false
+        },
+        {
+          "state": "hud_low_health",
+          "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@853",
+          "text": "感染者正在逼近",
+          "kind": "label",
+          "font_size": 11,
+          "threshold": 4.5,
+          "p05": 1.88,
+          "min": 1.87,
+          "median": 1.88,
+          "shadow": true,
+          "outline": true,
+          "passed": false
+        },
+        {
+          "state": "hud_low_health",
+          "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@825",
+          "text": "危险",
+          "kind": "label",
+          "font_size": 9,
+          "threshold": 4.5,
+          "p05": 2.37,
+          "min": 2.37,
+          "median": 2.42,
+          "shadow": true,
+          "outline": true,
+          "passed": false
+        },
+        {
+          "state": "hud_low_health",
+          "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@823",
+          "text": "生命",
+          "kind": "label",
+          "font_size": 9,
+          "threshold": 4.5,
+          "p05": 3.99,
+          "min": 3.95,
+          "median": 4.14,
+          "shadow": true,
+          "outline": true,
+          "passed": false
+        },
+        {
+          "state": "hud_low_health",
+          "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@828",
+          "text": "/ 100",
+          "kind": "label",
+          "font_size": 10,
+          "threshold": 4.5,
+          "p05": 4.37,
+          "min": 4.37,
+          "median": 4.49,
+          "shadow": true,
+          "outline": true,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "state": "hud_squad_four",
+      "elements": 27,
+      "failures": 6,
+      "worst": [
+        {
+          "state": "hud_squad_four",
+          "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@825",
+          "text": "危险",
+          "kind": "label",
+          "font_size": 9,
+          "threshold": 4.5,
+          "p05": 2.4,
+          "min": 2.4,
+          "median": 2.46,
+          "shadow": true,
+          "outline": true,
+          "passed": false
+        },
+        {
+          "state": "hud_squad_four",
+          "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2272/@VBoxContainer@2274/@HBoxContainer@2275/@Label@2278",
+          "text": "倒地 12m",
+          "kind": "label",
+          "font_size": 9,
+          "threshold": 4.5,
+          "p05": 3.02,
+          "min": 2.93,
+          "median": 3.28,
+          "shadow": true,
+          "outline": false,
+          "passed": false
+        },
+        {
+          "state": "hud_squad_four",
+          "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2272/@VBoxContainer@2274/@HBoxContainer@2275/@Label@2276",
+          "text": "周野",
+          "kind": "label",
+          "font_size": 10,
+          "threshold": 4.5,
+          "p05": 3.39,
+          "min": 3.3,
+          "median": 3.78,
+          "shadow": true,
+          "outline": false,
+          "passed": false
+        },
+        {
+          "state": "hud_squad_four",
+          "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@823",
+          "text": "生命",
+          "kind": "label",
+          "font_size": 9,
+          "threshold": 4.5,
+          "p05": 3.99,
+          "min": 3.95,
+          "median": 4.14,
+          "shadow": true,
+          "outline": true,
+          "passed": false
+        },
+        {
+          "state": "hud_squad_four",
+          "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2264/@VBoxContainer@2266/@HBoxContainer@2267/@Label@2270",
+          "text": "7 杀",
+          "kind": "label",
+          "font_size": 9,
+          "threshold": 4.5,
+          "p05": 4.18,
+          "min": 4.12,
+          "median": 4.41,
+          "shadow": true,
+          "outline": false,
+          "passed": false
+        },
+        {
+          "state": "hud_squad_four",
+          "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@828",
+          "text": "/ 100",
+          "kind": "label",
+          "font_size": 10,
+          "threshold": 4.5,
+          "p05": 4.37,
+          "min": 4.37,
+          "median": 4.49,
+          "shadow": true,
+          "outline": true,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "state": "pause",
+      "elements": 6,
+      "failures": 0,
+      "worst": []
+    },
+    {
+      "state": "draw",
+      "elements": 20,
+      "failures": 0,
+      "worst": []
+    },
+    {
+      "state": "backpack",
+      "elements": 16,
+      "failures": 0,
+      "worst": []
+    },
+    {
+      "state": "intel",
+      "elements": 39,
+      "failures": 0,
+      "worst": []
+    }
+  ],
+  "failures": 14,
+  "total_elements": 242,
+  "worst": [
+    {
+      "state": "hud_low_health",
+      "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@852",
+      "text": "第 1 波",
+      "kind": "label",
+      "font_size": 22,
+      "threshold": 4.5,
+      "p05": 1.72,
+      "min": 1.72,
+      "median": 1.73,
+      "shadow": true,
+      "outline": true,
+      "passed": false
+    },
+    {
+      "state": "hud_low_health",
+      "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@851/@Label@853",
+      "text": "感染者正在逼近",
+      "kind": "label",
+      "font_size": 11,
+      "threshold": 4.5,
+      "p05": 1.88,
+      "min": 1.87,
+      "median": 1.88,
+      "shadow": true,
+      "outline": true,
+      "passed": false
+    },
+    {
+      "state": "hud_low_health",
+      "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@825",
+      "text": "危险",
+      "kind": "label",
+      "font_size": 9,
+      "threshold": 4.5,
+      "p05": 2.37,
+      "min": 2.37,
+      "median": 2.42,
+      "shadow": true,
+      "outline": true,
+      "passed": false
+    },
+    {
+      "state": "hud_squad_four",
+      "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@825",
+      "text": "危险",
+      "kind": "label",
+      "font_size": 9,
+      "threshold": 4.5,
+      "p05": 2.4,
+      "min": 2.4,
+      "median": 2.46,
+      "shadow": true,
+      "outline": true,
+      "passed": false
+    },
+    {
+      "state": "hud_squad_four",
+      "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2272/@VBoxContainer@2274/@HBoxContainer@2275/@Label@2278",
+      "text": "倒地 12m",
+      "kind": "label",
+      "font_size": 9,
+      "threshold": 4.5,
+      "p05": 3.02,
+      "min": 2.93,
+      "median": 3.28,
+      "shadow": true,
+      "outline": false,
+      "passed": false
+    },
+    {
+      "state": "hud_squad_four",
+      "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2272/@VBoxContainer@2274/@HBoxContainer@2275/@Label@2276",
+      "text": "周野",
+      "kind": "label",
+      "font_size": 10,
+      "threshold": 4.5,
+      "p05": 3.39,
+      "min": 3.3,
+      "median": 3.78,
+      "shadow": true,
+      "outline": false,
+      "passed": false
+    },
+    {
+      "state": "menu",
+      "path": "/root/@SubViewport@2/Main/UI/MainMenu/Root/@VBoxContainer@29/@VBoxContainer@34/@Button@35/@Label@38",
+      "text": "当前版本不保存行动进度",
+      "kind": "label",
+      "font_size": 11,
+      "threshold": 4.5,
+      "p05": 3.45,
+      "min": 2.85,
+      "median": 3.57,
+      "shadow": true,
+      "outline": false,
+      "passed": false
+    },
+    {
+      "state": "hud_normal",
+      "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@823",
+      "text": "生命",
+      "kind": "label",
+      "font_size": 9,
+      "threshold": 4.5,
+      "p05": 3.9,
+      "min": 3.9,
+      "median": 4.02,
+      "shadow": true,
+      "outline": true,
+      "passed": false
+    },
+    {
+      "state": "hud_low_health",
+      "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@823",
+      "text": "生命",
+      "kind": "label",
+      "font_size": 9,
+      "threshold": 4.5,
+      "p05": 3.99,
+      "min": 3.95,
+      "median": 4.14,
+      "shadow": true,
+      "outline": true,
+      "passed": false
+    },
+    {
+      "state": "hud_squad_four",
+      "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@822/@Label@823",
+      "text": "生命",
+      "kind": "label",
+      "font_size": 9,
+      "threshold": 4.5,
+      "p05": 3.99,
+      "min": 3.95,
+      "median": 4.14,
+      "shadow": true,
+      "outline": true,
+      "passed": false
+    },
+    {
+      "state": "hud_squad_four",
+      "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@PanelContainer@791/@VBoxContainer@792/@VBoxContainer@797/@HBoxContainer@2264/@VBoxContainer@2266/@HBoxContainer@2267/@Label@2270",
+      "text": "7 杀",
+      "kind": "label",
+      "font_size": 9,
+      "threshold": 4.5,
+      "p05": 4.18,
+      "min": 4.12,
+      "median": 4.41,
+      "shadow": true,
+      "outline": false,
+      "passed": false
+    },
+    {
+      "state": "hud_normal",
+      "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@828",
+      "text": "/ 100",
+      "kind": "label",
+      "font_size": 10,
+      "threshold": 4.5,
+      "p05": 4.32,
+      "min": 4.32,
+      "median": 4.44,
+      "shadow": true,
+      "outline": true,
+      "passed": false
+    },
+    {
+      "state": "hud_low_health",
+      "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@828",
+      "text": "/ 100",
+      "kind": "label",
+      "font_size": 10,
+      "threshold": 4.5,
+      "p05": 4.37,
+      "min": 4.37,
+      "median": 4.49,
+      "shadow": true,
+      "outline": true,
+      "passed": false
+    },
+    {
+      "state": "hud_squad_four",
+      "path": "/root/@SubViewport@663/Main/UI/GameHUD/HUDContent/@VBoxContainer@821/@HBoxContainer@826/@Label@828",
+      "text": "/ 100",
+      "kind": "label",
+      "font_size": 10,
+      "threshold": 4.5,
+      "p05": 4.37,
+      "min": 4.37,
+      "median": 4.49,
+      "shadow": true,
+      "outline": true,
+      "passed": false
+    }
+  ]
+}

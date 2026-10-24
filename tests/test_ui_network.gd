@@ -9,6 +9,9 @@ var checks := 0
 var failures := 0
 var expected_players := 2
 var port := DEFAULT_PORT
+var host_port := DEFAULT_PORT
+var join_port := DEFAULT_PORT
+var soak_seconds := 0
 var shot_path := ""
 
 
@@ -34,9 +37,17 @@ func _run() -> void:
 			expected_players = clampi(int(arg.trim_prefix("--players=")), 2, 4)
 		elif arg.begins_with("--port="):
 			port = int(arg.trim_prefix("--port="))
+			host_port = port
+			join_port = port
+		elif arg.begins_with("--host-port="):
+			host_port = int(arg.trim_prefix("--host-port="))
+		elif arg.begins_with("--join-port="):
+			join_port = int(arg.trim_prefix("--join-port="))
+		elif arg.begins_with("--soak="):
+			soak_seconds = maxi(0, int(arg.trim_prefix("--soak=")))
 		elif arg.begins_with("--shot="):
 			shot_path = arg.trim_prefix("--shot=")
-	print("[UI network] host=%s expected=%d port=%d" % [str(_hosting), expected_players, port])
+	print("[UI network] host=%s expected=%d host_port=%d join_port=%d soak=%d" % [str(_hosting), expected_players, host_port, join_port, soak_seconds])
 	var game = load("res://scenes/main.tscn").instantiate()
 	root.add_child(game)
 	await process_frame
@@ -48,9 +59,9 @@ func _run() -> void:
 	var ready_button: Button = menu.get("_lobby_ready_button")
 
 	if _hosting:
-		menu.host_requested.emit("HOST", port, 4242)
+		menu.host_requested.emit("HOST", host_port, 4242)
 	else:
-		menu.join_requested.emit("CLIENT", "127.0.0.1", port)
+		menu.join_requested.emit("CLIENT", "127.0.0.1", join_port)
 
 	var ready_sent := false
 	var ready_checked := false
@@ -121,6 +132,25 @@ func _run() -> void:
 	await process_frame
 	_check(not bool(game.get("_paused")) and game.player != null and game.player.input_enabled, "Co-op resume did not restore input")
 	_check(not game.hud.get("_pause_overlay").visible, "Co-op pause overlay did not close")
+
+	if soak_seconds > 0:
+		var soak_deadline := Time.get_ticks_msec() + soak_seconds * 1000
+		var next_check := Time.get_ticks_msec() + 5000
+		while Time.get_ticks_msec() < soak_deadline:
+			await create_timer(1.0).timeout
+			if Time.get_ticks_msec() >= next_check:
+				next_check += 5000
+				if Time.get_ticks_msec() < soak_deadline - 30000:
+					_check(game.game_started and game.player != null, "Soak: match or player disappeared")
+					_check(game.players.size() == expected_players, "Soak: player count drifted from %d" % expected_players)
+					_check(game.hud.get("_roster_panel").visible, "Soak: squad HUD disappeared")
+				print("[UI network] soak t=%ds players=%d break=%.2f" % [soak_seconds - int((soak_deadline - Time.get_ticks_msec()) / 1000.0), game.players.size(), float(game.director.get("_break_left")) if game.director != null else -1.0])
+		print("UI network soak: %s, %d checks, %d failures" % ["HOST" if _hosting else "CLIENT", checks, failures])
+		game.queue_free()
+		await process_frame
+		quit(1 if failures > 0 else 0)
+		return
+
 	if _hosting:
 		# 让客户端先完成暂停/恢复断言，避免房主提前断开导致对端进入返回菜单流程。
 		await create_timer(5.0).timeout

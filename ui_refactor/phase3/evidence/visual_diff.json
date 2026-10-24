@@ -1,0 +1,789 @@
+{
+  "baseline_dir": "D:\\游戏教学\\测试\\AI_\\ui_refactor\\phase3\\baselines",
+  "current_dir": "D:\\游戏教学\\测试\\AI_\\ui_refactor\\phase3\\shots\\matrix_current",
+  "threshold": 0.001,
+  "total": 52,
+  "failures": 0,
+  "results": [
+    {
+      "file": "backpack_1280x720.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1280,
+        720
+      ],
+      "current_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "file": "backpack_1920x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1080
+      ],
+      "current_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "file": "backpack_1920x1200.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1200
+      ],
+      "current_size": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "file": "backpack_2560x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        2560,
+        1080
+      ],
+      "current_size": [
+        2560,
+        1080
+      ]
+    },
+    {
+      "file": "draw_1280x720.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1280,
+        720
+      ],
+      "current_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "file": "draw_1920x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1080
+      ],
+      "current_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "file": "draw_1920x1200.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1200
+      ],
+      "current_size": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "file": "draw_2560x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        2560,
+        1080
+      ],
+      "current_size": [
+        2560,
+        1080
+      ]
+    },
+    {
+      "file": "hud_carry_1280x720.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1280,
+        720
+      ],
+      "current_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "file": "hud_carry_1920x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1080
+      ],
+      "current_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "file": "hud_carry_1920x1200.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1200
+      ],
+      "current_size": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "file": "hud_carry_2560x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        2560,
+        1080
+      ],
+      "current_size": [
+        2560,
+        1080
+      ]
+    },
+    {
+      "file": "hud_low_health_1280x720.png",
+      "status": "pass",
+      "identical": false,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0094,
+      "baseline_size": [
+        1280,
+        720
+      ],
+      "current_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "file": "hud_low_health_1920x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1080
+      ],
+      "current_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "file": "hud_low_health_1920x1200.png",
+      "status": "pass",
+      "identical": false,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0017,
+      "baseline_size": [
+        1920,
+        1200
+      ],
+      "current_size": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "file": "hud_low_health_2560x1080.png",
+      "status": "pass",
+      "identical": false,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0128,
+      "baseline_size": [
+        2560,
+        1080
+      ],
+      "current_size": [
+        2560,
+        1080
+      ]
+    },
+    {
+      "file": "hud_normal_1280x720.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1280,
+        720
+      ],
+      "current_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "file": "hud_normal_1920x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1080
+      ],
+      "current_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "file": "hud_normal_1920x1200.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1200
+      ],
+      "current_size": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "file": "hud_normal_2560x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        2560,
+        1080
+      ],
+      "current_size": [
+        2560,
+        1080
+      ]
+    },
+    {
+      "file": "hud_squad_four_1280x720.png",
+      "status": "pass",
+      "identical": false,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0144,
+      "baseline_size": [
+        1280,
+        720
+      ],
+      "current_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "file": "hud_squad_four_1920x1080.png",
+      "status": "pass",
+      "identical": false,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0018,
+      "baseline_size": [
+        1920,
+        1080
+      ],
+      "current_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "file": "hud_squad_four_1920x1200.png",
+      "status": "pass",
+      "identical": false,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0224,
+      "baseline_size": [
+        1920,
+        1200
+      ],
+      "current_size": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "file": "hud_squad_four_2560x1080.png",
+      "status": "pass",
+      "identical": false,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0285,
+      "baseline_size": [
+        2560,
+        1080
+      ],
+      "current_size": [
+        2560,
+        1080
+      ]
+    },
+    {
+      "file": "intel_1280x720.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1280,
+        720
+      ],
+      "current_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "file": "intel_1920x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1080
+      ],
+      "current_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "file": "intel_1920x1200.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1200
+      ],
+      "current_size": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "file": "intel_2560x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        2560,
+        1080
+      ],
+      "current_size": [
+        2560,
+        1080
+      ]
+    },
+    {
+      "file": "lobby_1280x720.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1280,
+        720
+      ],
+      "current_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "file": "lobby_1920x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1080
+      ],
+      "current_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "file": "lobby_1920x1200.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1200
+      ],
+      "current_size": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "file": "lobby_2560x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        2560,
+        1080
+      ],
+      "current_size": [
+        2560,
+        1080
+      ]
+    },
+    {
+      "file": "menu_1280x720.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1280,
+        720
+      ],
+      "current_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "file": "menu_1920x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1080
+      ],
+      "current_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "file": "menu_1920x1200.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1200
+      ],
+      "current_size": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "file": "menu_2560x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        2560,
+        1080
+      ],
+      "current_size": [
+        2560,
+        1080
+      ]
+    },
+    {
+      "file": "menu_armory_1280x720.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1280,
+        720
+      ],
+      "current_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "file": "menu_armory_1920x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1080
+      ],
+      "current_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "file": "menu_armory_1920x1200.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1200
+      ],
+      "current_size": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "file": "menu_armory_2560x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        2560,
+        1080
+      ],
+      "current_size": [
+        2560,
+        1080
+      ]
+    },
+    {
+      "file": "menu_coop_1280x720.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1280,
+        720
+      ],
+      "current_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "file": "menu_coop_1920x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1080
+      ],
+      "current_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "file": "menu_coop_1920x1200.png",
+      "status": "pass",
+      "identical": false,
+      "ratio": 8.68e-06,
+      "mean_abs_diff": 0.0013,
+      "baseline_size": [
+        1920,
+        1200
+      ],
+      "current_size": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "file": "menu_coop_2560x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        2560,
+        1080
+      ],
+      "current_size": [
+        2560,
+        1080
+      ]
+    },
+    {
+      "file": "menu_settings_1280x720.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1280,
+        720
+      ],
+      "current_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "file": "menu_settings_1920x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1080
+      ],
+      "current_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "file": "menu_settings_1920x1200.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1200
+      ],
+      "current_size": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "file": "menu_settings_2560x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        2560,
+        1080
+      ],
+      "current_size": [
+        2560,
+        1080
+      ]
+    },
+    {
+      "file": "pause_1280x720.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1280,
+        720
+      ],
+      "current_size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "file": "pause_1920x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1080
+      ],
+      "current_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "file": "pause_1920x1200.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        1920,
+        1200
+      ],
+      "current_size": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "file": "pause_2560x1080.png",
+      "status": "pass",
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
+      "baseline_size": [
+        2560,
+        1080
+      ],
+      "current_size": [
+        2560,
+        1080
+      ]
+    }
+  ]
+}

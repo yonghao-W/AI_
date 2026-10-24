@@ -8,6 +8,10 @@ signal draw_cancelled
 signal weapon_selected(weapon_id: String)
 
 var _game_layer: Control
+var _scrim_top: TextureRect
+var _scrim_left: TextureRect
+var _scrim_right: TextureRect
+var _scrim_corner: TextureRect
 var _roster_panel: Control
 var _roster_box: VBoxContainer
 var _roster_count: Label
@@ -114,6 +118,7 @@ func _build() -> void:
 	_game_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_game_layer.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	add_child(_game_layer)
+	_build_scrims()
 	_build_roster()
 	_build_mission_panel()
 	_build_wave_panel()
@@ -146,6 +151,71 @@ func _build() -> void:
 	_backpack_overlay.visible = false
 
 
+func _build_scrims() -> void:
+	_scrim_top = TextureRect.new()
+	_scrim_top.texture = _scrim_texture(false)
+	_scrim_top.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_scrim_top.stretch_mode = TextureRect.STRETCH_SCALE
+	_scrim_top.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_game_layer.add_child(_scrim_top)
+	_scrim_top.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	_scrim_top.offset_bottom = 250.0
+
+	_scrim_corner = TextureRect.new()
+	_scrim_corner.texture = _corner_scrim_texture()
+	_scrim_corner.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_scrim_corner.stretch_mode = TextureRect.STRETCH_SCALE
+	_scrim_corner.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_game_layer.add_child(_scrim_corner)
+	_place(_scrim_corner, Rect2(0, 0, 430, 370), 0.0, 0.0)
+
+	_scrim_left = TextureRect.new()
+	_scrim_left.texture = _scrim_texture(true)
+	_scrim_left.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_scrim_left.stretch_mode = TextureRect.STRETCH_SCALE
+	_scrim_left.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_game_layer.add_child(_scrim_left)
+	_place(_scrim_left, Rect2(0, -330, 560, 330), 0.0, 1.0)
+
+	_scrim_right = TextureRect.new()
+	_scrim_right.texture = _scrim_texture(true)
+	_scrim_right.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_scrim_right.stretch_mode = TextureRect.STRETCH_SCALE
+	_scrim_right.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_game_layer.add_child(_scrim_right)
+	_place(_scrim_right, Rect2(-460, -330, 460, 330), 1.0, 1.0)
+
+
+func _scrim_texture(from_bottom: bool) -> GradientTexture2D:
+	var gradient := Gradient.new()
+	gradient.set_color(0, Color(0.008, 0.011, 0.013, 0.90))
+	gradient.add_point(0.55, Color(0.008, 0.011, 0.013, 0.58))
+	gradient.set_color(1, Color(0.008, 0.011, 0.013, 0.0))
+	var texture := GradientTexture2D.new()
+	texture.gradient = gradient
+	texture.fill = GradientTexture2D.FILL_LINEAR
+	texture.fill_from = Vector2(0.5, 1.0 if from_bottom else 0.0)
+	texture.fill_to = Vector2(0.5, 0.0 if from_bottom else 1.0)
+	texture.width = 64
+	texture.height = 128
+	return texture
+
+
+func _corner_scrim_texture() -> GradientTexture2D:
+	var gradient := Gradient.new()
+	gradient.set_color(0, Color(0.008, 0.011, 0.013, 0.86))
+	gradient.add_point(0.55, Color(0.008, 0.011, 0.013, 0.42))
+	gradient.set_color(1, Color(0.008, 0.011, 0.013, 0.0))
+	var texture := GradientTexture2D.new()
+	texture.gradient = gradient
+	texture.fill = GradientTexture2D.FILL_LINEAR
+	texture.fill_from = Vector2(0.0, 0.0)
+	texture.fill_to = Vector2(1.0, 1.0)
+	texture.width = 128
+	texture.height = 128
+	return texture
+
+
 func _apply_hud_scale() -> void:
 	if _game_layer == null:
 		return
@@ -161,27 +231,35 @@ func _apply_hud_scale() -> void:
 
 func _apply_accessibility() -> void:
 	var contrast := DeadCityUI.high_contrast()
-	var shadow := Color(0, 0, 0, 0.9 if contrast else 0.5)
+	var shadow := Color(0, 0, 0, 0.95 if contrast else 0.82)
 	for label in _game_layer.find_children("*", "Label", true, false):
 		var item := label as Label
 		if item != null:
 			item.add_theme_color_override("font_shadow_color", shadow)
-			item.add_theme_constant_override("shadow_offset_x", 1)
-			item.add_theme_constant_override("shadow_offset_y", 1)
+			item.add_theme_constant_override("shadow_offset_x", 2)
+			item.add_theme_constant_override("shadow_offset_y", 2)
 			# 高对比度：给所有 HUD 文字加 3px 黑色描边，保证动态场景前的最低可读性。
 			item.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.92))
-			item.add_theme_constant_override("outline_size", 3 if contrast else 0)
+			item.add_theme_constant_override("outline_size", 3 if contrast else 1)
 
 
 func _build_roster() -> void:
-	_roster_panel = VBoxContainer.new()
+	_roster_panel = PanelContainer.new()
 	_roster_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_roster_panel.add_theme_constant_override("separation", 4)
+	var style := DeadCityUI.panel_style(Color(0.018, 0.023, 0.026, 0.68), 0, Color(0.85, 0.82, 0.76, 0.10), 1)
+	style.content_margin_left = 12.0
+	style.content_margin_right = 12.0
+	style.content_margin_top = 8.0
+	style.content_margin_bottom = 10.0
+	_roster_panel.add_theme_stylebox_override("panel", style)
 	_game_layer.add_child(_roster_panel)
-	_place(_roster_panel, Rect2(28, 146, 268, 0))
+	_place(_roster_panel, Rect2(20, 152, 284, 0))
+	var content := VBoxContainer.new()
+	content.add_theme_constant_override("separation", 4)
+	_roster_panel.add_child(content)
 	var top := HBoxContainer.new()
 	top.add_theme_constant_override("separation", 8)
-	_roster_panel.add_child(top)
+	content.add_child(top)
 	top.add_child(_label("小队", 9, DeadCityUI.MUTED_2))
 	var top_spacer := Control.new()
 	top_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -190,7 +268,7 @@ func _build_roster() -> void:
 	top.add_child(_roster_count)
 	_roster_box = VBoxContainer.new()
 	_roster_box.add_theme_constant_override("separation", 3)
-	_roster_panel.add_child(_roster_box)
+	content.add_child(_roster_box)
 	_roster_panel.visible = false
 
 
@@ -274,11 +352,11 @@ func _build_wave_panel() -> void:
 
 func _build_minimap() -> void:
 	_minimap = DeadMiniMap.new()
-	_minimap.custom_minimum_size = Vector2(158, 158)
-	_minimap.size = Vector2(158, 158)
+	_minimap.custom_minimum_size = Vector2(188, 188)
+	_minimap.size = Vector2(188, 188)
 	_minimap.modulate = Color(1, 1, 1, 0.92)
 	_game_layer.add_child(_minimap)
-	_place(_minimap, Rect2(-186, 20, 158, 158), 1.0, 0.0)
+	_place(_minimap, Rect2(-216, 20, 188, 188), 1.0, 0.0)
 	_seed_label = _label("", 9, Color(0.5, 0.62, 0.63))
 	_seed_label.visible = false
 	_game_layer.add_child(_seed_label)
@@ -351,7 +429,7 @@ func _build_ammo() -> void:
 	ammo_row.add_child(ammo_spacer)
 	_ammo_mag = _label("30", 30, DeadCityUI.TEXT)
 	ammo_row.add_child(_ammo_mag)
-	_ammo_slash = _label("/", 16, Color(0.5, 0.55, 0.53, 0.8))
+	_ammo_slash = _label("/", 16, Color(0.72, 0.72, 0.68, 0.95))
 	_ammo_slash.size_flags_vertical = Control.SIZE_SHRINK_END
 	ammo_row.add_child(_ammo_slash)
 	_ammo_reserve = _label("90", 15, Color(0.62, 0.66, 0.62, 0.9))

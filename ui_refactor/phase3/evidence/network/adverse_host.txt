@@ -1,0 +1,71 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[UI network] host=true expected=2 host_port=17890 join_port=17890 soak=300
+[DeadCity] peer connected: 2038570472
+[UI network] soak t=6s players=2 break=-0.00
+WARNING: Sending 1460 bytes unreliably which is above the MTU (1392), this will result in higher packet loss
+   at: put_packet (modules/enet/enet_multiplayer_peer.cpp:365)
+   GDScript backtrace (most recent call first):
+       [0] _broadcast_snapshot (res://scripts/main.gd:1286)
+       [1] _server_step (res://scripts/main.gd:1083)
+       [2] _process (res://scripts/main.gd:885)
+[UI network] soak t=11s players=2 break=-0.00
+[UI network] soak t=16s players=2 break=-0.00
+[UI network] soak t=21s players=2 break=-0.00
+[UI network] soak t=26s players=2 break=-0.00
+[UI network] soak t=31s players=2 break=-0.00
+[UI network] soak t=36s players=2 break=-0.00
+[UI network] soak t=41s players=2 break=-0.00
+[UI network] soak t=46s players=2 break=-0.00
+[UI network] soak t=51s players=2 break=-0.00
+[UI network] soak t=56s players=2 break=-0.00
+[UI network] soak t=61s players=2 break=-0.00
+[UI network] soak t=66s players=2 break=-0.00
+[UI network] soak t=71s players=2 break=-0.00
+[UI network] soak t=76s players=2 break=-0.00
+[UI network] soak t=81s players=2 break=-0.00
+[UI network] soak t=86s players=2 break=-0.00
+[UI network] soak t=91s players=2 break=-0.00
+[UI network] soak t=96s players=2 break=-0.00
+[UI network] soak t=101s players=2 break=-0.00
+[UI network] soak t=106s players=2 break=-0.00
+[UI network] soak t=111s players=2 break=-0.00
+[UI network] soak t=116s players=2 break=-0.00
+[UI network] soak t=121s players=2 break=-0.00
+[UI network] soak t=126s players=2 break=-0.00
+[UI network] soak t=131s players=2 break=-0.00
+[UI network] soak t=136s players=2 break=-0.00
+[UI network] soak t=141s players=2 break=-0.00
+[UI network] soak t=146s players=2 break=-0.00
+[UI network] soak t=151s players=2 break=-0.00
+[UI network] soak t=156s players=2 break=-0.00
+[UI network] soak t=161s players=2 break=-0.00
+[UI network] soak t=166s players=2 break=-0.00
+[UI network] soak t=171s players=2 break=-0.00
+[UI network] soak t=176s players=2 break=-0.00
+[UI network] soak t=181s players=2 break=-0.00
+[UI network] soak t=186s players=2 break=-0.00
+[UI network] soak t=191s players=2 break=-0.00
+[UI network] soak t=196s players=2 break=-0.00
+[UI network] soak t=202s players=2 break=-0.00
+[UI network] soak t=206s players=2 break=-0.00
+[UI network] soak t=211s players=2 break=-0.00
+[UI network] soak t=216s players=2 break=-0.00
+[UI network] soak t=221s players=2 break=-0.00
+[UI network] soak t=226s players=2 break=-0.00
+[UI network] soak t=231s players=2 break=-0.00
+[UI network] soak t=236s players=2 break=-0.00
+[UI network] soak t=241s players=2 break=-0.00
+[UI network] soak t=246s players=2 break=-0.00
+[UI network] soak t=251s players=2 break=-0.00
+[UI network] soak t=256s players=2 break=-0.00
+[UI network] soak t=261s players=2 break=-0.00
+[UI network] soak t=266s players=2 break=-0.00
+[UI network] soak t=271s players=2 break=-0.00
+[UI network] soak t=276s players=2 break=-0.00
+[UI network] soak t=281s players=2 break=-0.00
+[UI network] soak t=286s players=2 break=-0.00
+[UI network] soak t=291s players=2 break=-0.00
+[UI network] soak t=296s players=2 break=-0.00
+[UI network] soak t=300s players=2 break=-0.00
+UI network soak: HOST, 175 checks, 0 failures
