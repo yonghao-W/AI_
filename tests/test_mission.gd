@@ -4,6 +4,8 @@ const MissionSiteScript = preload("res://scripts/mission_site.gd")
 const ServerZombieScript = preload("res://scripts/server_zombie.gd")
 const PlayerScript = preload("res://scripts/player.gd")
 const ZombieDirectorScript = preload("res://scripts/zombie_director.gd")
+const HudScript = preload("res://scripts/game_hud.gd")
+const AudioScript = preload("res://scripts/dead_city_audio.gd")
 
 var checks := 0
 var failures := 0
@@ -20,8 +22,12 @@ func _run() -> void:
 	_test_site_visuals()
 	_test_zombie_targeting()
 	_test_player_reload_and_carry()
+	_test_weapon_system()
+	_test_hud_overlays()
+	_test_audio()
 	_test_escalation()
 	_test_meta_profile()
+	_test_weapon_economy()
 	print("== %d checks, %d failures ==" % [checks, failures])
 	quit(1 if failures > 0 else 0)
 
@@ -123,6 +129,10 @@ func _test_zombie_targeting() -> void:
 	_check(float(hits[0][1]) > 0.0, "attack carries damage")
 	zombie.step(0.12, Vector3(0.0, 0.06, 0.8), 7, true)
 	_check(hits.size() == 1, "attack interval gates repeated hits")
+	zombie.set_frenzy(true)
+	_check(absf(zombie.speed_now() - zombie.speed * 1.35) < 0.001, "frenzied zombie sprints at 135 percent speed")
+	zombie.set_frenzy(false)
+	_check(absf(zombie.speed_now() - zombie.speed) < 0.001, "calmed zombie returns to its base speed")
 	zombie.free()
 
 
@@ -135,7 +145,7 @@ func _test_player_reload_and_carry() -> void:
 	player.set("_reload_left", player.reload_time * 0.5)
 	_check(absf(player.reload_progress() - 0.5) < 0.02, "reload progress drives the viewmodel animation")
 	player._finish_reload()
-	_check(player.mag == player.mag_size and player.reserve == 65, "reload refills the magazine from reserve")
+	_check(player.mag == player.mag_size and player.reserve == 113, "reload refills the magazine from reserve")
 	player.mag = 5
 	player.set_carrying(true)
 	_check(player.carrying_core and not player.reloading, "picking up a core cancels the reload")
@@ -145,8 +155,8 @@ func _test_player_reload_and_carry() -> void:
 	player.start_reload()
 	_check(player.reloading, "dropping the core restores reloading")
 	player.apply_team_upgrades({"mag": 2, "reload": 2, "speed": 2, "armor": 2})
-	_check(player.mag_size == 42, "magazine upgrade widens the mag")
-	_check(player.reload_time < 1.2, "reload upgrade shortens reload time")
+	_check(player.mag_size == 48, "magazine upgrade widens the mag")
+	_check(absf(player.reload_time - 1.04) < 0.001, "reload upgrade shortens reload time")
 	_check(player.walk_speed > PlayerScript.WALK_SPEED, "speed upgrade raises movement speed")
 	_check(absf(player.damage_reduction - 0.16) < 0.001, "armor upgrade adds damage reduction")
 	player.face_yaw(3.5)
@@ -156,14 +166,97 @@ func _test_player_reload_and_carry() -> void:
 	_check(PlayerScript.GRAVITY > 15.0 and PlayerScript.JUMP_VELOCITY > 6.0, "jump uses a snappy impulse and gravity")
 	_check(PlayerScript.COYOTE_TIME > 0.0 and PlayerScript.JUMP_BUFFER > 0.0, "jump keeps coyote time and input buffering")
 	player.set_meta_bonus(8, 0.9)
-	_check(player.reserve >= 98, "legacy bonus raises starting reserve")
+	_check(player.reserve_cap == 152 and player.reserve == 121, "legacy bonus raises starting reserve")
 	player.mag = 0
 	player.reserve = 0
 	player.refill_ammo()
-	_check(player.mag == player.mag_size and player.reserve == PlayerScript.MAX_RESERVE, "ammo station refills the magazine and reserve")
+	_check(player.mag == 48 and player.reserve == 152, "ammo station refills the magazine and reserve")
 	player.apply_team_upgrades({"reload": 2})
-	_check(absf(player.reload_time - maxf(0.55, PlayerScript.RELOAD_TIME * 0.76 * 0.9)) < 0.001, "legacy reload bonus stacks with team upgrades")
+	_check(absf(player.reload_time - 0.936) < 0.001, "legacy reload bonus stacks with team upgrades")
 	player.free()
+
+
+func _test_weapon_system() -> void:
+	_check(WeaponCatalog.ordered_ids().size() == 5, "catalog ships five weapon slots")
+	_check(not bool(WeaponCatalog.data("pistol").get("auto", true)), "pistol stays semi-automatic")
+	_check(bool(WeaponCatalog.data("smg").get("auto", false)), "smg fires full auto")
+	var player = PlayerScript.new()
+	root.add_child(player)
+	_check(player.weapons_owned.size() == 2 and player.current_weapon_id() == "smg", "default loadout owns pistol and smg")
+	_check(player.mag_size == 36 and player.reserve == 144, "smg starts with catalog ammo")
+	_check(not player.switch_weapon_slot(2), "cannot switch to the active weapon")
+	_check(not player.switch_weapon_slot(3), "cannot switch to an unowned slot")
+	player.mag = 9
+	player.reserve = 40
+	_check(player.switch_weapon_slot(1), "slot key equips the pistol")
+	_check(player.current_weapon_id() == "pistol" and player.mag == 12 and player.reserve == 72, "pistol loads its own magazine")
+	player.set("_switch_lock", 0.0)
+	player.mag = 4
+	_check(player.switch_weapon_slot(2), "slot key returns to the smg")
+	_check(player.mag == 9 and player.reserve == 40, "smg ammo state survives a weapon swap")
+	player.set_carrying(true)
+	player.set("_switch_lock", 0.0)
+	_check(not player.switch_weapon_slot(1), "carrying a core blocks weapon switching")
+	player.set_carrying(false)
+	player.apply_team_upgrades({"rate": 3})
+	_check(absf(player.fire_interval - 0.068 * 0.79) < 0.0001, "rate upgrade tightens the fire interval")
+	player.set_loadout(["pistol", "smg", "rifle"], "rifle")
+	_check(player.current_weapon_id() == "rifle" and player.mag_size == 30, "set_loadout equips the selected catalog weapon")
+	var summary: Array = player.loadout_summary()
+	_check(summary.size() == 3 and bool(summary[2]["active"]), "loadout summary marks the active slot")
+	player.free()
+
+
+func _test_hud_overlays() -> void:
+	var hud = HudScript.new()
+	root.add_child(hud)
+	_check(not hud.overlay_open(), "hud overlays start closed")
+	var loadout: Array = [
+		{"slot": 1, "id": "pistol", "name": "P-19", "full_name": "P-19 手枪", "accent": Color.WHITE, "active": false, "mag": 12, "reserve": 72, "mag_size": 12},
+		{"slot": 2, "id": "smg", "name": "VX-9", "full_name": "VX-9 冲锋枪", "accent": Color.WHITE, "active": true, "mag": 30, "reserve": 120, "mag_size": 36},
+	]
+	hud.set_weapon_strip(loadout, {"id": "smg", "name": "VX-9 冲锋枪", "tag": "全自动"})
+	var slots: Dictionary = hud.get("_weapon_slots")
+	_check(slots.size() == 5, "weapon strip renders all five catalog slots")
+	hud.open_intel({
+		"mission": {
+			"cores": 2, "required": 3, "zone": "基地安全区", "hint": "护送核心返回基地",
+			"wave": 4, "score": 900, "frenzy": true, "tokens": 1,
+			"upgrades": {"mag": 1, "reload": 1, "damage": 1, "rate": 2, "speed": 0, "armor": 1}, "power": 58,
+		},
+		"roster": [{"name": "ALPHA", "health": 64.0, "kills": 9, "alive": true, "color": Color.CYAN}],
+		"player": {
+			"name": "ALPHA", "health": 88.0, "kills": 22,
+			"weapon": {"id": "smg", "name": "VX-9 冲锋枪"},
+			"loadout": loadout, "reserve_bonus": 4,
+		},
+	})
+	_check(hud.intel_open() and not hud.backpack_open(), "TAB opens the intel overlay")
+	var intel_body: Node = hud.get("_intel_body")
+	_check(intel_body.get_child_count() == 3, "intel overlay renders mission, squad and survivor columns")
+	hud.open_backpack(loadout, {"id": "smg", "name": "VX-9 冲锋枪"}, {"mag": 1, "rate": 2})
+	_check(hud.backpack_open() and not hud.intel_open(), "B opens the backpack overlay")
+	var backpack_body: Node = hud.get("_backpack_body")
+	_check(backpack_body.get_child_count() == 5, "backpack lists every catalog weapon")
+	hud.close_overlays()
+	_check(not hud.overlay_open(), "closing overlays clears both panels")
+	hud.free()
+
+
+func _test_audio() -> void:
+	var audio = AudioScript.new()
+	root.add_child(audio)
+	var streams: Dictionary = audio.get("_streams")
+	_check(streams.size() == 15, "audio bakes five guns, seven UI cues and three zombie cues")
+	var shot: AudioStreamWAV = streams.get("shot_shotgun")
+	_check(shot != null and shot.data.size() > 4000, "gunshot cue carries baked PCM samples")
+	audio.play_weapon_shot("smg", false)
+	audio.play_ui("switch", -6.0)
+	_check(int(audio.get("_next_2d")) == 2, "2D voice pool rotates between shots and UI")
+	audio.play_zombie("growl", Vector3(3.0, 0.0, 3.0))
+	audio.play_zombie("growl", Vector3(3.0, 0.0, 3.0))
+	_check(int(audio.get("_next_3d")) == 1, "zombie growls are rate limited per cue")
+	audio.free()
 
 
 func _test_escalation() -> void:
@@ -185,12 +278,27 @@ func _test_escalation() -> void:
 	_check(director.zombie_count() == 1, "escalated director still spawns zombies")
 	var escalated_delay := float(director.get("_spawn_interval")) * pow(0.8, 3)
 	_check(absf(float(director.get("_spawn_delay")) - escalated_delay) < 0.001, "threat shortens the spawn interval")
+	director.start(0.0)
+	director.tick(0.1, [])
+	var calm_quota := int(director.get("_to_spawn"))
+	director.set_frenzy(true)
+	_check(director.is_frenzy() and bool(director.summary().get("frenzy", false)), "frenzy flag reaches the director summary")
+	_check(int(director.get("_to_spawn")) == calm_quota + 8, "frenzy injects an extra spawn burst")
+	_check(float(director.get("_spawn_delay")) <= 0.1, "frenzy front-loads the next spawn")
+	director.tick(0.1, [])
+	_check(director.zombie_count() == 2, "frenzy spawns two zombies per pulse")
+	var zombies: Dictionary = director.get("_zombies")
+	var first: ServerZombie = zombies.values()[0]
+	_check(first.speed_now() > first.speed, "frenzied zombies move faster")
+	director.set_frenzy(false)
+	_check(absf(first.speed_now() - first.speed) < 0.001, "calming the horde restores zombie speed")
 	director.free()
 
 
 func _test_meta_profile() -> void:
 	var profile: Dictionary = MetaProfile.empty_profile()
 	_check(MetaProfile.power_of({"mag": 1, "reload": 1, "damage": 1, "speed": 1, "armor": 1}) == 46, "power weights all five upgrade tracks")
+	_check(MetaProfile.power_of({"rate": 1}) == 10, "rate upgrades contribute to power")
 	MetaProfile.start_run(profile, 4321, ["ALPHA", "BRAVO"])
 	var current: Dictionary = profile.get("current_run", {})
 	_check(int(current.get("seed", 0)) == 4321, "starting a run records the seed")
@@ -203,6 +311,7 @@ func _test_meta_profile() -> void:
 	_check(int(profile.get("total_cores", 0)) == 2, "repeated syncs do not double count cores")
 	MetaProfile.finish_run(profile, true, "done")
 	_check(int(profile.get("runs", 0)) == 1 and int(profile.get("victories", 0)) == 1, "finishing a run updates lifetime stats")
+	_check(int(profile.get("credits", 0)) == 298 and int(profile.get("total_credits", 0)) == 298, "extraction pays credits into the archive")
 	_check(bool(profile.get("last_run", {}).get("victory", false)), "victory is archived in the last run")
 	_check(profile.get("current_run", {}).is_empty(), "finishing clears the active run")
 	_check(MetaProfile.legacy_level(profile) == 0, "legacy level starts from lifetime cores")
@@ -215,3 +324,22 @@ func _test_meta_profile() -> void:
 	var loaded: Dictionary = MetaProfile.load_profile(path)
 	_check(int(loaded.get("runs", 0)) == 1 and bool(loaded.get("last_run", {}).get("victory", false)), "meta profile round-trips through JSON")
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+
+
+func _test_weapon_economy() -> void:
+	var profile: Dictionary = MetaProfile.empty_profile()
+	var owned: Array = profile.get("owned_weapons", [])
+	_check(owned.has("pistol") and owned.has("smg"), "new profiles start with pistol and smg")
+	_check(WeaponCatalog.price_of("rifle") == 180 and WeaponCatalog.price_of("lmg") == 560, "armory prices ladder up")
+	var broke := MetaProfile.buy_weapon(profile, "rifle")
+	_check(not bool(broke.get("ok", true)), "armory rejects purchases without credits")
+	profile["credits"] = 200
+	var bought := MetaProfile.buy_weapon(profile, "rifle")
+	_check(bool(bought.get("ok", false)) and int(profile.get("credits", -1)) == 20, "buying a weapon spends credits")
+	_check(MetaProfile.owns_weapon(profile, "rifle"), "purchased weapon enters the armory")
+	_check(not bool(MetaProfile.buy_weapon(profile, "rifle").get("ok", true)), "armory blocks duplicate purchases")
+	var equipped := MetaProfile.select_weapon(profile, "rifle")
+	_check(bool(equipped.get("ok", false)) and String(profile.get("selected_weapon", "")) == "rifle", "owned weapons can be equipped")
+	_check(not bool(MetaProfile.select_weapon(profile, "shotgun").get("ok", true)), "unowned weapons cannot be equipped")
+	_check(MetaProfile.run_reward({"kills": 10, "secured": 2}, true) == 290, "extraction rewards kills and secured cores")
+	_check(MetaProfile.run_reward({"kills": 10, "secured": 2}, false, true) == 0, "abandoned runs pay nothing")
