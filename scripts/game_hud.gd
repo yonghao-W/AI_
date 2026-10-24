@@ -126,8 +126,8 @@ func _build() -> void:
 	_build_draw_overlay()
 	_build_intel_overlay()
 	_build_backpack_overlay()
-	_roster_panel.visible = false
-	_mission_panel.visible = false
+	_roster_panel.visible = true
+	_mission_panel.visible = true
 	_death_overlay.visible = false
 	_gameover_overlay.visible = false
 	_pause_overlay.visible = false
