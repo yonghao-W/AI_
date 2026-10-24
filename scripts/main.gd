@@ -13,12 +13,12 @@ const MISSION_BONUS := 300
 const CARD_MAX_LEVEL := 3
 const DRAW_TIMEOUT := 25.0
 const CARD_POOL := [
-	{"key": "mag", "title": "扩容弹匣", "desc": "全队弹匣容量 +6 发（霰弹 +2）", "accent": "#59d8c8"},
-	{"key": "reload", "title": "快速装填", "desc": "全队换弹时间 -10%", "accent": "#ffcb66"},
-	{"key": "damage", "title": "膛压强化", "desc": "全队枪械伤害 +14%", "accent": "#ff8d6b"},
-	{"key": "rate", "title": "枪机抛光", "desc": "全队射速 +7%", "accent": "#83c8ff"},
-	{"key": "speed", "title": "轻装疾行", "desc": "全队移动速度 +5%", "accent": "#83d66f"},
-	{"key": "armor", "title": "防弹插板", "desc": "全队受到伤害 -8%", "accent": "#b997ff"},
+	{"key": "mag", "title": "扩容弹匣", "desc": "全队弹匣容量 +6 发（霰弹 +2）", "accent": "#7fc3ba"},
+	{"key": "reload", "title": "快速装填", "desc": "全队换弹时间 -10%", "accent": "#e6c07a"},
+	{"key": "damage", "title": "膛压强化", "desc": "全队枪械伤害 +14%", "accent": "#e08a6f"},
+	{"key": "rate", "title": "枪机抛光", "desc": "全队射速 +7%", "accent": "#8fb9cc"},
+	{"key": "speed", "title": "轻装疾行", "desc": "全队移动速度 +5%", "accent": "#9bc284"},
+	{"key": "armor", "title": "防弹插板", "desc": "全队受到伤害 -8%", "accent": "#b9a6d9"},
 ]
 
 var menu: MainMenu
@@ -87,6 +87,15 @@ var _cli_seed := 4242
 var _cli_pilot := false
 var _cli_capture := ""
 var _cli_menu_shot := ""
+var _cli_menu_view := ""
+var _cli_menu_view_shot := ""
+var _cli_hud_demo := ""
+var _cli_result := ""
+var _cli_lobby_shot := ""
+var _demo_active := false
+var _demo_health := -1.0
+var _demo_roster: Array = []
+var _demo_empty := false
 var _cli_quit_after := 0.0
 var _cli_capture_after := 7.0
 var _cli_pause_after := 0.0
@@ -97,6 +106,9 @@ var _cli_reload_shot := ""
 var _cli_armory_shot := ""
 var _cli_intel_shot := ""
 var _cli_backpack_shot := ""
+var _cli_ui_scale := -1.0
+var _cli_ui_contrast := false
+var _cli_ui_reduced := false
 
 
 func _ready() -> void:
@@ -168,6 +180,16 @@ func _parse_cli() -> void:
 			_cli_capture_after = maxf(1.0, float(arg.trim_prefix("--capture-after=")))
 		elif arg.begins_with("--menu-shot="):
 			_cli_menu_shot = arg.trim_prefix("--menu-shot=")
+		elif arg.begins_with("--menu-view="):
+			_cli_menu_view = arg.trim_prefix("--menu-view=")
+		elif arg.begins_with("--menu-view-shot="):
+			_cli_menu_view_shot = arg.trim_prefix("--menu-view-shot=")
+		elif arg.begins_with("--hud-demo="):
+			_cli_hud_demo = arg.trim_prefix("--hud-demo=")
+		elif arg.begins_with("--result="):
+			_cli_result = arg.trim_prefix("--result=")
+		elif arg.begins_with("--lobby-shot="):
+			_cli_lobby_shot = arg.trim_prefix("--lobby-shot=")
 		elif arg.begins_with("--quit-after="):
 			_cli_quit_after = maxf(1.0, float(arg.trim_prefix("--quit-after=")))
 		elif arg.begins_with("--auto-pause-after="):
@@ -186,13 +208,38 @@ func _parse_cli() -> void:
 			_cli_intel_shot = arg.trim_prefix("--intel-shot=")
 		elif arg.begins_with("--backpack-shot="):
 			_cli_backpack_shot = arg.trim_prefix("--backpack-shot=")
+		elif arg.begins_with("--ui-scale="):
+			_cli_ui_scale = clampf(float(arg.trim_prefix("--ui-scale=")), 0.85, 1.2)
+		elif arg == "--ui-contrast":
+			_cli_ui_contrast = true
+		elif arg == "--ui-reduced":
+			_cli_ui_reduced = true
 
 
 func _cli_active() -> bool:
-	return _cli_host or _cli_solo or not _cli_join.is_empty() or not _cli_capture.is_empty() or not _cli_menu_shot.is_empty() or _cli_mission or not _cli_reload_shot.is_empty() or not _cli_armory_shot.is_empty() or not _cli_intel_shot.is_empty() or not _cli_backpack_shot.is_empty()
+	return _cli_host or _cli_solo or not _cli_join.is_empty() or not _cli_capture.is_empty() or not _cli_menu_shot.is_empty() or not _cli_menu_view.is_empty() or not _cli_hud_demo.is_empty() or not _cli_result.is_empty() or not _cli_lobby_shot.is_empty() or _cli_mission or not _cli_reload_shot.is_empty() or not _cli_armory_shot.is_empty() or not _cli_intel_shot.is_empty() or not _cli_backpack_shot.is_empty()
+
+
+func _apply_ui_cli() -> void:
+	## 截图/回归用：把无障碍设置应用到当前运行实例，不写入 user:// 配置。
+	if _cli_ui_scale < 0.0 and not _cli_ui_contrast and not _cli_ui_reduced:
+		return
+	var settings := get_node_or_null("/root/UISettings")
+	if settings == null:
+		return
+	if _cli_ui_scale >= 0.0:
+		settings.set("hud_scale", _cli_ui_scale)
+	if _cli_ui_contrast:
+		settings.set("high_contrast", true)
+	if _cli_ui_reduced:
+		settings.set("reduced_motion", true)
+	if settings.has_signal("changed"):
+		settings.changed.emit("all")
+	print("[DeadCity] ui cli: scale=%.2f contrast=%s reduced=%s" % [float(settings.get("hud_scale")), str(_cli_ui_contrast), str(_cli_ui_reduced)])
 
 
 func _run_cli() -> void:
+	_apply_ui_cli()
 	if _cli_quit_after > 0.0:
 		_quit_later(_cli_quit_after)
 	if _cli_pause_after > 0.0:
@@ -200,6 +247,11 @@ func _run_cli() -> void:
 	if not _cli_menu_shot.is_empty():
 		await get_tree().create_timer(0.8).timeout
 		_capture(_cli_menu_shot)
+	if not _cli_menu_view.is_empty():
+		menu.open_view(_cli_menu_view)
+		await get_tree().create_timer(0.45).timeout
+		if not _cli_menu_view_shot.is_empty():
+			await _capture(_cli_menu_view_shot)
 	if not _cli_armory_shot.is_empty():
 		await get_tree().create_timer(0.9).timeout
 		menu.open_armory()
@@ -216,10 +268,28 @@ func _run_cli() -> void:
 		_on_join_requested("CLIENT", _cli_join, _cli_port)
 	elif _cli_solo:
 		_on_solo_requested("SOLO", _cli_seed)
+	if not _cli_lobby_shot.is_empty():
+		await get_tree().create_timer(1.1).timeout
+		await _capture(_cli_lobby_shot)
 	if _cli_pilot:
 		await get_tree().create_timer(3.0).timeout
 		if player != null:
 			player.auto_pilot = true
+	if not _cli_hud_demo.is_empty():
+		await _wait_for_game()
+		await get_tree().create_timer(1.4).timeout
+		_apply_hud_demo(_cli_hud_demo)
+	elif not _cli_result.is_empty():
+		await _wait_for_game()
+		await get_tree().create_timer(1.0).timeout
+		if _cli_result == "win":
+			cores_secured = CORES_REQUIRED
+		_server_game_over(_cli_result == "win")
+	elif not _cli_capture.is_empty():
+		await _wait_for_game()
+		if player != null:
+			player.set_input_enabled(false)
+			player.set_view_direction(ChapterOneStation.SPAWN_YAW, -0.08)
 	if _cli_mission:
 		_run_mission_auto()
 	if not _cli_reload_shot.is_empty():
@@ -239,8 +309,74 @@ func _run_cli() -> void:
 		await _capture(_cli_backpack_shot)
 		_close_overlays()
 	if not _cli_capture.is_empty():
-		await get_tree().create_timer(_cli_capture_after).timeout
+		if _cli_hud_demo in ["reload", "strip"] and _cli_capture_after > 0.8:
+			# 换弹与切枪提示是瞬态，截图前重新触发，避免等待期间已经结束。
+			await get_tree().create_timer(_cli_capture_after - 0.5).timeout
+			_apply_hud_demo(_cli_hud_demo)
+			await get_tree().create_timer(0.35).timeout
+		else:
+			await get_tree().create_timer(_cli_capture_after).timeout
 		_capture(_cli_capture)
+
+
+func _apply_hud_demo(state: String) -> void:
+	## 仅用于截图/回归的状态预览；不写入任何存档，也不改变服务器状态。
+	## 真实状态每帧仍会刷新 HUD，因此这里记录演示值并在 _process 末尾回写。
+	if hud == null or not game_started:
+		return
+	_demo_active = true
+	_demo_health = -1.0
+	_demo_roster = []
+	_demo_empty = false
+	if player != null:
+		# 截图时锁定视角并关闭输入，避免窗口鼠标移动让相机转向随机物体。
+		player.set_input_enabled(false)
+		player.set_view_direction(ChapterOneStation.SPAWN_YAW, -0.08)
+	print("[DeadCity] hud-demo applied: %s" % state)
+	match state:
+		"lowhealth":
+			_demo_health = 21.0
+			hud.set_health(21.0)
+		"hurt":
+			_demo_health = 52.0
+			hud.set_health(52.0)
+		"squad":
+			_demo_roster = [
+				{"id": 1, "name": "SOLO", "color": DeadCityUI.CYAN, "alive": true, "health": 100.0, "kills": 4, "is_local": true},
+				{"id": 2, "name": "林昭", "color": DeadCityUI.AMBER, "alive": true, "health": 46.0, "kills": 7, "is_local": false, "distance": 9.0},
+				{"id": 3, "name": "周野", "color": DeadCityUI.VIOLET, "alive": false, "health": 0.0, "kills": 2, "is_local": false, "distance": 12.0},
+				{"id": 4, "name": "陈默", "color": DeadCityUI.CORAL, "alive": true, "health": 88.0, "kills": 3, "is_local": false, "distance": 6.0},
+			]
+			hud.set_roster(_demo_roster)
+		"squad_low":
+			_demo_roster = [
+				{"id": 1, "name": "SOLO", "color": DeadCityUI.CYAN, "alive": true, "health": 22.0, "kills": 4, "is_local": true},
+				{"id": 2, "name": "林昭", "color": DeadCityUI.AMBER, "alive": true, "health": 46.0, "kills": 7, "is_local": false, "distance": 9.0},
+				{"id": 3, "name": "周野", "color": DeadCityUI.VIOLET, "alive": false, "health": 0.0, "kills": 2, "is_local": false, "distance": 12.0},
+				{"id": 4, "name": "陈默", "color": DeadCityUI.CORAL, "alive": true, "health": 88.0, "kills": 3, "is_local": false, "distance": 6.0},
+			]
+			_demo_health = 22.0
+			hud.set_roster(_demo_roster)
+			hud.set_health(22.0)
+		"carry":
+			hud.set_carry_preview(true)
+		"downed":
+			_demo_health = 0.0
+			hud.set_health(0.0)
+			hud.set_down(true, 8.0)
+		"reload":
+			if player != null and player.alive:
+				player.mag = maxi(0, player.mag_size - 9)
+				player.start_reload()
+		"empty":
+			_demo_empty = true
+			if player != null:
+				player.mag = 0
+				player.reloading = false
+			hud.set_ammo(0, player.reserve if player != null else 0, false, 0.0, false)
+		"strip":
+			if player != null:
+				hud.set_weapon_strip(player.loadout_summary(), player.weapon_profile())
 
 
 func _wait_for_game() -> void:
@@ -754,6 +890,14 @@ func _process(delta: float) -> void:
 		hud.set_spread(player.get_spread_normalized())
 		hud.set_minimap_entities(player.global_position, player.rotation.y, _minimap_remotes(), _minimap_zombies(), _minimap_markers())
 		_update_mission_hud()
+	if _demo_active and hud != null:
+		# 截图演示值必须压过真实状态同步，否则低血量/小队截图会退回默认值。
+		if _demo_health >= 0.0:
+			hud.set_health(_demo_health)
+		if not _demo_roster.is_empty():
+			hud.set_roster(_demo_roster)
+		if _demo_empty and player != null:
+			hud.set_ammo(0, player.reserve, false, 0.0, player.is_melee_equipped())
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -1654,6 +1798,10 @@ func _refresh_roster_ui() -> void:
 	var roster_ui: Array = []
 	for id in ids:
 		var info: Dictionary = players[id]
+		var distance := 0.0
+		var pos_value: Variant = info.get("pos", null)
+		if player != null and int(id) != local_id and typeof(pos_value) == TYPE_VECTOR3:
+			distance = player.global_position.distance_to(pos_value)
 		roster_ui.append({
 			"id": int(id),
 			"name": String(info.get("name", "幸存者")),
@@ -1662,6 +1810,7 @@ func _refresh_roster_ui() -> void:
 			"health": float(info.get("health", 0.0)),
 			"kills": int(info.get("kills", 0)),
 			"is_local": int(id) == local_id,
+			"distance": distance,
 		})
 	hud.set_roster(roster_ui)
 
@@ -1705,6 +1854,7 @@ func _minimap_remotes() -> Array:
 		result.append({
 			"pos": avatar.global_position,
 			"color": info.get("color", Color.WHITE),
+			"alive": bool(info.get("alive", true)),
 		})
 	return result
 

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#59d8c8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="700" fill="#0b1016"/>
+  <text x="40" y="40" fill="#e7eef2" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="23" font-weight="700">图 5 · CG 分层渲染与 Godot 集成管线</text>
+  <text x="40" y="64" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12">所有节点职责单一；任何一层都能单独重渲染，不重做整张图。</text>
+
+  <!-- Row 1 -->
+  <g>
+    <rect x="40" y="110" width="160" height="78" rx="6" fill="#111d24" stroke="#59d8c8" stroke-width="1.5"/>
+    <text x="120" y="140" fill="#e7eef2" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" font-weight="700">Blender 场景</text>
+    <text x="120" y="160" fill="#8d9caa" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">建筑/道具/植被/环境</text>
+    <text x="120" y="176" fill="#8d9caa" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">固定相机</text>
+
+    <rect x="240" y="110" width="160" height="78" rx="6" fill="#111d24" stroke="#59d8c8" stroke-width="1.5"/>
+    <text x="320" y="140" fill="#e7eef2" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" font-weight="700">View Layers</text>
+    <text x="320" y="160" fill="#8d9caa" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">前景 / 基地 / 中景 / 远景</text>
+    <text x="320" y="176" fill="#8d9caa" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">大气 / 发光</text>
+
+    <rect x="440" y="110" width="160" height="78" rx="6" fill="#111d24" stroke="#59d8c8" stroke-width="1.5"/>
+    <text x="520" y="140" fill="#e7eef2" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" font-weight="700">Passes</text>
+    <text x="520" y="160" fill="#8d9caa" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">Combined / Depth / Mist</text>
+    <text x="520" y="176" fill="#8d9caa" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">Emission / AO / Cryptomatte</text>
+
+    <rect x="640" y="110" width="160" height="78" rx="6" fill="#111d24" stroke="#ffcb66" stroke-width="1.5"/>
+    <text x="720" y="140" fill="#e7eef2" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" font-weight="700">合成</text>
+    <text x="720" y="160" fill="#8d9caa" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">雾/辉光/调色/暗角</text>
+    <text x="720" y="176" fill="#8d9caa" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">颗粒/色彩管理</text>
+
+    <rect x="840" y="110" width="160" height="78" rx="6" fill="#111d24" stroke="#ffcb66" stroke-width="1.5"/>
+    <text x="920" y="140" fill="#e7eef2" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" font-weight="700">输出</text>
+    <text x="920" y="160" fill="#8d9caa" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">EXR 母版 + sRGB PNG</text>
+    <text x="920" y="176" fill="#8d9caa" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">16:9 / 16:10 / 21:9</text>
+
+    <rect x="1040" y="110" width="120" height="78" rx="6" fill="#111d24" stroke="#83d66f" stroke-width="1.5"/>
+    <text x="1100" y="140" fill="#e7eef2" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" font-weight="700">Godot</text>
+    <text x="1100" y="160" fill="#8d9caa" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">TextureRect</text>
+    <text x="1100" y="176" fill="#8d9caa" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">cover + UI</text>
+  </g>
+  <!-- arrows row1 -->
+  <line x1="200" y1="149" x2="236" y2="149" stroke="#59d8c8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="400" y1="149" x2="436" y2="149" stroke="#59d8c8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="600" y1="149" x2="636" y2="149" stroke="#59d8c8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="800" y1="149" x2="836" y2="149" stroke="#59d8c8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1000" y1="149" x2="1036" y2="149" stroke="#59d8c8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- layers detail -->
+  <g transform="translate(40,250)">
+    <rect x="0" y="0" width="1120" height="160" fill="#0f171d" stroke="#2b3b49" stroke-width="1"/>
+    <text x="16" y="24" fill="#e7eef2" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" font-weight="700">建议 View Layer / 合成顺序</text>
+    <text x="24" y="52" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">1. 天空与远景</text>
+    <text x="180" y="52" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">2. 远景城市 / 公园 / B1 微光</text>
+    <text x="450" y="52" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">3. 雾与体积光</text>
+    <text x="620" y="52" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">4. 中景街区 / 基地</text>
+    <text x="820" y="52" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">5. 前景观察室</text>
+    <text x="24" y="78" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">6. 实用光源辉光（独立 Emission）</text>
+    <text x="330" y="78" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">7. 调色 / 暗角</text>
+    <text x="520" y="78" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">8. 细颗粒 / 抖动（防天空条带）</text>
+    <text x="24" y="112" fill="#59d8c8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" font-weight="700">禁止</text>
+    <text x="80" y="112" fill="#ff8d6b" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">把 UI 文字、按钮、标题、语言文案烘焙进任何层；标志牌只允许抽象色块/几何符号。</text>
+    <text x="24" y="136" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">母版 5120×2160；16:9 取中央 3840×2160；16:10 取中央 3456×2160；21:9 用满。</text>
+  </g>
+
+  <!-- integration detail -->
+  <g transform="translate(40,450)">
+    <rect x="0" y="0" width="540" height="200" fill="#0f171d" stroke="#2b3b49" stroke-width="1"/>
+    <text x="16" y="24" fill="#e7eef2" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" font-weight="700">Godot 节点</text>
+    <text x="24" y="52" fill="#8d9caa" font-family="Consolas, monospace" font-size="10">MainMenu (Control)</text>
+    <text x="44" y="72" fill="#8d9caa" font-family="Consolas, monospace" font-size="10">├─ MenuBackground (TextureRect)</text>
+    <text x="64" y="92" fill="#8d9caa" font-family="Consolas, monospace" font-size="10">expand_mode = IGNORE_SIZE</text>
+    <text x="64" y="110" fill="#8d9caa" font-family="Consolas, monospace" font-size="10">stretch_mode = KEEP_ASPECT_COVERED</text>
+    <text x="64" y="128" fill="#8d9caa" font-family="Consolas, monospace" font-size="10">mouse_filter = IGNORE</text>
+    <text x="44" y="148" fill="#8d9caa" font-family="Consolas, monospace" font-size="10">├─ Scrim (ColorRect/TextureRect)</text>
+    <text x="44" y="168" fill="#8d9caa" font-family="Consolas, monospace" font-size="10">├─ MenuContent (Control)</text>
+    <text x="44" y="188" fill="#8d9caa" font-family="Consolas, monospace" font-size="10">└─ Overlays (Control)</text>
+  </g>
+  <g transform="translate(620,450)">
+    <rect x="0" y="0" width="540" height="200" fill="#0f171d" stroke="#2b3b49" stroke-width="1"/>
+    <text x="16" y="24" fill="#e7eef2" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" font-weight="700">运行策略</text>
+    <text x="24" y="52" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">默认静态图；不做逐帧视频，避免码率与文字烤入。</text>
+    <text x="24" y="76" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">缺失/低显存：回退到现有 MenuBackdrop 或 2560×1080。</text>
+    <text x="24" y="100" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">可选：引擎侧落灰粒子覆盖在背景上、UI 之下；</text>
+    <text x="24" y="120" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">提供“减少动态”开关。</text>
+    <text x="24" y="148" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">菜单/大厅显示；军械库加暗遮罩；进入游戏隐藏。</text>
+    <text x="24" y="172" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">背景不接收焦点、不拦截鼠标。</text>
+  </g>
+</svg>

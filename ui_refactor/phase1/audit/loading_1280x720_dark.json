@@ -1,0 +1,2105 @@
+{
+  "background": "dark",
+  "clipped_labels": [],
+  "content_overflows": [],
+  "controls": [
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit",
+      "rect": [
+        0.0,
+        0.0,
+        1280.0,
+        720.0
+      ],
+      "type": "Control"
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@Control@4",
+      "rect": [
+        0.0,
+        0.0,
+        1280.0,
+        720.0
+      ],
+      "type": "Control"
+    },
+    {
+      "min": [
+        142.0,
+        243.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5",
+      "rect": [
+        22.0,
+        18.0,
+        278.0,
+        243.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "min": [
+        118.0,
+        225.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6",
+      "rect": [
+        34.0,
+        27.0,
+        254.0,
+        225.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "min": [
+        69.0,
+        23.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@HBoxContainer@7",
+      "rect": [
+        34.0,
+        27.0,
+        254.0,
+        23.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 17,
+      "lines": 1,
+      "min": [
+        34.0,
+        23.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@HBoxContainer@7/@Label@8",
+      "rect": [
+        34.0,
+        27.0,
+        34.0,
+        23.0
+      ],
+      "text": "小队",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@HBoxContainer@7/@Control@9",
+      "rect": [
+        72.0,
+        27.0,
+        185.0,
+        23.0
+      ],
+      "type": "Control"
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        27.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@HBoxContainer@7/@Label@10",
+      "rect": [
+        261.0,
+        30.0,
+        27.0,
+        17.0
+      ],
+      "text": "4 / 4",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        118.0,
+        197.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11",
+      "rect": [
+        34.0,
+        55.0,
+        254.0,
+        197.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "min": [
+        118.0,
+        47.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@180",
+      "rect": [
+        34.0,
+        55.0,
+        254.0,
+        47.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        4.0,
+        22.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@180/@ColorRect@181",
+      "rect": [
+        34.0,
+        55.0,
+        4.0,
+        47.0
+      ],
+      "type": "ColorRect"
+    },
+    {
+      "min": [
+        65.0,
+        47.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@180/@VBoxContainer@182",
+      "rect": [
+        45.0,
+        55.0,
+        201.0,
+        47.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 13,
+      "lines": 1,
+      "min": [
+        65.0,
+        18.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@180/@VBoxContainer@182/@Label@183",
+      "rect": [
+        45.0,
+        55.0,
+        201.0,
+        18.0
+      ],
+      "text": "阿岚（你）",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        36.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@180/@VBoxContainer@182/@ProgressBar@184",
+      "rect": [
+        45.0,
+        74.0,
+        201.0,
+        28.0
+      ],
+      "type": "ProgressBar"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        35.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@180/@Label@185",
+      "rect": [
+        253.0,
+        88.0,
+        35.0,
+        14.0
+      ],
+      "text": "14 击杀",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        83.0,
+        47.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@186",
+      "rect": [
+        34.0,
+        105.0,
+        254.0,
+        47.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        4.0,
+        22.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@186/@ColorRect@187",
+      "rect": [
+        34.0,
+        105.0,
+        4.0,
+        47.0
+      ],
+      "type": "ColorRect"
+    },
+    {
+      "min": [
+        36.0,
+        47.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@186/@VBoxContainer@188",
+      "rect": [
+        45.0,
+        105.0,
+        207.0,
+        47.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 13,
+      "lines": 1,
+      "min": [
+        26.0,
+        18.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@186/@VBoxContainer@188/@Label@189",
+      "rect": [
+        45.0,
+        105.0,
+        207.0,
+        18.0
+      ],
+      "text": "老周",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        36.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@186/@VBoxContainer@188/@ProgressBar@190",
+      "rect": [
+        45.0,
+        124.0,
+        207.0,
+        28.0
+      ],
+      "type": "ProgressBar"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        29.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@186/@Label@191",
+      "rect": [
+        259.0,
+        138.0,
+        29.0,
+        14.0
+      ],
+      "text": "9 击杀",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        74.0,
+        47.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@192",
+      "rect": [
+        34.0,
+        155.0,
+        254.0,
+        47.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        4.0,
+        22.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@192/@ColorRect@193",
+      "rect": [
+        34.0,
+        155.0,
+        4.0,
+        47.0
+      ],
+      "type": "ColorRect"
+    },
+    {
+      "min": [
+        36.0,
+        47.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@192/@VBoxContainer@194",
+      "rect": [
+        45.0,
+        155.0,
+        216.0,
+        47.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 13,
+      "lines": 1,
+      "min": [
+        26.0,
+        18.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@192/@VBoxContainer@194/@Label@195",
+      "rect": [
+        45.0,
+        155.0,
+        216.0,
+        18.0
+      ],
+      "text": "小满",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        36.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@192/@VBoxContainer@194/@ProgressBar@196",
+      "rect": [
+        45.0,
+        174.0,
+        216.0,
+        28.0
+      ],
+      "type": "ProgressBar"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        20.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@192/@Label@197",
+      "rect": [
+        268.0,
+        188.0,
+        20.0,
+        14.0
+      ],
+      "text": "阵亡",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        83.0,
+        47.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@198",
+      "rect": [
+        34.0,
+        205.0,
+        254.0,
+        47.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        4.0,
+        22.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@198/@ColorRect@199",
+      "rect": [
+        34.0,
+        205.0,
+        4.0,
+        47.0
+      ],
+      "type": "ColorRect"
+    },
+    {
+      "min": [
+        36.0,
+        47.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@198/@VBoxContainer@200",
+      "rect": [
+        45.0,
+        205.0,
+        207.0,
+        47.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 13,
+      "lines": 1,
+      "min": [
+        22.0,
+        18.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@198/@VBoxContainer@200/@Label@201",
+      "rect": [
+        45.0,
+        205.0,
+        207.0,
+        18.0
+      ],
+      "text": "K-7",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        36.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@198/@VBoxContainer@200/@ProgressBar@202",
+      "rect": [
+        45.0,
+        224.0,
+        207.0,
+        28.0
+      ],
+      "type": "ProgressBar"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        29.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5/@VBoxContainer@6/@VBoxContainer@11/@HBoxContainer@198/@Label@203",
+      "rect": [
+        259.0,
+        238.0,
+        29.0,
+        14.0
+      ],
+      "text": "8 击杀",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        192.0,
+        122.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12",
+      "rect": [
+        22.0,
+        190.0,
+        278.0,
+        152.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "min": [
+        168.0,
+        104.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13",
+      "rect": [
+        34.0,
+        199.0,
+        254.0,
+        134.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "min": [
+        130.0,
+        19.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13/@HBoxContainer@14",
+      "rect": [
+        34.0,
+        199.0,
+        254.0,
+        19.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 14,
+      "lines": 1,
+      "min": [
+        56.0,
+        19.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13/@HBoxContainer@14/@Label@15",
+      "rect": [
+        34.0,
+        199.0,
+        56.0,
+        19.0
+      ],
+      "text": "行动目标",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13/@HBoxContainer@14/@Control@16",
+      "rect": [
+        94.0,
+        199.0,
+        124.0,
+        19.0
+      ],
+      "type": "Control"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        66.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13/@HBoxContainer@14/@Label@17",
+      "rect": [
+        222.0,
+        201.0,
+        66.0,
+        14.0
+      ],
+      "text": "核心储藏层 B1",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 20,
+      "lines": 1,
+      "min": [
+        136.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13/@Label@18",
+      "rect": [
+        34.0,
+        221.0,
+        254.0,
+        28.0
+      ],
+      "text": "核心回收  2 / 3",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        10.0,
+        4.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13/@HBoxContainer@19",
+      "rect": [
+        34.0,
+        252.0,
+        254.0,
+        4.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        0.0,
+        4.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13/@HBoxContainer@19/@ColorRect@20",
+      "rect": [
+        34.0,
+        252.0,
+        81.0,
+        4.0
+      ],
+      "type": "ColorRect"
+    },
+    {
+      "min": [
+        0.0,
+        4.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13/@HBoxContainer@19/@ColorRect@21",
+      "rect": [
+        120.0,
+        252.0,
+        81.0,
+        4.0
+      ],
+      "type": "ColorRect"
+    },
+    {
+      "min": [
+        0.0,
+        4.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13/@HBoxContainer@19/@ColorRect@22",
+      "rect": [
+        206.0,
+        252.0,
+        82.0,
+        4.0
+      ],
+      "type": "ColorRect"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        1.0,
+        27.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13/@Label@23",
+      "rect": [
+        34.0,
+        259.0,
+        254.0,
+        27.0
+      ],
+      "text": "回收核心，然后从绿色出口返回地表",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        168.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13/@HBoxContainer@24",
+      "rect": [
+        34.0,
+        289.0,
+        254.0,
+        14.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        47.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13/@HBoxContainer@24/@Label@25",
+      "rect": [
+        34.0,
+        289.0,
+        47.0,
+        14.0
+      ],
+      "text": "抽卡券 ×1",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13/@HBoxContainer@24/@Control@26",
+      "rect": [
+        89.0,
+        289.0,
+        86.0,
+        14.0
+      ],
+      "type": "Control"
+    },
+    {
+      "font_size": 9,
+      "lines": 1,
+      "min": [
+        105.0,
+        13.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12/@VBoxContainer@13/@HBoxContainer@24/@Label@27",
+      "rect": [
+        183.0,
+        289.0,
+        105.0,
+        13.0
+      ],
+      "text": "强化 1/2/1/0/2/1 · 战力 7",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        321.0,
+        83.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28",
+      "rect": [
+        462.0,
+        18.0,
+        356.0,
+        94.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "min": [
+        297.0,
+        65.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28/@VBoxContainer@29",
+      "rect": [
+        474.0,
+        27.0,
+        332.0,
+        76.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "min": [
+        297.0,
+        65.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28/@VBoxContainer@29/@HBoxContainer@30",
+      "rect": [
+        474.0,
+        27.0,
+        332.0,
+        65.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        178.0,
+        65.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28/@VBoxContainer@29/@HBoxContainer@30/@VBoxContainer@31",
+      "rect": [
+        474.0,
+        27.0,
+        213.0,
+        65.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        40.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28/@VBoxContainer@29/@HBoxContainer@30/@VBoxContainer@31/@Label@32",
+      "rect": [
+        474.0,
+        27.0,
+        213.0,
+        14.0
+      ],
+      "text": "街区压力",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 25,
+      "lines": 1,
+      "min": [
+        79.0,
+        34.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28/@VBoxContainer@29/@HBoxContainer@30/@VBoxContainer@31/@Label@33",
+      "rect": [
+        474.0,
+        41.0,
+        213.0,
+        34.0
+      ],
+      "text": "第 4 波",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        178.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28/@VBoxContainer@29/@HBoxContainer@30/@VBoxContainer@31/@Label@34",
+      "rect": [
+        474.0,
+        75.0,
+        213.0,
+        17.0
+      ],
+      "text": "场上 18  ·  剩余 42  ·  威胁 ×1.32",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        1.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28/@VBoxContainer@29/@HBoxContainer@30/@ColorRect@35",
+      "rect": [
+        697.0,
+        27.0,
+        1.0,
+        65.0
+      ],
+      "type": "ColorRect"
+    },
+    {
+      "min": [
+        98.0,
+        63.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28/@VBoxContainer@29/@HBoxContainer@30/@VBoxContainer@36",
+      "rect": [
+        708.0,
+        27.0,
+        98.0,
+        65.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        40.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28/@VBoxContainer@29/@HBoxContainer@30/@VBoxContainer@36/@Label@37",
+      "rect": [
+        708.0,
+        27.0,
+        98.0,
+        14.0
+      ],
+      "text": "队内得分",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 24,
+      "lines": 1,
+      "min": [
+        62.0,
+        33.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28/@VBoxContainer@29/@HBoxContainer@30/@VBoxContainer@36/@Label@38",
+      "rect": [
+        708.0,
+        42.0,
+        98.0,
+        33.0
+      ],
+      "text": "1,280",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        40.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28/@VBoxContainer@29/@HBoxContainer@30/@VBoxContainer@36/@Label@39",
+      "rect": [
+        708.0,
+        76.0,
+        98.0,
+        14.0
+      ],
+      "text": "全队共享",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        212.0,
+        249.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40",
+      "rect": [
+        1042.0,
+        18.0,
+        216.0,
+        262.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "min": [
+        188.0,
+        231.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40/@VBoxContainer@41",
+      "rect": [
+        1054.0,
+        27.0,
+        192.0,
+        244.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "min": [
+        94.0,
+        19.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40/@VBoxContainer@41/@HBoxContainer@42",
+      "rect": [
+        1054.0,
+        27.0,
+        192.0,
+        19.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 14,
+      "lines": 1,
+      "min": [
+        56.0,
+        19.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40/@VBoxContainer@41/@HBoxContainer@42/@Label@43",
+      "rect": [
+        1054.0,
+        27.0,
+        56.0,
+        19.0
+      ],
+      "text": "战术地图",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40/@VBoxContainer@41/@HBoxContainer@42/@Control@44",
+      "rect": [
+        1114.0,
+        27.0,
+        98.0,
+        19.0
+      ],
+      "type": "Control"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        30.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40/@VBoxContainer@41/@HBoxContainer@42/@Label@45",
+      "rect": [
+        1216.0,
+        29.0,
+        30.0,
+        14.0
+      ],
+      "text": "● LIVE",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        188.0,
+        188.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40/@VBoxContainer@41/@Control@46",
+      "rect": [
+        1054.0,
+        51.0,
+        192.0,
+        188.0
+      ],
+      "type": "Control"
+    },
+    {
+      "min": [
+        104.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40/@VBoxContainer@41/@HBoxContainer@47",
+      "rect": [
+        1054.0,
+        244.0,
+        192.0,
+        14.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        53.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40/@VBoxContainer@41/@HBoxContainer@47/@Label@48",
+      "rect": [
+        1054.0,
+        244.0,
+        53.0,
+        14.0
+      ],
+      "text": "地图 #4242",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40/@VBoxContainer@41/@HBoxContainer@47/@Control@49",
+      "rect": [
+        1111.0,
+        244.0,
+        88.0,
+        14.0
+      ],
+      "type": "Control"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        43.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40/@VBoxContainer@41/@HBoxContainer@47/@Label@50",
+      "rect": [
+        1203.0,
+        244.0,
+        43.0,
+        14.0
+      ],
+      "text": "5×5 街区",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        172.0,
+        121.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51",
+      "rect": [
+        22.0,
+        604.0,
+        312.0,
+        121.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "min": [
+        148.0,
+        103.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51/@VBoxContainer@52",
+      "rect": [
+        34.0,
+        613.0,
+        288.0,
+        103.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "min": [
+        74.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51/@VBoxContainer@52/@HBoxContainer@53",
+      "rect": [
+        34.0,
+        613.0,
+        288.0,
+        15.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        44.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51/@VBoxContainer@52/@HBoxContainer@53/@Label@54",
+      "rect": [
+        34.0,
+        613.0,
+        44.0,
+        15.0
+      ],
+      "text": "生命体征",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51/@VBoxContainer@52/@HBoxContainer@53/@Control@55",
+      "rect": [
+        82.0,
+        613.0,
+        214.0,
+        15.0
+      ],
+      "type": "Control"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        22.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51/@VBoxContainer@52/@HBoxContainer@53/@Label@56",
+      "rect": [
+        300.0,
+        613.0,
+        22.0,
+        15.0
+      ],
+      "text": "危险",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        148.0,
+        37.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51/@VBoxContainer@52/@HBoxContainer@57",
+      "rect": [
+        34.0,
+        631.0,
+        288.0,
+        37.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 27,
+      "lines": 1,
+      "min": [
+        32.0,
+        37.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51/@VBoxContainer@52/@HBoxContainer@57/@Label@58",
+      "rect": [
+        34.0,
+        631.0,
+        32.0,
+        37.0
+      ],
+      "text": "18",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        30.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51/@VBoxContainer@52/@HBoxContainer@57/@Label@59",
+      "rect": [
+        72.0,
+        651.0,
+        30.0,
+        17.0
+      ],
+      "text": "/ 100",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51/@VBoxContainer@52/@HBoxContainer@57/@Control@60",
+      "rect": [
+        108.0,
+        631.0,
+        140.0,
+        37.0
+      ],
+      "type": "Control"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        68.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51/@VBoxContainer@52/@HBoxContainer@57/@Label@61",
+      "rect": [
+        254.0,
+        654.0,
+        68.0,
+        14.0
+      ],
+      "text": "房主 · 1/4 玩家",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        36.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51/@VBoxContainer@52/@ProgressBar@62",
+      "rect": [
+        34.0,
+        671.0,
+        288.0,
+        28.0
+      ],
+      "type": "ProgressBar"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        112.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51/@VBoxContainer@52/@Label@63",
+      "rect": [
+        34.0,
+        702.0,
+        288.0,
+        14.0
+      ],
+      "text": "脱离战斗 6 秒后缓慢恢复",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        144.0,
+        91.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64",
+      "rect": [
+        990.0,
+        604.0,
+        268.0,
+        96.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "min": [
+        120.0,
+        73.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64/@VBoxContainer@65",
+      "rect": [
+        1002.0,
+        613.0,
+        244.0,
+        78.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "min": [
+        100.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64/@VBoxContainer@65/@HBoxContainer@66",
+      "rect": [
+        1002.0,
+        613.0,
+        244.0,
+        15.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        62.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64/@VBoxContainer@65/@HBoxContainer@66/@Label@67",
+      "rect": [
+        1002.0,
+        613.0,
+        62.0,
+        15.0
+      ],
+      "text": "VX-9 冲锋枪",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64/@VBoxContainer@65/@HBoxContainer@66/@Control@68",
+      "rect": [
+        1068.0,
+        613.0,
+        144.0,
+        15.0
+      ],
+      "type": "Control"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        30.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64/@VBoxContainer@65/@HBoxContainer@66/@Label@69",
+      "rect": [
+        1216.0,
+        613.0,
+        30.0,
+        14.0
+      ],
+      "text": "全自动",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        79.0,
+        40.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64/@VBoxContainer@65/@HBoxContainer@70",
+      "rect": [
+        1002.0,
+        630.0,
+        244.0,
+        40.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 30,
+      "lines": 1,
+      "min": [
+        18.0,
+        40.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64/@VBoxContainer@65/@HBoxContainer@70/@Label@71",
+      "rect": [
+        1002.0,
+        630.0,
+        18.0,
+        40.0
+      ],
+      "text": "0",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 18,
+      "lines": 1,
+      "min": [
+        8.0,
+        25.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64/@VBoxContainer@65/@HBoxContainer@70/@Label@72",
+      "rect": [
+        1025.0,
+        645.0,
+        8.0,
+        25.0
+      ],
+      "text": "/",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 18,
+      "lines": 1,
+      "min": [
+        11.0,
+        25.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64/@VBoxContainer@65/@HBoxContainer@70/@Label@73",
+      "rect": [
+        1038.0,
+        645.0,
+        11.0,
+        25.0
+      ],
+      "text": "0",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64/@VBoxContainer@65/@HBoxContainer@70/@Control@74",
+      "rect": [
+        1054.0,
+        630.0,
+        165.0,
+        40.0
+      ],
+      "type": "Control"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        22.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64/@VBoxContainer@65/@HBoxContainer@70/@Label@75",
+      "rect": [
+        1224.0,
+        655.0,
+        22.0,
+        15.0
+      ],
+      "text": "空仓",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        120.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64/@VBoxContainer@65/@Label@77",
+      "rect": [
+        1002.0,
+        672.0,
+        244.0,
+        14.0
+      ],
+      "text": "弹药仅能在基地补给台补满",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        125.0,
+        83.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78",
+      "rect": [
+        990.0,
+        498.0,
+        268.0,
+        96.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "min": [
+        101.0,
+        65.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79",
+      "rect": [
+        1002.0,
+        507.0,
+        244.0,
+        78.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "min": [
+        101.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79/@HBoxContainer@80",
+      "rect": [
+        1002.0,
+        507.0,
+        244.0,
+        15.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        33.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79/@HBoxContainer@80/@Label@81",
+      "rect": [
+        1002.0,
+        507.0,
+        33.0,
+        15.0
+      ],
+      "text": "装备栏",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79/@HBoxContainer@80/@Control@82",
+      "rect": [
+        1039.0,
+        507.0,
+        143.0,
+        15.0
+      ],
+      "type": "Control"
+    },
+    {
+      "font_size": 9,
+      "lines": 1,
+      "min": [
+        60.0,
+        13.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79/@HBoxContainer@80/@Label@83",
+      "rect": [
+        1186.0,
+        508.0,
+        60.0,
+        13.0
+      ],
+      "text": "1-2 / 滚轮切换",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        68.0,
+        46.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79/@HBoxContainer@84",
+      "rect": [
+        1002.0,
+        526.0,
+        244.0,
+        46.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        34.0,
+        34.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79/@HBoxContainer@84/@PanelContainer@204",
+      "rect": [
+        1002.0,
+        526.0,
+        120.0,
+        46.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "min": [
+        26.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79/@HBoxContainer@84/@PanelContainer@204/@VBoxContainer@205",
+      "rect": [
+        1006.0,
+        529.0,
+        112.0,
+        40.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 9,
+      "lines": 1,
+      "min": [
+        6.0,
+        13.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79/@HBoxContainer@84/@PanelContainer@204/@VBoxContainer@205/@Label@206",
+      "rect": [
+        1006.0,
+        529.0,
+        112.0,
+        13.0
+      ],
+      "text": "1",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        26.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79/@HBoxContainer@84/@PanelContainer@204/@VBoxContainer@205/@Label@207",
+      "rect": [
+        1006.0,
+        542.0,
+        112.0,
+        15.0
+      ],
+      "text": "VX-9",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        30.0,
+        46.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79/@HBoxContainer@84/@PanelContainer@208",
+      "rect": [
+        1126.0,
+        526.0,
+        120.0,
+        46.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "min": [
+        22.0,
+        40.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79/@HBoxContainer@84/@PanelContainer@208/@VBoxContainer@209",
+      "rect": [
+        1130.0,
+        529.0,
+        112.0,
+        40.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 9,
+      "lines": 1,
+      "min": [
+        6.0,
+        13.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79/@HBoxContainer@84/@PanelContainer@208/@VBoxContainer@209/@Label@210",
+      "rect": [
+        1130.0,
+        529.0,
+        112.0,
+        13.0
+      ],
+      "text": "2",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        22.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79/@HBoxContainer@84/@PanelContainer@208/@VBoxContainer@209/@Label@211",
+      "rect": [
+        1130.0,
+        542.0,
+        112.0,
+        15.0
+      ],
+      "text": "砍刀",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 8,
+      "lines": 1,
+      "min": [
+        16.0,
+        12.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78/@VBoxContainer@79/@HBoxContainer@84/@PanelContainer@208/@VBoxContainer@209/@Label@212",
+      "rect": [
+        1130.0,
+        557.0,
+        112.0,
+        12.0
+      ],
+      "text": "近战",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        56.0,
+        56.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@Control@93",
+      "rect": [
+        612.0,
+        332.0,
+        56.0,
+        56.0
+      ],
+      "type": "Control"
+    },
+    {
+      "min": [
+        170.0,
+        32.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@94",
+      "rect": [
+        420.0,
+        644.0,
+        440.0,
+        38.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "font_size": 13,
+      "lines": 1,
+      "min": [
+        134.0,
+        18.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@94/@Label@95",
+      "rect": [
+        438.0,
+        654.0,
+        404.0,
+        18.0
+      ],
+      "text": "E   交付核心 · 立即抽卡",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@VBoxContainer@96",
+      "rect": [
+        924.0,
+        292.0,
+        334.0,
+        170.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "min": [
+        154.0,
+        61.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@VBoxContainer@97",
+      "rect": [
+        260.0,
+        128.0,
+        760.0,
+        88.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 32,
+      "lines": 1,
+      "min": [
+        101.0,
+        43.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@VBoxContainer@97/@Label@98",
+      "rect": [
+        260.0,
+        141.0,
+        760.0,
+        43.0
+      ],
+      "text": "第 4 波",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 13,
+      "lines": 1,
+      "min": [
+        154.0,
+        18.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@VBoxContainer@97/@Label@99",
+      "rect": [
+        260.0,
+        184.0,
+        760.0,
+        18.0
+      ],
+      "text": "感染者正在逼近 · 守住街区",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        401.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@Label@100",
+      "rect": [
+        310.0,
+        696.0,
+        660.0,
+        18.0
+      ],
+      "text": "TAB 情报  ·  B 背包  ·  1-2 / 滚轮 切换  ·  左键攻击  ·  R 换弹  ·  E 互动  ·  ESC 菜单",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@Control@131",
+      "rect": [
+        0.0,
+        0.0,
+        1280.0,
+        720.0
+      ],
+      "type": "Control"
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@Control@131/@ColorRect@130",
+      "rect": [
+        0.0,
+        0.0,
+        1280.0,
+        720.0
+      ],
+      "type": "ColorRect"
+    },
+    {
+      "min": [
+        360.0,
+        159.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@Control@131/@CenterContainer@132",
+      "rect": [
+        0.0,
+        0.0,
+        1280.0,
+        720.0
+      ],
+      "type": "CenterContainer"
+    },
+    {
+      "min": [
+        360.0,
+        159.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@Control@131/@CenterContainer@132/@VBoxContainer@133",
+      "rect": [
+        460.0,
+        280.0,
+        360.0,
+        159.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        111.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@Control@131/@CenterContainer@132/@VBoxContainer@133/@Label@134",
+      "rect": [
+        460.0,
+        280.0,
+        360.0,
+        15.0
+      ],
+      "text": "DEAD CITY · 部署协议",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 36,
+      "lines": 1,
+      "min": [
+        216.0,
+        49.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@Control@131/@CenterContainer@132/@VBoxContainer@133/@Label@135",
+      "rect": [
+        460.0,
+        304.0,
+        360.0,
+        49.0
+      ],
+      "text": "正在生成死城",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        300.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@Control@131/@CenterContainer@132/@VBoxContainer@133/@ProgressBar@136",
+      "rect": [
+        460.0,
+        362.0,
+        360.0,
+        28.0
+      ],
+      "type": "ProgressBar"
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        122.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@Control@131/@CenterContainer@132/@VBoxContainer@133/@Label@137",
+      "rect": [
+        460.0,
+        399.0,
+        360.0,
+        17.0
+      ],
+      "text": "正在生成街区 #4242…",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        147.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@Control@131/@CenterContainer@132/@VBoxContainer@133/@Label@138",
+      "rect": [
+        460.0,
+        425.0,
+        360.0,
+        14.0
+      ],
+      "text": "程序化城市 · 低多边形 · 联机合作",
+      "type": "Label",
+      "visible_lines": 1
+    }
+  ],
+  "focus_none_buttons": [],
+  "font_sizes": {
+    "10": 17,
+    "11": 10,
+    "12": 4,
+    "13": 6,
+    "14": 2,
+    "17": 1,
+    "18": 2,
+    "20": 1,
+    "24": 1,
+    "25": 1,
+    "27": 1,
+    "30": 1,
+    "32": 1,
+    "36": 1,
+    "8": 1,
+    "9": 4
+  },
+  "invisible_focus_buttons": [],
+  "logical_size": [
+    1280.0,
+    720.0
+  ],
+  "out_of_viewport": [
+    {
+      "min": [
+        172.0,
+        121.0
+      ],
+      "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51",
+      "rect": [
+        22.0,
+        604.0,
+        312.0,
+        121.0
+      ],
+      "type": "PanelContainer"
+    }
+  ],
+  "panel_content_overflow": [],
+  "render": "SubViewport offscreen; production UI nodes, injected state",
+  "screen": "loading",
+  "size": [
+    1280,
+    720
+  ],
+  "ui_scale": 1.0
+}

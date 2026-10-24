@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="880" viewBox="0 0 1400 880">
+  <rect width="1400" height="880" fill="#0b1016"/>
+  <text x="48" y="44" fill="#e7eef2" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="23" font-weight="700">图 6 · 概念图拆解：哪些能用，哪些必须重做</text>
+  <text x="48" y="70" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12">概念图为 1672×941（约 16:9）AI 合成参考，仅用于氛围/构图讨论；不是场景资产，也不是验收证据。</text>
+
+  <!-- 16:9 frame -->
+  <rect x="60" y="100" width="960" height="540" fill="#0e151b" stroke="#3e5963" stroke-width="2"/>
+  <!-- zones -->
+  <rect x="60" y="100" width="345.6" height="540" fill="#59d8c8" opacity="0.055"/>
+  <rect x="60" y="100" width="345.6" height="540" fill="none" stroke="#59d8c8" stroke-width="1" stroke-dasharray="6 5" opacity="0.6"/>
+  <rect x="789.6" y="100" width="230.4" height="540" fill="#ffcb66" opacity="0.045"/>
+  <rect x="789.6" y="100" width="230.4" height="540" fill="none" stroke="#ffcb66" stroke-width="1" stroke-dasharray="6 5" opacity="0.5"/>
+  <rect x="60" y="586" width="960" height="54" fill="#b997ff" opacity="0.05"/>
+  <rect x="405.6" y="143.2" width="384" height="442.8" fill="none" stroke="#e7eef2" stroke-width="1" opacity="0.55"/>
+  <text x="420" y="160" fill="#e7eef2" font-family="Segoe UI, sans-serif" font-size="9" opacity="0.8">HERO 36–76% × 8–90%</text>
+
+  <!-- title / menu zones -->
+  <rect x="108" y="127" width="192" height="82" fill="none" stroke="#ff5b5b" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="114" y="122" fill="#ff5b5b" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">标题 5–25%</text>
+  <rect x="108" y="290" width="252" height="310" fill="none" stroke="#ff5b5b" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="114" y="285" fill="#ff5b5b" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">菜单 5–30%</text>
+  <rect x="108" y="602" width="252" height="22" fill="none" stroke="#ff5b5b" stroke-width="1" stroke-dasharray="3 4" opacity="0.85"/>
+  <text x="114" y="618" fill="#ff5b5b" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="8">页脚</text>
+
+  <!-- window and bright core -->
+  <rect x="376" y="112" width="508" height="470" fill="none" stroke="#ffcb66" stroke-width="1" stroke-dasharray="2 5" opacity="0.8"/>
+  <text x="382" y="107" fill="#ffcb66" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">窗 / 城市 33–86%</text>
+  <ellipse cx="635" cy="300" rx="118" ry="92" fill="#fff4d9" opacity="0.10"/>
+  <text x="635" y="304" fill="#fff4d9" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9" opacity="0.9">最亮区</text>
+
+  <!-- markers -->
+  <g font-family="Segoe UI, sans-serif" font-size="10" font-weight="700" text-anchor="middle">
+    <circle cx="150" cy="150" r="9" fill="#ff5b5b"/><text x="150" y="153.5" fill="#0b1016">1</text>
+    <circle cx="430" cy="196" r="9" fill="#ff8d6b"/><text x="430" y="199.5" fill="#0b1016">2</text>
+    <circle cx="700" cy="470" r="9" fill="#ffcb66"/><text x="700" y="473.5" fill="#0b1016">3</text>
+    <circle cx="635" cy="264" r="9" fill="#e7eef2"/><text x="635" y="267.5" fill="#0b1016">4</text>
+    <circle cx="972" cy="132" r="9" fill="#b997ff"/><text x="972" y="135.5" fill="#0b1016">5</text>
+    <circle cx="150" cy="613" r="9" fill="#ff5b5b"/><text x="150" y="616.5" fill="#0b1016">6</text>
+  </g>
+
+  <!-- callout panel -->
+  <rect x="1044" y="100" width="308" height="540" fill="#0f171d" stroke="#2b3b49" stroke-width="1"/>
+  <text x="1060" y="124" fill="#e7eef2" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" font-weight="700">六条判定</text>
+
+  <g font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">
+    <text x="1060" y="152" fill="#ff5b5b" font-weight="700">1 · 文字是烘焙的</text>
+    <text x="1060" y="168" fill="#8d9caa">标题、菜单、副标题、页脚都在图里。</text>
+    <text x="1060" y="182" fill="#8d9caa">最终必须清空；文字只由 UI 层渲染。</text>
+
+    <text x="1060" y="212" fill="#ff8d6b" font-weight="700">2 · 构图与 TLOU 过近</text>
+    <text x="1060" y="228" fill="#8d9caa">大工业窗 + 藤蔓 + 桌面电台的正面</text>
+    <text x="1060" y="242" fill="#8d9caa">构图不得照搬；需换窗型、功能、机位。</text>
+
+    <text x="1060" y="272" fill="#ffcb66" font-weight="700">3 · 高架 / 列车无工程依据</text>
+    <text x="1060" y="288" fill="#8d9caa">E-07、高架、列车在现工程均 NOT FOUND。</text>
+    <text x="1060" y="302" fill="#8d9caa">采用即新增菜单专用设定，需叙事批准。</text>
+
+    <text x="1060" y="332" fill="#e7eef2" font-weight="700">4 · 亮部不承载文字</text>
+    <text x="1060" y="348" fill="#8d9caa">窗中心最亮；常驻文字必须留在左侧暗部，</text>
+    <text x="1060" y="362" fill="#8d9caa">亮部只放视觉焦点。</text>
+
+    <text x="1060" y="392" fill="#b997ff" font-weight="700">5 · 概念只有 16:9</text>
+    <text x="1060" y="408" fill="#8d9caa">21:9 母版左右需补翼区；16:10 取中央；</text>
+    <text x="1060" y="422" fill="#8d9caa">不能把 16:9 拉伸成 21:9。</text>
+
+    <text x="1060" y="452" fill="#ff5b5b" font-weight="700">6 · 两处对比不足（像素估计）</text>
+    <text x="1060" y="468" fill="#8d9caa">副标题约 4.2:1；页脚约 1.4:1。</text>
+    <text x="1060" y="482" fill="#8d9caa">正文目标 ≥4.5:1，页脚信息同样 ≥4.5:1。</text>
+
+    <text x="1060" y="512" fill="#59d8c8" font-weight="700">结论</text>
+    <text x="1060" y="528" fill="#8d9caa">保留“左暗右亮 / 窗作视觉框 / 低信息</text>
+    <text x="1060" y="542" fill="#8d9caa">密度 / 琥珀选择标记”；重做室内与</text>
+    <text x="1060" y="556" fill="#8d9caa">城市层，UI 独立实现。</text>
+  </g>
+
+  <!-- legend -->
+  <g transform="translate(60,664)" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8d9caa">
+    <rect x="0" y="-9" width="14" height="10" fill="#59d8c8" opacity="0.2" stroke="#59d8c8" stroke-width="1"/>
+    <text x="20" y="0">UI 安全区（左侧文字区）</text>
+    <rect x="196" y="-9" width="14" height="10" fill="#ffcb66" opacity="0.18" stroke="#ffcb66" stroke-width="1"/>
+    <text x="216" y="0">右侧信息区 / 窗与远景</text>
+    <line x1="392" y1="-4" x2="412" y2="-4" stroke="#ff5b5b" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <text x="418" y="0">必须修改或移除</text>
+    <line x1="560" y1="-4" x2="580" y2="-4" stroke="#e7eef2" stroke-width="1" opacity="0.6"/>
+    <text x="586" y="0">HERO 构图核心</text>
+  </g>
+
+  <!-- bottom table -->
+  <g font-family="Microsoft YaHei, Segoe UI, sans-serif">
+    <text x="60" y="704" fill="#83d66f" font-size="12" font-weight="700">可保留</text>
+    <text x="60" y="726" fill="#8d9caa" font-size="10">左暗右亮的分区；窗作为视觉框；</text>
+    <text x="60" y="744" fill="#8d9caa" font-size="10">低信息密度；琥珀色选择标记；</text>
+    <text x="60" y="762" fill="#8d9caa" font-size="10">“继续行动”承载上次进度。</text>
+
+    <text x="470" y="704" fill="#ffcb66" font-size="12" font-weight="700">必须修改</text>
+    <text x="470" y="726" fill="#8d9caa" font-size="10">移除所有烘焙文字；提升副标题/页脚对比；</text>
+    <text x="470" y="744" fill="#8d9caa" font-size="10">选择态加形状线索；继续行动按存档启用；</text>
+    <text x="470" y="762" fill="#8d9caa" font-size="10">补齐手柄焦点与 16:10 / 21:9 安全区。</text>
+
+    <text x="880" y="704" fill="#ff5b5b" font-size="12" font-weight="700">禁止照搬</text>
+    <text x="880" y="726" fill="#8d9caa" font-size="10">TLOU 的窗型、室内布置与具体构图；</text>
+    <text x="880" y="744" fill="#8d9caa" font-size="10">把 AI 概念图当完成证据或直接做背景；</text>
+    <text x="880" y="762" fill="#8d9caa" font-size="10">为菜单视觉改写第一章任务逻辑。</text>
+
+    <text x="60" y="800" fill="#c8d3d8" font-size="10">原型字号（1280×720 逻辑）：标题 64 / 主项 25 / 普通 21 / 次项 18 / 说明 11 / 页脚 10。</text>
+    <text x="60" y="820" fill="#5f7078" font-size="9">对比值为对概念图像素的估计，不是最终验收；最终以实际渲染、字体与背景测量为准。</text>
+  </g>
+</svg>

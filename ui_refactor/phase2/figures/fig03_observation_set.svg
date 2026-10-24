@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#0b1016"/>
+  <text x="50" y="42" fill="#e7eef2" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="23" font-weight="700">图 3 · 观察室方案 O3：平面与剖面假设</text>
+  <text x="50" y="66" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12">尺寸为 blockout 假设，需在 Blender 中按 1:1 比例复核；不得据此直接进入高模制作。</text>
+
+  <!-- PLAN -->
+  <text x="80" y="104" fill="#59d8c8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" font-weight="700">平面（北向上）</text>
+  <rect x="120" y="150" width="299" height="292.5" fill="#111d24" stroke="#3e5963" stroke-width="1.5"/>
+  <!-- window opening top -->
+  <rect x="155" y="145" width="234" height="10" fill="#59d8c8"/>
+  <text x="272" y="138" fill="#59d8c8" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">窗洞 3.6m（朝北）</text>
+  <!-- desk -->
+  <rect x="160" y="180" width="224" height="34" fill="#2a363c" stroke="#5c4938" stroke-width="1"/>
+  <text x="272" y="202" fill="#c8d3d8" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">工作台（无文字纸张）</text>
+  <!-- camera -->
+  <circle cx="269.5" cy="312.5" r="6" fill="#ffcb66" stroke="#0b1016" stroke-width="2"/>
+  <text x="282" y="316" fill="#ffcb66" font-family="Segoe UI, sans-serif" font-size="10">CAM</text>
+  <line x1="269.5" y1="312.5" x2="269.5" y2="170" stroke="#ffcb66" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- door -->
+  <rect x="115" y="350" width="10" height="52" fill="#8d9caa"/>
+  <text x="100" y="382" fill="#8d9caa" text-anchor="end" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">门</text>
+  <!-- wall -->
+  <rect x="120" y="442.5" width="299" height="22" fill="#39434b" stroke="#5b6a73" stroke-width="1"/>
+  <text x="272" y="458" fill="#c74b45" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">南侧隔离墙（墙顶 5.2m）</text>
+  <!-- dims -->
+  <line x1="120" y1="490" x2="419" y2="490" stroke="#8d9caa" stroke-width="1"/>
+  <line x1="120" y1="486" x2="120" y2="494" stroke="#8d9caa" stroke-width="1"/>
+  <line x1="419" y1="486" x2="419" y2="494" stroke="#8d9caa" stroke-width="1"/>
+  <text x="269" y="508" fill="#8d9caa" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10">4.6m</text>
+  <line x1="440" y1="150" x2="440" y2="442.5" stroke="#8d9caa" stroke-width="1"/>
+  <line x1="436" y1="150" x2="444" y2="150" stroke="#8d9caa" stroke-width="1"/>
+  <line x1="436" y1="442.5" x2="444" y2="442.5" stroke="#8d9caa" stroke-width="1"/>
+  <text x="452" y="300" fill="#8d9caa" font-family="Segoe UI, sans-serif" font-size="10">4.5m</text>
+  <!-- coordinate note -->
+  <text x="80" y="548" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">房间中心约 (12.0, 7.2, -109.25)；相机 z=-109.5，距窗 2.5m。</text>
+  <text x="80" y="566" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">前景窗框在 24mm 下刚好进入画面；窗洞不得再收窄。</text>
+
+  <!-- SECTION -->
+  <text x="640" y="104" fill="#59d8c8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" font-weight="700">剖面（高度示意）</text>
+  <!-- ground -->
+  <rect x="640" y="680" width="500" height="14" fill="#1a2227"/>
+  <!-- wall -->
+  <rect x="899" y="472" width="42" height="208" fill="#39434b" stroke="#5b6a73" stroke-width="1"/>
+  <rect x="899" y="472" width="42" height="5" fill="#c74b45"/>
+  <!-- room -->
+  <rect x="725" y="392" width="135" height="288" fill="#111d24" stroke="#3e5963" stroke-width="1.5"/>
+  <rect x="725" y="280" width="135" height="112" fill="#101820" stroke="#3e5963" stroke-width="1.5"/>
+  <!-- window -->
+  <rect x="855" y="296" width="10" height="60" fill="#0b1016"/>
+  <line x1="860" y1="296" x2="860" y2="356" stroke="#59d8c8" stroke-width="2"/>
+  <line x1="860" y1="356" x2="860" y2="392" stroke="#3e5963" stroke-width="2"/>
+  <line x1="860" y1="280" x2="860" y2="296" stroke="#3e5963" stroke-width="2"/>
+  <!-- camera -->
+  <circle cx="785" cy="328" r="5" fill="#ffcb66" stroke="#0b1016" stroke-width="1.5"/>
+  <text x="796" y="324" fill="#ffcb66" font-family="Segoe UI, sans-serif" font-size="10">CAM 8.8</text>
+  <line x1="785" y1="328" x2="980" y2="560" stroke="#59d8c8" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="930" y="548" fill="#59d8c8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="9">→ 基地</text>
+  <!-- heights -->
+  <line x1="710" y1="392" x2="710" y2="680" stroke="#8d9caa" stroke-width="1"/>
+  <text x="700" y="540" fill="#8d9caa" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="10">7.2</text>
+  <line x1="890" y1="280" x2="890" y2="392" stroke="#8d9caa" stroke-width="1"/>
+  <line x1="886" y1="280" x2="894" y2="280" stroke="#8d9caa" stroke-width="1"/>
+  <line x1="886" y1="392" x2="894" y2="392" stroke="#8d9caa" stroke-width="1"/>
+  <text x="896" y="340" fill="#8d9caa" font-family="Segoe UI, sans-serif" font-size="10">2.8</text>
+  <text x="840" y="252" fill="#c8d3d8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">窗台 8.1 / 窗顶 9.6</text>
+  <text x="950" y="460" fill="#c74b45" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">墙顶 5.2</text>
+  <!-- title block -->
+  <g transform="translate(920,700)">
+    <rect x="0" y="0" width="240" height="60" fill="#0f171d" stroke="#2b3b49" stroke-width="1"/>
+    <text x="12" y="20" fill="#e7eef2" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11">相机：24mm / f8 / 2.5m 到窗</text>
+    <text x="12" y="38" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">目标点 (-24, 0.8, -30)</text>
+    <text x="12" y="54" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">视高 8.8m；俯仰约 -5.3°</text>
+  </g>
+</svg>

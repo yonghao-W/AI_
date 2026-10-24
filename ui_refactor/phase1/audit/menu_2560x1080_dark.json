@@ -1,0 +1,1972 @@
+{
+  "background": "dark",
+  "clipped_labels": [],
+  "content_overflows": [],
+  "controls": [
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit",
+      "rect": [
+        0.0,
+        0.0,
+        2560.0,
+        1080.0
+      ],
+      "type": "Control"
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@Control@4",
+      "rect": [
+        0.0,
+        0.0,
+        2560.0,
+        1080.0
+      ],
+      "type": "Control"
+    },
+    {
+      "min": [
+        1129.0,
+        741.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5",
+      "rect": [
+        0.0,
+        0.0,
+        2560.0,
+        1111.5
+      ],
+      "type": "MarginContainer"
+    },
+    {
+      "min": [
+        1005.0,
+        681.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6",
+      "rect": [
+        93.0,
+        51.0,
+        2373.0,
+        1021.5
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        615.0,
+        670.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7",
+      "rect": [
+        93.0,
+        51.0,
+        1788.0,
+        1021.5
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        288.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@Label@8",
+      "rect": [
+        93.0,
+        51.0,
+        1788.0,
+        25.5
+      ],
+      "text": "LOW-POLY CO-OP SURVIVAL  //  低多边形协作生存",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 64,
+      "lines": 1,
+      "min": [
+        256.0,
+        85.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@Label@9",
+      "rect": [
+        93.0,
+        88.5,
+        1788.0,
+        127.5
+      ],
+      "text": "死城突围",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        418.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@HBoxContainer@10",
+      "rect": [
+        93.0,
+        228.0,
+        1788.0,
+        42.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 20,
+      "lines": 1,
+      "min": [
+        105.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@HBoxContainer@10/@Label@11",
+      "rect": [
+        93.0,
+        228.0,
+        157.5,
+        42.0
+      ],
+      "text": "DEAD CITY",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        64.0,
+        3.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@HBoxContainer@10/@ColorRect@12",
+      "rect": [
+        271.5,
+        246.0,
+        96.0,
+        4.5
+      ],
+      "type": "ColorRect"
+    },
+    {
+      "font_size": 15,
+      "lines": 1,
+      "min": [
+        221.0,
+        20.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@HBoxContainer@10/@Label@13",
+      "rect": [
+        388.5,
+        234.0,
+        331.5,
+        30.0
+      ],
+      "text": "随机城市 · 无尽尸潮 · 1–4 人合作",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@Control@14",
+      "rect": [
+        93.0,
+        282.0,
+        1788.0,
+        21.0
+      ],
+      "type": "Control"
+    },
+    {
+      "min": [
+        380.0,
+        348.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15",
+      "rect": [
+        93.0,
+        315.0,
+        1788.0,
+        522.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "min": [
+        344.0,
+        320.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16",
+      "rect": [
+        120.0,
+        336.0,
+        1734.0,
+        480.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "min": [
+        144.0,
+        25.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@17",
+      "rect": [
+        120.0,
+        336.0,
+        1734.0,
+        37.5
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 18,
+      "lines": 1,
+      "min": [
+        72.0,
+        25.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@17/@Label@18",
+      "rect": [
+        120.0,
+        336.0,
+        108.0,
+        37.5
+      ],
+      "text": "部署终端",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@17/@Control@19",
+      "rect": [
+        234.0,
+        336.0,
+        1518.0,
+        37.5
+      ],
+      "type": "Control"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        64.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@17/@Label@20",
+      "rect": [
+        1758.0,
+        343.5,
+        96.0,
+        22.5
+      ],
+      "text": "LINK / ENET",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        224.0,
+        70.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@21",
+      "rect": [
+        120.0,
+        393.0,
+        1734.0,
+        105.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        106.0,
+        70.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@21/@VBoxContainer@24",
+      "rect": [
+        120.0,
+        393.0,
+        858.0,
+        105.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        44.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@21/@VBoxContainer@24/@Label@22",
+      "rect": [
+        120.0,
+        393.0,
+        858.0,
+        22.5
+      ],
+      "text": "行动呼号",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        105.1875,
+        51.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@21/@VBoxContainer@24/@LineEdit@23",
+      "rect": [
+        120.0,
+        421.5,
+        858.0,
+        76.5
+      ],
+      "type": "LineEdit"
+    },
+    {
+      "min": [
+        106.0,
+        70.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@21/@VBoxContainer@27",
+      "rect": [
+        996.0,
+        393.0,
+        858.0,
+        105.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        44.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@21/@VBoxContainer@27/@Label@25",
+      "rect": [
+        996.0,
+        393.0,
+        858.0,
+        22.5
+      ],
+      "text": "地图种子",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        105.1875,
+        51.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@21/@VBoxContainer@27/@LineEdit@26",
+      "rect": [
+        996.0,
+        421.5,
+        858.0,
+        76.5
+      ],
+      "type": "LineEdit"
+    },
+    {
+      "min": [
+        224.0,
+        70.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@28",
+      "rect": [
+        120.0,
+        517.5,
+        1734.0,
+        105.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        106.0,
+        70.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@28/@VBoxContainer@31",
+      "rect": [
+        120.0,
+        517.5,
+        1200.0,
+        105.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        44.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@28/@VBoxContainer@31/@Label@29",
+      "rect": [
+        120.0,
+        517.5,
+        1200.0,
+        22.5
+      ],
+      "text": "主机地址",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        105.1875,
+        51.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@28/@VBoxContainer@31/@LineEdit@30",
+      "rect": [
+        120.0,
+        546.0,
+        1200.0,
+        76.5
+      ],
+      "type": "LineEdit"
+    },
+    {
+      "min": [
+        106.0,
+        70.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@28/@VBoxContainer@34",
+      "rect": [
+        1338.0,
+        517.5,
+        516.0,
+        105.0
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        22.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@28/@VBoxContainer@34/@Label@32",
+      "rect": [
+        1338.0,
+        517.5,
+        516.0,
+        22.5
+      ],
+      "text": "端口",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        105.1875,
+        51.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@28/@VBoxContainer@34/@LineEdit@33",
+      "rect": [
+        1338.0,
+        546.0,
+        516.0,
+        76.5
+      ],
+      "type": "LineEdit"
+    },
+    {
+      "min": [
+        344.0,
+        53.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@35",
+      "rect": [
+        120.0,
+        642.0,
+        1734.0,
+        79.5
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "disabled": false,
+      "focus_mode": 2,
+      "min": [
+        108.0,
+        53.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@35/@Button@36",
+      "rect": [
+        120.0,
+        642.0,
+        771.0,
+        79.5
+      ],
+      "text": "创建房间",
+      "type": "Button"
+    },
+    {
+      "disabled": false,
+      "focus_mode": 2,
+      "min": [
+        108.0,
+        53.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@35/@Button@37",
+      "rect": [
+        906.0,
+        642.0,
+        771.0,
+        79.5
+      ],
+      "text": "加入房间",
+      "type": "Button"
+    },
+    {
+      "disabled": false,
+      "focus_mode": 2,
+      "min": [
+        108.0,
+        53.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@35/@Button@38",
+      "rect": [
+        1692.0,
+        642.0,
+        162.0,
+        79.5
+      ],
+      "text": "单人演练",
+      "type": "Button"
+    },
+    {
+      "font_size": 14,
+      "lines": 1,
+      "min": [
+        1.0,
+        20.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@Label@39",
+      "rect": [
+        120.0,
+        741.0,
+        1734.0,
+        30.0
+      ],
+      "text": "等待部署 — 创建房间或加入队友。",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        1.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@Label@40",
+      "rect": [
+        120.0,
+        790.5,
+        1734.0,
+        25.5
+      ],
+      "text": "同一局域网内：主机创建房间后，把本机 IP 与端口告诉队友即可加入。",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        615.0,
+        69.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@41",
+      "rect": [
+        93.0,
+        849.0,
+        1788.0,
+        103.5
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "min": [
+        587.0,
+        53.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@41/@HBoxContainer@42",
+      "rect": [
+        114.0,
+        861.0,
+        1746.0,
+        79.5
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        126.0,
+        38.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@41/@HBoxContainer@42/@VBoxContainer@43",
+      "rect": [
+        114.0,
+        861.0,
+        189.0,
+        79.5
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        126.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@41/@HBoxContainer@42/@VBoxContainer@43/@Label@44",
+      "rect": [
+        114.0,
+        861.0,
+        189.0,
+        21.0
+      ],
+      "text": "局外档案  /  META PROFILE",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 17,
+      "lines": 1,
+      "min": [
+        120.0,
+        23.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@41/@HBoxContainer@42/@VBoxContainer@43/@Label@45",
+      "rect": [
+        114.0,
+        883.5,
+        189.0,
+        34.5
+      ],
+      "text": "幸存者血脉 Lv.3",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        313.0,
+        31.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@41/@HBoxContainer@42/@VBoxContainer@46",
+      "rect": [
+        327.0,
+        861.0,
+        1335.0,
+        79.5
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        313.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@41/@HBoxContainer@42/@VBoxContainer@46/@Label@47",
+      "rect": [
+        327.0,
+        861.0,
+        1335.0,
+        22.5
+      ],
+      "text": "行动 12 次 · 完成 7 次 · 最佳战力 18 · 起始备弹 +6 · 信用点 315",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 10,
+      "lines": 1,
+      "min": [
+        1.0,
+        14.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@41/@HBoxContainer@42/@VBoxContainer@46/@Label@48",
+      "rect": [
+        327.0,
+        886.5,
+        1335.0,
+        21.0
+      ],
+      "text": "上次行动 · 撤离成功 · 核心 3/3 · 战力 7 · 得分 660 · 第 4 波 · 信用点 +0",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "disabled": false,
+      "focus_mode": 2,
+      "min": [
+        116.0,
+        53.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@41/@HBoxContainer@42/@Button@49",
+      "rect": [
+        1686.0,
+        861.0,
+        174.0,
+        79.5
+      ],
+      "text": "军械库",
+      "type": "Button"
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@Control@50",
+      "rect": [
+        93.0,
+        964.5,
+        1788.0,
+        16.5
+      ],
+      "type": "Control"
+    },
+    {
+      "min": [
+        308.0,
+        53.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@HBoxContainer@51",
+      "rect": [
+        93.0,
+        993.0,
+        1788.0,
+        79.5
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        224.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@HBoxContainer@51/@Label@52",
+      "rect": [
+        93.0,
+        1021.5,
+        336.0,
+        22.5
+      ],
+      "text": "GODOT 4.7.2 STABLE  ·  ENET  ·  服务端权威",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@HBoxContainer@51/@Control@53",
+      "rect": [
+        435.0,
+        993.0,
+        1326.0,
+        79.5
+      ],
+      "type": "Control"
+    },
+    {
+      "disabled": false,
+      "focus_mode": 2,
+      "min": [
+        76.0,
+        53.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@HBoxContainer@51/@Button@54",
+      "rect": [
+        1767.0,
+        993.0,
+        114.0,
+        79.5
+      ],
+      "text": "退出",
+      "type": "Button"
+    },
+    {
+      "min": [
+        352.0,
+        681.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55",
+      "rect": [
+        1938.0,
+        51.0,
+        528.0,
+        1021.5
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "min": [
+        326.0,
+        681.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56",
+      "rect": [
+        1938.0,
+        51.0,
+        528.0,
+        1021.5
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "min": [
+        290.0,
+        653.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57",
+      "rect": [
+        1965.0,
+        72.0,
+        474.0,
+        979.5
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "min": [
+        140.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@58",
+      "rect": [
+        1965.0,
+        72.0,
+        474.0,
+        42.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 20,
+      "lines": 1,
+      "min": [
+        80.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@58/@Label@59",
+      "rect": [
+        1965.0,
+        72.0,
+        120.0,
+        42.0
+      ],
+      "text": "行动简报",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@58/@Control@60",
+      "rect": [
+        2091.0,
+        72.0,
+        264.0,
+        42.0
+      ],
+      "type": "Control"
+    },
+    {
+      "font_size": 11,
+      "lines": 1,
+      "min": [
+        52.0,
+        15.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@58/@Label@61",
+      "rect": [
+        2361.0,
+        81.0,
+        78.0,
+        22.5
+      ],
+      "text": "NIGHT 07",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        1.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@ColorRect@62",
+      "rect": [
+        1965.0,
+        129.0,
+        474.0,
+        1.5
+      ],
+      "type": "ColorRect"
+    },
+    {
+      "min": [
+        102.0,
+        61.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@67",
+      "rect": [
+        1965.0,
+        145.5,
+        474.0,
+        91.5
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 13,
+      "lines": 1,
+      "min": [
+        26.0,
+        18.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@67/@Label@63",
+      "rect": [
+        1965.0,
+        177.0,
+        39.0,
+        27.0
+      ],
+      "text": "01",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        64.0,
+        61.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@67/@VBoxContainer@64",
+      "rect": [
+        2022.0,
+        145.5,
+        417.0,
+        91.5
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 16,
+      "lines": 1,
+      "min": [
+        64.0,
+        22.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@67/@VBoxContainer@64/@Label@65",
+      "rect": [
+        2022.0,
+        145.5,
+        417.0,
+        33.0
+      ],
+      "text": "随机死城",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 12,
+      "lines": 2,
+      "min": [
+        1.0,
+        37.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@67/@VBoxContainer@64/@Label@66",
+      "rect": [
+        2022.0,
+        181.5,
+        417.0,
+        55.5
+      ],
+      "text": "每个种子生成不同街区。楼宇即掩体，街口就是交火线。",
+      "type": "Label",
+      "visible_lines": 2
+    },
+    {
+      "min": [
+        102.0,
+        61.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@72",
+      "rect": [
+        1965.0,
+        252.0,
+        474.0,
+        91.5
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 13,
+      "lines": 1,
+      "min": [
+        26.0,
+        18.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@72/@Label@68",
+      "rect": [
+        1965.0,
+        283.5,
+        39.0,
+        27.0
+      ],
+      "text": "02",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        64.0,
+        61.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@72/@VBoxContainer@69",
+      "rect": [
+        2022.0,
+        252.0,
+        417.0,
+        91.5
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 16,
+      "lines": 1,
+      "min": [
+        64.0,
+        22.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@72/@VBoxContainer@69/@Label@70",
+      "rect": [
+        2022.0,
+        252.0,
+        417.0,
+        33.0
+      ],
+      "text": "尸潮递增",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 12,
+      "lines": 2,
+      "min": [
+        1.0,
+        37.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@72/@VBoxContainer@69/@Label@71",
+      "rect": [
+        2022.0,
+        288.0,
+        417.0,
+        55.5
+      ],
+      "text": "每回收一枚核心，尸潮生成更快、数量更多，威胁倍率持续上涨。",
+      "type": "Label",
+      "visible_lines": 2
+    },
+    {
+      "min": [
+        102.0,
+        61.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@77",
+      "rect": [
+        1965.0,
+        358.5,
+        474.0,
+        91.5
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 13,
+      "lines": 1,
+      "min": [
+        26.0,
+        18.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@77/@Label@73",
+      "rect": [
+        1965.0,
+        390.0,
+        39.0,
+        27.0
+      ],
+      "text": "03",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        64.0,
+        61.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@77/@VBoxContainer@74",
+      "rect": [
+        2022.0,
+        358.5,
+        417.0,
+        91.5
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 16,
+      "lines": 1,
+      "min": [
+        64.0,
+        22.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@77/@VBoxContainer@74/@Label@75",
+      "rect": [
+        2022.0,
+        358.5,
+        417.0,
+        33.0
+      ],
+      "text": "深入回收",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 12,
+      "lines": 2,
+      "min": [
+        1.0,
+        37.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@77/@VBoxContainer@74/@Label@76",
+      "rect": [
+        2022.0,
+        394.5,
+        417.0,
+        55.5
+      ],
+      "text": "沿市中心公园坡道步行下到 B1，抱回 3 枚核心；搬运时无法开枪。",
+      "type": "Label",
+      "visible_lines": 2
+    },
+    {
+      "min": [
+        102.0,
+        61.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@82",
+      "rect": [
+        1965.0,
+        465.0,
+        474.0,
+        91.5
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "font_size": 13,
+      "lines": 1,
+      "min": [
+        26.0,
+        18.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@82/@Label@78",
+      "rect": [
+        1965.0,
+        496.5,
+        39.0,
+        27.0
+      ],
+      "text": "04",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        64.0,
+        61.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@82/@VBoxContainer@79",
+      "rect": [
+        2022.0,
+        465.0,
+        417.0,
+        91.5
+      ],
+      "type": "VBoxContainer"
+    },
+    {
+      "font_size": 16,
+      "lines": 1,
+      "min": [
+        64.0,
+        22.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@82/@VBoxContainer@79/@Label@80",
+      "rect": [
+        2022.0,
+        465.0,
+        417.0,
+        33.0
+      ],
+      "text": "交付抽卡",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 12,
+      "lines": 2,
+      "min": [
+        1.0,
+        37.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@82/@VBoxContainer@79/@Label@81",
+      "rect": [
+        2022.0,
+        501.0,
+        417.0,
+        55.5
+      ],
+      "text": "核心交付立即弹出 3 选 1 全队强化；战力写入局外档案，累积血脉加成。",
+      "type": "Label",
+      "visible_lines": 2
+    },
+    {
+      "min": [
+        0.0,
+        1.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@ColorRect@83",
+      "rect": [
+        1965.0,
+        571.5,
+        474.0,
+        1.5
+      ],
+      "type": "ColorRect"
+    },
+    {
+      "font_size": 13,
+      "lines": 1,
+      "min": [
+        52.0,
+        18.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@Label@84",
+      "rect": [
+        1965.0,
+        588.0,
+        474.0,
+        27.0
+      ],
+      "text": "色彩识别",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        254.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@85",
+      "rect": [
+        1965.0,
+        630.0,
+        474.0,
+        42.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        53.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@85/@HBoxContainer@88",
+      "rect": [
+        1965.0,
+        630.0,
+        79.5,
+        42.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        36.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@85/@HBoxContainer@88/@PanelContainer@86",
+      "rect": [
+        1965.0,
+        630.0,
+        54.0,
+        42.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        12.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@85/@HBoxContainer@88/@Label@87",
+      "rect": [
+        2026.5,
+        637.5,
+        18.0,
+        25.5
+      ],
+      "text": "青",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        53.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@85/@HBoxContainer@91",
+      "rect": [
+        2059.5,
+        630.0,
+        79.5,
+        42.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        36.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@85/@HBoxContainer@91/@PanelContainer@89",
+      "rect": [
+        2059.5,
+        630.0,
+        54.0,
+        42.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        12.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@85/@HBoxContainer@91/@Label@90",
+      "rect": [
+        2121.0,
+        637.5,
+        18.0,
+        25.5
+      ],
+      "text": "黄",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        53.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@85/@HBoxContainer@94",
+      "rect": [
+        2154.0,
+        630.0,
+        79.5,
+        42.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        36.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@85/@HBoxContainer@94/@PanelContainer@92",
+      "rect": [
+        2154.0,
+        630.0,
+        54.0,
+        42.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        12.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@85/@HBoxContainer@94/@Label@93",
+      "rect": [
+        2215.5,
+        637.5,
+        18.0,
+        25.5
+      ],
+      "text": "紫",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        65.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@85/@HBoxContainer@97",
+      "rect": [
+        2248.5,
+        630.0,
+        97.5,
+        42.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        36.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@85/@HBoxContainer@97/@PanelContainer@95",
+      "rect": [
+        2248.5,
+        630.0,
+        54.0,
+        42.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        24.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@85/@HBoxContainer@97/@Label@96",
+      "rect": [
+        2310.0,
+        637.5,
+        36.0,
+        25.5
+      ],
+      "text": "珊瑚",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        290.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@98",
+      "rect": [
+        1965.0,
+        687.0,
+        474.0,
+        42.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        65.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@98/@HBoxContainer@101",
+      "rect": [
+        1965.0,
+        687.0,
+        97.5,
+        42.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        36.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@98/@HBoxContainer@101/@PanelContainer@99",
+      "rect": [
+        1965.0,
+        687.0,
+        54.0,
+        42.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        24.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@98/@HBoxContainer@101/@Label@100",
+      "rect": [
+        2026.5,
+        694.5,
+        36.0,
+        25.5
+      ],
+      "text": "普通",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        65.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@98/@HBoxContainer@104",
+      "rect": [
+        2077.5,
+        687.0,
+        97.5,
+        42.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        36.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@98/@HBoxContainer@104/@PanelContainer@102",
+      "rect": [
+        2077.5,
+        687.0,
+        54.0,
+        42.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        24.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@98/@HBoxContainer@104/@Label@103",
+      "rect": [
+        2139.0,
+        694.5,
+        36.0,
+        25.5
+      ],
+      "text": "爬行",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        65.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@98/@HBoxContainer@107",
+      "rect": [
+        2190.0,
+        687.0,
+        97.5,
+        42.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        36.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@98/@HBoxContainer@107/@PanelContainer@105",
+      "rect": [
+        2190.0,
+        687.0,
+        54.0,
+        42.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        24.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@98/@HBoxContainer@107/@Label@106",
+      "rect": [
+        2251.5,
+        694.5,
+        36.0,
+        25.5
+      ],
+      "text": "疾行",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        65.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@98/@HBoxContainer@110",
+      "rect": [
+        2302.5,
+        687.0,
+        97.5,
+        42.0
+      ],
+      "type": "HBoxContainer"
+    },
+    {
+      "min": [
+        36.0,
+        28.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@98/@HBoxContainer@110/@PanelContainer@108",
+      "rect": [
+        2302.5,
+        687.0,
+        54.0,
+        42.0
+      ],
+      "type": "PanelContainer"
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        24.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@HBoxContainer@98/@HBoxContainer@110/@Label@109",
+      "rect": [
+        2364.0,
+        694.5,
+        36.0,
+        25.5
+      ],
+      "text": "重装",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        1.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@ColorRect@111",
+      "rect": [
+        1965.0,
+        744.0,
+        474.0,
+        1.5
+      ],
+      "type": "ColorRect"
+    },
+    {
+      "font_size": 13,
+      "lines": 1,
+      "min": [
+        26.0,
+        18.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@Label@112",
+      "rect": [
+        1965.0,
+        760.5,
+        474.0,
+        27.0
+      ],
+      "text": "操作",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        200.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@Label@113",
+      "rect": [
+        1965.0,
+        802.5,
+        474.0,
+        25.5
+      ],
+      "text": "WASD 移动 · Shift 冲刺 · Space 跳跃",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        152.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@Label@114",
+      "rect": [
+        1965.0,
+        843.0,
+        474.0,
+        25.5
+      ],
+      "text": "左键射击 · 右键瞄准 · R 换弹",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        197.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@Label@115",
+      "rect": [
+        1965.0,
+        883.5,
+        474.0,
+        25.5
+      ],
+      "text": "E 互动 / 补给 · G 放下核心 · Esc 菜单",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "font_size": 12,
+      "lines": 1,
+      "min": [
+        182.0,
+        17.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@Label@116",
+      "rect": [
+        1965.0,
+        924.0,
+        474.0,
+        25.5
+      ],
+      "text": "Tab 情报 · B 背包 · 1-5 / 滚轮切枪",
+      "type": "Label",
+      "visible_lines": 1
+    },
+    {
+      "min": [
+        0.0,
+        0.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@Control@117",
+      "rect": [
+        1965.0,
+        964.5,
+        474.0,
+        0.0
+      ],
+      "type": "Control"
+    },
+    {
+      "min": [
+        0.0,
+        1.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@ColorRect@118",
+      "rect": [
+        1965.0,
+        979.5,
+        474.0,
+        1.5
+      ],
+      "type": "ColorRect"
+    },
+    {
+      "font_size": 12,
+      "lines": 2,
+      "min": [
+        1.0,
+        37.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@55/@PanelContainer@56/@VBoxContainer@57/@Label@119",
+      "rect": [
+        1965.0,
+        996.0,
+        474.0,
+        55.5
+      ],
+      "text": "提示：基地是安全区，丧尸会停止追击；弹药台按 E 补满弹药；组队需全员准备后由房主开始。",
+      "type": "Label",
+      "visible_lines": 2
+    }
+  ],
+  "focus_none_buttons": [],
+  "font_sizes": {
+    "10": 2,
+    "11": 8,
+    "12": 19,
+    "13": 6,
+    "14": 1,
+    "15": 1,
+    "16": 4,
+    "17": 1,
+    "18": 1,
+    "20": 2,
+    "64": 1
+  },
+  "invisible_focus_buttons": [
+    {
+      "disabled": false,
+      "focus_mode": 2,
+      "min": [
+        108.0,
+        53.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@35/@Button@36",
+      "rect": [
+        120.0,
+        642.0,
+        771.0,
+        79.5
+      ],
+      "text": "创建房间",
+      "type": "Button"
+    },
+    {
+      "disabled": false,
+      "focus_mode": 2,
+      "min": [
+        108.0,
+        53.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@35/@Button@37",
+      "rect": [
+        906.0,
+        642.0,
+        771.0,
+        79.5
+      ],
+      "text": "加入房间",
+      "type": "Button"
+    },
+    {
+      "disabled": false,
+      "focus_mode": 2,
+      "min": [
+        108.0,
+        53.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@15/@VBoxContainer@16/@HBoxContainer@35/@Button@38",
+      "rect": [
+        1692.0,
+        642.0,
+        162.0,
+        79.5
+      ],
+      "text": "单人演练",
+      "type": "Button"
+    },
+    {
+      "disabled": false,
+      "focus_mode": 2,
+      "min": [
+        116.0,
+        53.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@PanelContainer@41/@HBoxContainer@42/@Button@49",
+      "rect": [
+        1686.0,
+        861.0,
+        174.0,
+        79.5
+      ],
+      "text": "军械库",
+      "type": "Button"
+    },
+    {
+      "disabled": false,
+      "focus_mode": 2,
+      "min": [
+        76.0,
+        53.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5/@HBoxContainer@6/@VBoxContainer@7/@HBoxContainer@51/@Button@54",
+      "rect": [
+        1767.0,
+        993.0,
+        114.0,
+        79.5
+      ],
+      "text": "退出",
+      "type": "Button"
+    }
+  ],
+  "logical_size": [
+    1706.66662597656,
+    720.0
+  ],
+  "out_of_viewport": [
+    {
+      "min": [
+        1129.0,
+        741.0
+      ],
+      "path": "/root/@SubViewport@2/MainMenuAudit/@MarginContainer@5",
+      "rect": [
+        0.0,
+        0.0,
+        2560.0,
+        1111.5
+      ],
+      "type": "MarginContainer"
+    }
+  ],
+  "render": "SubViewport offscreen; production UI nodes, injected state",
+  "screen": "menu",
+  "size": [
+    2560,
+    1080
+  ],
+  "ui_scale": 1.5
+}

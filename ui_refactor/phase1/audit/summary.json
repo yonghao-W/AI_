@@ -1,0 +1,3251 @@
+[
+  {
+    "file": "armory_1280x720_dark.json",
+    "screen": "armory",
+    "size": [
+      1280,
+      720
+    ],
+    "ui_scale": 1.0,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          0.0,
+          0.0,
+          1280.0,
+          741.0
+        ],
+        "type": "MarginContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 7,
+    "invisible_focus_buttons": 13,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 31,
+      "11": 10,
+      "12": 20,
+      "13": 6,
+      "14": 1,
+      "15": 8,
+      "16": 4,
+      "17": 1,
+      "18": 1,
+      "20": 2,
+      "24": 1,
+      "32": 1,
+      "64": 1
+    }
+  },
+  {
+    "file": "armory_1920x1080_dark.json",
+    "screen": "armory",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          0.0,
+          0.0,
+          1920.0,
+          1111.5
+        ],
+        "type": "MarginContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 7,
+    "invisible_focus_buttons": 13,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 31,
+      "11": 10,
+      "12": 20,
+      "13": 6,
+      "14": 1,
+      "15": 8,
+      "16": 4,
+      "17": 1,
+      "18": 1,
+      "20": 2,
+      "24": 1,
+      "32": 1,
+      "64": 1
+    }
+  },
+  {
+    "file": "armory_1920x1200_dark.json",
+    "screen": "armory",
+    "size": [
+      1920,
+      1200
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      800.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 7,
+    "invisible_focus_buttons": 13,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 31,
+      "11": 10,
+      "12": 20,
+      "13": 6,
+      "14": 1,
+      "15": 8,
+      "16": 4,
+      "17": 1,
+      "18": 1,
+      "20": 2,
+      "24": 1,
+      "32": 1,
+      "64": 1
+    }
+  },
+  {
+    "file": "backpack_1280x720_dark.json",
+    "screen": "backpack",
+    "size": [
+      1280,
+      720
+    ],
+    "ui_scale": 1.0,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          22.0,
+          604.0,
+          312.0,
+          121.0
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 2,
+    "invisible_focus_buttons": 3,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 24,
+      "11": 10,
+      "12": 4,
+      "13": 5,
+      "14": 2,
+      "15": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "backpack_1920x1080_bright.json",
+    "screen": "backpack",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "bright",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 2,
+    "invisible_focus_buttons": 3,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 24,
+      "11": 10,
+      "12": 4,
+      "13": 5,
+      "14": 2,
+      "15": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "backpack_1920x1080_dark.json",
+    "screen": "backpack",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 2,
+    "invisible_focus_buttons": 3,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 24,
+      "11": 10,
+      "12": 4,
+      "13": 5,
+      "14": 2,
+      "15": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "backpack_1920x1200_dark.json",
+    "screen": "backpack",
+    "size": [
+      1920,
+      1200
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      800.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          1026.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 2,
+    "invisible_focus_buttons": 3,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 24,
+      "11": 10,
+      "12": 4,
+      "13": 5,
+      "14": 2,
+      "15": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "backpack_2560x1080_dark.json",
+    "screen": "backpack",
+    "size": [
+      2560,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1706.66662597656,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 2,
+    "invisible_focus_buttons": 3,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 24,
+      "11": 10,
+      "12": 4,
+      "13": 5,
+      "14": 2,
+      "15": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "death_1280x720_dark.json",
+    "screen": "death",
+    "size": [
+      1280,
+      720
+    ],
+    "ui_scale": 1.0,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          22.0,
+          604.0,
+          312.0,
+          121.0
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 0,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 5,
+      "13": 5,
+      "14": 2,
+      "17": 2,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "54": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "death_1920x1080_dark.json",
+    "screen": "death",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 0,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 5,
+      "13": 5,
+      "14": 2,
+      "17": 2,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "54": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "draw_1280x720_dark.json",
+    "screen": "draw",
+    "size": [
+      1280,
+      720
+    ],
+    "ui_scale": 1.0,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          22.0,
+          604.0,
+          312.0,
+          121.0
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 3,
+    "invisible_focus_buttons": 4,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 19,
+      "11": 13,
+      "12": 8,
+      "13": 8,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "23": 3,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "28": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "draw_1920x1080_dark.json",
+    "screen": "draw",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 3,
+    "invisible_focus_buttons": 4,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 19,
+      "11": 13,
+      "12": 8,
+      "13": 8,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "23": 3,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "28": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "draw_1920x1200_dark.json",
+    "screen": "draw",
+    "size": [
+      1920,
+      1200
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      800.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          1026.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 3,
+    "invisible_focus_buttons": 4,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 19,
+      "11": 13,
+      "12": 8,
+      "13": 8,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "23": 3,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "28": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "draw_2560x1080_dark.json",
+    "screen": "draw",
+    "size": [
+      2560,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1706.66662597656,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 3,
+    "invisible_focus_buttons": 4,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 19,
+      "11": 13,
+      "12": 8,
+      "13": 8,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "23": 3,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "28": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "gameover_fail_1280x720_dark.json",
+    "screen": "gameover_fail",
+    "size": [
+      1280,
+      720
+    ],
+    "ui_scale": 1.0,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          22.0,
+          604.0,
+          312.0,
+          121.0
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 1,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 4,
+      "13": 5,
+      "14": 3,
+      "15": 1,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "46": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "gameover_fail_1920x1080_dark.json",
+    "screen": "gameover_fail",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 1,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 4,
+      "13": 5,
+      "14": 3,
+      "15": 1,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "46": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "gameover_victory_1280x720_dark.json",
+    "screen": "gameover_victory",
+    "size": [
+      1280,
+      720
+    ],
+    "ui_scale": 1.0,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          22.0,
+          604.0,
+          312.0,
+          121.0
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 1,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 4,
+      "13": 5,
+      "14": 3,
+      "15": 1,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "46": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "gameover_victory_1920x1080_dark.json",
+    "screen": "gameover_victory",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 1,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 4,
+      "13": 5,
+      "14": 3,
+      "15": 1,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "46": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "gameover_victory_1920x1200_dark.json",
+    "screen": "gameover_victory",
+    "size": [
+      1920,
+      1200
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      800.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          1026.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 1,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 4,
+      "13": 5,
+      "14": 3,
+      "15": 1,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "46": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "gameover_victory_2560x1080_dark.json",
+    "screen": "gameover_victory",
+    "size": [
+      2560,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1706.66662597656,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 1,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 4,
+      "13": 5,
+      "14": 3,
+      "15": 1,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "46": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "hud_1280x720_bright.json",
+    "screen": "hud",
+    "size": [
+      1280,
+      720
+    ],
+    "ui_scale": 1.0,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "bright",
+    "out_of_viewport": [
+      {
+        "rect": [
+          22.0,
+          604.0,
+          312.0,
+          121.0
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [
+      {
+        "rect": [
+          22.0,
+          190.0,
+          278.0,
+          71.0
+        ],
+        "px": 19738.0
+      }
+    ],
+    "top_panels": [
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5",
+        "rect": [
+          22.0,
+          18.0,
+          278.0,
+          243.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12",
+        "rect": [
+          22.0,
+          190.0,
+          278.0,
+          152.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28",
+        "rect": [
+          462.0,
+          18.0,
+          356.0,
+          94.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40",
+        "rect": [
+          1042.0,
+          18.0,
+          216.0,
+          262.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51",
+        "rect": [
+          22.0,
+          604.0,
+          312.0,
+          121.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64",
+        "rect": [
+          990.0,
+          604.0,
+          268.0,
+          96.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78",
+        "rect": [
+          990.0,
+          498.0,
+          268.0,
+          96.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@94",
+        "rect": [
+          420.0,
+          644.0,
+          440.0,
+          38.0
+        ]
+      }
+    ],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 0,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 3,
+      "13": 6,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "hud_1280x720_dark.json",
+    "screen": "hud",
+    "size": [
+      1280,
+      720
+    ],
+    "ui_scale": 1.0,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          22.0,
+          604.0,
+          312.0,
+          121.0
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [
+      {
+        "rect": [
+          22.0,
+          190.0,
+          278.0,
+          71.0
+        ],
+        "px": 19738.0
+      }
+    ],
+    "top_panels": [
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5",
+        "rect": [
+          22.0,
+          18.0,
+          278.0,
+          243.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12",
+        "rect": [
+          22.0,
+          190.0,
+          278.0,
+          152.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28",
+        "rect": [
+          462.0,
+          18.0,
+          356.0,
+          94.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40",
+        "rect": [
+          1042.0,
+          18.0,
+          216.0,
+          262.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51",
+        "rect": [
+          22.0,
+          604.0,
+          312.0,
+          121.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64",
+        "rect": [
+          990.0,
+          604.0,
+          268.0,
+          96.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78",
+        "rect": [
+          990.0,
+          498.0,
+          268.0,
+          96.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@94",
+        "rect": [
+          420.0,
+          644.0,
+          440.0,
+          38.0
+        ]
+      }
+    ],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 0,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 3,
+      "13": 6,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "hud_1920x1080_bright.json",
+    "screen": "hud",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "bright",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [
+      {
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          106.5
+        ],
+        "px": 44410.5
+      }
+    ],
+    "top_panels": [
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5",
+        "rect": [
+          33.0,
+          27.0,
+          417.0,
+          364.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12",
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          228.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28",
+        "rect": [
+          693.0,
+          27.0,
+          534.0,
+          141.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40",
+        "rect": [
+          1563.0,
+          27.0,
+          324.0,
+          393.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51",
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64",
+        "rect": [
+          1485.0,
+          906.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78",
+        "rect": [
+          1485.0,
+          747.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@94",
+        "rect": [
+          630.0,
+          966.0,
+          660.0,
+          57.0
+        ]
+      }
+    ],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 0,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 3,
+      "13": 6,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "hud_1920x1080_dark.json",
+    "screen": "hud",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [
+      {
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          106.5
+        ],
+        "px": 44410.5
+      }
+    ],
+    "top_panels": [
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5",
+        "rect": [
+          33.0,
+          27.0,
+          417.0,
+          364.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12",
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          228.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28",
+        "rect": [
+          693.0,
+          27.0,
+          534.0,
+          141.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40",
+        "rect": [
+          1563.0,
+          27.0,
+          324.0,
+          393.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51",
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64",
+        "rect": [
+          1485.0,
+          906.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78",
+        "rect": [
+          1485.0,
+          747.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@94",
+        "rect": [
+          630.0,
+          966.0,
+          660.0,
+          57.0
+        ]
+      }
+    ],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 0,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 3,
+      "13": 6,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "hud_1920x1200_bright.json",
+    "screen": "hud",
+    "size": [
+      1920,
+      1200
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      800.0
+    ],
+    "background": "bright",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          1026.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [
+      {
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          106.5
+        ],
+        "px": 44410.5
+      }
+    ],
+    "top_panels": [
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5",
+        "rect": [
+          33.0,
+          27.0,
+          417.0,
+          364.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12",
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          228.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28",
+        "rect": [
+          693.0,
+          27.0,
+          534.0,
+          141.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40",
+        "rect": [
+          1563.0,
+          27.0,
+          324.0,
+          393.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51",
+        "rect": [
+          33.0,
+          1026.0,
+          468.0,
+          181.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64",
+        "rect": [
+          1485.0,
+          1026.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78",
+        "rect": [
+          1485.0,
+          867.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@94",
+        "rect": [
+          630.0,
+          1086.0,
+          660.0,
+          57.0
+        ]
+      }
+    ],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 0,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 3,
+      "13": 6,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "hud_1920x1200_dark.json",
+    "screen": "hud",
+    "size": [
+      1920,
+      1200
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      800.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          1026.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [
+      {
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          106.5
+        ],
+        "px": 44410.5
+      }
+    ],
+    "top_panels": [
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5",
+        "rect": [
+          33.0,
+          27.0,
+          417.0,
+          364.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12",
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          228.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28",
+        "rect": [
+          693.0,
+          27.0,
+          534.0,
+          141.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40",
+        "rect": [
+          1563.0,
+          27.0,
+          324.0,
+          393.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51",
+        "rect": [
+          33.0,
+          1026.0,
+          468.0,
+          181.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64",
+        "rect": [
+          1485.0,
+          1026.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78",
+        "rect": [
+          1485.0,
+          867.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@94",
+        "rect": [
+          630.0,
+          1086.0,
+          660.0,
+          57.0
+        ]
+      }
+    ],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 0,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 3,
+      "13": 6,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "hud_2560x1080_bright.json",
+    "screen": "hud",
+    "size": [
+      2560,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1706.66662597656,
+      720.0
+    ],
+    "background": "bright",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [
+      {
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          106.5
+        ],
+        "px": 44410.5
+      }
+    ],
+    "top_panels": [
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5",
+        "rect": [
+          33.0,
+          27.0,
+          417.0,
+          364.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12",
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          228.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28",
+        "rect": [
+          1013.0,
+          27.0,
+          533.999877929688,
+          141.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40",
+        "rect": [
+          2203.0,
+          27.0,
+          324.0,
+          393.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51",
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64",
+        "rect": [
+          2125.0,
+          906.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78",
+        "rect": [
+          2125.0,
+          747.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@94",
+        "rect": [
+          950.0,
+          966.0,
+          659.999877929688,
+          57.0
+        ]
+      }
+    ],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 0,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 3,
+      "13": 6,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "hud_2560x1080_dark.json",
+    "screen": "hud",
+    "size": [
+      2560,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1706.66662597656,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [
+      {
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          106.5
+        ],
+        "px": 44410.5
+      }
+    ],
+    "top_panels": [
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5",
+        "rect": [
+          33.0,
+          27.0,
+          417.0,
+          364.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12",
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          228.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28",
+        "rect": [
+          1013.0,
+          27.0,
+          533.999877929688,
+          141.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40",
+        "rect": [
+          2203.0,
+          27.0,
+          324.0,
+          393.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51",
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64",
+        "rect": [
+          2125.0,
+          906.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78",
+        "rect": [
+          2125.0,
+          747.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@94",
+        "rect": [
+          950.0,
+          966.0,
+          659.999877929688,
+          57.0
+        ]
+      }
+    ],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 0,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 9,
+      "12": 3,
+      "13": 6,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "intel_1280x720_dark.json",
+    "screen": "intel",
+    "size": [
+      1280,
+      720
+    ],
+    "ui_scale": 1.0,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          22.0,
+          604.0,
+          312.0,
+          121.0
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 1,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 25,
+      "11": 24,
+      "12": 14,
+      "13": 9,
+      "14": 5,
+      "16": 1,
+      "17": 1,
+      "18": 2,
+      "20": 2,
+      "24": 2,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "intel_1920x1080_bright.json",
+    "screen": "intel",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "bright",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 1,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 25,
+      "11": 24,
+      "12": 14,
+      "13": 9,
+      "14": 5,
+      "16": 1,
+      "17": 1,
+      "18": 2,
+      "20": 2,
+      "24": 2,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "intel_1920x1080_dark.json",
+    "screen": "intel",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 1,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 25,
+      "11": 24,
+      "12": 14,
+      "13": 9,
+      "14": 5,
+      "16": 1,
+      "17": 1,
+      "18": 2,
+      "20": 2,
+      "24": 2,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "intel_1920x1200_dark.json",
+    "screen": "intel",
+    "size": [
+      1920,
+      1200
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      800.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          1026.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 1,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 25,
+      "11": 24,
+      "12": 14,
+      "13": 9,
+      "14": 5,
+      "16": 1,
+      "17": 1,
+      "18": 2,
+      "20": 2,
+      "24": 2,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "intel_2560x1080_dark.json",
+    "screen": "intel",
+    "size": [
+      2560,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1706.66662597656,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 1,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 25,
+      "11": 24,
+      "12": 14,
+      "13": 9,
+      "14": 5,
+      "16": 1,
+      "17": 1,
+      "18": 2,
+      "20": 2,
+      "24": 2,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "loading_1280x720_dark.json",
+    "screen": "loading",
+    "size": [
+      1280,
+      720
+    ],
+    "ui_scale": 1.0,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          22.0,
+          604.0,
+          312.0,
+          121.0
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 0,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 17,
+      "11": 10,
+      "12": 4,
+      "13": 6,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "36": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "loading_1920x1080_dark.json",
+    "screen": "loading",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 0,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 17,
+      "11": 10,
+      "12": 4,
+      "13": 6,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "36": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "loading_1920x1200_dark.json",
+    "screen": "loading",
+    "size": [
+      1920,
+      1200
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      800.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          1026.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 0,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 17,
+      "11": 10,
+      "12": 4,
+      "13": 6,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "36": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "lobby_1280x720_dark.json",
+    "screen": "lobby",
+    "size": [
+      1280,
+      720
+    ],
+    "ui_scale": 1.0,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          0.0,
+          0.0,
+          1280.0,
+          741.0
+        ],
+        "type": "MarginContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 7,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 8,
+      "11": 10,
+      "12": 25,
+      "13": 6,
+      "14": 2,
+      "15": 1,
+      "16": 8,
+      "17": 1,
+      "18": 1,
+      "20": 2,
+      "34": 1,
+      "64": 1
+    }
+  },
+  {
+    "file": "lobby_1920x1080_dark.json",
+    "screen": "lobby",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          0.0,
+          0.0,
+          1920.0,
+          1111.5
+        ],
+        "type": "MarginContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 7,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 8,
+      "11": 10,
+      "12": 25,
+      "13": 6,
+      "14": 2,
+      "15": 1,
+      "16": 8,
+      "17": 1,
+      "18": 1,
+      "20": 2,
+      "34": 1,
+      "64": 1
+    }
+  },
+  {
+    "file": "lobby_1920x1200_dark.json",
+    "screen": "lobby",
+    "size": [
+      1920,
+      1200
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      800.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 7,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 8,
+      "11": 10,
+      "12": 25,
+      "13": 6,
+      "14": 2,
+      "15": 1,
+      "16": 8,
+      "17": 1,
+      "18": 1,
+      "20": 2,
+      "34": 1,
+      "64": 1
+    }
+  },
+  {
+    "file": "lobby_2560x1080_dark.json",
+    "screen": "lobby",
+    "size": [
+      2560,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1706.66662597656,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          0.0,
+          0.0,
+          2560.0,
+          1111.5
+        ],
+        "type": "MarginContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 7,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 8,
+      "11": 10,
+      "12": 25,
+      "13": 6,
+      "14": 2,
+      "15": 1,
+      "16": 8,
+      "17": 1,
+      "18": 1,
+      "20": 2,
+      "34": 1,
+      "64": 1
+    }
+  },
+  {
+    "file": "menu_1280x720_dark.json",
+    "screen": "menu",
+    "size": [
+      1280,
+      720
+    ],
+    "ui_scale": 1.0,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          0.0,
+          0.0,
+          1280.0,
+          741.0
+        ],
+        "type": "MarginContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 5,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 2,
+      "11": 8,
+      "12": 19,
+      "13": 6,
+      "14": 1,
+      "15": 1,
+      "16": 4,
+      "17": 1,
+      "18": 1,
+      "20": 2,
+      "64": 1
+    }
+  },
+  {
+    "file": "menu_1920x1080_dark.json",
+    "screen": "menu",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          0.0,
+          0.0,
+          1920.0,
+          1111.5
+        ],
+        "type": "MarginContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 5,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 2,
+      "11": 8,
+      "12": 19,
+      "13": 6,
+      "14": 1,
+      "15": 1,
+      "16": 4,
+      "17": 1,
+      "18": 1,
+      "20": 2,
+      "64": 1
+    }
+  },
+  {
+    "file": "menu_1920x1200_dark.json",
+    "screen": "menu",
+    "size": [
+      1920,
+      1200
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      800.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 5,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 2,
+      "11": 8,
+      "12": 19,
+      "13": 6,
+      "14": 1,
+      "15": 1,
+      "16": 4,
+      "17": 1,
+      "18": 1,
+      "20": 2,
+      "64": 1
+    }
+  },
+  {
+    "file": "menu_2560x1080_dark.json",
+    "screen": "menu",
+    "size": [
+      2560,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1706.66662597656,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          0.0,
+          0.0,
+          2560.0,
+          1111.5
+        ],
+        "type": "MarginContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 5,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 2,
+      "11": 8,
+      "12": 19,
+      "13": 6,
+      "14": 1,
+      "15": 1,
+      "16": 4,
+      "17": 1,
+      "18": 1,
+      "20": 2,
+      "64": 1
+    }
+  },
+  {
+    "file": "pause_1280x720_dark.json",
+    "screen": "pause",
+    "size": [
+      1280,
+      720
+    ],
+    "ui_scale": 1.0,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          22.0,
+          604.0,
+          312.0,
+          121.0
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [
+      {
+        "rect": [
+          22.0,
+          190.0,
+          278.0,
+          71.0
+        ],
+        "px": 19738.0
+      }
+    ],
+    "top_panels": [
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5",
+        "rect": [
+          22.0,
+          18.0,
+          278.0,
+          243.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12",
+        "rect": [
+          22.0,
+          190.0,
+          278.0,
+          152.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28",
+        "rect": [
+          462.0,
+          18.0,
+          356.0,
+          94.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40",
+        "rect": [
+          1042.0,
+          18.0,
+          216.0,
+          262.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51",
+        "rect": [
+          22.0,
+          604.0,
+          312.0,
+          121.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64",
+        "rect": [
+          990.0,
+          604.0,
+          268.0,
+          96.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78",
+        "rect": [
+          990.0,
+          498.0,
+          268.0,
+          96.0
+        ]
+      }
+    ],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 2,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 10,
+      "12": 4,
+      "13": 5,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "34": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "pause_1920x1080_bright.json",
+    "screen": "pause",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "bright",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [],
+    "top_panels": [],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 2,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 10,
+      "12": 4,
+      "13": 5,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "34": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "pause_1920x1080_dark.json",
+    "screen": "pause",
+    "size": [
+      1920,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [
+      {
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          106.5
+        ],
+        "px": 44410.5
+      }
+    ],
+    "top_panels": [
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5",
+        "rect": [
+          33.0,
+          27.0,
+          417.0,
+          364.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12",
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          228.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28",
+        "rect": [
+          693.0,
+          27.0,
+          534.0,
+          141.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40",
+        "rect": [
+          1563.0,
+          27.0,
+          324.0,
+          393.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51",
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64",
+        "rect": [
+          1485.0,
+          906.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78",
+        "rect": [
+          1485.0,
+          747.0,
+          402.0,
+          144.0
+        ]
+      }
+    ],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 2,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 10,
+      "12": 4,
+      "13": 5,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "34": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "pause_1920x1200_dark.json",
+    "screen": "pause",
+    "size": [
+      1920,
+      1200
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1280.0,
+      800.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          1026.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [
+      {
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          106.5
+        ],
+        "px": 44410.5
+      }
+    ],
+    "top_panels": [
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5",
+        "rect": [
+          33.0,
+          27.0,
+          417.0,
+          364.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12",
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          228.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28",
+        "rect": [
+          693.0,
+          27.0,
+          534.0,
+          141.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40",
+        "rect": [
+          1563.0,
+          27.0,
+          324.0,
+          393.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51",
+        "rect": [
+          33.0,
+          1026.0,
+          468.0,
+          181.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64",
+        "rect": [
+          1485.0,
+          1026.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78",
+        "rect": [
+          1485.0,
+          867.0,
+          402.0,
+          144.0
+        ]
+      }
+    ],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 2,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 10,
+      "12": 4,
+      "13": 5,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "34": 1,
+      "8": 1,
+      "9": 4
+    }
+  },
+  {
+    "file": "pause_2560x1080_dark.json",
+    "screen": "pause",
+    "size": [
+      2560,
+      1080
+    ],
+    "ui_scale": 1.5,
+    "logical_size": [
+      1706.66662597656,
+      720.0
+    ],
+    "background": "dark",
+    "out_of_viewport": [
+      {
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ],
+        "type": "PanelContainer"
+      }
+    ],
+    "panel_overlaps": [
+      {
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          106.5
+        ],
+        "px": 44410.5
+      }
+    ],
+    "top_panels": [
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@5",
+        "rect": [
+          33.0,
+          27.0,
+          417.0,
+          364.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@12",
+        "rect": [
+          33.0,
+          285.0,
+          417.0,
+          228.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@28",
+        "rect": [
+          1013.0,
+          27.0,
+          533.999877929688,
+          141.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@40",
+        "rect": [
+          2203.0,
+          27.0,
+          324.0,
+          393.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@51",
+        "rect": [
+          33.0,
+          906.0,
+          468.0,
+          181.5
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@64",
+        "rect": [
+          2125.0,
+          906.0,
+          402.0,
+          144.0
+        ]
+      },
+      {
+        "path": "/root/@SubViewport@2/GameHUDAudit/@PanelContainer@78",
+        "rect": [
+          2125.0,
+          747.0,
+          402.0,
+          144.0
+        ]
+      }
+    ],
+    "focus_none_buttons": 0,
+    "invisible_focus_buttons": 2,
+    "clipped_labels": 0,
+    "font_sizes": {
+      "10": 16,
+      "11": 10,
+      "12": 4,
+      "13": 5,
+      "14": 2,
+      "17": 1,
+      "18": 2,
+      "20": 1,
+      "24": 1,
+      "25": 1,
+      "27": 1,
+      "30": 1,
+      "32": 1,
+      "34": 1,
+      "8": 1,
+      "9": 4
+    }
+  }
+]

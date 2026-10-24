@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>死城突围 · 主菜单 UI 原型</title>
+<style>
+  :root{
+    --ink:#f3ede3;
+    --ink-2:#d9d0c2;
+    --muted:#b6aa99;
+    --muted-2:#968b7d;
+    --amber:#e6a75e;
+    --amber-dim:rgba(230,167,94,.55);
+    --scrim:#050607;
+    --rule:rgba(217,208,194,.26);
+    --stage-w:1280px;
+    --stage-h:720px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:#000;overflow:hidden}
+  body{
+    font-family:"Noto Sans SC","Source Han Sans SC","Microsoft YaHei",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    color:var(--ink);
+  }
+  #stage{
+    position:absolute;left:0;top:0;width:1280px;height:720px;
+    transform-origin:top left;overflow:hidden;background:#07090a;
+    box-shadow:0 30px 90px rgba(0,0,0,.65);
+  }
+
+  /* ---------- background ---------- */
+  .scene{position:absolute;inset:0;overflow:hidden}
+  .scene > img{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:center;
+    user-select:none;-webkit-user-drag:none;
+  }
+  .scrim-left{
+    position:absolute;inset:0;
+    background:linear-gradient(90deg,
+      rgba(5,6,7,.998) 0%,
+      rgba(5,6,7,.996) 28%,
+      rgba(5,6,7,.975) 31%,
+      rgba(5,6,7,.80) 35%,
+      rgba(5,6,7,.40) 40%,
+      rgba(5,6,7,.12) 46%,
+      rgba(5,6,7,0) 54%);
+  }
+  .scrim-bottom{
+    position:absolute;inset:0;
+    background:linear-gradient(0deg,rgba(5,6,7,.80) 0%,rgba(5,6,7,.36) 13%,rgba(5,6,7,0) 30%);
+  }
+  .vignette{
+    position:absolute;inset:0;
+    background:radial-gradient(ellipse at 62% 38%,rgba(0,0,0,0) 24%,rgba(0,0,0,.28) 70%,rgba(0,0,0,.62) 100%);
+  }
+  .grain{
+    position:absolute;inset:0;opacity:.055;mix-blend-mode:overlay;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  }
+
+  /* placeholder scene (no concept image) */
+  .placeholder{display:none;position:absolute;inset:0;overflow:hidden;
+    background:
+      radial-gradient(ellipse at 62% 34%,rgba(212,182,139,.16),rgba(0,0,0,0) 46%),
+      linear-gradient(160deg,#151c21 0%,#0b1014 52%,#06080a 100%);
+  }
+  .placeholder .ph-window{
+    position:absolute;left:33%;top:6%;width:54%;height:80%;
+    border:12px solid #1c2429;border-bottom-width:18px;
+    background:
+      radial-gradient(circle at 56% 27%,rgba(255,226,176,.50),rgba(255,226,176,0) 34%),
+      linear-gradient(180deg,#8b979c 0%,#59656b 28%,#2b353a 58%,#11171a 100%);
+    box-shadow:inset 0 0 90px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.05);
+    overflow:hidden;
+  }
+  .placeholder .ph-city{
+    position:absolute;left:0;right:0;bottom:0;height:48%;
+    background:
+      repeating-linear-gradient(90deg,
+        rgba(10,14,16,.96) 0 16px, rgba(0,0,0,0) 16px 26px,
+        rgba(10,14,16,.96) 26px 44px, rgba(0,0,0,0) 44px 58px,
+        rgba(10,14,16,.96) 58px 70px, rgba(0,0,0,0) 70px 86px);
+    -webkit-mask-image:linear-gradient(to top,#000 58%,rgba(0,0,0,0) 100%);
+    mask-image:linear-gradient(to top,#000 58%,rgba(0,0,0,0) 100%);
+  }
+  .placeholder .ph-window::before{
+    content:"";position:absolute;left:47%;top:0;bottom:0;width:10px;background:#1a2126;
+    box-shadow:0 0 0 1px rgba(255,255,255,.04);
+  }
+  .placeholder .ph-window::after{
+    content:"";position:absolute;left:0;right:0;top:52%;height:8px;background:#1a2126;
+    box-shadow:0 0 0 1px rgba(255,255,255,.04);
+  }
+  .placeholder .ph-label{
+    position:absolute;left:36.5%;top:89%;width:44%;
+    font-size:12px;line-height:1.7;letter-spacing:.12em;color:rgba(230,225,216,.66);
+    border-left:1px solid rgba(230,167,94,.45);padding-left:12px;
+  }
+  body[data-bg="placeholder"] .scene > img{display:none}
+  body[data-bg="placeholder"] .scrim-left{opacity:.55}
+  body[data-bg="placeholder"] .placeholder{display:block}
+
+  /* ---------- ui ---------- */
+  .ui{position:absolute;inset:0;z-index:3}
+  .menu-col{
+    position:absolute;left:5.2%;top:12.4%;width:34%;min-width:340px;max-width:440px;
+  }
+  .lockup{user-select:none}
+  .title{
+    margin:0;font-family:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+    font-weight:900;font-size:64px;line-height:1.02;letter-spacing:.015em;
+    color:var(--ink);
+    text-shadow:0 2px 10px rgba(0,0,0,.65),0 10px 34px rgba(0,0,0,.45);
+  }
+  .tagline{
+    margin:17px 0 0;font-size:11px;line-height:1.6;letter-spacing:.34em;
+    color:var(--muted);white-space:nowrap;
+  }
+
+  .menu{margin-top:92px;padding-left:18px}
+  .item{
+    position:relative;display:flex;align-items:center;width:100%;
+    margin:0;padding:7px 26px 7px 0;border:0;background:transparent;color:var(--ink-2);
+    font:inherit;text-align:left;cursor:pointer;outline:none;
+    transition:color .18s ease,opacity .18s ease;
+  }
+  .item + .item{margin-top:6px}
+  .item .label{display:flex;flex-direction:column;min-width:0}
+  .item .row{display:flex;align-items:center;gap:12px;min-width:0}
+  .item .name{
+    font-size:21px;line-height:1.35;letter-spacing:.10em;font-weight:500;
+    transition:color .18s ease,transform .18s ease;
+  }
+  .item .sub{
+    display:none;margin-top:7px;font-size:11px;line-height:1.5;letter-spacing:.12em;
+    color:var(--muted-2);
+  }
+  .item-primary .sub{display:block}
+  .item-primary .name{font-size:25px;letter-spacing:.08em}
+  .item-primary{padding-top:8px;padding-bottom:10px}
+  .item-minor .name{font-size:18px;color:var(--muted)}
+  .item-minor{opacity:.92}
+
+  .mark{
+    position:absolute;left:-18px;top:8px;bottom:8px;width:11px;
+    border-left:1.5px solid var(--amber);
+    border-top:1.5px solid var(--amber);
+    border-bottom:1.5px solid var(--amber);
+    opacity:0;transform:translateX(-2px);
+    transition:opacity .16s ease,transform .16s ease;
+    filter:drop-shadow(0 0 6px rgba(230,167,94,.35));
+  }
+  .chev{
+    font-size:22px;line-height:1;color:var(--amber);opacity:0;
+    transform:translateX(-3px);flex:0 0 auto;
+    transition:opacity .18s ease,transform .18s ease;
+  }
+  .item.is-selected{color:var(--ink)}
+  .item.is-selected .name{color:#fff;transform:translateX(5px)}
+  .item.is-selected .mark{opacity:1;transform:translateX(0)}
+  .item.is-selected .chev{opacity:1;transform:translateX(0)}
+  .item.is-selected .sub{color:var(--muted)}
+  .item:hover .name{color:#fff}
+  .item:focus-visible{outline:none}
+  .item[aria-disabled="true"]{cursor:default;opacity:.38}
+  .item[aria-disabled="true"] .name{color:var(--muted-2)}
+  .item[aria-disabled="true"] .sub{color:var(--muted-2)}
+
+  .rule{
+    width:46px;height:1px;margin:15px 0 15px 1px;background:var(--rule);
+  }
+
+  .footer{
+    position:absolute;left:5.2%;bottom:6.2%;
+    display:flex;align-items:center;gap:10px;
+    font-size:10px;line-height:1;letter-spacing:.13em;color:var(--muted);
+    white-space:nowrap;
+  }
+  .footer .bar{width:1.5px;height:13px;background:var(--amber-dim)}
+  .footer .dot{width:3px;height:3px;border-radius:50%;background:rgba(217,208,194,.35)}
+  .footer .build{color:var(--muted-2);letter-spacing:.1em}
+
+  .hint{
+    position:absolute;right:4.4%;bottom:5.4%;
+    font-size:10px;letter-spacing:.12em;color:rgba(217,208,194,.68);
+    white-space:nowrap;
+  }
+
+  .toast{
+    position:absolute;left:50%;bottom:11.5%;transform:translate(-50%,8px);
+    min-width:220px;max-width:56%;padding:10px 16px;
+    background:rgba(8,10,11,.92);border:1px solid rgba(230,167,94,.34);
+    color:#ece4d7;font-size:12px;line-height:1.5;letter-spacing:.06em;text-align:center;
+    opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  /* ---------- review guides ---------- */
+  .guides,.devbar{display:none}
+  body.show-guides .guides{display:block}
+  body.show-guides .devbar{display:flex}
+  .guides{position:absolute;inset:0;z-index:4;pointer-events:none}
+  .g{position:absolute;border:1px dashed rgba(120,220,210,.7);background:rgba(90,210,200,.045)}
+  .g > span{
+    position:absolute;left:4px;top:3px;padding:2px 5px;
+    background:rgba(0,0,0,.72);font-size:9px;letter-spacing:.06em;color:#8fe3d8;
+  }
+  .g-l{left:0;top:0;width:36%;height:100%}
+  .g-l > span{top:36px}
+  .g-r{left:76%;top:0;width:24%;height:100%;border-color:rgba(230,167,94,.65);background:rgba(230,167,94,.035)}
+  .g-r > span{color:#e6a75e}
+  .g-b{left:0;top:90%;width:100%;height:10%;border-color:rgba(170,140,235,.6);background:rgba(170,140,235,.04)}
+  .g-b > span{color:#c4a9ff}
+  .g-hero{left:36%;top:8%;width:40%;height:82%;border:1px solid rgba(243,237,227,.55);background:transparent}
+  .g-hero > span{color:#f3ede3}
+  .g-title{left:5%;top:5%;width:90%;height:90%;border:1px dotted rgba(140,220,120,.55);background:transparent}
+  .g-action{left:3%;top:3%;width:94%;height:94%;border:1px dotted rgba(255,150,110,.45);background:transparent}
+  .devbar{
+    position:absolute;left:10px;top:10px;z-index:5;gap:10px;align-items:center;
+    padding:5px 9px;background:rgba(0,0,0,.76);border:1px solid rgba(255,255,255,.12);
+    font:10px/1.2 ui-monospace,Consolas,monospace;color:#cfd8d2;letter-spacing:.03em;
+  }
+  .devbar b{color:#e6a75e;font-weight:600}
+  .badge{
+    position:absolute;right:12px;top:12px;z-index:5;display:none;
+    padding:4px 8px;border:1px solid rgba(230,167,94,.4);background:rgba(0,0,0,.7);
+    font-size:9px;letter-spacing:.14em;color:#e6a75e;
+  }
+  body.show-guides .badge{display:block}
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body data-bg="reference">
+  <div id="stage">
+    <div class="scene">
+      <img src="../reference/concept_1672x941.png" alt="概念参考图（AI 概念，非最终资产）">
+      <div class="placeholder">
+        <div class="ph-window"><div class="ph-city"></div></div>
+        <div class="ph-label">CG 背景占位<br>最终交付为无文字 21:9 母版</div>
+      </div>
+      <div class="scrim-left"></div>
+      <div class="scrim-bottom"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <div class="ui">
+      <div class="menu-col">
+        <header class="lockup">
+          <h1 class="title">死城突围</h1>
+          <p class="tagline">在崩塌的世界，寻找回家的路</p>
+        </header>
+
+        <nav class="menu" role="menu" aria-label="主菜单">
+          <button class="item item-primary is-selected" role="menuitem" data-action="continue" aria-current="true">
+            <span class="mark" aria-hidden="true"></span>
+            <span class="label">
+              <span class="row"><span class="name">继续行动</span><span class="chev" aria-hidden="true">›</span></span>
+              <span class="sub" data-sub>从上次离开的地方继续</span>
+            </span>
+          </button>
+
+          <button class="item" role="menuitem" data-action="solo">
+            <span class="mark" aria-hidden="true"></span>
+            <span class="label"><span class="row"><span class="name">单人行动</span><span class="chev" aria-hidden="true">›</span></span></span>
+          </button>
+
+          <button class="item" role="menuitem" data-action="coop">
+            <span class="mark" aria-hidden="true"></span>
+            <span class="label"><span class="row"><span class="name">联机作战</span><span class="chev" aria-hidden="true">›</span></span></span>
+          </button>
+
+          <div class="rule" role="separator"></div>
+
+          <button class="item item-minor" role="menuitem" data-action="loadout">
+            <span class="mark" aria-hidden="true"></span>
+            <span class="label"><span class="row"><span class="name">角色整备</span><span class="chev" aria-hidden="true">›</span></span></span>
+          </button>
+
+          <button class="item item-minor" role="menuitem" data-action="settings">
+            <span class="mark" aria-hidden="true"></span>
+            <span class="label"><span class="row"><span class="name">设置</span><span class="chev" aria-hidden="true">›</span></span></span>
+          </button>
+
+          <button class="item item-minor" role="menuitem" data-action="quit">
+            <span class="mark" aria-hidden="true"></span>
+            <span class="label"><span class="row"><span class="name">退出</span><span class="chev" aria-hidden="true">›</span></span></span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="footer">
+        <span class="bar"></span>
+        <span>E-07 高架轨道 · 旧维护观察室</span>
+        <span class="dot"></span>
+        <span class="build">UI 原型 · 非最终</span>
+      </div>
+
+      <div class="hint">↑ ↓ 选择 · Enter 确认 · Esc 返回</div>
+      <div class="toast" role="status" aria-live="polite"></div>
+
+      <div class="guides" aria-hidden="true">
+        <div class="g g-l"><span>UI-L 0–36% · 标题/主行动</span></div>
+        <div class="g g-r"><span>UI-R 76–100%</span></div>
+        <div class="g g-b"><span>UI-B 90–100% · 页脚</span></div>
+        <div class="g g-hero"><span>HERO 36–76% × 8–90%</span></div>
+        <div class="g g-title"></div>
+        <div class="g g-action"></div>
+      </div>
+      <div class="devbar" id="devbar">1280×720 · 1.00× · 16:9 · reference</div>
+      <div class="badge">CONCEPT REFERENCE · NOT FINAL</div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const stage = document.getElementById('stage');
+  const items = Array.from(document.querySelectorAll('.item'));
+  const devbar = document.getElementById('devbar');
+  const toastEl = document.querySelector('.toast');
+  const contBtn = document.querySelector('[data-action="continue"]');
+  const contSub = contBtn.querySelector('[data-sub]');
+
+  const DIMS = { '16x9':[1280,720,16/9], '16x10':[1280,800,16/10], '21x9':[1707,720,21/9] };
+  const LABEL = { '16x9':'16:9', '16x10':'16:10', '21x9':'21:9' };
+
+  const params = new URLSearchParams(location.search);
+  let ar = DIMS[params.get('ar')] ? params.get('ar') : '16x9';
+  let current = 0;
+  let noSave = params.get('state') === 'nosave';
+  let toastTimer = 0;
+  let scale = 1;
+
+  function applyAspect(){
+    const d = DIMS[ar];
+    stage.style.width = d[0] + 'px';
+    stage.style.height = d[1] + 'px';
+    document.documentElement.style.setProperty('--stage-w', d[0] + 'px');
+    document.documentElement.style.setProperty('--stage-h', d[1] + 'px');
+    fit();
+  }
+
+  function fit(){
+    const w = stage.offsetWidth, h = stage.offsetHeight;
+    scale = Math.min(window.innerWidth / w, window.innerHeight / h);
+    stage.style.transform = 'scale(' + scale + ')';
+    stage.style.left = Math.round((window.innerWidth - w * scale) / 2) + 'px';
+    stage.style.top = Math.round((window.innerHeight - h * scale) / 2) + 'px';
+    updateDev();
+  }
+
+  function updateDev(){
+    if(!devbar) return;
+    devbar.innerHTML = '<b>' + DIMS[ar][0] + '×' + DIMS[ar][1] + '</b> · ' +
+      scale.toFixed(2) + '× · ' + LABEL[ar] + ' · ' +
+      (document.body.dataset.bg === 'placeholder' ? 'placeholder' : 'reference') +
+      (noSave ? ' · NO SAVE' : '');
+  }
+
+  function select(i, focus){
+    if(!items.length) return;
+    i = (i + items.length) % items.length;
+    if(items[i].getAttribute('aria-disabled') === 'true') return;
+    items.forEach(function(el){ el.classList.remove('is-selected'); el.removeAttribute('aria-current'); });
+    current = i;
+    items[i].classList.add('is-selected');
+    items[i].setAttribute('aria-current','true');
+    if(focus) items[i].focus({preventScroll:true});
+  }
+
+  function toast(msg){
+    if(!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 2300);
+  }
+
+  function setNoSave(v){
+    noSave = !!v;
+    document.body.dataset.nosave = noSave ? 'true' : 'false';
+    contBtn.setAttribute('aria-disabled', noSave ? 'true' : 'false');
+    contSub.textContent = noSave ? '暂无可用存档' : '从上次离开的地方继续';
+    if(noSave && current === 0) select(1, true);
+    updateDev();
+  }
+
+  items.forEach(function(el, i){
+    el.addEventListener('pointerenter', function(){ select(i, false); });
+    el.addEventListener('focus', function(){ select(i, false); });
+    el.addEventListener('click', function(){
+      const action = el.dataset.action;
+      if(el.getAttribute('aria-disabled') === 'true'){ toast('暂无可用存档'); return; }
+      const map = {
+        continue:'继续行动 · 读取最近存档（原型未接入）',
+        solo:'单人行动 · 进入部署（原型未接入）',
+        coop:'联机作战 · 打开房间列表（原型未接入）',
+        loadout:'角色整备 · 打开装备界面（原型未接入）',
+        settings:'设置 · 打开设置面板（原型未接入）',
+        quit:'退出 · 需要二次确认（原型未接入）'
+      };
+      toast(map[action] || '原型未接入');
+    });
+  });
+
+  document.addEventListener('keydown', function(e){
+    const k = e.key;
+    if(k === 'ArrowDown' || k === 's' || k === 'S'){ e.preventDefault(); select(current + 1, true); }
+    else if(k === 'ArrowUp' || k === 'w' || k === 'W'){ e.preventDefault(); select(current - 1, true); }
+    else if(k === 'Escape'){ toast('已在根菜单'); }
+    else if(k === 'n' || k === 'N'){ setNoSave(!noSave); }
+    else if(k === 'g' || k === 'G'){ document.body.classList.toggle('show-guides'); }
+    else if(k === 'b' || k === 'B'){
+      document.body.dataset.bg = document.body.dataset.bg === 'placeholder' ? 'reference' : 'placeholder';
+      updateDev();
+    }
+    else if(k === '1'){ ar = '16x9'; applyAspect(); }
+    else if(k === '2'){ ar = '16x10'; applyAspect(); }
+    else if(k === '3'){ ar = '21x9'; applyAspect(); }
+  });
+
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+
+  // initial state from query
+  if(params.get('guides') === '1') document.body.classList.add('show-guides');
+  if(params.get('bg') === 'placeholder') document.body.dataset.bg = 'placeholder';
+  applyAspect();
+  if(noSave) setNoSave(true);
+  const sel = parseInt(params.get('sel') || '0', 10);
+  if(!isNaN(sel)) select(sel, false);
+  if(params.get('toast')) toast(params.get('toast'));
+
+  setTimeout(fit, 120);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>

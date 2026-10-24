@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#0b1016"/>
+  <text x="60" y="48" fill="#e7eef2" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="24" font-weight="700">图 1 · 现工程城市骨架与任务轴线（俯视示意）</text>
+  <text x="60" y="74" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13">依据 CityLayout 常量绘制；建筑为程序生成，此图不表示 seed 4242 的具体楼栋。单位：米。</text>
+
+  <!-- map frame -->
+  <rect x="180" y="90" width="720" height="720" fill="#111a20" stroke="#2b3b49" stroke-width="1.5"/>
+  <!-- blocks -->
+  <g fill="#1a262d" stroke="#2a3a43" stroke-width="1">
+    <rect x="220.8" y="130.8" width="95.1" height="95.1"/>
+    <rect x="220.8" y="266.7" width="95.1" height="95.1"/>
+    <rect x="220.8" y="402.5" width="95.1" height="95.1"/>
+    <rect x="220.8" y="538.4" width="95.1" height="95.1"/>
+    <rect x="220.8" y="674.2" width="95.1" height="95.1"/>
+    <rect x="356.7" y="130.8" width="95.1" height="95.1"/>
+    <rect x="356.7" y="266.7" width="95.1" height="95.1"/>
+    <rect x="356.7" y="402.5" width="95.1" height="95.1"/>
+    <rect x="356.7" y="538.4" width="95.1" height="95.1"/>
+    <rect x="356.7" y="674.2" width="95.1" height="95.1"/>
+    <rect x="492.5" y="130.8" width="95.1" height="95.1"/>
+    <rect x="492.5" y="266.7" width="95.1" height="95.1"/>
+    <rect x="492.5" y="538.4" width="95.1" height="95.1"/>
+    <rect x="492.5" y="674.2" width="95.1" height="95.1"/>
+    <rect x="628.4" y="130.8" width="95.1" height="95.1"/>
+    <rect x="628.4" y="266.7" width="95.1" height="95.1"/>
+    <rect x="628.4" y="402.5" width="95.1" height="95.1"/>
+    <rect x="628.4" y="538.4" width="95.1" height="95.1"/>
+    <rect x="628.4" y="674.2" width="95.1" height="95.1"/>
+    <rect x="764.2" y="130.8" width="95.1" height="95.1"/>
+    <rect x="764.2" y="266.7" width="95.1" height="95.1"/>
+    <rect x="764.2" y="402.5" width="95.1" height="95.1"/>
+    <rect x="764.2" y="538.4" width="95.1" height="95.1"/>
+    <rect x="764.2" y="674.2" width="95.1" height="95.1"/>
+  </g>
+  <!-- central park -->
+  <rect x="492.5" y="402.5" width="95.1" height="95.1" fill="#22392c" stroke="#3c5a40" stroke-width="1.5"/>
+  <text x="540" y="396" fill="#83b35a" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12">中央公园</text>
+  <!-- vault hole -->
+  <rect x="527.1" y="420.8" width="25.8" height="72" fill="#070a0e" stroke="#59d8c8" stroke-width="1.2"/>
+  <text x="556" y="430" fill="#59d8c8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11">B1 入口</text>
+  <!-- ramp -->
+  <line x1="540" y1="492.8" x2="540" y2="422.2" stroke="#ffc861" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="548" y="480" fill="#ffc861" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">坡道</text>
+  <!-- boundary wall -->
+  <rect x="180" y="806.6" width="720" height="5" fill="#3c444c"/>
+  <rect x="180" y="806.6" width="720" height="2" fill="#c74b45"/>
+  <text x="905" y="800" fill="#c74b45" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="end">南侧隔离墙 5.2m</text>
+  <!-- base -->
+  <circle cx="540" cy="782.8" r="23.8" fill="#123037" stroke="#59d8c8" stroke-width="2"/>
+  <circle cx="540" cy="782.8" r="20.5" fill="none" stroke="#59d8c8" stroke-width="1" opacity="0.5"/>
+  <text x="540" y="787" fill="#e7eef2" text-anchor="middle" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11">基地</text>
+  <!-- route -->
+  <line x1="540" y1="758" x2="540" y2="500" stroke="#e7eef2" stroke-width="2" stroke-dasharray="9 7" opacity="0.85"/>
+  <polygon points="540,492 534,504 546,504" fill="#e7eef2"/>
+  <text x="552" y="620" fill="#c8d3d8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11">任务轴线：基地 → 公园 → B1</text>
+  <text x="552" y="638" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10">实际路线需绕行街区建筑；返程沿同一坡道步行</text>
+  <!-- north -->
+  <g transform="translate(960,140)">
+    <line x1="0" y1="34" x2="0" y2="-10" stroke="#e7eef2" stroke-width="2"/>
+    <polygon points="0,-18 -6,-4 6,-4" fill="#e7eef2"/>
+    <text x="0" y="52" fill="#e7eef2" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700">N</text>
+  </g>
+  <!-- scale -->
+  <g transform="translate(200,845)">
+    <line x1="0" y1="0" x2="135.8" y2="0" stroke="#e7eef2" stroke-width="2"/>
+    <line x1="0" y1="-4" x2="0" y2="4" stroke="#e7eef2" stroke-width="2"/>
+    <line x1="135.8" y1="-4" x2="135.8" y2="4" stroke="#e7eef2" stroke-width="2"/>
+    <text x="68" y="-8" fill="#8d9caa" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11">40 m</text>
+  </g>
+  <!-- legend -->
+  <g transform="translate(940,690)">
+    <text x="0" y="0" fill="#e7eef2" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" font-weight="700">图例</text>
+    <circle cx="7" cy="20" r="6" fill="#123037" stroke="#59d8c8" stroke-width="1.5"/>
+    <text x="22" y="24" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11">基地安全区 r=7</text>
+    <rect x="1" y="36" width="12" height="9" fill="#070a0e" stroke="#59d8c8" stroke-width="1"/>
+    <text x="22" y="45" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11">B1 竖井</text>
+    <rect x="1" y="57" width="12" height="5" fill="#3c444c"/>
+    <text x="22" y="65" fill="#8d9caa" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11">隔离墙</text>
+  </g>
+</svg>

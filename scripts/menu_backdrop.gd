@@ -1,159 +1,277 @@
 class_name MenuBackdrop
 extends Control
+## 主菜单独立背景资源层。只负责 E-07 场景图、压暗、暖光、浮尘与鼠标视差。
+## 不包含任何菜单文字；替换 TEXTURE_PATH 即可换成未来 Blender CG 输出。
 
+const TEXTURE_PATH := "res://assets/ui/menu/e07_observation_exterior.webp"
+
+var _photo: TextureRect
+var _photo_material: ShaderMaterial
+var _warm: TextureRect
+var _dust: GPUParticles2D
+var _scrim_left: TextureRect
+var _scrim_bottom: TextureRect
+var _vignette: ColorRect
+var _contrast_layer: ColorRect
+var _parallax := Vector2.ZERO
+var _target_parallax := Vector2.ZERO
 var _time := 0.0
-var _far_buildings: Array[Rect2] = []
-var _near_buildings: Array[Rect2] = []
-var _windows: Array[Dictionary] = []
-var _ash: Array[Vector3] = []
-var _rng := RandomNumberGenerator.new()
+var _warm_base := 0.72
+var _reduced := false
 
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	set_anchors_preset(Control.PRESET_FULL_RECT)
-	_rng.seed = 731993
-	_build_city()
-	for i in range(46):
-		_ash.append(Vector3(_rng.randf(), _rng.randf(), _rng.randf_range(0.2, 1.0)))
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	clip_contents = true
+	_build()
+	_reduced = DeadCityUI.reduced_motion()
+	_apply_motion_state()
 
 
-func _build_city() -> void:
-	var x := -40.0
-	while x < 1320.0:
-		var width := _rng.randf_range(45.0, 130.0)
-		var height := _rng.randf_range(70.0, 260.0)
-		_far_buildings.append(Rect2(x, 520.0 - height, width, height))
-		x += width + _rng.randf_range(6.0, 26.0)
-	x = -60.0
-	while x < 1340.0:
-		var width := _rng.randf_range(70.0, 190.0)
-		var height := _rng.randf_range(130.0, 360.0)
-		_near_buildings.append(Rect2(x, 720.0 - height, width, height))
-		var cols := int(width / 26.0)
-		var rows := int(height / 38.0)
-		for cx in range(cols):
-			for cy in range(rows):
-				if _rng.randf() < 0.32:
-					continue
-				var w := _rng.randf_range(5.0, 12.0)
-				var h := _rng.randf_range(3.0, 8.0)
-				_windows.append({
-					"pos": Vector2(x + 14.0 + cx * 26.0, 720.0 - height + 22.0 + cy * 38.0),
-					"size": Vector2(w, h),
-					"warm": _rng.randf() < 0.64,
-					"alpha": _rng.randf_range(0.25, 0.9),
-				})
-		x += width + _rng.randf_range(10.0, 36.0)
+func _build() -> void:
+	var base := ColorRect.new()
+	base.color = Color("#0a0b0c")
+	base.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	base.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(base)
+
+	_photo = TextureRect.new()
+	_photo.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_photo.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_photo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_photo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	_photo.texture = load(TEXTURE_PATH) if ResourceLoader.exists(TEXTURE_PATH) else null
+	_photo_material = ShaderMaterial.new()
+	_photo_material.shader = _parallax_shader()
+	_photo.material = _photo_material
+	add_child(_photo)
+
+	if _photo.texture == null:
+		var missing := DeadCityUI.make_label("E-07 背景资源缺失", 13, DeadCityUI.MUTED_2)
+		missing.position = Vector2(48, 48)
+		add_child(missing)
+
+	var beam := GradientTexture2D.new()
+	var beam_gradient := Gradient.new()
+	beam_gradient.set_color(0, Color(1.0, 0.82, 0.58, 0.20))
+	beam_gradient.set_color(1, Color(1.0, 0.82, 0.58, 0.0))
+	beam.gradient = beam_gradient
+	beam.fill = GradientTexture2D.FILL_RADIAL
+	beam.fill_from = Vector2(0.5, 0.5)
+	beam.fill_to = Vector2(1.0, 1.0)
+	beam.width = 512
+	beam.height = 512
+	_warm = TextureRect.new()
+	_warm.texture = beam
+	_warm.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_warm.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_warm.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	_warm.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_warm.anchor_left = 0.36
+	_warm.anchor_right = 0.96
+	_warm.anchor_top = -0.05
+	_warm.anchor_bottom = 0.92
+	_warm.modulate = Color(1, 1, 1, _warm_base)
+	add_child(_warm)
+
+	_dust = GPUParticles2D.new()
+	_dust.amount = 36
+	_dust.lifetime = 12.0
+	_dust.preprocess = 4.0
+	_dust.local_coords = false
+	_dust.visibility_rect = Rect2(-720, -480, 1440, 960)
+	_dust.texture = _mote_texture()
+	var canvas_material := CanvasItemMaterial.new()
+	canvas_material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	_dust.material = canvas_material
+	var process := ParticleProcessMaterial.new()
+	process.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
+	process.emission_box_extents = Vector3(260, 180, 1)
+	process.direction = Vector3(0, -1, 0)
+	process.spread = 32.0
+	process.initial_velocity_min = 2.0
+	process.initial_velocity_max = 7.0
+	process.gravity = Vector3.ZERO
+	process.scale_min = 0.18
+	process.scale_max = 0.52
+	process.color = Color(1.0, 0.87, 0.68, 0.30)
+	_dust.process_material = process
+	add_child(_dust)
+
+	_scrim_left = TextureRect.new()
+	_scrim_left.texture = _left_scrim()
+	_scrim_left.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_scrim_left.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_scrim_left.stretch_mode = TextureRect.STRETCH_SCALE
+	_scrim_left.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(_scrim_left)
+
+	_scrim_bottom = TextureRect.new()
+	_scrim_bottom.texture = _bottom_scrim()
+	_scrim_bottom.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_scrim_bottom.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_scrim_bottom.stretch_mode = TextureRect.STRETCH_SCALE
+	_scrim_bottom.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(_scrim_bottom)
+
+	_vignette = ColorRect.new()
+	_vignette.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_vignette.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var vignette_material := ShaderMaterial.new()
+	vignette_material.shader = _vignette_shader()
+	_vignette.material = vignette_material
+	add_child(_vignette)
+
+	_contrast_layer = ColorRect.new()
+	_contrast_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_contrast_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_contrast_layer.color = Color(0.01, 0.012, 0.013, 0.17)
+	_contrast_layer.visible = false
+	add_child(_contrast_layer)
+
+	resized.connect(_on_resized)
+	_on_resized()
+	visibility_changed.connect(_apply_motion_state)
+
+
+func _left_scrim() -> GradientTexture2D:
+	var gradient := Gradient.new()
+	gradient.offsets = PackedFloat32Array([0.0, 0.28, 0.31, 0.35, 0.40, 0.46, 0.56, 1.0])
+	gradient.colors = PackedColorArray([
+		Color(0.02, 0.022, 0.024, 0.998),
+		Color(0.02, 0.022, 0.024, 0.992),
+		Color(0.02, 0.022, 0.024, 0.958),
+		Color(0.02, 0.022, 0.024, 0.78),
+		Color(0.02, 0.022, 0.024, 0.38),
+		Color(0.02, 0.022, 0.024, 0.10),
+		Color(0.02, 0.022, 0.024, 0.0),
+		Color(0.02, 0.022, 0.024, 0.0),
+	])
+	var texture := GradientTexture2D.new()
+	texture.gradient = gradient
+	texture.fill = GradientTexture2D.FILL_LINEAR
+	texture.fill_from = Vector2(0, 0.5)
+	texture.fill_to = Vector2(1, 0.5)
+	texture.width = 1024
+	texture.height = 8
+	return texture
+
+
+func _bottom_scrim() -> GradientTexture2D:
+	var gradient := Gradient.new()
+	gradient.offsets = PackedFloat32Array([0.0, 0.14, 0.32, 1.0])
+	gradient.colors = PackedColorArray([
+		Color(0.02, 0.022, 0.024, 0.82),
+		Color(0.02, 0.022, 0.024, 0.38),
+		Color(0.02, 0.022, 0.024, 0.0),
+		Color(0.02, 0.022, 0.024, 0.0),
+	])
+	var texture := GradientTexture2D.new()
+	texture.gradient = gradient
+	texture.fill = GradientTexture2D.FILL_LINEAR
+	texture.fill_from = Vector2(0.5, 1)
+	texture.fill_to = Vector2(0.5, 0)
+	texture.width = 8
+	texture.height = 512
+	return texture
+
+
+func _mote_texture() -> GradientTexture2D:
+	var gradient := Gradient.new()
+	gradient.set_color(0, Color(1, 0.93, 0.78, 1))
+	gradient.set_color(1, Color(1, 0.93, 0.78, 0))
+	gradient.add_point(0.35, Color(1, 0.93, 0.78, 0.55))
+	var texture := GradientTexture2D.new()
+	texture.gradient = gradient
+	texture.fill = GradientTexture2D.FILL_RADIAL
+	texture.fill_from = Vector2(0.5, 0.5)
+	texture.fill_to = Vector2(1.0, 0.5)
+	texture.width = 32
+	texture.height = 32
+	return texture
+
+
+func _parallax_shader() -> Shader:
+	var shader := Shader.new()
+	shader.code = """
+shader_type canvas_item;
+uniform vec2 parallax = vec2(0.0);
+uniform float zoom = 1.045;
+void fragment() {
+	vec2 uv = (UV - vec2(0.5)) / zoom + vec2(0.5) + parallax;
+	COLOR = texture(TEXTURE, clamp(uv, vec2(0.0005), vec2(0.9995))) * COLOR;
+}
+"""
+	return shader
+
+
+func _vignette_shader() -> Shader:
+	var shader := Shader.new()
+	shader.code = """
+shader_type canvas_item;
+uniform float strength = 0.52;
+void fragment() {
+	vec2 p = (UV - vec2(0.5)) * vec2(1.12, 1.0);
+	float d = length(p);
+	float a = smoothstep(0.34, 0.82, d) * strength;
+	COLOR = vec4(0.0, 0.0, 0.0, a);
+}
+"""
+	return shader
+
+
+func _on_resized() -> void:
+	if _dust == null:
+		return
+	var extent := size * Vector2(0.34, 0.40)
+	_dust.position = size * Vector2(0.62, 0.44)
+	var process := _dust.process_material as ParticleProcessMaterial
+	if process != null:
+		process.emission_box_extents = Vector3(maxf(80.0, extent.x), maxf(80.0, extent.y), 1.0)
+	_dust.visibility_rect = Rect2(-size.x * 0.6, -size.y * 0.6, size.x * 2.0, size.y * 2.0)
 
 
 func _process(delta: float) -> void:
+	if not visible:
+		return
 	_time += delta
-	for i in range(_ash.size()):
-		var particle := _ash[i]
-		particle.y += delta * (0.012 + particle.z * 0.025)
-		particle.x += delta * (0.004 + particle.z * 0.006) * sin(_time * 0.3 + i)
-		if particle.y > 1.0:
-			particle.y = -0.02
-			particle.x = _rng.randf()
-		_ash[i] = particle
-	queue_redraw()
+	if _reduced:
+		return
+	var viewport_size := size
+	if viewport_size.x > 0.0 and viewport_size.y > 0.0:
+		var mouse := get_local_mouse_position() / viewport_size
+		_target_parallax = (mouse - Vector2(0.5, 0.5)) * Vector2(-0.010, -0.006)
+	_parallax = _parallax.lerp(_target_parallax, minf(1.0, delta * 3.2))
+	if _photo_material != null:
+		_photo_material.set_shader_parameter("parallax", _parallax * 0.42)
+	if _warm != null:
+		_warm.modulate.a = _warm_base + sin(_time * 0.42) * 0.06
+		_warm.position = _parallax * 220.0
 
 
-func _draw() -> void:
-	var size := get_rect().size
-	_draw_sky(size)
-	_draw_moon(size)
-	_draw_far_skyline(size)
-	_draw_near_skyline(size)
-	_draw_fog(size)
-	_draw_ash(size)
-	_draw_corner_marks(size)
+func set_reduced_motion(value: bool) -> void:
+	_reduced = value
+	_apply_motion_state()
 
 
-func _draw_sky(size: Vector2) -> void:
-	var top := Color("#081018")
-	var middle := Color("#15232a")
-	var bottom := Color("#242e2d")
-	var bands := 48
-	for i in range(bands):
-		var t := float(i) / float(bands - 1)
-		var color := top.lerp(middle, clampf(t * 1.8, 0.0, 1.0)) if t < 0.55 else middle.lerp(bottom, (t - 0.55) / 0.45)
-		draw_rect(Rect2(0.0, size.y * t, size.x, size.y / bands + 1.0), color)
-	var glow := Color(0.36, 0.66, 0.58, 0.05)
-	draw_circle(Vector2(size.x * 0.76, size.y * 0.24), size.y * 0.5, glow)
-	draw_circle(Vector2(size.x * 0.76, size.y * 0.24), size.y * 0.28, Color(0.36, 0.66, 0.58, 0.035))
+func set_high_contrast(value: bool) -> void:
+	if _scrim_left == null:
+		return
+	_scrim_left.modulate = Color(1.0, 1.0, 1.0, 1.22 if value else 1.0)
+	if _contrast_layer != null:
+		_contrast_layer.visible = value
 
 
-func _draw_moon(size: Vector2) -> void:
-	var moon := Vector2(size.x * 0.775, size.y * 0.22)
-	for radius in [130.0, 82.0, 56.0]:
-		draw_circle(moon, radius, Color(0.85, 0.88, 0.77, 0.015))
-	draw_circle(moon, 38.0, Color("#d4d9c5"))
-	draw_circle(moon + Vector2(-12.0, -8.0), 31.0, Color("#aab5a4").lerp(Color("#d4d9c5"), 0.5))
-	draw_circle(moon + Vector2(7.0, 5.0), 38.0, Color(0.09, 0.12, 0.14, 0.93))
-	for i in range(28):
-		var x := fmod(i * 137.0 + 40.0, size.x)
-		var y := fmod(i * 83.0 + 20.0, size.y * 0.6)
-		var alpha := 0.25 + 0.25 * sin(_time * 0.7 + i)
-		draw_circle(Vector2(x, y), 1.2, Color(0.85, 0.9, 0.85, alpha))
-
-
-func _draw_far_skyline(size: Vector2) -> void:
-	var offset_y := (size.y - 720.0) * 0.35
-	for building in _far_buildings:
-		var rect := Rect2(building.position.x, building.position.y + offset_y, building.size.x, building.size.y)
-		draw_rect(rect, Color("#18262b"))
-		draw_rect(Rect2(rect.position, Vector2(rect.size.x, 4.0)), Color("#21333a"))
-		if int(rect.size.x) % 3 == 0:
-			draw_rect(Rect2(rect.position.x + 8.0, rect.position.y - 20.0, 4.0, 20.0), Color("#1d2d33"))
-
-
-func _draw_near_skyline(size: Vector2) -> void:
-	var offset_y := (size.y - 720.0) * 0.7
-	for building in _near_buildings:
-		var rect := Rect2(building.position.x, building.position.y + offset_y, building.size.x, building.size.y)
-		draw_rect(rect, Color("#0e171c"))
-		draw_rect(Rect2(rect.position, Vector2(rect.size.x, 5.0)), Color("#1c2c30"))
-		for wx in range(int(rect.position.x / 37.0), int(rect.end.x / 37.0)):
-			var beam := Color(0.18, 0.3, 0.29, 0.04)
-			draw_rect(Rect2(wx * 37.0, rect.position.y, 1.0, rect.size.y), beam)
-	for window in _windows:
-		var pos: Vector2 = window["pos"] + Vector2(0.0, offset_y)
-		var color := Color(1.0, 0.79, 0.48, float(window["alpha"])) if bool(window["warm"]) else Color(0.52, 0.78, 0.81, float(window["alpha"]) * 0.8)
-		draw_rect(Rect2(pos, window["size"]), color)
-	var horizon_y := 720.0 - 130.0 + offset_y
-	draw_line(Vector2(0.0, horizon_y), Vector2(size.x, horizon_y), Color(0.74, 0.25, 0.21, 0.22), 2.0)
-
-
-func _draw_fog(size: Vector2) -> void:
-	for i in range(5):
-		var y := size.y * (0.62 + i * 0.07) + sin(_time * 0.16 + i * 1.7) * 5.0
-		var alpha := 0.035 + i * 0.017
-		var drift := fmod(_time * (6.0 + i * 2.0), size.x)
-		draw_rect(Rect2(-size.x + drift, y, size.x * 2.0, 26.0 + i * 9.0), Color(0.58, 0.68, 0.66, alpha))
-		draw_rect(Rect2(drift, y + 9.0, size.x * 2.0, 16.0), Color(0.55, 0.66, 0.64, alpha * 0.7))
-	var pulse := 0.05 + 0.03 * sin(_time * 1.4)
-	draw_rect(Rect2(0.0, size.y - 160.0, size.x, 160.0), Color(0.35, 0.08, 0.06, pulse))
-
-
-func _draw_ash(size: Vector2) -> void:
-	for particle in _ash:
-		var pos := Vector2(particle.x * size.x + sin(_time + particle.y * 20.0) * 4.0, particle.y * size.y)
-		draw_circle(pos, 0.8 + particle.z * 1.6, Color(0.82, 0.84, 0.78, 0.12 + particle.z * 0.2))
-
-
-func _draw_corner_marks(size: Vector2) -> void:
-	var color := Color(0.35, 0.85, 0.8, 0.28)
-	var length := 32.0
-	var margin := 22.0
-	draw_line(Vector2(margin, margin), Vector2(margin + length, margin), color, 2.0)
-	draw_line(Vector2(margin, margin), Vector2(margin, margin + length), color, 2.0)
-	draw_line(Vector2(size.x - margin, margin), Vector2(size.x - margin - length, margin), color, 2.0)
-	draw_line(Vector2(size.x - margin, margin), Vector2(size.x - margin, margin + length), color, 2.0)
-	draw_line(Vector2(margin, size.y - margin), Vector2(margin + length, size.y - margin), color, 2.0)
-	draw_line(Vector2(margin, size.y - margin), Vector2(margin, size.y - margin - length), color, 2.0)
-	draw_line(Vector2(size.x - margin, size.y - margin), Vector2(size.x - margin - length, size.y - margin), color, 2.0)
-	draw_line(Vector2(size.x - margin, size.y - margin), Vector2(size.x - margin, size.y - margin - length), color, 2.0)
-	draw_string(DeadCityUI.display_font(), Vector2(margin + 8.0, size.y - margin - 8.0), "DEAD CITY // CO-OP", HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color(0.55, 0.7, 0.7, 0.45))
-	draw_string(DeadCityUI.display_font(), Vector2(size.x - 260.0, margin + 16.0), "QUARANTINE ZONE 07", HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color(0.72, 0.32, 0.28, 0.55))
+func _apply_motion_state() -> void:
+	if _dust == null:
+		return
+	_dust.emitting = visible and not _reduced
+	if _reduced:
+		_parallax = Vector2.ZERO
+		_target_parallax = Vector2.ZERO
+		if _photo_material != null:
+			_photo_material.set_shader_parameter("parallax", Vector2.ZERO)
+		if _warm != null:
+			_warm.modulate.a = _warm_base
+			_warm.position = Vector2.ZERO

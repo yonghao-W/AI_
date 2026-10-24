@@ -59,7 +59,7 @@ func build() -> void:
 	_add_sign("第一章 · 失联信号\nE-07 高架信号维护站", Vector3(0.0, 2.7, 7.25), 0.0, 46)
 	_add_sign("西侧楼梯  ←  基地 / 核心回收", Vector3(-2.72, 9.2, 3.65), PI * 0.5, 30)
 	_add_sign("出口  ←", Vector3(-5.77, 2.6, 3.65), PI * 0.5, 38)
-	_add_sign("E  基地无线电", Vector3(4.1, 9.1, 0.3), 0.0, 26)
+	_add_sign("无线电终端", Vector3(4.1, 9.1, 0.3), 0.0, 26)
 	for height in [-1.6, 2.1, 5.5, 9.0]:
 		var light := OmniLight3D.new()
 		light.position = Vector3(-7.0, height, 3.5)

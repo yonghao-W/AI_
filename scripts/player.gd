@@ -1035,6 +1035,14 @@ func set_down() -> void:
 	died.emit()
 
 
+func set_view_direction(yaw_value: float, pitch_value: float = 0.0) -> void:
+	_yaw = wrapf(yaw_value, -PI, PI)
+	_pitch = clampf(pitch_value, -1.47, 1.47)
+	rotation.y = _yaw
+	if _head != null:
+		_head.rotation.x = _pitch
+
+
 func respawn_at(pos: Vector3, face_yaw: float = 0.0) -> void:
 	global_position = Vector3(pos.x, maxf(pos.y, 0.12), pos.z)
 	velocity = Vector3.ZERO
