@@ -24,6 +24,8 @@ var _health_state: Label
 var _conn_label: Label
 var _ammo_mag: Label
 var _ammo_reserve: Label
+var _ammo_slash: Label
+var _ammo_melee := false
 var _ammo_state: Label
 var _reload_bar: ProgressBar
 var _crosshair: DeadCrosshair
@@ -108,7 +110,7 @@ func _build() -> void:
 	_build_interaction()
 	_build_kill_feed()
 	_build_banner()
-	var hint := _label("TAB 情报  ·  B 背包  ·  1-5 / 滚轮 切枪  ·  左键射击  ·  R 换弹  ·  E 互动  ·  ESC 菜单", 11, Color(0.62, 0.72, 0.72, 0.7))
+	var hint := _label("TAB 情报  ·  B 背包  ·  1-2 / 滚轮 切换  ·  左键攻击  ·  R 换弹  ·  E 互动  ·  ESC 菜单", 11, Color(0.62, 0.72, 0.72, 0.7))
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	add_child(hint)
 	hint.anchor_left = 0.5
@@ -186,7 +188,7 @@ func _build_mission_panel() -> void:
 		pip.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		pips.add_child(pip)
 		_mission_pips.append(pip)
-	_mission_hint = _label("前往市中心喷泉，按 E 进入地下设施", 11, Color(0.62, 0.72, 0.73))
+	_mission_hint = _label("沿市中心公园坡道下到核心储藏层 B1", 11, Color(0.62, 0.72, 0.73))
 	_mission_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_mission_hint.custom_minimum_size = Vector2(0, 27)
 	body.add_child(_mission_hint)
@@ -343,9 +345,9 @@ func _build_ammo() -> void:
 	body.add_child(ammo_row)
 	_ammo_mag = _label("30", 30, DeadCityUI.TEXT)
 	ammo_row.add_child(_ammo_mag)
-	var slash := _label("/", 18, Color(0.45, 0.55, 0.58))
-	slash.size_flags_vertical = Control.SIZE_SHRINK_END
-	ammo_row.add_child(slash)
+	_ammo_slash = _label("/", 18, Color(0.45, 0.55, 0.58))
+	_ammo_slash.size_flags_vertical = Control.SIZE_SHRINK_END
+	ammo_row.add_child(_ammo_slash)
 	_ammo_reserve = _label("90", 18, Color(0.55, 0.66, 0.68))
 	_ammo_reserve.size_flags_vertical = Control.SIZE_SHRINK_END
 	ammo_row.add_child(_ammo_reserve)
@@ -381,7 +383,7 @@ func _build_weapon_strip() -> void:
 	var spacer := Control.new()
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(spacer)
-	top.add_child(_label("1-5 / 滚轮切枪", 9, Color(0.45, 0.55, 0.58)))
+	top.add_child(_label("1-2 / 滚轮切换", 9, Color(0.45, 0.55, 0.58)))
 	_weapon_strip = HBoxContainer.new()
 	_weapon_strip.add_theme_constant_override("separation", 4)
 	body.add_child(_weapon_strip)
@@ -395,17 +397,13 @@ func _refresh_weapon_strip() -> void:
 		_weapon_strip.remove_child(child)
 		child.queue_free()
 	_weapon_slots.clear()
-	var owned := {}
-	for entry in _loadout:
-		if entry is Dictionary:
-			owned[String(entry.get("id", ""))] = entry
 	var active_id := String(_weapon_profile.get("id", ""))
-	var ids := WeaponCatalog.ordered_ids()
-	for i in range(ids.size()):
-		var id := String(ids[i])
-		var has := owned.has(id)
-		var active := id == active_id
-		var accent := WeaponCatalog.accent(id)
+	for i in range(WeaponCatalog.MAX_CARRY):
+		var entry: Dictionary = _loadout[i] if i < _loadout.size() and _loadout[i] is Dictionary else {}
+		var id := String(entry.get("id", ""))
+		var has := not id.is_empty()
+		var active := has and id == active_id
+		var accent := WeaponCatalog.accent(id) if has else Color(0.32, 0.4, 0.42)
 		var slot := PanelContainer.new()
 		slot.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		slot.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -424,12 +422,12 @@ func _refresh_weapon_strip() -> void:
 		slot.add_child(box)
 		var number := _label(str(i + 1), 9, accent if has else Color(0.38, 0.44, 0.46))
 		box.add_child(number)
-		var short_label := _label(WeaponCatalog.short_name(id), 11, DeadCityUI.TEXT if active else (Color(0.68, 0.77, 0.78) if has else Color(0.36, 0.42, 0.44)))
+		var short_label := _label(WeaponCatalog.short_name(id) if has else "空槽", 11, DeadCityUI.TEXT if active else (Color(0.68, 0.77, 0.78) if has else Color(0.36, 0.42, 0.44)))
 		short_label.add_theme_font_size_override("font_size", 11)
 		box.add_child(short_label)
-		if not has:
-			number.text = str(i + 1) + " 锁"
-		_weapon_slots[id] = slot
+		if has and WeaponCatalog.is_melee(id):
+			box.add_child(_label("近战", 8, accent))
+		_weapon_slots[i] = slot
 
 
 func set_weapon_strip(loadout: Array, profile: Dictionary) -> void:
@@ -856,7 +854,7 @@ func reset_for_match() -> void:
 	if _mission_progress != null:
 		_mission_progress.text = "核心回收  0 / 3"
 		_mission_progress.add_theme_color_override("font_color", DeadCityUI.AMBER)
-		_mission_hint.text = "前往市中心喷泉，按 E 进入地下设施"
+		_mission_hint.text = "沿市中心公园坡道下到核心储藏层 B1"
 		_mission_zone.text = "基地安全区"
 		_mission_zone.add_theme_color_override("font_color", DeadCityUI.CYAN)
 		_mission_tokens.text = "抽卡券 ×0"
@@ -1002,7 +1000,20 @@ func set_health(health: float, maximum: float = 100.0) -> void:
 	_last_health = clamped
 
 
-func set_ammo(mag: int, reserve: int, reloading: bool = false, progress: float = 0.0) -> void:
+func set_ammo(mag: int, reserve: int, reloading: bool = false, progress: float = 0.0, melee: bool = false) -> void:
+	_ammo_melee = melee
+	if melee:
+		_ammo_mag.text = "近战"
+		_ammo_mag.add_theme_font_size_override("font_size", 22)
+		_ammo_reserve.text = "∞"
+		_ammo_slash.visible = false
+		_reload_bar.visible = false
+		_ammo_state.text = "可挥砍"
+		_ammo_state.add_theme_color_override("font_color", DeadCityUI.AMBER)
+		_ammo_mag.add_theme_color_override("font_color", DeadCityUI.TEXT)
+		return
+	_ammo_mag.add_theme_font_size_override("font_size", 30)
+	_ammo_slash.visible = true
 	_ammo_mag.text = str(mag)
 	_ammo_reserve.text = str(reserve)
 	_reload_bar.visible = reloading
@@ -1269,9 +1280,10 @@ func _render_intel() -> void:
 		var entry: Dictionary = raw
 		var active := bool(entry.get("active", false))
 		var suffix := "  ◀ 当前" if active else ""
-		var line := _label("%d  %s  %d/%d%s" % [
-			int(entry.get("slot", 0)), String(entry.get("name", "--")),
-			int(entry.get("mag", 0)), int(entry.get("reserve", 0)), suffix,
+		var melee := bool(entry.get("melee", false))
+		var ammo_text := "近战" if melee else "%d/%d" % [int(entry.get("mag", 0)), int(entry.get("reserve", 0))]
+		var line := _label("%d  %s  %s%s" % [
+			int(entry.get("slot", 0)), String(entry.get("name", "--")), ammo_text, suffix,
 		], 11, WeaponCatalog.accent(String(entry.get("id", "smg"))) if active else Color(0.6, 0.72, 0.73))
 		player_box.add_child(line)
 	var bonus := int(player.get("reserve_bonus", 0))
@@ -1280,18 +1292,13 @@ func _render_intel() -> void:
 
 func _render_backpack() -> void:
 	_clear_box(_backpack_body)
-	var owned := {}
-	for raw in _loadout:
-		if raw is Dictionary:
-			owned[String(raw.get("id", ""))] = raw
 	var active_id := String(_weapon_profile.get("id", ""))
-	var ids := WeaponCatalog.ordered_ids()
-	for i in range(ids.size()):
-		var id := String(ids[i])
-		var entry: Dictionary = owned.get(id, {})
-		var has := owned.has(id)
-		var active := id == active_id
-		var accent := WeaponCatalog.accent(id)
+	for i in range(WeaponCatalog.MAX_CARRY):
+		var entry: Dictionary = _loadout[i] if i < _loadout.size() and _loadout[i] is Dictionary else {}
+		var id := String(entry.get("id", ""))
+		var has := not id.is_empty()
+		var active := has and id == active_id
+		var accent := WeaponCatalog.accent(id) if has else Color(0.32, 0.4, 0.42)
 		var card := PanelContainer.new()
 		card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		card.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -1307,23 +1314,27 @@ func _render_backpack() -> void:
 		var box := VBoxContainer.new()
 		box.add_theme_constant_override("separation", 6)
 		card.add_child(box)
-		box.add_child(_label("槽位 %d" % (i + 1), 10, accent if has else Color(0.42, 0.48, 0.5)))
-		var title := _label(WeaponCatalog.display_name(id), 15, DeadCityUI.TEXT if has else Color(0.56, 0.63, 0.65))
+		box.add_child(_label("出战槽位 %d" % (i + 1), 10, accent if has else Color(0.42, 0.48, 0.5)))
+		if not has:
+			box.add_child(_label("空槽", 18, Color(0.5, 0.58, 0.6)))
+			box.add_child(_label("返回行动大厅，在军械库调整出战编成", 10, DeadCityUI.MUTED))
+			continue
+		var title := _label(WeaponCatalog.display_name(id), 15, DeadCityUI.TEXT)
 		title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		box.add_child(title)
-		box.add_child(_label(String(WeaponCatalog.data(id).get("tag", "")), 10, accent if has else Color(0.42, 0.48, 0.5)))
-		var stat := _label(WeaponCatalog.stat_line(id), 10, Color(0.6, 0.72, 0.73) if has else Color(0.44, 0.5, 0.52))
+		box.add_child(_label(String(WeaponCatalog.data(id).get("tag", "")), 10, accent))
+		var stat := _label(WeaponCatalog.stat_line(id), 10, Color(0.6, 0.72, 0.73))
 		stat.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		box.add_child(stat)
 		var fill_space := Control.new()
 		fill_space.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		box.add_child(fill_space)
-		if has:
+		if WeaponCatalog.is_melee(id):
+			box.add_child(_label("近战 · 第三人称搏杀 · 无需弹药", 10, Color(0.56, 0.68, 0.69)))
+		else:
 			var ammo := "弹匣 %d/%d" % [int(entry.get("mag", 0)), int(entry.get("mag_size", 0))]
 			ammo += "  ·  备弹 %d" % int(entry.get("reserve", 0))
 			box.add_child(_label(ammo, 10, Color(0.56, 0.68, 0.69)))
-		else:
-			box.add_child(_label("军械库售价 %d 信用点" % WeaponCatalog.price_of(id), 10, DeadCityUI.AMBER))
 		var button := Button.new()
 		button.custom_minimum_size = Vector2(0, 34)
 		button.focus_mode = Control.FOCUS_NONE
@@ -1331,17 +1342,13 @@ func _render_backpack() -> void:
 			button.text = "使用中"
 			button.disabled = true
 			DeadCityUI.style_button(button, accent, false)
-		elif has:
+		else:
 			button.text = "切换装备"
 			DeadCityUI.style_button(button, accent, true)
 			button.pressed.connect(_on_weapon_button_pressed.bind(id))
-		else:
-			button.text = "未解锁"
-			button.disabled = true
-			DeadCityUI.style_button(button, DeadCityUI.MUTED, false)
 		box.add_child(button)
 	var up := _team_upgrades
-	_backpack_footer.text = "队内强化  弹匣 %d · 换弹 %d · 伤害 %d · 射速 %d · 移速 %d · 护甲 %d     |     新武器请在行动大厅的军械库购买" % [
+	_backpack_footer.text = "出战编成最多携带两件 · 枪械第一人称 / 近战第三人称     |     队内强化  弹匣 %d · 换弹 %d · 伤害 %d · 射速 %d · 移速 %d · 护甲 %d" % [
 		int(up.get("mag", 0)), int(up.get("reload", 0)), int(up.get("damage", 0)),
 		int(up.get("rate", 0)), int(up.get("speed", 0)), int(up.get("armor", 0)),
 	]

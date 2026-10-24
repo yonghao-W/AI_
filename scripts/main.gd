@@ -51,7 +51,7 @@ var core_states: Array = []
 var draw_tokens := 0
 var mission_complete := false
 var team_upgrades := {"mag": 0, "reload": 0, "damage": 0, "rate": 0, "speed": 0, "armor": 0}
-var _mission_hint_text := "前往市中心喷泉，按 E 进入地下设施"
+var _mission_hint_text := "沿市中心公园坡道下到核心储藏层 B1"
 var _mission_zone_text := "基地安全区"
 var _pending_draw: Dictionary = {}
 var _draw_open := false
@@ -275,11 +275,29 @@ func _run_mission_auto() -> void:
 	_server_mission_interact(local_id)
 	await get_tree().create_timer(0.35).timeout
 	await _mission_shot("mission_base")
-	_server_teleport_player(local_id, Vector3(0.0, 0.2, 6.4), 0.0)
-	await get_tree().create_timer(0.7).timeout
+	_server_teleport_player(local_id, Vector3(0.0, 0.4, 18.6), 0.0)
+	await get_tree().create_timer(0.4).timeout
+	if player != null:
+		player.aim_at(Vector3(0.0, 1.4, 13.2))
+	await get_tree().create_timer(0.4).timeout
 	await _mission_shot("mission_gateway")
-	_server_teleport_player(local_id, MissionSite.BASEMENT_ARRIVAL, 0.0)
-	await get_tree().create_timer(0.8).timeout
+	_server_teleport_player(local_id, Vector3(0.0, 16.0, 24.0), 0.0)
+	await get_tree().create_timer(0.12).timeout
+	if player != null:
+		player.aim_at(Vector3(0.0, -2.0, 5.0))
+	await get_tree().create_timer(0.12).timeout
+	await _mission_shot("mission_overview")
+	_server_teleport_player(local_id, Vector3(0.0, 0.4, 14.2), 0.0)
+	await get_tree().create_timer(0.5).timeout
+	if player != null:
+		player.aim_at(Vector3(0.0, -11.5, -5.5))
+	await get_tree().create_timer(0.4).timeout
+	await _mission_shot("mission_ramp")
+	_server_teleport_player(local_id, MissionSite.BASEMENT_ARRIVAL, PI)
+	await get_tree().create_timer(0.6).timeout
+	if player != null:
+		player.aim_at(Vector3(0.0, -6.0, 1.0))
+	await get_tree().create_timer(0.4).timeout
 	await _mission_shot("mission_basement")
 	for i in range(MissionSite.CORE_COUNT):
 		var site: Vector3 = mission.core_site_pos(i)
@@ -624,16 +642,17 @@ func _prepare_world(world_seed: int) -> bool:
 	_world.add_child(director)
 	director.setup(_director_layout(), 0)
 	director.attacked_player.connect(_on_zombie_attacked)
+	director.fused.connect(_on_zombie_fused)
 	_spawn_local_player_node()
 	_draw_rng.seed = seed_value * 3413 + 77
 	if is_server:
 		_server_reset_mission()
 	hud.setup_world(layout)
 	hud.set_health(100.0)
-	hud.set_ammo(player.mag, player.reserve, false, 0.0)
+	hud.set_ammo(player.mag, player.reserve, false, 0.0, player.is_melee_equipped())
 	hud.set_weapon_strip(player.loadout_summary(), player.weapon_profile())
 	hud.set_mission(cores_secured, CORES_REQUIRED, draw_tokens,
-		"前往市中心喷泉，按 E 进入地下设施", "基地安全区", DeadCityUI.CYAN, team_upgrades, false, MetaProfile.power_of(team_upgrades))
+		"沿市中心公园坡道下到核心储藏层 B1", "基地安全区", DeadCityUI.CYAN, team_upgrades, false, MetaProfile.power_of(team_upgrades))
 	hud.hide_loading()
 	return true
 
@@ -689,7 +708,7 @@ func _spawn_local_player_node() -> void:
 	player.audio = audio
 	var bonus := MetaProfile.legacy_bonus(_meta)
 	player.set_meta_bonus(int(bonus["reserve"]), float(bonus["reload_mult"]))
-	player.set_loadout(_meta.get("owned_weapons", WeaponCatalog.default_owned()), String(_meta.get("selected_weapon", WeaponCatalog.DEFAULT_SELECTED)))
+	player.set_loadout(MetaProfile.equipped_weapons(_meta), String(_meta.get("selected_weapon", WeaponCatalog.DEFAULT_SELECTED)))
 	player.set_game_active(false)
 	player.health_changed.connect(_on_local_health_changed)
 	player.damaged.connect(_on_local_damaged)
@@ -706,7 +725,7 @@ func _place_local_player(spawn: Vector3, face_yaw_value: float = PI) -> void:
 	player.auto_pilot = _cli_pilot
 	hud.set_down(false)
 	hud.set_health(100.0)
-	hud.set_ammo(player.mag, player.reserve, false, 0.0)
+	hud.set_ammo(player.mag, player.reserve, false, 0.0, player.is_melee_equipped())
 	hud.set_weapon_strip(player.loadout_summary(), player.weapon_profile())
 
 
@@ -725,7 +744,7 @@ func _process(delta: float) -> void:
 	elif not is_server:
 		_client_step(delta)
 	if player != null and hud != null:
-		hud.set_ammo(player.mag, player.reserve, player.is_reloading(), player.reload_progress())
+		hud.set_ammo(player.mag, player.reserve, player.is_reloading(), player.reload_progress(), player.is_melee_equipped())
 		hud.set_spread(player.get_spread_normalized())
 		hud.set_minimap_entities(player.global_position, player.rotation.y, _minimap_remotes(), _minimap_zombies(), _minimap_markers())
 		_update_mission_hud()
@@ -1202,6 +1221,14 @@ func _server_apply_hit(shooter_id: int, zid: int, headshot: bool, weapon_id: Str
 	if info.is_empty() or not bool(info["alive"]):
 		return
 	var weapon := WeaponCatalog.data(weapon_id)
+	if WeaponCatalog.is_melee(weapon_id):
+		var shooter_pos: Vector3 = info.get("pos", Vector3.ZERO)
+		var target_pos := director.zombie_position(zid)
+		if target_pos.y > 1.0e8:
+			return
+		var reach := float(weapon.get("range", 2.9)) + 1.8
+		if _flat_distance(shooter_pos, target_pos) > reach or absf(shooter_pos.y - target_pos.y) > 2.4:
+			return
 	var damage := float(weapon.get("damage", 19.0))
 	if headshot:
 		damage *= float(weapon.get("headshot", 2.4))
@@ -1213,7 +1240,20 @@ func _server_apply_hit(shooter_id: int, zid: int, headshot: bool, weapon_id: Str
 		return
 	var kind := String(result.get("kind", "walker"))
 	var death_pos: Vector3 = result.get("pos", Vector3.ZERO)
-	var points := int(ZOMBIE_SCORE.get(kind, 10))
+	var mass := int(result.get("mass", 0))
+	var ability := String(result.get("ability", "none"))
+	var points := int(ZOMBIE_SCORE.get(kind, 10)) * (1 + mass)
+	if ability != "none":
+		points += 6
+	if ability == "volatile":
+		var blast := 24.0 + 10.0 * mass
+		for pid in players.keys():
+			var target: Dictionary = players[pid]
+			if not bool(target.get("alive", false)):
+				continue
+			var target_pos: Vector3 = target.get("pos", Vector3.ZERO)
+			if target_pos.distance_to(death_pos) <= 4.8:
+				_on_zombie_attacked(int(pid), blast)
 	info["kills"] = int(info["kills"]) + 1
 	team_score += points
 	var killer_name := String(info["name"])
@@ -1453,7 +1493,14 @@ func _update_zombies(zombie_data: Array) -> void:
 		if state == 1 and int(_zombie_states.get(id, 0)) != 1:
 			audio.play_zombie("attack", Vector3(float(data[1]), float(data[2]), float(data[3])))
 		_zombie_states[id] = state
-		proxy.set_network_state(Vector3(float(data[1]), float(data[2]), float(data[3])), float(data[4]), state)
+		var pos := Vector3(float(data[1]), float(data[2]), float(data[3]))
+		if data.size() > 10:
+			var packed := int(data[8])
+			var tint := Color8((packed >> 24) & 0xFF, (packed >> 16) & 0xFF, (packed >> 8) & 0xFF)
+			var ability_index := clampi(int(data[9]), 0, ServerZombie.ABILITY_ORDER.size() - 1)
+			proxy.set_network_state(pos, float(data[4]), state, float(data[7]), tint, String(ServerZombie.ABILITY_ORDER[ability_index]), int(data[10]))
+		else:
+			proxy.set_network_state(pos, float(data[4]), state)
 	for id in zombie_proxies.keys():
 		if present.has(id):
 			continue
@@ -1743,7 +1790,18 @@ func _director_layout() -> Dictionary:
 		if Vector2(point.x - MissionSite.BASE_CENTER.x, point.z - MissionSite.BASE_CENTER.z).length() > 26.0:
 			spawns.append(point)
 	filtered["zombie_spawns"] = spawns
+	if mission != null:
+		filtered["basement_spawns"] = mission.basement_spawn_points()
 	return filtered
+
+
+func _on_zombie_fused(pos: Vector3, mass: int) -> void:
+	if mass != 2:
+		return
+	if _zombie_audio_hear(pos, 45.0) and audio != null:
+		audio.play_zombie("growl", pos)
+	if is_server:
+		_broadcast_announce("感染者融合", "融合体会获得护甲或自爆能力 · 优先集火", Color("#d8895f"))
 
 
 func _server_reset_mission() -> void:
@@ -1890,12 +1948,6 @@ func _server_mission_interact(player_id: int, requested: String = "auto") -> voi
 			else:
 				_server_release_core(player_id, false)
 			return
-		if mission.is_in_basement(pos):
-			if mission.exit_distance(pos) <= 3.2:
-				_server_teleport_player(player_id, MissionSite.FOUNTAIN_RETURN, 0.0)
-			else:
-				_server_release_core(player_id, false)
-			return
 		_server_release_core(player_id, false)
 		return
 	var core_index := _nearest_collectable_core(pos, 2.9)
@@ -1904,13 +1956,6 @@ func _server_mission_interact(player_id: int, requested: String = "auto") -> voi
 		return
 	if mission.is_in_safe_zone(pos) and mission.ammo_distance(pos) <= 3.0:
 		_server_resupply_ammo(player_id)
-		return
-	if mission.is_in_basement(pos):
-		if mission.exit_distance(pos) <= 3.2:
-			_server_teleport_player(player_id, MissionSite.FOUNTAIN_RETURN, 0.0)
-		return
-	if mission.fountain_distance(pos) <= 3.8:
-		_server_teleport_player(player_id, MissionSite.BASEMENT_ARRIVAL, 0.0)
 		return
 	if mission.is_in_safe_zone(pos) and mission.console_distance(pos) <= 3.2:
 		_server_open_draw(player_id)
@@ -2221,19 +2266,11 @@ func _compute_interaction() -> String:
 	if player.carrying_core:
 		if mission.is_in_safe_zone(pos) and mission.console_distance(pos) <= 3.2:
 			return "secure"
-		if mission.is_in_basement(pos) and mission.exit_distance(pos) <= 3.2:
-			return "ascend"
 		return "drop"
 	if _nearest_collectable_core(pos, 2.9) >= 0:
 		return "pick"
 	if mission.is_in_safe_zone(pos) and mission.ammo_distance(pos) <= 2.8:
 		return "ammo"
-	if mission.is_in_basement(pos):
-		if mission.exit_distance(pos) <= 3.2:
-			return "ascend"
-		return ""
-	if mission.fountain_distance(pos) <= 3.8:
-		return "descend"
 	if mission.is_in_safe_zone(pos) and mission.console_distance(pos) <= 3.2:
 		return "draw" if draw_tokens > 0 else "no_tokens"
 	return ""
@@ -2247,14 +2284,10 @@ func _interaction_prompt() -> String:
 			return "E   交付核心 · 立即抽卡"
 		"drop":
 			return "E / G   放下核心"
-		"ascend":
-			return "E   返回地表"
 		"pick":
 			return "E   回收核心"
 		"ammo":
 			return "E   补充弹药"
-		"descend":
-			return "E   进入地下设施"
 		"draw":
 			return "E   核心抽卡 · 消耗 1 张券"
 		"no_tokens":
@@ -2268,7 +2301,7 @@ func _update_mission_hud() -> void:
 		return
 	var zone := "城市区域"
 	var zone_color := DeadCityUI.MUTED
-	var hint := "前往市中心喷泉，按 E 进入地下设施"
+	var hint := "沿市中心公园坡道下到核心储藏层 B1"
 	var pos := Vector3.ZERO
 	if mission != null and player != null:
 		pos = player.global_position
@@ -2309,7 +2342,7 @@ func _minimap_markers() -> Array:
 	if mission == null:
 		return result
 	result.append({"pos": MissionSite.BASE_CENTER, "color": DeadCityUI.CYAN, "kind": "safe", "radius": MissionSite.SAFE_RADIUS})
-	result.append({"pos": MissionSite.FOUNTAIN_POINT, "color": MissionSite.CORE_COLOR, "kind": "gateway"})
+	result.append({"pos": Vector3(0.0, 0.16, 12.8), "color": MissionSite.CORE_COLOR, "kind": "gateway"})
 	var in_basement: bool = player != null and mission.is_in_basement(player.global_position)
 	for i in range(core_states.size()):
 		var entry: Dictionary = core_states[i]

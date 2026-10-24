@@ -45,7 +45,7 @@ func _build_pools() -> void:
 func _build_streams() -> void:
 	for id in WeaponCatalog.ordered_ids():
 		_streams["shot_" + String(id)] = _gun_stream(String(id))
-	for kind in ["switch", "empty", "reload", "reload_done", "supply", "core", "frenzy"]:
+	for kind in ["switch", "empty", "reload", "reload_done", "supply", "core", "frenzy", "melee", "fuse"]:
 		_streams["ui_" + kind] = _ui_stream(kind)
 	for kind in ["growl", "attack", "death"]:
 		_streams["z_" + kind] = _zombie_stream(kind)
@@ -145,6 +145,10 @@ func _ui_stream(kind: String) -> AudioStreamWAV:
 			return _bell(0.62, [440.0, 660.0, 880.0, 1100.0], 7.0, 0.55)
 		"frenzy":
 			return _sweep(0.95, 150.0, 52.0, 2.6, 0.55, 0.85)
+		"melee":
+			return _sweep(0.18, 420.0, 120.0, 11.0, 0.9, 0.72)
+		"fuse":
+			return _growl(0.8, 66.0, 34.0, 3.0, 0.85, 0.7)
 	return _sweep(0.08, 800.0, 800.0, 30.0, 0.2, 0.5)
 
 

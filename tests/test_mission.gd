@@ -4,6 +4,8 @@ const MissionSiteScript = preload("res://scripts/mission_site.gd")
 const ServerZombieScript = preload("res://scripts/server_zombie.gd")
 const PlayerScript = preload("res://scripts/player.gd")
 const ZombieDirectorScript = preload("res://scripts/zombie_director.gd")
+const CityLayoutScript = preload("res://scripts/city_layout.gd")
+const CityBuilderScript = preload("res://scripts/city_builder.gd")
 const HudScript = preload("res://scripts/game_hud.gd")
 const AudioScript = preload("res://scripts/dead_city_audio.gd")
 
@@ -21,11 +23,14 @@ func _run() -> void:
 	_test_site_queries()
 	_test_site_visuals()
 	_test_zombie_targeting()
+	_test_zombie_abilities()
 	_test_player_reload_and_carry()
 	_test_weapon_system()
 	_test_hud_overlays()
 	_test_audio()
 	_test_escalation()
+	_test_basement_spawning()
+	_test_map_variety()
 	_test_meta_profile()
 	_test_weapon_economy()
 	print("== %d checks, %d failures ==" % [checks, failures])
@@ -60,7 +65,7 @@ func _test_site_queries() -> void:
 	_check(not site.is_zombie_target(site.BASEMENT_ARRIVAL), "zombies ignore players in the vault")
 	_check(site.is_zombie_target(Vector3(14.0, 0.06, 8.0)), "zombies still chase players in the streets")
 	_check(site.core_distance(site.CORE_SITES[1] + Vector3(1.2, 0.0, 0.0), 1) < 1.5, "core distance resolves on the flat plane")
-	_check(site.fountain_distance(site.FOUNTAIN_POINT + Vector3(0.0, 0.0, 2.5)) < 2.6, "gateway proximity measured from the fountain")
+	_check(site.fountain_distance(site.FOUNTAIN_POINT + Vector3(0.0, 0.0, 2.5)) < 2.6, "entrance plaza proximity measured from the park")
 	_check(site.exit_distance(site.BASEMENT_EXIT) < 0.1, "basement exit distance resolves")
 	_check(site.console_distance(site.CONSOLE_POINT) < 0.1, "delivery console distance resolves")
 	_check(site.ammo_distance(MissionSiteScript.AMMO_POINT) < 0.1, "ammo station distance resolves")
@@ -70,6 +75,17 @@ func _test_site_queries() -> void:
 		if not site.is_in_basement(core_pos):
 			core_y_ok = false
 	_check(core_y_ok, "all three cores are stashed inside the basement")
+	var ramp_drop: float = MissionSiteScript.RAMP_TOP.y - MissionSiteScript.RAMP_BOTTOM.y
+	var ramp_length: float = MissionSiteScript.RAMP_TOP.distance_to(MissionSiteScript.RAMP_BOTTOM)
+	_check(MissionSiteScript.RAMP_TOP.z > MissionSiteScript.RAMP_BOTTOM.z, "ramp runs from the park down toward the vault")
+	_check(ramp_drop > 13.0, "ramp drops a full storey without teleporting")
+	_check(absf(sin(MissionSiteScript.RAMP_ANGLE) - ramp_drop / ramp_length) < 0.01, "ramp angle matches its run and rise")
+	var vault_spawns: Array = site.basement_spawn_points()
+	var vault_spawn_ok := vault_spawns.size() == 8
+	for point in vault_spawns:
+		if not site.is_in_basement(point):
+			vault_spawn_ok = false
+	_check(vault_spawn_ok, "vault spawn points sit on the basement floor")
 	site.free()
 
 
@@ -79,7 +95,8 @@ func _test_site_visuals() -> void:
 	site.build()
 	_check(site.get_node_or_null("SafeZone") != null, "base builds a SafeZone group")
 	_check(site.get_node_or_null("SafeZone/AmmoStation") != null, "base builds the ammo resupply table")
-	_check(site.get_node_or_null("FountainGateway") != null, "gateway builds at the fountain")
+	_check(site.get_node_or_null("VaultEntrance") != null, "vault entrance is built as a walkable structure")
+	_check(site.get("_gateway_ring") != null, "entrance plaza keeps its beacon ring")
 	_check(site.get_node_or_null("CoreVault") != null, "basement vault is built")
 	var core_nodes: Array = site.get("_core_nodes")
 	var secured_nodes: Array = site.get("_secured_nodes")
@@ -136,9 +153,59 @@ func _test_zombie_targeting() -> void:
 	zombie.free()
 
 
+func _test_zombie_abilities() -> void:
+	var armored = ServerZombieScript.new()
+	root.add_child(armored)
+	armored.setup(11, "walker", 3)
+	armored.apply_ability("armored")
+	var armored_hp: float = armored.max_hp
+	armored.take_damage(100.0)
+	_check(absf(armored.hp - (armored_hp - 68.0)) < 0.01, "armored zombies absorb 32 percent of incoming damage")
+	_check(armored.ability_index() == 2, "armored ability maps to its snapshot index")
+	armored.free()
+
+	var climber = ServerZombieScript.new()
+	root.add_child(climber)
+	climber.setup(12, "walker", 3)
+	var walker_speed: float = climber.speed
+	climber.apply_ability("climber")
+	_check(climber.speed > walker_speed, "climbers gain climbing speed")
+	climber.global_position = Vector3.ZERO
+	climber.floor_y = 0.06
+	climber._start_climb(5.0)
+	climber.step(0.2, Vector3(0.0, 0.06, -10.0), 3, true)
+	_check(int(climber.state) == 2 and climber.global_position.y > 0.5, "climber ascends walls into a leap state")
+	_check(climber.ability_index() == 1, "climber ability maps to its snapshot index")
+	climber.free()
+
+	var host = ServerZombieScript.new()
+	root.add_child(host)
+	host.setup(21, "walker", 2)
+	var prey = ServerZombieScript.new()
+	root.add_child(prey)
+	prey.setup(22, "brute", 2)
+	var host_hp: float = host.max_hp
+	var host_scale: float = host.visual_scale
+	var host_tint: Color = host.tint
+	host.fuse_with(prey)
+	_check(host.mass == 1, "fusion consumes prey mass into the host")
+	_check(host.max_hp > host_hp and host.visual_scale > host_scale, "fused host grows tankier and larger")
+	_check(host.tint != host_tint, "fusion blends the prey tint into the host")
+	_check(host.snapshot().size() == 11, "snapshots carry position, traits and ability data")
+	var second = ServerZombieScript.new()
+	root.add_child(second)
+	second.setup(23, "walker", 2)
+	host.fuse_with(second)
+	_check(host.mass == 2 and host.ability == "armored", "second fusion awakens a mutation ability")
+	prey.free()
+	second.free()
+	host.free()
+
+
 func _test_player_reload_and_carry() -> void:
 	var player = PlayerScript.new()
 	root.add_child(player)
+	player.set_loadout(WeaponCatalog.default_loadout(), "smg")
 	player.mag = 5
 	player.start_reload()
 	_check(player.reloading, "empty magazine starts a reload")
@@ -177,33 +244,37 @@ func _test_player_reload_and_carry() -> void:
 
 
 func _test_weapon_system() -> void:
-	_check(WeaponCatalog.ordered_ids().size() == 5, "catalog ships five weapon slots")
+	_check(WeaponCatalog.ordered_ids().size() == 7, "catalog ships seven weapons including melee")
+	_check(WeaponCatalog.MAX_CARRY == 2, "only two weapons can be carried into a run")
 	_check(not bool(WeaponCatalog.data("pistol").get("auto", true)), "pistol stays semi-automatic")
 	_check(bool(WeaponCatalog.data("smg").get("auto", false)), "smg fires full auto")
+	_check(WeaponCatalog.is_melee("machete") and WeaponCatalog.is_melee("sledge"), "melee weapons are catalogued as melee")
 	var player = PlayerScript.new()
 	root.add_child(player)
-	_check(player.weapons_owned.size() == 2 and player.current_weapon_id() == "smg", "default loadout owns pistol and smg")
+	player.set_loadout(WeaponCatalog.default_loadout(), "smg")
+	_check(player.weapons_owned.size() == 2 and player.current_weapon_id() == "smg", "default loadout carries an smg and a machete")
 	_check(player.mag_size == 36 and player.reserve == 144, "smg starts with catalog ammo")
-	_check(not player.switch_weapon_slot(2), "cannot switch to the active weapon")
-	_check(not player.switch_weapon_slot(3), "cannot switch to an unowned slot")
+	_check(not player.switch_weapon_slot(1), "cannot switch to the active weapon")
+	_check(not player.switch_weapon_slot(3), "cannot switch beyond the two carried slots")
 	player.mag = 9
 	player.reserve = 40
-	_check(player.switch_weapon_slot(1), "slot key equips the pistol")
-	_check(player.current_weapon_id() == "pistol" and player.mag == 12 and player.reserve == 72, "pistol loads its own magazine")
+	_check(player.switch_weapon_slot(2), "slot key equips the machete")
+	_check(player.current_weapon_id() == "machete" and player.is_melee_equipped(), "melee weapon drives the melee profile")
+	_check(player.mag_size == 0 and player.mag == 0, "melee weapons carry no magazine")
+	_check(bool(player.get("_third_person")), "melee swaps the viewmodel to third person")
 	player.set("_switch_lock", 0.0)
-	player.mag = 4
-	_check(player.switch_weapon_slot(2), "slot key returns to the smg")
+	_check(player.switch_weapon_slot(1), "slot key returns to the smg")
 	_check(player.mag == 9 and player.reserve == 40, "smg ammo state survives a weapon swap")
 	player.set_carrying(true)
 	player.set("_switch_lock", 0.0)
-	_check(not player.switch_weapon_slot(1), "carrying a core blocks weapon switching")
+	_check(not player.switch_weapon_slot(2), "carrying a core blocks weapon switching")
 	player.set_carrying(false)
 	player.apply_team_upgrades({"rate": 3})
 	_check(absf(player.fire_interval - 0.068 * 0.79) < 0.0001, "rate upgrade tightens the fire interval")
 	player.set_loadout(["pistol", "smg", "rifle"], "rifle")
-	_check(player.current_weapon_id() == "rifle" and player.mag_size == 30, "set_loadout equips the selected catalog weapon")
+	_check(player.weapons_owned.size() == 2 and player.current_weapon_id() == "rifle" and player.mag_size == 30, "set_loadout caps the loadout and equips the selection")
 	var summary: Array = player.loadout_summary()
-	_check(summary.size() == 3 and bool(summary[2]["active"]), "loadout summary marks the active slot")
+	_check(summary.size() == 2 and bool(summary[1]["active"]), "loadout summary marks the active slot")
 	player.free()
 
 
@@ -212,12 +283,12 @@ func _test_hud_overlays() -> void:
 	root.add_child(hud)
 	_check(not hud.overlay_open(), "hud overlays start closed")
 	var loadout: Array = [
-		{"slot": 1, "id": "pistol", "name": "P-19", "full_name": "P-19 手枪", "accent": Color.WHITE, "active": false, "mag": 12, "reserve": 72, "mag_size": 12},
-		{"slot": 2, "id": "smg", "name": "VX-9", "full_name": "VX-9 冲锋枪", "accent": Color.WHITE, "active": true, "mag": 30, "reserve": 120, "mag_size": 36},
+		{"slot": 1, "id": "smg", "name": "VX-9", "full_name": "VX-9 冲锋枪", "accent": Color.WHITE, "active": true, "mag": 30, "reserve": 120, "mag_size": 36},
+		{"slot": 2, "id": "machete", "name": "砍刀", "full_name": "M-2 开山砍刀", "accent": Color.WHITE, "active": false, "mag": 0, "reserve": 0, "mag_size": 0},
 	]
 	hud.set_weapon_strip(loadout, {"id": "smg", "name": "VX-9 冲锋枪", "tag": "全自动"})
 	var slots: Dictionary = hud.get("_weapon_slots")
-	_check(slots.size() == 5, "weapon strip renders all five catalog slots")
+	_check(slots.size() == 2, "weapon strip renders exactly two carry slots")
 	hud.open_intel({
 		"mission": {
 			"cores": 2, "required": 3, "zone": "基地安全区", "hint": "护送核心返回基地",
@@ -237,7 +308,7 @@ func _test_hud_overlays() -> void:
 	hud.open_backpack(loadout, {"id": "smg", "name": "VX-9 冲锋枪"}, {"mag": 1, "rate": 2})
 	_check(hud.backpack_open() and not hud.intel_open(), "B opens the backpack overlay")
 	var backpack_body: Node = hud.get("_backpack_body")
-	_check(backpack_body.get_child_count() == 5, "backpack lists every catalog weapon")
+	_check(backpack_body.get_child_count() == 2, "backpack lists both carry slots")
 	hud.close_overlays()
 	_check(not hud.overlay_open(), "closing overlays clears both panels")
 	hud.free()
@@ -247,7 +318,8 @@ func _test_audio() -> void:
 	var audio = AudioScript.new()
 	root.add_child(audio)
 	var streams: Dictionary = audio.get("_streams")
-	_check(streams.size() == 15, "audio bakes five guns, seven UI cues and three zombie cues")
+	_check(streams.size() == 19, "audio bakes seven weapons, nine UI cues and three zombie cues")
+	_check(streams.has("ui_melee") and streams.has("ui_fuse"), "melee and fusion cues are baked")
 	var shot: AudioStreamWAV = streams.get("shot_shotgun")
 	_check(shot != null and shot.data.size() > 4000, "gunshot cue carries baked PCM samples")
 	audio.play_weapon_shot("smg", false)
@@ -270,12 +342,12 @@ func _test_escalation() -> void:
 	director.set_escalation(3)
 	director.tick(0.1, [])
 	var threat_quota := int(director.get("_to_spawn"))
-	_check(threat_quota > base_quota, "threat escalation multiplies the spawn quota")
+	_check(threat_quota > base_quota * 1.8, "threat escalation multiplies the spawn quota")
 	var summary: Dictionary = director.summary()
 	_check(int(summary.get("threat", 0)) == 3, "summary reports the current threat")
 	_check(absf(float(summary.get("threat_mult", 0.0)) - 1.66) < 0.001, "summary reports the quota multiplier")
 	director.tick(0.3, [])
-	_check(director.zombie_count() == 1, "escalated director still spawns zombies")
+	_check(director.zombie_count() == 2, "escalated director spawns a two-zombie burst")
 	var escalated_delay := float(director.get("_spawn_interval")) * pow(0.8, 3)
 	_check(absf(float(director.get("_spawn_delay")) - escalated_delay) < 0.001, "threat shortens the spawn interval")
 	director.start(0.0)
@@ -283,16 +355,75 @@ func _test_escalation() -> void:
 	var calm_quota := int(director.get("_to_spawn"))
 	director.set_frenzy(true)
 	_check(director.is_frenzy() and bool(director.summary().get("frenzy", false)), "frenzy flag reaches the director summary")
-	_check(int(director.get("_to_spawn")) == calm_quota + 8, "frenzy injects an extra spawn burst")
+	_check(int(director.get("_to_spawn")) == calm_quota + 14, "frenzy injects a large spawn burst")
 	_check(float(director.get("_spawn_delay")) <= 0.1, "frenzy front-loads the next spawn")
 	director.tick(0.1, [])
-	_check(director.zombie_count() == 2, "frenzy spawns two zombies per pulse")
+	_check(director.zombie_count() == 3, "frenzy spawns three zombies per pulse")
 	var zombies: Dictionary = director.get("_zombies")
 	var first: ServerZombie = zombies.values()[0]
 	_check(first.speed_now() > first.speed, "frenzied zombies move faster")
 	director.set_frenzy(false)
-	_check(absf(first.speed_now() - first.speed) < 0.001, "calming the horde restores zombie speed")
+	var calm_speed := first.speed * (1.0 - clampf((first.visual_scale - 1.0) * 0.12, 0.0, 0.3))
+	_check(absf(first.speed_now() - calm_speed) < 0.001, "calming the horde restores zombie speed")
 	director.free()
+
+
+func _test_basement_spawning() -> void:
+	var director = ZombieDirectorScript.new()
+	root.add_child(director)
+	director.setup({
+		"seed": 11,
+		"zombie_spawns": [Vector3(30.0, 0.0, 30.0), Vector3(-30.0, 0.0, 30.0)],
+		"basement_spawns": [Vector3(2.0, -13.84, 2.0), Vector3(-2.0, -13.84, 2.0), Vector3(0.0, -13.84, -2.0)],
+	}, 0)
+	var players: Array = [{"id": 1, "alive": true, "pos": Vector3(0.0, -13.84, 0.0)}]
+	director.start(0.0)
+	director.tick(0.1, players)
+	director.tick(0.3, players)
+	var basement_ok := director.zombie_count() > 0
+	for zombie in (director.get("_zombies") as Dictionary).values():
+		if zombie.global_position.y > -13.0:
+			basement_ok = false
+	_check(basement_ok, "vault incursion spawns zombies on the basement floor")
+	director.free()
+
+
+func _test_map_variety() -> void:
+	var districts := {}
+	var terrain_total := 0
+	var cover_total := 0
+	var enterable_total := 0
+	var validation_ok := true
+	for i in range(10):
+		var layout: Dictionary = CityLayoutScript.generate(7000 + i * 17)
+		districts[String(layout["district"])] = true
+		terrain_total += (layout["terrain"] as Array).size()
+		cover_total += (layout["cover"] as Array).size()
+		for raw in (layout["buildings"] as Array):
+			var building: Dictionary = raw
+			if bool(building.get("enterable", false)):
+				enterable_total += 1
+		if not CityLayoutScript.validate(layout).is_empty():
+			validation_ok = false
+	_check(districts.size() >= 2, "seeds rotate through multiple city districts")
+	_check(terrain_total >= 6, "seeds scatter raised terrain onto park blocks")
+	_check(cover_total >= 20, "building blocks receive street cover")
+	_check(enterable_total >= 3, "some buildings generate enterable interiors")
+	_check(validation_ok, "generated layouts pass structural validation")
+	var first: Dictionary = CityLayoutScript.generate(4242)
+	var second: Dictionary = CityLayoutScript.generate(4242)
+	_check(String(first["district"]) == String(second["district"]) and (first["terrain"] as Array).size() == (second["terrain"] as Array).size(),
+		"the same seed reproduces district and terrain")
+	var builder = CityBuilderScript.new()
+	root.add_child(builder)
+	builder.build(first)
+	var direct_statics := 0
+	for child in builder.get_children():
+		if child is StaticBody3D:
+			direct_statics += 1
+	_check(builder.get_child_count() > 80, "city builder instantiates the generated map")
+	_check(direct_statics >= (first["cover"] as Array).size(), "street cover colliders are built into the world")
+	builder.free()
 
 
 func _test_meta_profile() -> void:
@@ -329,7 +460,8 @@ func _test_meta_profile() -> void:
 func _test_weapon_economy() -> void:
 	var profile: Dictionary = MetaProfile.empty_profile()
 	var owned: Array = profile.get("owned_weapons", [])
-	_check(owned.has("pistol") and owned.has("smg"), "new profiles start with pistol and smg")
+	_check(owned.has("pistol") and owned.has("smg") and owned.has("machete"), "new profiles start with pistol, smg and machete")
+	_check(MetaProfile.equipped_weapons(profile).size() == 2, "default combat loadout carries two weapons")
 	_check(WeaponCatalog.price_of("rifle") == 180 and WeaponCatalog.price_of("lmg") == 560, "armory prices ladder up")
 	var broke := MetaProfile.buy_weapon(profile, "rifle")
 	_check(not bool(broke.get("ok", true)), "armory rejects purchases without credits")
@@ -339,7 +471,9 @@ func _test_weapon_economy() -> void:
 	_check(MetaProfile.owns_weapon(profile, "rifle"), "purchased weapon enters the armory")
 	_check(not bool(MetaProfile.buy_weapon(profile, "rifle").get("ok", true)), "armory blocks duplicate purchases")
 	var equipped := MetaProfile.select_weapon(profile, "rifle")
+	var carried: Array = MetaProfile.equipped_weapons(profile)
 	_check(bool(equipped.get("ok", false)) and String(profile.get("selected_weapon", "")) == "rifle", "owned weapons can be equipped")
+	_check(carried.size() == 2 and carried.has("rifle"), "equipping swaps into the two-slot loadout")
 	_check(not bool(MetaProfile.select_weapon(profile, "shotgun").get("ok", true)), "unowned weapons cannot be equipped")
 	_check(MetaProfile.run_reward({"kills": 10, "secured": 2}, true) == 290, "extraction rewards kills and secured cores")
 	_check(MetaProfile.run_reward({"kills": 10, "secured": 2}, false, true) == 0, "abandoned runs pay nothing")
