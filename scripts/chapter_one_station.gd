@@ -71,19 +71,27 @@ func build() -> void:
 	var observation_light := OmniLight3D.new()
 	observation_light.position = Vector3(4.5, 9.7, -1.5)
 	observation_light.light_color = Color("#ffd6a0")
-	observation_light.light_energy = 0.7
-	observation_light.omni_range = 14.0
+	observation_light.light_energy = 0.95
+	observation_light.omni_range = 15.0
 	add_child(observation_light)
+	for fill_pos in [Vector3(0.0, 8.9, 1.5), Vector3(0.0, 8.9, -3.2)]:
+		var fill := OmniLight3D.new()
+		fill.position = fill_pos
+		fill.light_color = Color("#c2d0d8")
+		fill.light_energy = 0.85
+		fill.omni_range = 16.0
+		fill.light_specular = 0.2
+		add_child(fill)
 
 
 func _apply_materials(model: Node) -> void:
-	var concrete := _material(Color("#55534d"), 0.92, 0.0)
-	var exterior := _material(Color("#5f5c55"), 0.9, 0.02)
-	var interior := _material(Color("#7b7468"), 0.86, 0.0)
-	var metal := _material(Color("#343a3e"), 0.48, 0.62)
-	var roof := _material(Color("#3f4446"), 0.62, 0.35)
-	var wood := _material(Color("#5a4634"), 0.88, 0.0)
-	var prop_metal := _material(Color("#474d50"), 0.55, 0.5)
+	var concrete := _material(Color("#666159"), 0.9, 0.0)
+	var exterior := _material(Color("#6b675e"), 0.88, 0.02)
+	var interior := _material(Color("#8c8578"), 0.84, 0.0)
+	var metal := _material(Color("#3f474c"), 0.48, 0.55)
+	var roof := _material(Color("#4a4e4f"), 0.62, 0.3)
+	var wood := _material(Color("#64503c"), 0.86, 0.0)
+	var prop_metal := _material(Color("#50575b"), 0.55, 0.45)
 	for raw in model.find_children("*", "MeshInstance3D", true, false):
 		var mesh_instance := raw as MeshInstance3D
 		if mesh_instance == null:
