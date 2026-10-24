@@ -45,15 +45,26 @@ func _build_ground() -> void:
 	var total := float(_layout["total_size"])
 	var ground_size := total + 36.0
 	var half := ground_size * 0.5
-	var hole := VAULT_HOLE_RECT
-	var hx0 := hole.position.x
-	var hx1 := hole.end.x
-	var hz0 := hole.position.y
-	var hz1 := hole.end.y
-	_static_box(Vector3(hx0 + half, 1.0, ground_size), Vector3((-half + hx0) * 0.5, -0.5, 0.0), ROAD_COLOR, 0.98)
-	_static_box(Vector3(half - hx1, 1.0, ground_size), Vector3((hx1 + half) * 0.5, -0.5, 0.0), ROAD_COLOR, 0.98)
-	_static_box(Vector3(hx1 - hx0, 1.0, hz0 + half), Vector3(0.0, -0.5, (-half + hz0) * 0.5), ROAD_COLOR, 0.98)
-	_static_box(Vector3(hx1 - hx0, 1.0, half - hz1), Vector3(0.0, -0.5, (hz1 + half) * 0.5), ROAD_COLOR, 0.98)
+	var holes: Array = _layout.get("ground_holes", [VAULT_HOLE_RECT])
+	var xs: Array[float] = [-half, half]
+	var zs: Array[float] = [-half, half]
+	for hole: Rect2 in holes:
+		xs.append(hole.position.x)
+		xs.append(hole.end.x)
+		zs.append(hole.position.y)
+		zs.append(hole.end.y)
+	xs.sort()
+	zs.sort()
+	for ix in range(xs.size() - 1):
+		for iz in range(zs.size() - 1):
+			var cell := Rect2(xs[ix], zs[iz], xs[ix + 1] - xs[ix], zs[iz + 1] - zs[iz])
+			var is_hole := false
+			for hole: Rect2 in holes:
+				if hole.has_point(cell.get_center()):
+					is_hole = true
+					break
+			if not is_hole and cell.has_area():
+				_static_box(Vector3(cell.size.x, 1.0, cell.size.y), Vector3(cell.get_center().x, -0.5, cell.get_center().y), ROAD_COLOR, 0.98)
 	var markings: Array[Transform3D] = []
 	var road_centers: Array = _layout["road_centers"]
 	for x in road_centers:
@@ -85,7 +96,7 @@ func _build_blocks() -> void:
 	var blocks: Array = _layout["blocks"]
 	for block in blocks:
 		var center: Vector2 = block["center"]
-		if bool(block.get("central", false)):
+		if bool(block.get("central", false)) or block["kind"] == "station":
 			continue
 		var is_park: bool = block["kind"] == "park"
 		_add_box(self, Vector3(block_size, 0.14, block_size), Vector3(center.x, 0.07, center.y), SIDEWALK_COLOR, 0.95)

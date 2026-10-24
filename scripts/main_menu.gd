@@ -88,7 +88,7 @@ func _build() -> void:
 	accent.custom_minimum_size = Vector2(64, 3)
 	accent.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	title_line.add_child(accent)
-	title_line.add_child(_label("随机城市 · 无尽尸潮 · 1–4 人合作", 15, DeadCityUI.MUTED))
+	title_line.add_child(_label("第一章 · 失联信号 · 1–4 人合作", 15, DeadCityUI.MUTED))
 	left.add_child(_spacer(14))
 
 	var form_panel := PanelContainer.new()
@@ -130,7 +130,7 @@ func _build() -> void:
 	_join_button = _button("加入房间", DeadCityUI.CYAN, false)
 	_join_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	buttons.add_child(_join_button)
-	_solo_button = _button("单人演练", Color("#8d9caa"), false)
+	_solo_button = _button("开始第一章", Color("#8d9caa"), false)
 	buttons.add_child(_solo_button)
 
 	_status_label = _label("等待部署 — 创建房间或加入队友。", 14, DeadCityUI.MUTED)
@@ -599,7 +599,7 @@ func _build_briefing(parent: VBoxContainer) -> void:
 	top.add_child(top_spacer)
 	top.add_child(_label("NIGHT 07", 11, DeadCityUI.RED))
 	body.add_child(_divider())
-	body.add_child(_brief_row("01", "随机死城", "每个种子生成不同街区。楼宇即掩体，街口就是交火线。", DeadCityUI.CYAN))
+	body.add_child(_brief_row("01", "失联信号", "从 E-07 三楼观察室出发，经西侧楼梯下楼，到青色基地补给。", DeadCityUI.CYAN))
 	body.add_child(_brief_row("02", "尸潮递增", "每回收一枚核心，尸潮生成更快、数量更多，威胁倍率持续上涨。", DeadCityUI.AMBER))
 	body.add_child(_brief_row("03", "深入回收", "沿市中心公园坡道步行下到 B1，抱回 3 枚核心；搬运时无法开枪。", Color("#ffc861")))
 	body.add_child(_brief_row("04", "交付抽卡", "核心交付立即弹出 3 选 1 全队强化；战力写入局外档案，累积血脉加成。", DeadCityUI.GREEN))

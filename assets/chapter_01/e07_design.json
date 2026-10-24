@@ -1,0 +1,76 @@
+{
+  "project": "Dead City Breakout / E07 Old Elevated-Rail Signal Maintenance Station",
+  "status": "original design proposal; not established game canon",
+  "world_units": "metres",
+  "axes": {
+    "x": "+east",
+    "y": "+north",
+    "z": "+up"
+  },
+  "building_bounds": {
+    "x": [
+      -12,
+      12
+    ],
+    "y": [
+      -7,
+      7
+    ],
+    "z_main": [
+      -3.2,
+      12.3
+    ],
+    "west_external_stairs_min_x": -17.4
+  },
+  "levels": {
+    "B1": [
+      -3.2,
+      0
+    ],
+    "F1": [
+      0,
+      4.0
+    ],
+    "F2": [
+      4.0,
+      7.4
+    ],
+    "F3": [
+      7.4,
+      10.8
+    ],
+    "roof": [
+      10.8,
+      12.3
+    ]
+  },
+  "cinematic_camera": {
+    "position": [
+      -1,
+      -1.8,
+      9.05
+    ],
+    "target": [
+      11.4,
+      4.0,
+      9.25
+    ],
+    "lens_mm_suggestion": 35,
+    "safe_zone_left_screen_fraction": 0.33
+  },
+  "context": {
+    "viaduct_y_center": 28,
+    "deck_z": 7.4,
+    "city_massing_placeholder": true
+  },
+  "modeling_note": "Do not generate all architecture as one Tripo mesh; build shell from precise dimensions in Blender, generate isolated modular props in Tripo.",
+  "glb_node_semantics": {
+    "STR_": "load-bearing shell",
+    "EXT_": "external walls and windows",
+    "INT_": "internal partitions",
+    "PROP_": "individual set dressing / prompts for Tripo",
+    "ROOF_": "roof equipment",
+    "SITE_": "environment proxy",
+    "MARKER_": "CG camera targets"
+  }
+}

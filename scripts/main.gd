@@ -31,6 +31,7 @@ var city: CityBuilder
 var effects: CombatEffects
 var director: ZombieDirector
 var mission: MissionSite
+var station: ChapterOneStation
 var layout: Dictionary = {}
 var players: Dictionary = {}
 var remote_avatars: Dictionary = {}
@@ -553,7 +554,7 @@ func _host_begin_match() -> void:
 	_capture_mouse()
 	if multiplayer.get_peers().size() > 0:
 		rpc("_net_lobby_start", seed_value, _roster_payload(), _mission_payload(), team_score, director.summary())
-	hud.announce("死城突围", "地图 #%d · 前往市中心回收三枚核心" % seed_value, DeadCityUI.CYAN, 2.8)
+	hud.announce("第一章 · 失联信号", "E-07 维护站 · 经西侧楼梯下楼，前往基地补给", DeadCityUI.CYAN, 5.0)
 
 
 func _start_solo_match() -> void:
@@ -574,7 +575,7 @@ func _start_solo_match() -> void:
 	menu.set_busy(false)
 	_update_connection_info()
 	_capture_mouse()
-	hud.announce("单人演练", "地图 #%d · 取回核心并返回基地" % seed_value, DeadCityUI.CYAN, 2.8)
+	hud.announce("第一章 · 失联信号", "E-07 维护站 · 经西侧楼梯下楼，前往基地补给", DeadCityUI.CYAN, 5.0)
 
 
 func _start_client_match(world_seed: int, roster: Array, summary: Dictionary, score: int, mission_data: Dictionary) -> void:
@@ -626,10 +627,15 @@ func _prepare_world(world_seed: int) -> bool:
 	add_child(_world)
 	_build_environment()
 	layout = CityLayout.generate(seed_value)
+	ChapterOneStation.prepare_layout(layout)
 	city = CityBuilder.new()
 	city.name = "City"
 	_world.add_child(city)
 	city.build(layout)
+	station = ChapterOneStation.new()
+	station.name = "ChapterOneStation"
+	_world.add_child(station)
+	station.build()
 	mission = MissionSite.new()
 	mission.name = "MissionSite"
 	_world.add_child(mission)
@@ -652,7 +658,7 @@ func _prepare_world(world_seed: int) -> bool:
 	hud.set_ammo(player.mag, player.reserve, false, 0.0, player.is_melee_equipped())
 	hud.set_weapon_strip(player.loadout_summary(), player.weapon_profile())
 	hud.set_mission(cores_secured, CORES_REQUIRED, draw_tokens,
-		"沿市中心公园坡道下到核心储藏层 B1", "基地安全区", DeadCityUI.CYAN, team_upgrades, false, MetaProfile.power_of(team_upgrades))
+		"经西侧楼梯下楼，前往基地补给，再到公园 B1 回收核心", "第一章 · E-07 维护站", DeadCityUI.CYAN, team_upgrades, false, MetaProfile.power_of(team_upgrades))
 	hud.hide_loading()
 	return true
 
@@ -1724,7 +1730,7 @@ func _server_add_player(player_id: int, player_name_text: String) -> void:
 		if not used.has(candidate):
 			color = candidate
 			break
-	var spawn := _server_pick_spawn()
+	var spawn := _server_pick_spawn(true)
 	players[player_id] = {
 		"name": player_name_text,
 		"color": color,
@@ -1732,7 +1738,7 @@ func _server_add_player(player_id: int, player_name_text: String) -> void:
 		"alive": true,
 		"kills": 0,
 		"pos": spawn,
-		"yaw": PI,
+		"yaw": ChapterOneStation.SPAWN_YAW,
 		"hurt_cool": 0.0,
 		"respawn_left": 0.0,
 		"teleport_cool": 0.0,
@@ -1764,8 +1770,10 @@ func _remove_player(player_id: int) -> void:
 		_server_game_over()
 
 
-func _server_pick_spawn() -> Vector3:
+func _server_pick_spawn(in_station: bool = false) -> Vector3:
 	var spawns: Array = MissionSite.SAFE_SPAWNS
+	if in_station:
+		spawns = ChapterOneStation.SPAWNS
 	var best: Vector3 = spawns[players.size() % spawns.size()]
 	var best_score := -1.0
 	for candidate in spawns:
@@ -1779,7 +1787,7 @@ func _server_pick_spawn() -> Vector3:
 		if nearest > best_score:
 			best_score = nearest
 			best = point
-	return Vector3(best.x, 0.18, best.z)
+	return best
 
 
 func _director_layout() -> Dictionary:
@@ -1940,6 +1948,9 @@ func _server_mission_interact(player_id: int, requested: String = "auto") -> voi
 	if requested == "drop":
 		if carrying_index >= 0:
 			_server_release_core(player_id, false)
+		return
+	if station != null and station.can_use_radio(pos) and carrying_index < 0:
+		_broadcast_announce("无线电 · 基地呼叫", "下楼前往青色基地补给 → 公园坡道进入 B1 → 运回三枚核心", DeadCityUI.CYAN)
 		return
 	if carrying_index >= 0:
 		if mission.is_in_safe_zone(pos):
@@ -2263,6 +2274,8 @@ func _compute_interaction() -> String:
 	if mission == null or player == null or not player.alive:
 		return ""
 	var pos := player.global_position
+	if station != null and station.can_use_radio(pos) and not player.carrying_core:
+		return "radio"
 	if player.carrying_core:
 		if mission.is_in_safe_zone(pos) and mission.console_distance(pos) <= 3.2:
 			return "secure"
@@ -2280,6 +2293,8 @@ func _interaction_prompt() -> String:
 	var action := _compute_interaction()
 	_interact_action = action
 	match action:
+		"radio":
+			return "E   收听基地无线电"
 		"secure":
 			return "E   交付核心 · 立即抽卡"
 		"drop":
@@ -2311,12 +2326,17 @@ func _update_mission_hud() -> void:
 		elif mission.is_in_basement(pos):
 			zone = "核心储藏层 B1"
 			zone_color = DeadCityUI.AMBER
+		elif station != null and station.contains_point(pos):
+			zone = station.zone_name(pos)
+			zone_color = DeadCityUI.CYAN
 	if mission_complete:
 		zone = "任务完成"
 		zone_color = DeadCityUI.GREEN
 		hint = "全部核心已回收 · 行动完成"
 	elif player != null and player.carrying_core:
 		hint = "搬运核心 · 无法射击、换弹或冲刺，返回基地交付台"
+	elif station != null and player != null and station.contains_point(pos):
+		hint = "经西侧楼梯下楼 → 青色基地补给 → 公园 B1 回收核心"
 	elif mission != null and player != null and mission.is_in_safe_zone(pos) and mission.ammo_distance(pos) <= 3.0:
 		hint = "弹药补给台 · 按 E 补满弹匣与备弹"
 	elif cores_secured >= CORES_REQUIRED:
@@ -2342,6 +2362,7 @@ func _minimap_markers() -> Array:
 	if mission == null:
 		return result
 	result.append({"pos": MissionSite.BASE_CENTER, "color": DeadCityUI.CYAN, "kind": "safe", "radius": MissionSite.SAFE_RADIUS})
+	result.append({"pos": ChapterOneStation.CENTER, "color": DeadCityUI.CYAN, "kind": "point"})
 	result.append({"pos": Vector3(0.0, 0.16, 12.8), "color": MissionSite.CORE_COLOR, "kind": "gateway"})
 	var in_basement: bool = player != null and mission.is_in_basement(player.global_position)
 	for i in range(core_states.size()):
@@ -2507,6 +2528,7 @@ func _teardown_world() -> void:
 	_world = null
 	city = null
 	mission = null
+	station = null
 	effects = null
 	director = null
 	player = null
