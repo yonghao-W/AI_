@@ -117,7 +117,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_low_health_1280x720.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "974ec95bd1f979c84ba7b51ee4fe8613a8d9d77d3727f9efbe41e52d8d65da5d",
+			"sha256": "9dbf9ee7623daeada287f22370bed6b5e2e166f9dd973577d08ed2b98c685a7b",
 			"state": "hud_low_health",
 			"width": 1280
 		},
@@ -139,7 +139,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_squad_four_1280x720.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "c957d102eb2fc64a41068d73d6292e864f30e04b41da18ff71c49ac6198224a2",
+			"sha256": "9d0612bd020ae082b653fccedeec7d673a5e411447b37c850bbce2e5eeadbebd",
 			"state": "hud_squad_four",
 			"width": 1280
 		},
@@ -260,7 +260,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_low_health_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "ce81397f15e4b652cb52852d2cde64734bbf85ecee8daf0353d4428e77278bfb",
+			"sha256": "ff1af9f7b7ddbca0ac812cfc68d6fcb395bdc0f20b5931ff4da229279e89cab7",
 			"state": "hud_low_health",
 			"width": 1920
 		},
@@ -282,7 +282,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_squad_four_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "00fc1c176096374ce579f9d2eeae1eeaab151c00c77579e9f12f7485d1406012",
+			"sha256": "828b390ee2206260039df61dd375eb8aa1f14803cb259468a9a987cddb6a7d27",
 			"state": "hud_squad_four",
 			"width": 1920
 		},
@@ -403,7 +403,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_low_health_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "641e73c206a26fd2f811fab6444a25203ea289aa2b6eb84420f37efc7024c276",
+			"sha256": "0a08327109cce3da99c81a51288a90d24f89ea954070ba7d7489af233a9a7b68",
 			"state": "hud_low_health",
 			"width": 1920
 		},
@@ -425,7 +425,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_squad_four_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "9c4c35f885c84c864bb48108dfd5a114793ce88289c0684d21179c03d1eb1b86",
+			"sha256": "52f6bf5053353661dc067956b1d08cbf74c44a236d551600d93b67238019695b",
 			"state": "hud_squad_four",
 			"width": 1920
 		},
@@ -573,10 +573,10 @@
 			"width": 2560
 		}
 	],
-	"command": "Godot --path . --headless --script res://ui_refactor/phase3/tools/capture_ui_matrix.gd -- --out=ui_refactor/phase3/shots/matrix_current --manifest=ui_refactor/phase3/evidence/current_manifest.json --commit=3d513f3",
+	"command": "Godot --path . --headless --script res://ui_refactor/phase3/tools/capture_ui_matrix.gd -- --out=ui_refactor/phase3/shots/matrix_current --manifest=ui_refactor/phase3/evidence/current_manifest.json --commit=edd19c1",
 	"engine_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
-	"generated_at": "2026-10-24T15:20:41",
-	"git_commit": "3d513f3",
+	"generated_at": "2026-10-24T15:26:47",
+	"git_commit": "edd19c1",
 	"godot_version": "4.7.2-stable (official)",
 	"reduced_motion": true,
 	"seed": 4242

@@ -189,8 +189,8 @@
       "file": "hud_low_health_1280x720.png",
       "status": "pass",
       "identical": false,
-      "ratio": 0.0,
-      "mean_abs_diff": 0.0094,
+      "ratio": 3.689e-05,
+      "mean_abs_diff": 0.0029,
       "baseline_size": [
         1280,
         720
@@ -203,9 +203,9 @@
     {
       "file": "hud_low_health_1920x1080.png",
       "status": "pass",
-      "identical": true,
+      "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "mean_abs_diff": 0.002,
       "baseline_size": [
         1920,
         1080
@@ -220,7 +220,7 @@
       "status": "pass",
       "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0017,
+      "mean_abs_diff": 0.0072,
       "baseline_size": [
         1920,
         1200
@@ -235,7 +235,7 @@
       "status": "pass",
       "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0128,
+      "mean_abs_diff": 0.0068,
       "baseline_size": [
         2560,
         1080
@@ -310,7 +310,7 @@
       "status": "pass",
       "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0144,
+      "mean_abs_diff": 0.0061,
       "baseline_size": [
         1280,
         720
@@ -325,7 +325,7 @@
       "status": "pass",
       "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0018,
+      "mean_abs_diff": 0.0105,
       "baseline_size": [
         1920,
         1080
@@ -340,7 +340,7 @@
       "status": "pass",
       "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0224,
+      "mean_abs_diff": 0.0198,
       "baseline_size": [
         1920,
         1200
@@ -355,7 +355,7 @@
       "status": "pass",
       "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0285,
+      "mean_abs_diff": 0.0009,
       "baseline_size": [
         2560,
         1080
@@ -638,9 +638,9 @@
     {
       "file": "menu_coop_1920x1200.png",
       "status": "pass",
-      "identical": false,
-      "ratio": 8.68e-06,
-      "mean_abs_diff": 0.0013,
+      "identical": true,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.0,
       "baseline_size": [
         1920,
         1200

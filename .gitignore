@@ -17,3 +17,6 @@ shots/
 
 # Visual regression baselines (regenerate with capture_ui_matrix.gd)
 ui_refactor/phase3/baselines/
+
+# Playtest raw recordings (personal data, never commit)
+ui_refactor/phase3/playtest/raw/

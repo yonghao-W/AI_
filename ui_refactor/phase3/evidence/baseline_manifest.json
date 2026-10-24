@@ -139,7 +139,7 @@
 			"path": "ui_refactor/phase3/baselines/hud_squad_four_1280x720.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "982755a4e4e0de7f4e12a8e383adab3f1946e6e2187d862fc27e53b94fdd4c71",
+			"sha256": "3a42703b3f7180b53574e45e373944541e74ad37bccc01b36f481cfc60ee97bf",
 			"state": "hud_squad_four",
 			"width": 1280
 		},
@@ -304,7 +304,7 @@
 			"path": "ui_refactor/phase3/baselines/menu_coop_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "90d3178b041a8c3307d45a225830bc3e0421f44b622ef719ca59b99cde5c5a5a",
+			"sha256": "7a900864af0697ea0535ac1c59d779acfd2de0487e94da99e50f0d09ae69c5c7",
 			"state": "menu_coop",
 			"width": 1920
 		},
@@ -403,7 +403,7 @@
 			"path": "ui_refactor/phase3/baselines/hud_low_health_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "208eba67e756bcb1876c243c73eeae884279bc22885369969cc4605932470d1b",
+			"sha256": "641e73c206a26fd2f811fab6444a25203ea289aa2b6eb84420f37efc7024c276",
 			"state": "hud_low_health",
 			"width": 1920
 		},
@@ -425,7 +425,7 @@
 			"path": "ui_refactor/phase3/baselines/hud_squad_four_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "c3343138bdc995a30b7d1b130f360cacb0f54745fd2f605d9fd267e865abfc5d",
+			"sha256": "9c4c35f885c84c864bb48108dfd5a114793ce88289c0684d21179c03d1eb1b86",
 			"state": "hud_squad_four",
 			"width": 1920
 		},
@@ -546,7 +546,7 @@
 			"path": "ui_refactor/phase3/baselines/hud_low_health_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "b1be439bb015db9178960c2cd31f0a4d3ba4dc7e41d1b875dbf7f9a447447be9",
+			"sha256": "62a94074864c5d5138314f5975b987c3db34c68d760bcc977b569244e1a3cb01",
 			"state": "hud_low_health",
 			"width": 2560
 		},
@@ -568,15 +568,15 @@
 			"path": "ui_refactor/phase3/baselines/hud_squad_four_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "900bffd3e5a31a665a5273b9cc008c73e310ac01d77414f03dfcd16e952d372c",
+			"sha256": "190383468a67237ee9fa04a01a22879a53016f8eeddb639ff5c1c0834093cd6a",
 			"state": "hud_squad_four",
 			"width": 2560
 		}
 	],
-	"command": "Godot --path . --headless --script res://ui_refactor/phase3/tools/capture_ui_matrix.gd -- --out=ui_refactor/phase3/baselines --manifest=ui_refactor/phase3/evidence/baseline_manifest.json --commit=3d513f3",
+	"command": "Godot --path . --headless --script res://ui_refactor/phase3/tools/capture_ui_matrix.gd -- --out=ui_refactor/phase3/baselines --manifest=ui_refactor/phase3/evidence/baseline_manifest.json --commit=edd19c1",
 	"engine_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
-	"generated_at": "2026-10-24T15:14:34",
-	"git_commit": "3d513f3",
+	"generated_at": "2026-10-24T15:25:49",
+	"git_commit": "edd19c1",
 	"godot_version": "4.7.2-stable (official)",
 	"reduced_motion": true,
 	"seed": 4242
