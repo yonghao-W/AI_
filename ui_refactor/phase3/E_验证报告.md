@@ -11,16 +11,16 @@
 | 测试 | 脚本 | 结果 | 备注 |
 |---|---|---|---|
 | 资产加载/结构 | `tests/test_abandoned_house_asset.gd` | 7 / 0 | 725 网格、114,350 顶点 |
-| UI 集成 | `tests/test_ui_integration.gd` | 108 / 0 | 菜单、设置、HUD 真实状态、覆盖层、暂停、清理 |
+| UI 集成 | `tests/test_ui_integration.gd` | 105 / 0 | 菜单、设置、HUD 真实状态、覆盖层、暂停、清理 |
 | 输入/显示矩阵 | `tests/test_ui_display.gd` | 120 / 0，4 warning | dpi125/dpi150 通过；zoom125/150 为压力提示 |
-| 联机 UI（4 人） | `tests/test_ui_network.gd` | HOST 19 / 3×CLIENT 16，0 失败 | 真实四进程 |
+| 联机 UI（4 人） | `tests/test_ui_network.gd` | HOST 23 / 3×CLIENT 19，0 失败 | 真实四进程 |
 | 故障网络（2 人，300s） | `tests/test_ui_network.gd` + UDP 代理 | HOST 175 / CLIENT 172，0 失败 | 150ms RTT、2% 丢包、30ms 抖动 |
 | 任务逻辑 | `tests/test_mission.gd` | 150 / 0 | |
 | 第一章 | `tests/test_chapter_one.gd` | 230 / 0 | |
 | 城市布局 | `tests/test_city_layout.gd` | 18 / 0 | |
 | 章节联机 | `tests/test_chapter_network.gd` | 双端通过，2 人 | station_spawn=true |
 | 视觉矩阵 | `tools/capture_ui_matrix.gd` + `visual_diff.py` | 52 / 52，0 差异 | 13 状态 × 4 分辨率 |
-| 渲染像素对比度 | `tools/contrast_audit.gd` + `contrast_report.py` | 242 元素，14 项低于阈值 | 见第 5 节 |
+| 渲染像素对比度 | `tools/contrast_audit.gd` + `contrast_report.py` | 243 元素，5 项低于阈值 | 见第 5 节 |
 
 ## 2. 视觉回归
 
@@ -96,15 +96,11 @@ python ui_refactor/phase3/tools/visual_diff.py \
 
 **结果**
 
-- 242 个有效元素，**14 项低于阈值**：
-  - 低血波次横幅 22px/11px（2 项，p05 1.95/2.14）
-  - 低血/四人状态“危险”9px（2 项，p05 2.42/2.51）
-  - 四人队“倒地 12m”“周野”（2 项，p05 3.02/3.40）
-  - “生命”9px（3 项，p05 3.90–3.99）
-  - “/100”10px（3 项，p05 4.32–4.37）
-  - “7 杀”9px（1 项，p05 4.18）
-  - 菜单禁用副标题“当前版本不保存行动进度”（1 项，p05 3.45）
-- 已做的修复：顶部/底部/左上渐变遮罩、半透明小队面板、默认 1px 描边与更强阴影、禁用项透明度 0.72、弹药分隔符提亮。失败项从 39 降至 14。
+- 243 个有效元素，**5 项低于阈值**：
+  - 低血波次横幅 22px/11px（2 项，p05 1.89/2.03）
+  - 低血/四人状态“危险”9px（2 项，p05 3.02/2.68）
+  - 菜单禁用副标题“当前版本不保存行动进度”（1 项，p05 3.44）
+- 已做的修复：顶部/底部/左上渐变遮罩、半透明小队面板、默认 1px 描边与更强阴影、禁用项透明度 0.72、弹药分隔符提亮；2026-10-25 修掉 HUD 渐变端点索引错误（此前末端默认白色导致亮带），并为 E-07 站补基础材质。失败项从 39 降至 5。
 - 限制：本方法按背景像素计算，不考虑描边/阴影对字形的实际增益；波次横幅是瞬时状态；“禁用文字”按 WCAG 可豁免，但这里仍计入并如实列出。
 - 报告：`evidence/contrast_report.json`；元素与背景：`evidence/contrast_elements.json`、`shots/contrast/`。
 
@@ -148,7 +144,7 @@ python ui_refactor/phase3/tools/visual_diff.py \
 3. 真实 OS 显示缩放（125%/150%）未在 Windows 设置层验证；只做了等效窗口检查。
 4. 最低规格硬件、Tracy/RenderDoc、长时间内存/泄漏未测。
 5. 故障网络只测 2 人、localhost UDP 代理；未测 4 人、真实 WAN、主机迁移。
-6. 对比度仍有 14 项未达 4.5:1；菜单 UI 性能未达 2ms 预算。
+6. 对比度仍有 5 项未达 4.5:1；菜单 UI 性能未达 2ms 预算。
 7. 本地化、字体缺失、IME、超长文本未测。
 8. `Abandoned_House` 授权未确认。
 9. 视觉基线依赖本机 GPU/驱动；跨机器比较需重新基线。

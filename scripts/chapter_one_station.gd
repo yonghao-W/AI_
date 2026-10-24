@@ -44,6 +44,7 @@ func build() -> void:
 	# 原包将 Z-up 坐标直接写进 GLB，这里统一转换为 Godot 的 Y-up。
 	model.rotation.x = -PI * 0.5
 	add_child(model)
+	_apply_materials(model)
 	var faces := PackedVector3Array()
 	_collect_geometry(model, model.transform, faces)
 	var body := StaticBody3D.new()
@@ -73,6 +74,48 @@ func build() -> void:
 	observation_light.light_energy = 0.7
 	observation_light.omni_range = 14.0
 	add_child(observation_light)
+
+
+func _apply_materials(model: Node) -> void:
+	var concrete := _material(Color("#55534d"), 0.92, 0.0)
+	var exterior := _material(Color("#5f5c55"), 0.9, 0.02)
+	var interior := _material(Color("#7b7468"), 0.86, 0.0)
+	var metal := _material(Color("#343a3e"), 0.48, 0.62)
+	var roof := _material(Color("#3f4446"), 0.62, 0.35)
+	var wood := _material(Color("#5a4634"), 0.88, 0.0)
+	var prop_metal := _material(Color("#474d50"), 0.55, 0.5)
+	for raw in model.find_children("*", "MeshInstance3D", true, false):
+		var mesh_instance := raw as MeshInstance3D
+		if mesh_instance == null:
+			continue
+		var node_name := String(mesh_instance.name).to_upper()
+		var picked := concrete
+		if node_name.contains("WINDOW"):
+			picked = metal
+		elif node_name.begins_with("STR_"):
+			picked = concrete
+		elif node_name.begins_with("EXT_"):
+			picked = exterior
+		elif node_name.begins_with("INT_"):
+			picked = interior
+		elif node_name.begins_with("FIREESC") or node_name.begins_with("B1_TO"):
+			picked = metal
+		elif node_name.begins_with("ROOF_"):
+			picked = roof
+		elif node_name.begins_with("PROP_"):
+			if node_name.contains("CRATE") or node_name.contains("BUNK") or node_name.contains("DESK") or node_name.contains("SHELF"):
+				picked = wood
+			else:
+				picked = prop_metal
+		mesh_instance.material_override = picked
+
+
+func _material(color: Color, roughness: float, metallic: float) -> StandardMaterial3D:
+	var material := StandardMaterial3D.new()
+	material.albedo_color = color
+	material.roughness = roughness
+	material.metallic = metallic
+	return material
 
 
 func _collect_geometry(node: Node3D, transform_to_station: Transform3D, faces: PackedVector3Array) -> void:

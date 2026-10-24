@@ -193,7 +193,7 @@ func _scrim_texture(from_bottom: bool) -> GradientTexture2D:
 	var gradient := Gradient.new()
 	gradient.set_color(0, Color(0.008, 0.011, 0.013, 0.90))
 	gradient.add_point(0.55, Color(0.008, 0.011, 0.013, 0.58))
-	gradient.set_color(1, Color(0.008, 0.011, 0.013, 0.0))
+	gradient.set_color(gradient.get_point_count() - 1, Color(0.008, 0.011, 0.013, 0.0))
 	var texture := GradientTexture2D.new()
 	texture.gradient = gradient
 	texture.fill = GradientTexture2D.FILL_LINEAR
@@ -208,7 +208,7 @@ func _corner_scrim_texture() -> GradientTexture2D:
 	var gradient := Gradient.new()
 	gradient.set_color(0, Color(0.008, 0.011, 0.013, 0.86))
 	gradient.add_point(0.55, Color(0.008, 0.011, 0.013, 0.42))
-	gradient.set_color(1, Color(0.008, 0.011, 0.013, 0.0))
+	gradient.set_color(gradient.get_point_count() - 1, Color(0.008, 0.011, 0.013, 0.0))
 	var texture := GradientTexture2D.new()
 	texture.gradient = gradient
 	texture.fill = GradientTexture2D.FILL_LINEAR

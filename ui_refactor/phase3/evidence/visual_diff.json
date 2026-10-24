@@ -143,9 +143,9 @@
     {
       "file": "hud_carry_1920x1080.png",
       "status": "pass",
-      "identical": true,
+      "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "mean_abs_diff": 0.0002,
       "baseline_size": [
         1920,
         1080
@@ -158,9 +158,9 @@
     {
       "file": "hud_carry_1920x1200.png",
       "status": "pass",
-      "identical": true,
+      "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "mean_abs_diff": 0.0002,
       "baseline_size": [
         1920,
         1200
@@ -173,9 +173,9 @@
     {
       "file": "hud_carry_2560x1080.png",
       "status": "pass",
-      "identical": true,
+      "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "mean_abs_diff": 0.0001,
       "baseline_size": [
         2560,
         1080
@@ -189,8 +189,8 @@
       "file": "hud_low_health_1280x720.png",
       "status": "pass",
       "identical": false,
-      "ratio": 3.689e-05,
-      "mean_abs_diff": 0.0029,
+      "ratio": 0.0,
+      "mean_abs_diff": 0.013,
       "baseline_size": [
         1280,
         720
@@ -205,7 +205,7 @@
       "status": "pass",
       "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.002,
+      "mean_abs_diff": 0.6863,
       "baseline_size": [
         1920,
         1080
@@ -220,7 +220,7 @@
       "status": "pass",
       "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0072,
+      "mean_abs_diff": 0.2506,
       "baseline_size": [
         1920,
         1200
@@ -235,7 +235,7 @@
       "status": "pass",
       "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0068,
+      "mean_abs_diff": 0.7156,
       "baseline_size": [
         2560,
         1080
@@ -310,7 +310,7 @@
       "status": "pass",
       "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0061,
+      "mean_abs_diff": 0.0644,
       "baseline_size": [
         1280,
         720
@@ -325,7 +325,7 @@
       "status": "pass",
       "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0105,
+      "mean_abs_diff": 0.0644,
       "baseline_size": [
         1920,
         1080
@@ -340,7 +340,7 @@
       "status": "pass",
       "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0198,
+      "mean_abs_diff": 0.0537,
       "baseline_size": [
         1920,
         1200
@@ -355,7 +355,7 @@
       "status": "pass",
       "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0009,
+      "mean_abs_diff": 0.0508,
       "baseline_size": [
         2560,
         1080
@@ -428,9 +428,9 @@
     {
       "file": "lobby_1280x720.png",
       "status": "pass",
-      "identical": true,
-      "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "identical": false,
+      "ratio": 1.845e-05,
+      "mean_abs_diff": 0.0037,
       "baseline_size": [
         1280,
         720
@@ -443,9 +443,9 @@
     {
       "file": "lobby_1920x1080.png",
       "status": "pass",
-      "identical": true,
-      "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "identical": false,
+      "ratio": 1.013e-05,
+      "mean_abs_diff": 0.0021,
       "baseline_size": [
         1920,
         1080
@@ -458,9 +458,9 @@
     {
       "file": "lobby_1920x1200.png",
       "status": "pass",
-      "identical": true,
-      "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "identical": false,
+      "ratio": 1.736e-05,
+      "mean_abs_diff": 0.0032,
       "baseline_size": [
         1920,
         1200
@@ -473,9 +473,9 @@
     {
       "file": "lobby_2560x1080.png",
       "status": "pass",
-      "identical": true,
-      "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "identical": false,
+      "ratio": 2.749e-05,
+      "mean_abs_diff": 0.0024,
       "baseline_size": [
         2560,
         1080
@@ -503,9 +503,9 @@
     {
       "file": "menu_1920x1080.png",
       "status": "pass",
-      "identical": true,
-      "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "identical": false,
+      "ratio": 0.00079909,
+      "mean_abs_diff": 0.0199,
       "baseline_size": [
         1920,
         1080
@@ -518,9 +518,9 @@
     {
       "file": "menu_1920x1200.png",
       "status": "pass",
-      "identical": true,
-      "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "identical": false,
+      "ratio": 0.00063628,
+      "mean_abs_diff": 0.019,
       "baseline_size": [
         1920,
         1200
@@ -533,9 +533,9 @@
     {
       "file": "menu_2560x1080.png",
       "status": "pass",
-      "identical": true,
-      "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "identical": false,
+      "ratio": 0.00072157,
+      "mean_abs_diff": 0.02,
       "baseline_size": [
         2560,
         1080
@@ -548,7 +548,7 @@
     {
       "file": "menu_armory_1280x720.png",
       "status": "pass",
-      "identical": true,
+      "identical": false,
       "ratio": 0.0,
       "mean_abs_diff": 0.0,
       "baseline_size": [
@@ -563,9 +563,9 @@
     {
       "file": "menu_armory_1920x1080.png",
       "status": "pass",
-      "identical": true,
+      "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "mean_abs_diff": 0.0001,
       "baseline_size": [
         1920,
         1080
@@ -578,7 +578,7 @@
     {
       "file": "menu_armory_1920x1200.png",
       "status": "pass",
-      "identical": true,
+      "identical": false,
       "ratio": 0.0,
       "mean_abs_diff": 0.0,
       "baseline_size": [
@@ -593,9 +593,9 @@
     {
       "file": "menu_armory_2560x1080.png",
       "status": "pass",
-      "identical": true,
+      "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "mean_abs_diff": 0.0001,
       "baseline_size": [
         2560,
         1080
@@ -623,9 +623,9 @@
     {
       "file": "menu_coop_1920x1080.png",
       "status": "pass",
-      "identical": true,
-      "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "identical": false,
+      "ratio": 0.00034433,
+      "mean_abs_diff": 0.0083,
       "baseline_size": [
         1920,
         1080
@@ -638,9 +638,9 @@
     {
       "file": "menu_coop_1920x1200.png",
       "status": "pass",
-      "identical": true,
-      "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "identical": false,
+      "ratio": 0.00024957,
+      "mean_abs_diff": 0.0066,
       "baseline_size": [
         1920,
         1200
@@ -653,9 +653,9 @@
     {
       "file": "menu_coop_2560x1080.png",
       "status": "pass",
-      "identical": true,
-      "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "identical": false,
+      "ratio": 0.00026078,
+      "mean_abs_diff": 0.0061,
       "baseline_size": [
         2560,
         1080
@@ -668,9 +668,9 @@
     {
       "file": "menu_settings_1280x720.png",
       "status": "pass",
-      "identical": true,
+      "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "mean_abs_diff": 0.0011,
       "baseline_size": [
         1280,
         720
@@ -683,9 +683,9 @@
     {
       "file": "menu_settings_1920x1080.png",
       "status": "pass",
-      "identical": true,
+      "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "mean_abs_diff": 0.0011,
       "baseline_size": [
         1920,
         1080
@@ -698,9 +698,9 @@
     {
       "file": "menu_settings_1920x1200.png",
       "status": "pass",
-      "identical": true,
+      "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "mean_abs_diff": 0.0004,
       "baseline_size": [
         1920,
         1200
@@ -713,9 +713,9 @@
     {
       "file": "menu_settings_2560x1080.png",
       "status": "pass",
-      "identical": true,
+      "identical": false,
       "ratio": 0.0,
-      "mean_abs_diff": 0.0,
+      "mean_abs_diff": 0.0004,
       "baseline_size": [
         2560,
         1080

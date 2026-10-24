@@ -12,8 +12,8 @@
 | `perf_new_final.json` | 新 UI：菜单/HUD 显示与隐藏的 p50/p95/p99、Draw call、UI 差值 |
 | `perf_old_paused.json` | 旧 UI（`db0b452` worktree）同工具对照 |
 | `perf_new_paused.json` / `perf_new_unpaused.json` / `perf_old_unpaused.json` | 中间采样，保留用于说明测量差异；文档以 `perf_new_final.json` 与 `perf_old_paused.json` 为准 |
-| `contrast_elements.json` | 11 状态、242 个有效文字元素的字号/字色/矩形与文字隐藏后的背景 |
-| `contrast_report.json` | 逐元素 WCAG 对比度，14 项低于阈值 |
+| `contrast_elements.json` | 11 状态、243 个有效文字元素的字号/字色/矩形与文字隐藏后的背景 |
+| `contrast_report.json` | 逐元素 WCAG 对比度，5 项低于阈值 |
 | `network/adverse_host.txt` | 150ms RTT/2%/30ms 抖动下 300s 房主日志（175 检查） |
 | `network/adverse_client.txt` | 同条件客户端日志（172 检查） |
 | `network/adverse_proxy.txt` | UDP 代理统计（4184 up / 9997 down / 315 dropped） |
