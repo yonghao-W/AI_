@@ -617,8 +617,8 @@ func _build_briefing(parent: VBoxContainer) -> void:
 	body.add_child(_label("操作", 13, DeadCityUI.MUTED))
 	body.add_child(_label("WASD 移动 · Shift 冲刺 · Space 跳跃", 12, DeadCityUI.TEXT))
 	body.add_child(_label("左键射击 · 右键瞄准 · R 换弹", 12, DeadCityUI.TEXT))
-	body.add_child(_label("E 互动 / 进出设施 / 补给弹药 · G 放下核心", 12, DeadCityUI.TEXT))
-	body.add_child(_label("Esc 菜单 / 释放鼠标", 12, DeadCityUI.TEXT))
+	body.add_child(_label("E 互动 / 补给 · G 放下核心 · Esc 菜单", 12, DeadCityUI.TEXT))
+	body.add_child(_label("Tab 情报 · B 背包 · 1-5 / 滚轮切枪", 12, DeadCityUI.TEXT))
 	var gap := Control.new()
 	gap.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	body.add_child(gap)
