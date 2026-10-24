@@ -9,10 +9,10 @@ signal draw_cancelled
 signal weapon_selected(weapon_id: String)
 
 var _game_layer: Control
-var _scrim_top: TextureRect
-var _scrim_left: TextureRect
-var _scrim_right: TextureRect
-var _scrim_corner: TextureRect
+var _hud_backdrops: Array[Control] = []
+var _mission_backdrop: Control
+var _health_backdrop: Control
+var _ammo_backdrop: Control
 var _roster_panel: Control
 var _roster_box: VBoxContainer
 var _roster_count: Label
@@ -121,7 +121,7 @@ func _build() -> void:
 	_game_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_game_layer.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	add_child(_game_layer)
-	_build_scrims()
+	_build_hud_backdrops()
 	_build_roster()
 	_build_mission_panel()
 	_build_wave_panel()
@@ -154,69 +154,25 @@ func _build() -> void:
 	_backpack_overlay.visible = false
 
 
-func _build_scrims() -> void:
-	_scrim_top = TextureRect.new()
-	_scrim_top.texture = _scrim_texture(false)
-	_scrim_top.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	_scrim_top.stretch_mode = TextureRect.STRETCH_SCALE
-	_scrim_top.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_game_layer.add_child(_scrim_top)
-	_scrim_top.set_anchors_preset(Control.PRESET_TOP_WIDE)
-	_scrim_top.offset_bottom = 250.0
-
-	_scrim_corner = TextureRect.new()
-	_scrim_corner.texture = _corner_scrim_texture()
-	_scrim_corner.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	_scrim_corner.stretch_mode = TextureRect.STRETCH_SCALE
-	_scrim_corner.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_game_layer.add_child(_scrim_corner)
-	_place(_scrim_corner, Rect2(0, 0, 430, 370), 0.0, 0.0)
-
-	_scrim_left = TextureRect.new()
-	_scrim_left.texture = _scrim_texture(true)
-	_scrim_left.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	_scrim_left.stretch_mode = TextureRect.STRETCH_SCALE
-	_scrim_left.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_game_layer.add_child(_scrim_left)
-	_place(_scrim_left, Rect2(0, -330, 560, 330), 0.0, 1.0)
-
-	_scrim_right = TextureRect.new()
-	_scrim_right.texture = _scrim_texture(true)
-	_scrim_right.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	_scrim_right.stretch_mode = TextureRect.STRETCH_SCALE
-	_scrim_right.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_game_layer.add_child(_scrim_right)
-	_place(_scrim_right, Rect2(-460, -330, 460, 330), 1.0, 1.0)
+func _build_hud_backdrops() -> void:
+	_mission_backdrop = _hud_backdrop(Rect2(14, 10, 330, 136), 0.0, 0.0)
+	_health_backdrop = _hud_backdrop(Rect2(14, -104, 306, 104), 0.0, 1.0)
+	_ammo_backdrop = _hud_backdrop(Rect2(-320, -110, 320, 110), 1.0, 1.0)
 
 
-func _scrim_texture(from_bottom: bool) -> GradientTexture2D:
-	var gradient := Gradient.new()
-	gradient.set_color(0, Color(0.008, 0.011, 0.013, 0.90))
-	gradient.add_point(0.55, Color(0.008, 0.011, 0.013, 0.58))
-	gradient.set_color(gradient.get_point_count() - 1, Color(0.008, 0.011, 0.013, 0.0))
-	var texture := GradientTexture2D.new()
-	texture.gradient = gradient
-	texture.fill = GradientTexture2D.FILL_LINEAR
-	texture.fill_from = Vector2(0.5, 1.0 if from_bottom else 0.0)
-	texture.fill_to = Vector2(0.5, 0.0 if from_bottom else 1.0)
-	texture.width = 64
-	texture.height = 128
-	return texture
-
-
-func _corner_scrim_texture() -> GradientTexture2D:
-	var gradient := Gradient.new()
-	gradient.set_color(0, Color(0.008, 0.011, 0.013, 0.86))
-	gradient.add_point(0.55, Color(0.008, 0.011, 0.013, 0.42))
-	gradient.set_color(gradient.get_point_count() - 1, Color(0.008, 0.011, 0.013, 0.0))
-	var texture := GradientTexture2D.new()
-	texture.gradient = gradient
-	texture.fill = GradientTexture2D.FILL_LINEAR
-	texture.fill_from = Vector2(0.0, 0.0)
-	texture.fill_to = Vector2(1.0, 1.0)
-	texture.width = 128
-	texture.height = 128
-	return texture
+func _hud_backdrop(rect: Rect2, anchor_x: float, anchor_y: float) -> Control:
+	var panel := PanelContainer.new()
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var style := DeadCityUI.panel_style(Color(0.012, 0.016, 0.019, 0.62), 4, Color(0.85, 0.82, 0.76, 0.08), 1)
+	style.content_margin_left = 0.0
+	style.content_margin_right = 0.0
+	style.content_margin_top = 0.0
+	style.content_margin_bottom = 0.0
+	panel.add_theme_stylebox_override("panel", style)
+	_game_layer.add_child(panel)
+	_place(panel, rect, anchor_x, anchor_y)
+	_hud_backdrops.append(panel)
+	return panel
 
 
 func _apply_settings() -> void:
@@ -232,17 +188,20 @@ func _apply_settings() -> void:
 		)
 	if _minimap != null:
 		_minimap.visible = bool(_settings.get_value("show_minimap"))
+	var show_objective := bool(_settings.get_value("show_objective"))
 	if _mission_panel != null:
-		_mission_panel.visible = bool(_settings.get_value("show_objective"))
+		_mission_panel.visible = show_objective
+	if _mission_backdrop != null:
+		_mission_backdrop.visible = show_objective
 	_hints_enabled = bool(_settings.get_value("hints"))
 	if not _hints_enabled and _interaction_panel != null:
 		_interaction_panel.visible = false
 	if _vignette != null:
 		_vignette.set_strength(float(_settings.get_value("damage_flash")))
 	var opacity := clampf(float(_settings.get_value("hud_opacity")), 0.3, 1.0)
-	for scrim in [_scrim_top, _scrim_left, _scrim_right, _scrim_corner]:
-		if scrim != null:
-			scrim.modulate.a = opacity
+	for backdrop in _hud_backdrops:
+		if backdrop != null:
+			backdrop.modulate.a = opacity
 
 
 func _apply_hud_scale() -> void:
@@ -403,7 +362,7 @@ func _build_health() -> void:
 	var top := HBoxContainer.new()
 	top.add_theme_constant_override("separation", 8)
 	holder.add_child(top)
-	top.add_child(_label("生命", 9, DeadCityUI.MUTED_2))
+	top.add_child(_label("生命", 9, DeadCityUI.MUTED))
 	var spacer := Control.new()
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(spacer)
@@ -414,7 +373,7 @@ func _build_health() -> void:
 	holder.add_child(value_row)
 	_health_label = _label("100", 26, DeadCityUI.TEXT)
 	value_row.add_child(_health_label)
-	var max_label := _label("/ 100", 10, Color(0.55, 0.6, 0.58, 0.85))
+	var max_label := _label("/ 100", 10, Color(0.74, 0.78, 0.76, 0.95))
 	max_label.size_flags_vertical = Control.SIZE_SHRINK_END
 	value_row.add_child(max_label)
 	var value_spacer := Control.new()

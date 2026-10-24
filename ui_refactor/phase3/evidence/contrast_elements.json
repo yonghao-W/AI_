@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-10-24T17:29:23",
-	"git_commit": "59f63a3",
+	"generated_at": "2026-10-24T17:52:03",
+	"git_commit": "0b15fbe",
 	"godot_version": "4.7.2-stable (official)",
 	"states": [
 		{
@@ -826,7 +826,7 @@
 					"font_size": 30,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@319/@VBoxContainer@320/@Label@321",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@318/@VBoxContainer@319/@Label@320",
 					"rect": [
 						718.320007324219,
 						112.400001525879,
@@ -846,7 +846,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@319/@VBoxContainer@320/@Label@322",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@318/@VBoxContainer@319/@Label@321",
 					"rect": [
 						718.320007324219,
 						168.399993896484,
@@ -866,7 +866,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@319/@VBoxContainer@320/@HBoxContainer@330/@VBoxContainer@326/@Label@324",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@318/@VBoxContainer@319/@HBoxContainer@329/@VBoxContainer@325/@Label@323",
 					"rect": [
 						718.320007324219,
 						208.399993896484,
@@ -886,7 +886,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@319/@VBoxContainer@320/@HBoxContainer@330/@VBoxContainer@329/@Label@327",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@318/@VBoxContainer@319/@HBoxContainer@329/@VBoxContainer@328/@Label@326",
 					"rect": [
 						952.320007324219,
 						208.399993896484,
@@ -906,7 +906,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@319/@VBoxContainer@320/@HBoxContainer@337/@VBoxContainer@333/@Label@331",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@318/@VBoxContainer@319/@HBoxContainer@336/@VBoxContainer@332/@Label@330",
 					"rect": [
 						718.320007324219,
 						282.399993896484,
@@ -926,7 +926,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@319/@VBoxContainer@320/@HBoxContainer@337/@VBoxContainer@336/@Label@334",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@318/@VBoxContainer@319/@HBoxContainer@336/@VBoxContainer@335/@Label@333",
 					"rect": [
 						1027.32006835938,
 						282.399993896484,
@@ -946,7 +946,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@319/@VBoxContainer@320/@Label@338",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@318/@VBoxContainer@319/@Label@337",
 					"rect": [
 						718.320007324219,
 						356.399993896484,
@@ -966,7 +966,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@319/@VBoxContainer@320/@HBoxContainer@341/@Button@342",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@318/@VBoxContainer@319/@HBoxContainer@340/@Button@341",
 					"rect": [
 						718.320007324219,
 						421.399993896484,
@@ -986,7 +986,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@319/@VBoxContainer@320/@HBoxContainer@341/@Button@343",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@318/@VBoxContainer@319/@HBoxContainer@340/@Button@342",
 					"rect": [
 						905.320007324219,
 						421.399993896484,
@@ -1006,7 +1006,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@319/@VBoxContainer@320/@HBoxContainer@341/@Button@344",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/MenuView_coop/@PanelContainer@318/@VBoxContainer@319/@HBoxContainer@340/@Button@343",
 					"rect": [
 						1093.32006835938,
 						421.399993896484,
@@ -1183,7 +1183,7 @@
 						14.0
 					],
 					"shadow": true,
-					"text": "行动 11 次 · 完成 8 次 · 最佳战力 18 · 信用点 1427"
+					"text": "行动 12 次 · 完成 8 次 · 最佳战力 18 · 信用点 1427"
 				},
 				{
 					"color": [
@@ -1215,7 +1215,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@345/@HBoxContainer@346/@Label@347",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@344/@HBoxContainer@345/@Label@346",
 					"rect": [
 						118.0,
 						284.0,
@@ -1235,7 +1235,7 @@
 					"font_size": 13,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@345/@HBoxContainer@346/@Label@348",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@344/@HBoxContainer@345/@Label@347",
 					"rect": [
 						132.0,
 						282.0,
@@ -1255,7 +1255,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@345/@HBoxContainer@346/@Label@349",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@344/@HBoxContainer@345/@Label@348",
 					"rect": [
 						387.0,
 						284.0,
@@ -1275,7 +1275,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@350/@HBoxContainer@351/@Label@352",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@349/@HBoxContainer@350/@Label@351",
 					"rect": [
 						118.0,
 						324.0,
@@ -1295,7 +1295,7 @@
 					"font_size": 13,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@350/@HBoxContainer@351/@Label@353",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@111/@VBoxContainer@117/@PanelContainer@349/@HBoxContainer@350/@Label@352",
 					"rect": [
 						132.0,
 						322.0,
@@ -1355,7 +1355,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@354/@VBoxContainer@355/@Label@356",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@353/@VBoxContainer@354/@Label@355",
 					"rect": [
 						447.0,
 						190.0,
@@ -1375,7 +1375,7 @@
 					"font_size": 14,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@354/@VBoxContainer@355/@Label@357",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@353/@VBoxContainer@354/@Label@356",
 					"rect": [
 						447.0,
 						207.0,
@@ -1395,7 +1395,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@354/@VBoxContainer@355/@Label@358",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@353/@VBoxContainer@354/@Label@357",
 					"rect": [
 						447.0,
 						230.0,
@@ -1415,7 +1415,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@354/@VBoxContainer@355/@Label@359",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@353/@VBoxContainer@354/@Label@358",
 					"rect": [
 						447.0,
 						247.0,
@@ -1435,7 +1435,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@354/@VBoxContainer@355/@Button@361",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@353/@VBoxContainer@354/@Button@360",
 					"rect": [
 						447.0,
 						334.0,
@@ -1455,7 +1455,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@362/@VBoxContainer@363/@Label@364",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@361/@VBoxContainer@362/@Label@363",
 					"rect": [
 						631.0,
 						190.0,
@@ -1475,7 +1475,7 @@
 					"font_size": 14,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@362/@VBoxContainer@363/@Label@365",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@361/@VBoxContainer@362/@Label@364",
 					"rect": [
 						631.0,
 						207.0,
@@ -1495,7 +1495,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@362/@VBoxContainer@363/@Label@366",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@361/@VBoxContainer@362/@Label@365",
 					"rect": [
 						631.0,
 						230.0,
@@ -1515,7 +1515,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@362/@VBoxContainer@363/@Label@367",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@361/@VBoxContainer@362/@Label@366",
 					"rect": [
 						631.0,
 						247.0,
@@ -1535,7 +1535,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@362/@VBoxContainer@363/@Button@369",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@361/@VBoxContainer@362/@Button@368",
 					"rect": [
 						631.0,
 						334.0,
@@ -1555,7 +1555,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@370/@VBoxContainer@371/@Label@372",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@369/@VBoxContainer@370/@Label@371",
 					"rect": [
 						815.0,
 						190.0,
@@ -1575,7 +1575,7 @@
 					"font_size": 14,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@370/@VBoxContainer@371/@Label@373",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@369/@VBoxContainer@370/@Label@372",
 					"rect": [
 						815.0,
 						207.0,
@@ -1595,7 +1595,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@370/@VBoxContainer@371/@Label@374",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@369/@VBoxContainer@370/@Label@373",
 					"rect": [
 						815.0,
 						230.0,
@@ -1615,7 +1615,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@370/@VBoxContainer@371/@Label@375",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@369/@VBoxContainer@370/@Label@374",
 					"rect": [
 						815.0,
 						247.0,
@@ -1635,7 +1635,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@370/@VBoxContainer@371/@Button@377",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@369/@VBoxContainer@370/@Button@376",
 					"rect": [
 						815.0,
 						334.0,
@@ -1655,7 +1655,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@378/@VBoxContainer@379/@Label@380",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@377/@VBoxContainer@378/@Label@379",
 					"rect": [
 						999.0,
 						190.0,
@@ -1675,7 +1675,7 @@
 					"font_size": 14,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@378/@VBoxContainer@379/@Label@381",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@377/@VBoxContainer@378/@Label@380",
 					"rect": [
 						999.0,
 						207.0,
@@ -1695,7 +1695,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@378/@VBoxContainer@379/@Label@382",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@377/@VBoxContainer@378/@Label@381",
 					"rect": [
 						999.0,
 						230.0,
@@ -1715,7 +1715,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@378/@VBoxContainer@379/@Label@383",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@377/@VBoxContainer@378/@Label@382",
 					"rect": [
 						999.0,
 						247.0,
@@ -1735,7 +1735,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@378/@VBoxContainer@379/@Button@385",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@377/@VBoxContainer@378/@Button@384",
 					"rect": [
 						999.0,
 						334.0,
@@ -1755,7 +1755,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@386/@VBoxContainer@387/@Label@388",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@385/@VBoxContainer@386/@Label@387",
 					"rect": [
 						447.0,
 						406.0,
@@ -1775,7 +1775,7 @@
 					"font_size": 14,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@386/@VBoxContainer@387/@Label@389",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@385/@VBoxContainer@386/@Label@388",
 					"rect": [
 						447.0,
 						423.0,
@@ -1795,7 +1795,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@386/@VBoxContainer@387/@Label@390",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@385/@VBoxContainer@386/@Label@389",
 					"rect": [
 						447.0,
 						446.0,
@@ -1815,7 +1815,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@386/@VBoxContainer@387/@Label@391",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@385/@VBoxContainer@386/@Label@390",
 					"rect": [
 						447.0,
 						463.0,
@@ -1835,7 +1835,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@386/@VBoxContainer@387/@Button@393",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@385/@VBoxContainer@386/@Button@392",
 					"rect": [
 						447.0,
 						550.0,
@@ -1855,7 +1855,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@394/@VBoxContainer@395/@Label@396",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@393/@VBoxContainer@394/@Label@395",
 					"rect": [
 						631.0,
 						406.0,
@@ -1875,7 +1875,7 @@
 					"font_size": 14,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@394/@VBoxContainer@395/@Label@397",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@393/@VBoxContainer@394/@Label@396",
 					"rect": [
 						631.0,
 						423.0,
@@ -1895,7 +1895,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@394/@VBoxContainer@395/@Label@398",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@393/@VBoxContainer@394/@Label@397",
 					"rect": [
 						631.0,
 						446.0,
@@ -1915,7 +1915,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@394/@VBoxContainer@395/@Label@399",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@393/@VBoxContainer@394/@Label@398",
 					"rect": [
 						631.0,
 						463.0,
@@ -1935,7 +1935,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@394/@VBoxContainer@395/@Button@401",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@393/@VBoxContainer@394/@Button@400",
 					"rect": [
 						631.0,
 						550.0,
@@ -1955,7 +1955,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@402/@VBoxContainer@403/@Label@404",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@401/@VBoxContainer@402/@Label@403",
 					"rect": [
 						815.0,
 						406.0,
@@ -1975,7 +1975,7 @@
 					"font_size": 14,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@402/@VBoxContainer@403/@Label@405",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@401/@VBoxContainer@402/@Label@404",
 					"rect": [
 						815.0,
 						423.0,
@@ -1995,7 +1995,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@402/@VBoxContainer@403/@Label@406",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@401/@VBoxContainer@402/@Label@405",
 					"rect": [
 						815.0,
 						446.0,
@@ -2015,7 +2015,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@402/@VBoxContainer@403/@Label@407",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@401/@VBoxContainer@402/@Label@406",
 					"rect": [
 						815.0,
 						463.0,
@@ -2035,7 +2035,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@402/@VBoxContainer@403/@Button@409",
+					"path": "/root/@SubViewport@2/Main/UI/MainMenu/Armory/@CenterContainer@97/@PanelContainer@98/@VBoxContainer@99/@HBoxContainer@110/@VBoxContainer@120/@GridContainer@122/@PanelContainer@401/@VBoxContainer@402/@Button@408",
 					"rect": [
 						815.0,
 						550.0,
@@ -2084,7 +2084,7 @@
 					"font_size": 34,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@HBoxContainer@482/@VBoxContainer@483/@Label@484",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@HBoxContainer@481/@VBoxContainer@482/@Label@483",
 					"rect": [
 						262.0,
 						112.0,
@@ -2104,7 +2104,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@HBoxContainer@482/@VBoxContainer@483/@Label@485",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@HBoxContainer@481/@VBoxContainer@482/@Label@484",
 					"rect": [
 						262.0,
 						164.0,
@@ -2124,7 +2124,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@HBoxContainer@482/@VBoxContainer@487/@Label@488",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@HBoxContainer@481/@VBoxContainer@486/@Label@487",
 					"rect": [
 						863.0,
 						112.0,
@@ -2144,7 +2144,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@HBoxContainer@482/@VBoxContainer@487/@Label@489",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@HBoxContainer@481/@VBoxContainer@486/@Label@488",
 					"rect": [
 						863.0,
 						126.0,
@@ -2164,7 +2164,7 @@
 					"font_size": 13,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@HBoxContainer@491/@Label@492",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@HBoxContainer@490/@Label@491",
 					"rect": [
 						262.0,
 						203.0,
@@ -2184,7 +2184,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@HBoxContainer@491/@Label@494",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@HBoxContainer@490/@Label@493",
 					"rect": [
 						895.0,
 						205.0,
@@ -2204,7 +2204,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@VBoxContainer@495/@PanelContainer@739/@HBoxContainer@734/@Label@736",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@VBoxContainer@494/@PanelContainer@737/@HBoxContainer@732/@Label@734",
 					"rect": [
 						289.0,
 						244.0,
@@ -2224,7 +2224,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@VBoxContainer@495/@PanelContainer@739/@HBoxContainer@734/@Label@737",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@VBoxContainer@494/@PanelContainer@737/@HBoxContainer@732/@Label@735",
 					"rect": [
 						920.0,
 						247.0,
@@ -2244,7 +2244,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@VBoxContainer@495/@PanelContainer@739/@HBoxContainer@734/@Label@738",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@VBoxContainer@494/@PanelContainer@737/@HBoxContainer@732/@Label@736",
 					"rect": [
 						948.0,
 						246.0,
@@ -2264,7 +2264,7 @@
 					"font_size": 13,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@VBoxContainer@495/@PanelContainer@744/@HBoxContainer@740/@Label@742",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@VBoxContainer@494/@PanelContainer@742/@HBoxContainer@738/@Label@740",
 					"rect": [
 						289.0,
 						292.0,
@@ -2284,7 +2284,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@VBoxContainer@495/@PanelContainer@744/@HBoxContainer@740/@Label@743",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@VBoxContainer@494/@PanelContainer@742/@HBoxContainer@738/@Label@741",
 					"rect": [
 						986.0,
 						294.0,
@@ -2304,7 +2304,7 @@
 					"font_size": 13,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@VBoxContainer@495/@PanelContainer@749/@HBoxContainer@745/@Label@747",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@VBoxContainer@494/@PanelContainer@747/@HBoxContainer@743/@Label@745",
 					"rect": [
 						289.0,
 						339.0,
@@ -2324,7 +2324,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@VBoxContainer@495/@PanelContainer@749/@HBoxContainer@745/@Label@748",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@VBoxContainer@494/@PanelContainer@747/@HBoxContainer@743/@Label@746",
 					"rect": [
 						986.0,
 						341.0,
@@ -2344,7 +2344,7 @@
 					"font_size": 13,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@VBoxContainer@495/@PanelContainer@754/@HBoxContainer@750/@Label@752",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@VBoxContainer@494/@PanelContainer@752/@HBoxContainer@748/@Label@750",
 					"rect": [
 						289.0,
 						386.0,
@@ -2364,7 +2364,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@VBoxContainer@495/@PanelContainer@754/@HBoxContainer@750/@Label@753",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@VBoxContainer@494/@PanelContainer@752/@HBoxContainer@748/@Label@751",
 					"rect": [
 						986.0,
 						388.0,
@@ -2384,7 +2384,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@Label@496",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@Label@495",
 					"rect": [
 						262.0,
 						483.0,
@@ -2392,7 +2392,7 @@
 						14.0
 					],
 					"shadow": true,
-					"text": "局外档案 · 行动 11 次 · 完成 8 次 · 最佳战力 18 · 血脉 Lv.7 · 信用点 1427"
+					"text": "局外档案 · 行动 12 次 · 完成 8 次 · 最佳战力 18 · 血脉 Lv.7 · 信用点 1427"
 				},
 				{
 					"color": [
@@ -2404,7 +2404,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@Label@497",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@Label@496",
 					"rect": [
 						262.0,
 						509.0,
@@ -2424,7 +2424,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@HBoxContainer@499/@Button@500",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@HBoxContainer@498/@Button@499",
 					"rect": [
 						262.0,
 						564.0,
@@ -2444,7 +2444,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@410/Main/UI/MainMenu/Lobby/@CenterContainer@479/@PanelContainer@480/@VBoxContainer@481/@HBoxContainer@499/@Button@503",
+					"path": "/root/@SubViewport@409/Main/UI/MainMenu/Lobby/@CenterContainer@478/@PanelContainer@479/@VBoxContainer@480/@HBoxContainer@498/@Button@502",
 					"rect": [
 						808.0,
 						564.0,
@@ -2473,7 +2473,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@HBoxContainer@891/@Label@893",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@HBoxContainer@888/@Label@890",
 					"rect": [
 						38.0,
 						25.0,
@@ -2493,7 +2493,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@HBoxContainer@891/@Label@894",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@HBoxContainer@888/@Label@891",
 					"rect": [
 						86.0,
 						22.0,
@@ -2513,7 +2513,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@Label@897",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@Label@894",
 					"rect": [
 						28.0,
 						45.0,
@@ -2533,7 +2533,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@Label@902",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@Label@899",
 					"rect": [
 						28.0,
 						67.0,
@@ -2553,7 +2553,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@905",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@902",
 					"rect": [
 						545.0,
 						20.0,
@@ -2573,7 +2573,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@907",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@904",
 					"rect": [
 						605.0,
 						22.0,
@@ -2593,7 +2593,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@909",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@906",
 					"rect": [
 						705.0,
 						22.0,
@@ -2605,15 +2605,15 @@
 				},
 				{
 					"color": [
-						0.588235318660736,
-						0.545098066329956,
-						0.490196079015732,
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
 						1.0
 					],
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@914/@Label@915",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@911/@Label@912",
 					"rect": [
 						30.0,
 						634.0,
@@ -2633,7 +2633,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@914/@Label@917",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@911/@Label@914",
 					"rect": [
 						260.0,
 						634.0,
@@ -2653,7 +2653,7 @@
 					"font_size": 26,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@918/@Label@919",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@915/@Label@916",
 					"rect": [
 						30.0,
 						649.0,
@@ -2665,15 +2665,15 @@
 				},
 				{
 					"color": [
-						0.550000011920929,
-						0.600000023841858,
-						0.579999983310699,
-						0.850000023841858
+						0.740000009536743,
+						0.779999971389771,
+						0.759999990463257,
+						0.949999988079071
 					],
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@918/@Label@920",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@915/@Label@917",
 					"rect": [
 						80.0,
 						670.0,
@@ -2693,7 +2693,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@925/@Label@927",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@922/@Label@924",
 					"rect": [
 						1223.0,
 						631.0,
@@ -2713,7 +2713,7 @@
 					"font_size": 30,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@930",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@927",
 					"rect": [
 						1171.0,
 						645.0,
@@ -2733,7 +2733,7 @@
 					"font_size": 16,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@931",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@928",
 					"rect": [
 						1211.0,
 						663.0,
@@ -2753,7 +2753,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@932",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@929",
 					"rect": [
 						1223.0,
 						665.0,
@@ -2773,7 +2773,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@933/@Label@934",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@930/@Label@931",
 					"rect": [
 						982.0,
 						686.0,
@@ -2793,7 +2793,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@933/@Label@936",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@930/@Label@933",
 					"rect": [
 						1230.0,
 						686.0,
@@ -2813,7 +2813,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2309/@Label@2310",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2308/@Label@2309",
 					"rect": [
 						1143.0,
 						550.0,
@@ -2833,7 +2833,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2309/@Label@2311",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2308/@Label@2310",
 					"rect": [
 						1154.0,
 						550.0,
@@ -2853,7 +2853,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2312/@Label@2313",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2311/@Label@2312",
 					"rect": [
 						1198.0,
 						550.0,
@@ -2873,7 +2873,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2312/@Label@2314",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2311/@Label@2313",
 					"rect": [
 						1209.0,
 						550.0,
@@ -2893,7 +2893,7 @@
 					"font_size": 22,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@943/@Label@944",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@940/@Label@941",
 					"rect": [
 						320.0,
 						88.0,
@@ -2913,7 +2913,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@943/@Label@945",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@940/@Label@942",
 					"rect": [
 						320.0,
 						119.0,
@@ -2942,7 +2942,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@HBoxContainer@891/@Label@893",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@HBoxContainer@888/@Label@890",
 					"rect": [
 						38.0,
 						25.0,
@@ -2962,7 +2962,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@HBoxContainer@891/@Label@894",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@HBoxContainer@888/@Label@891",
 					"rect": [
 						86.0,
 						22.0,
@@ -2982,7 +2982,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@Label@897",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@Label@894",
 					"rect": [
 						28.0,
 						45.0,
@@ -3002,7 +3002,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@Label@902",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@Label@899",
 					"rect": [
 						28.0,
 						67.0,
@@ -3022,7 +3022,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@905",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@902",
 					"rect": [
 						545.0,
 						20.0,
@@ -3042,7 +3042,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@907",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@904",
 					"rect": [
 						605.0,
 						22.0,
@@ -3062,7 +3062,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@909",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@906",
 					"rect": [
 						705.0,
 						22.0,
@@ -3074,15 +3074,15 @@
 				},
 				{
 					"color": [
-						0.588235318660736,
-						0.545098066329956,
-						0.490196079015732,
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
 						1.0
 					],
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@914/@Label@915",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@911/@Label@912",
 					"rect": [
 						30.0,
 						634.0,
@@ -3097,12 +3097,12 @@
 						0.878431379795074,
 						0.419607847929001,
 						0.352941185235977,
-						0.581620037555695
+						0.623106062412262
 					],
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@914/@Label@917",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@911/@Label@914",
 					"rect": [
 						260.0,
 						634.0,
@@ -3122,7 +3122,7 @@
 					"font_size": 26,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@918/@Label@919",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@915/@Label@916",
 					"rect": [
 						30.0,
 						649.0,
@@ -3134,15 +3134,15 @@
 				},
 				{
 					"color": [
-						0.550000011920929,
-						0.600000023841858,
-						0.579999983310699,
-						0.850000023841858
+						0.740000009536743,
+						0.779999971389771,
+						0.759999990463257,
+						0.949999988079071
 					],
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@918/@Label@920",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@915/@Label@917",
 					"rect": [
 						65.0,
 						670.0,
@@ -3162,7 +3162,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@925/@Label@927",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@922/@Label@924",
 					"rect": [
 						1223.0,
 						631.0,
@@ -3182,7 +3182,7 @@
 					"font_size": 30,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@930",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@927",
 					"rect": [
 						1171.0,
 						645.0,
@@ -3202,7 +3202,7 @@
 					"font_size": 16,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@931",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@928",
 					"rect": [
 						1211.0,
 						663.0,
@@ -3222,7 +3222,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@932",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@929",
 					"rect": [
 						1223.0,
 						665.0,
@@ -3242,7 +3242,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@933/@Label@934",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@930/@Label@931",
 					"rect": [
 						982.0,
 						686.0,
@@ -3262,7 +3262,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@933/@Label@936",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@930/@Label@933",
 					"rect": [
 						1230.0,
 						686.0,
@@ -3282,7 +3282,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2309/@Label@2310",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2308/@Label@2309",
 					"rect": [
 						1143.0,
 						550.0,
@@ -3302,7 +3302,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2309/@Label@2311",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2308/@Label@2310",
 					"rect": [
 						1154.0,
 						550.0,
@@ -3322,7 +3322,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2312/@Label@2313",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2311/@Label@2312",
 					"rect": [
 						1198.0,
 						550.0,
@@ -3342,7 +3342,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2312/@Label@2314",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2311/@Label@2313",
 					"rect": [
 						1209.0,
 						550.0,
@@ -3357,12 +3357,12 @@
 						0.901960790157318,
 						0.65490198135376,
 						0.368627458810806,
-						0.307918548583984
+						0.295364260673523
 					],
 					"font_size": 22,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@943/@Label@944",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@940/@Label@941",
 					"rect": [
 						320.0,
 						88.0,
@@ -3377,12 +3377,12 @@
 						0.819999992847443,
 						0.850000023841858,
 						0.819999992847443,
-						0.27712669968605
+						0.265827834606171
 					],
 					"font_size": 11,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@943/@Label@945",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@940/@Label@942",
 					"rect": [
 						320.0,
 						119.0,
@@ -3411,7 +3411,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@HBoxContainer@885/@Label@886",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@HBoxContainer@882/@Label@883",
 					"rect": [
 						32.0,
 						160.0,
@@ -3431,7 +3431,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@HBoxContainer@885/@Label@888",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@HBoxContainer@882/@Label@885",
 					"rect": [
 						275.0,
 						160.0,
@@ -3451,7 +3451,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2396/@VBoxContainer@2398/@HBoxContainer@2399/@Label@2400",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2395/@VBoxContainer@2397/@HBoxContainer@2398/@Label@2399",
 					"rect": [
 						41.0,
 						177.0,
@@ -3471,7 +3471,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2396/@VBoxContainer@2398/@HBoxContainer@2399/@Label@2402",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2395/@VBoxContainer@2397/@HBoxContainer@2398/@Label@2401",
 					"rect": [
 						274.0,
 						177.0,
@@ -3491,7 +3491,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2404/@VBoxContainer@2406/@HBoxContainer@2407/@Label@2408",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2403/@VBoxContainer@2405/@HBoxContainer@2406/@Label@2407",
 					"rect": [
 						41.0,
 						204.0,
@@ -3511,7 +3511,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2404/@VBoxContainer@2406/@HBoxContainer@2407/@Label@2410",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2403/@VBoxContainer@2405/@HBoxContainer@2406/@Label@2409",
 					"rect": [
 						275.0,
 						204.0,
@@ -3531,7 +3531,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2412/@VBoxContainer@2414/@HBoxContainer@2415/@Label@2416",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2411/@VBoxContainer@2413/@HBoxContainer@2414/@Label@2415",
 					"rect": [
 						41.0,
 						231.0,
@@ -3551,7 +3551,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2412/@VBoxContainer@2414/@HBoxContainer@2415/@Label@2418",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2411/@VBoxContainer@2413/@HBoxContainer@2414/@Label@2417",
 					"rect": [
 						252.0,
 						231.0,
@@ -3571,7 +3571,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2420/@VBoxContainer@2422/@HBoxContainer@2423/@Label@2424",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2419/@VBoxContainer@2421/@HBoxContainer@2422/@Label@2423",
 					"rect": [
 						41.0,
 						258.0,
@@ -3591,7 +3591,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2420/@VBoxContainer@2422/@HBoxContainer@2423/@Label@2426",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2419/@VBoxContainer@2421/@HBoxContainer@2422/@Label@2425",
 					"rect": [
 						275.0,
 						258.0,
@@ -3611,7 +3611,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@HBoxContainer@891/@Label@893",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@HBoxContainer@888/@Label@890",
 					"rect": [
 						38.0,
 						25.0,
@@ -3631,7 +3631,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@HBoxContainer@891/@Label@894",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@HBoxContainer@888/@Label@891",
 					"rect": [
 						86.0,
 						22.0,
@@ -3651,7 +3651,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@Label@897",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@Label@894",
 					"rect": [
 						28.0,
 						45.0,
@@ -3671,7 +3671,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@Label@902",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@Label@899",
 					"rect": [
 						28.0,
 						67.0,
@@ -3691,7 +3691,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@905",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@902",
 					"rect": [
 						545.0,
 						20.0,
@@ -3711,7 +3711,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@907",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@904",
 					"rect": [
 						605.0,
 						22.0,
@@ -3731,7 +3731,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@909",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@906",
 					"rect": [
 						705.0,
 						22.0,
@@ -3743,15 +3743,15 @@
 				},
 				{
 					"color": [
-						0.588235318660736,
-						0.545098066329956,
-						0.490196079015732,
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
 						1.0
 					],
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@914/@Label@915",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@911/@Label@912",
 					"rect": [
 						30.0,
 						634.0,
@@ -3766,12 +3766,12 @@
 						0.878431379795074,
 						0.419607847929001,
 						0.352941185235977,
-						0.632575750350952
+						0.594444453716278
 					],
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@914/@Label@917",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@911/@Label@914",
 					"rect": [
 						260.0,
 						634.0,
@@ -3791,7 +3791,7 @@
 					"font_size": 26,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@918/@Label@919",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@915/@Label@916",
 					"rect": [
 						30.0,
 						649.0,
@@ -3803,15 +3803,15 @@
 				},
 				{
 					"color": [
-						0.550000011920929,
-						0.600000023841858,
-						0.579999983310699,
-						0.850000023841858
+						0.740000009536743,
+						0.779999971389771,
+						0.759999990463257,
+						0.949999988079071
 					],
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@918/@Label@920",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@915/@Label@917",
 					"rect": [
 						65.0,
 						670.0,
@@ -3831,7 +3831,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@925/@Label@927",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@922/@Label@924",
 					"rect": [
 						1223.0,
 						631.0,
@@ -3851,7 +3851,7 @@
 					"font_size": 30,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@930",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@927",
 					"rect": [
 						1171.0,
 						645.0,
@@ -3871,7 +3871,7 @@
 					"font_size": 16,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@931",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@928",
 					"rect": [
 						1211.0,
 						663.0,
@@ -3891,7 +3891,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@932",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@929",
 					"rect": [
 						1223.0,
 						665.0,
@@ -3911,7 +3911,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@933/@Label@934",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@930/@Label@931",
 					"rect": [
 						982.0,
 						686.0,
@@ -3931,7 +3931,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@933/@Label@936",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@930/@Label@933",
 					"rect": [
 						1230.0,
 						686.0,
@@ -3951,7 +3951,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2309/@Label@2310",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2308/@Label@2309",
 					"rect": [
 						1143.0,
 						550.0,
@@ -3971,7 +3971,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2309/@Label@2311",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2308/@Label@2310",
 					"rect": [
 						1154.0,
 						550.0,
@@ -3991,7 +3991,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2312/@Label@2313",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2311/@Label@2312",
 					"rect": [
 						1198.0,
 						550.0,
@@ -4011,7 +4011,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2312/@Label@2314",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2311/@Label@2313",
 					"rect": [
 						1209.0,
 						550.0,
@@ -4031,7 +4031,7 @@
 					"font_size": 22,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@943/@Label@944",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@940/@Label@941",
 					"rect": [
 						320.0,
 						88.0,
@@ -4051,7 +4051,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@943/@Label@945",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@940/@Label@942",
 					"rect": [
 						320.0,
 						119.0,
@@ -4080,7 +4080,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@HBoxContainer@885/@Label@886",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@HBoxContainer@882/@Label@883",
 					"rect": [
 						32.0,
 						160.0,
@@ -4100,7 +4100,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@HBoxContainer@885/@Label@888",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@HBoxContainer@882/@Label@885",
 					"rect": [
 						275.0,
 						160.0,
@@ -4120,7 +4120,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2436/@VBoxContainer@2438/@HBoxContainer@2439/@Label@2440",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2435/@VBoxContainer@2437/@HBoxContainer@2438/@Label@2439",
 					"rect": [
 						41.0,
 						177.0,
@@ -4140,7 +4140,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2436/@VBoxContainer@2438/@HBoxContainer@2439/@Label@2442",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2435/@VBoxContainer@2437/@HBoxContainer@2438/@Label@2441",
 					"rect": [
 						274.0,
 						177.0,
@@ -4160,7 +4160,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2444/@VBoxContainer@2446/@HBoxContainer@2447/@Label@2448",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2443/@VBoxContainer@2445/@HBoxContainer@2446/@Label@2447",
 					"rect": [
 						41.0,
 						204.0,
@@ -4180,7 +4180,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2444/@VBoxContainer@2446/@HBoxContainer@2447/@Label@2450",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2443/@VBoxContainer@2445/@HBoxContainer@2446/@Label@2449",
 					"rect": [
 						275.0,
 						204.0,
@@ -4200,7 +4200,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2452/@VBoxContainer@2454/@HBoxContainer@2455/@Label@2456",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2451/@VBoxContainer@2453/@HBoxContainer@2454/@Label@2455",
 					"rect": [
 						41.0,
 						231.0,
@@ -4220,7 +4220,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2452/@VBoxContainer@2454/@HBoxContainer@2455/@Label@2458",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2451/@VBoxContainer@2453/@HBoxContainer@2454/@Label@2457",
 					"rect": [
 						252.0,
 						231.0,
@@ -4240,7 +4240,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2460/@VBoxContainer@2462/@HBoxContainer@2463/@Label@2464",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2459/@VBoxContainer@2461/@HBoxContainer@2462/@Label@2463",
 					"rect": [
 						41.0,
 						258.0,
@@ -4260,7 +4260,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2460/@VBoxContainer@2462/@HBoxContainer@2463/@Label@2466",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2459/@VBoxContainer@2461/@HBoxContainer@2462/@Label@2465",
 					"rect": [
 						275.0,
 						258.0,
@@ -4280,7 +4280,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@HBoxContainer@891/@Label@893",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@HBoxContainer@888/@Label@890",
 					"rect": [
 						38.0,
 						25.0,
@@ -4300,7 +4300,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@HBoxContainer@891/@Label@894",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@HBoxContainer@888/@Label@891",
 					"rect": [
 						86.0,
 						22.0,
@@ -4320,7 +4320,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@Label@897",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@Label@894",
 					"rect": [
 						28.0,
 						45.0,
@@ -4340,7 +4340,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@Label@902",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@Label@899",
 					"rect": [
 						28.0,
 						67.0,
@@ -4360,7 +4360,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@905",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@902",
 					"rect": [
 						545.0,
 						20.0,
@@ -4380,7 +4380,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@907",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@904",
 					"rect": [
 						605.0,
 						22.0,
@@ -4400,7 +4400,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@909",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@906",
 					"rect": [
 						705.0,
 						22.0,
@@ -4412,15 +4412,15 @@
 				},
 				{
 					"color": [
-						0.588235318660736,
-						0.545098066329956,
-						0.490196079015732,
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
 						1.0
 					],
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@914/@Label@915",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@911/@Label@912",
 					"rect": [
 						30.0,
 						634.0,
@@ -4435,12 +4435,12 @@
 						0.878431379795074,
 						0.419607847929001,
 						0.352941185235977,
-						0.60340803861618
+						0.605555593967438
 					],
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@914/@Label@917",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@911/@Label@914",
 					"rect": [
 						260.0,
 						634.0,
@@ -4460,7 +4460,7 @@
 					"font_size": 26,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@918/@Label@919",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@915/@Label@916",
 					"rect": [
 						30.0,
 						649.0,
@@ -4472,15 +4472,15 @@
 				},
 				{
 					"color": [
-						0.550000011920929,
-						0.600000023841858,
-						0.579999983310699,
-						0.850000023841858
+						0.740000009536743,
+						0.779999971389771,
+						0.759999990463257,
+						0.949999988079071
 					],
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@918/@Label@920",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@915/@Label@917",
 					"rect": [
 						65.0,
 						670.0,
@@ -4500,7 +4500,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@925/@Label@927",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@922/@Label@924",
 					"rect": [
 						1223.0,
 						631.0,
@@ -4520,7 +4520,7 @@
 					"font_size": 30,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@930",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@927",
 					"rect": [
 						1171.0,
 						645.0,
@@ -4540,7 +4540,7 @@
 					"font_size": 16,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@931",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@928",
 					"rect": [
 						1211.0,
 						663.0,
@@ -4560,7 +4560,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@932",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@929",
 					"rect": [
 						1223.0,
 						665.0,
@@ -4580,7 +4580,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@933/@Label@934",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@930/@Label@931",
 					"rect": [
 						982.0,
 						686.0,
@@ -4600,7 +4600,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@933/@Label@936",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@930/@Label@933",
 					"rect": [
 						1230.0,
 						686.0,
@@ -4620,7 +4620,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2309/@Label@2310",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2308/@Label@2309",
 					"rect": [
 						1143.0,
 						550.0,
@@ -4640,7 +4640,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2309/@Label@2311",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2308/@Label@2310",
 					"rect": [
 						1154.0,
 						550.0,
@@ -4660,7 +4660,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2312/@Label@2313",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2311/@Label@2312",
 					"rect": [
 						1198.0,
 						550.0,
@@ -4680,7 +4680,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2312/@Label@2314",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2311/@Label@2313",
 					"rect": [
 						1209.0,
 						550.0,
@@ -4700,7 +4700,7 @@
 					"font_size": 22,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@943/@Label@944",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@940/@Label@941",
 					"rect": [
 						320.0,
 						88.0,
@@ -4720,7 +4720,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@943/@Label@945",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@940/@Label@942",
 					"rect": [
 						320.0,
 						119.0,
@@ -4740,7 +4740,7 @@
 					"font_size": 30,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@965/@PanelContainer@966/@VBoxContainer@967/@Label@968",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@962/@PanelContainer@963/@VBoxContainer@964/@Label@965",
 					"rect": [
 						416.0,
 						214.0,
@@ -4760,7 +4760,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@965/@PanelContainer@966/@VBoxContainer@967/@Label@969",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@962/@PanelContainer@963/@VBoxContainer@964/@Label@966",
 					"rect": [
 						416.0,
 						268.0,
@@ -4780,7 +4780,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@965/@PanelContainer@966/@VBoxContainer@967/@Label@971",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@962/@PanelContainer@963/@VBoxContainer@964/@Label@968",
 					"rect": [
 						416.0,
 						304.0,
@@ -4800,7 +4800,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@965/@PanelContainer@966/@VBoxContainer@967/@Label@972",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@962/@PanelContainer@963/@VBoxContainer@964/@Label@969",
 					"rect": [
 						416.0,
 						379.0,
@@ -4820,7 +4820,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@965/@PanelContainer@966/@VBoxContainer@967/@Button@973",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@962/@PanelContainer@963/@VBoxContainer@964/@Button@970",
 					"rect": [
 						416.0,
 						403.0,
@@ -4840,7 +4840,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@965/@PanelContainer@966/@VBoxContainer@967/@Button@974",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@962/@PanelContainer@963/@VBoxContainer@964/@Button@971",
 					"rect": [
 						416.0,
 						459.0,
@@ -4860,7 +4860,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@965/@PanelContainer@966/@VBoxContainer@967/@Button@975",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@962/@PanelContainer@963/@VBoxContainer@964/@Button@972",
 					"rect": [
 						416.0,
 						513.0,
@@ -4889,7 +4889,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@HBoxContainer@885/@Label@886",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@HBoxContainer@882/@Label@883",
 					"rect": [
 						32.0,
 						160.0,
@@ -4909,7 +4909,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@HBoxContainer@885/@Label@888",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@HBoxContainer@882/@Label@885",
 					"rect": [
 						275.0,
 						160.0,
@@ -4929,7 +4929,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2580/@VBoxContainer@2582/@HBoxContainer@2583/@Label@2584",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2579/@VBoxContainer@2581/@HBoxContainer@2582/@Label@2583",
 					"rect": [
 						41.0,
 						177.0,
@@ -4949,7 +4949,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2580/@VBoxContainer@2582/@HBoxContainer@2583/@Label@2586",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2579/@VBoxContainer@2581/@HBoxContainer@2582/@Label@2585",
 					"rect": [
 						274.0,
 						177.0,
@@ -4969,7 +4969,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2588/@VBoxContainer@2590/@HBoxContainer@2591/@Label@2592",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2587/@VBoxContainer@2589/@HBoxContainer@2590/@Label@2591",
 					"rect": [
 						41.0,
 						204.0,
@@ -4989,7 +4989,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2588/@VBoxContainer@2590/@HBoxContainer@2591/@Label@2594",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2587/@VBoxContainer@2589/@HBoxContainer@2590/@Label@2593",
 					"rect": [
 						275.0,
 						204.0,
@@ -5009,7 +5009,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2596/@VBoxContainer@2598/@HBoxContainer@2599/@Label@2600",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2595/@VBoxContainer@2597/@HBoxContainer@2598/@Label@2599",
 					"rect": [
 						41.0,
 						231.0,
@@ -5029,7 +5029,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2596/@VBoxContainer@2598/@HBoxContainer@2599/@Label@2602",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2595/@VBoxContainer@2597/@HBoxContainer@2598/@Label@2601",
 					"rect": [
 						252.0,
 						231.0,
@@ -5049,7 +5049,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2604/@VBoxContainer@2606/@HBoxContainer@2607/@Label@2608",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2603/@VBoxContainer@2605/@HBoxContainer@2606/@Label@2607",
 					"rect": [
 						41.0,
 						258.0,
@@ -5069,7 +5069,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2604/@VBoxContainer@2606/@HBoxContainer@2607/@Label@2610",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2603/@VBoxContainer@2605/@HBoxContainer@2606/@Label@2609",
 					"rect": [
 						275.0,
 						258.0,
@@ -5089,7 +5089,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@HBoxContainer@891/@Label@893",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@HBoxContainer@888/@Label@890",
 					"rect": [
 						38.0,
 						25.0,
@@ -5109,7 +5109,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@HBoxContainer@891/@Label@894",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@HBoxContainer@888/@Label@891",
 					"rect": [
 						86.0,
 						22.0,
@@ -5129,7 +5129,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@Label@897",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@Label@894",
 					"rect": [
 						28.0,
 						45.0,
@@ -5149,7 +5149,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@Label@902",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@Label@899",
 					"rect": [
 						28.0,
 						67.0,
@@ -5169,7 +5169,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@905",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@902",
 					"rect": [
 						545.0,
 						20.0,
@@ -5189,7 +5189,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@907",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@904",
 					"rect": [
 						605.0,
 						22.0,
@@ -5209,7 +5209,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@909",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@906",
 					"rect": [
 						705.0,
 						22.0,
@@ -5221,15 +5221,15 @@
 				},
 				{
 					"color": [
-						0.588235318660736,
-						0.545098066329956,
-						0.490196079015732,
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
 						1.0
 					],
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@914/@Label@915",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@911/@Label@912",
 					"rect": [
 						30.0,
 						634.0,
@@ -5244,12 +5244,12 @@
 						0.878431379795074,
 						0.419607847929001,
 						0.352941185235977,
-						0.618686854839325
+						0.59761905670166
 					],
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@914/@Label@917",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@911/@Label@914",
 					"rect": [
 						260.0,
 						634.0,
@@ -5269,7 +5269,7 @@
 					"font_size": 26,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@918/@Label@919",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@915/@Label@916",
 					"rect": [
 						30.0,
 						649.0,
@@ -5281,15 +5281,15 @@
 				},
 				{
 					"color": [
-						0.550000011920929,
-						0.600000023841858,
-						0.579999983310699,
-						0.850000023841858
+						0.740000009536743,
+						0.779999971389771,
+						0.759999990463257,
+						0.949999988079071
 					],
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@918/@Label@920",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@915/@Label@917",
 					"rect": [
 						65.0,
 						670.0,
@@ -5309,7 +5309,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@925/@Label@927",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@922/@Label@924",
 					"rect": [
 						1223.0,
 						631.0,
@@ -5329,7 +5329,7 @@
 					"font_size": 30,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@930",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@927",
 					"rect": [
 						1171.0,
 						645.0,
@@ -5349,7 +5349,7 @@
 					"font_size": 16,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@931",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@928",
 					"rect": [
 						1211.0,
 						663.0,
@@ -5369,7 +5369,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@932",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@929",
 					"rect": [
 						1223.0,
 						665.0,
@@ -5389,7 +5389,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@933/@Label@934",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@930/@Label@931",
 					"rect": [
 						982.0,
 						686.0,
@@ -5409,7 +5409,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@933/@Label@936",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@930/@Label@933",
 					"rect": [
 						1230.0,
 						686.0,
@@ -5429,7 +5429,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2309/@Label@2310",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2308/@Label@2309",
 					"rect": [
 						1143.0,
 						550.0,
@@ -5449,7 +5449,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2309/@Label@2311",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2308/@Label@2310",
 					"rect": [
 						1154.0,
 						550.0,
@@ -5469,7 +5469,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2312/@Label@2313",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2311/@Label@2312",
 					"rect": [
 						1198.0,
 						550.0,
@@ -5489,7 +5489,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2312/@Label@2314",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2311/@Label@2313",
 					"rect": [
 						1209.0,
 						550.0,
@@ -5509,7 +5509,7 @@
 					"font_size": 22,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@943/@Label@944",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@940/@Label@941",
 					"rect": [
 						320.0,
 						88.0,
@@ -5529,7 +5529,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@943/@Label@945",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@940/@Label@942",
 					"rect": [
 						320.0,
 						119.0,
@@ -5549,7 +5549,7 @@
 					"font_size": 26,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@989/@VBoxContainer@990/@Label@991",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@986/@VBoxContainer@987/@Label@988",
 					"rect": [
 						230.0,
 						208.0,
@@ -5569,7 +5569,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@989/@VBoxContainer@990/@Label@992",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@986/@VBoxContainer@987/@Label@989",
 					"rect": [
 						230.0,
 						247.0,
@@ -5589,7 +5589,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@989/@Label@994",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@986/@Label@991",
 					"rect": [
 						936.0,
 						227.0,
@@ -5609,7 +5609,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2508/@MarginContainer@2509/@VBoxContainer@2510/@Label@2511",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2507/@MarginContainer@2508/@VBoxContainer@2509/@Label@2510",
 					"rect": [
 						266.0,
 						299.0,
@@ -5629,7 +5629,7 @@
 					"font_size": 21,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2508/@MarginContainer@2509/@VBoxContainer@2510/@Label@2512",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2507/@MarginContainer@2508/@VBoxContainer@2509/@Label@2511",
 					"rect": [
 						266.0,
 						318.0,
@@ -5649,7 +5649,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2508/@MarginContainer@2509/@VBoxContainer@2510/@Label@2513",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2507/@MarginContainer@2508/@VBoxContainer@2509/@Label@2512",
 					"rect": [
 						266.0,
 						353.0,
@@ -5669,7 +5669,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2508/@MarginContainer@2509/@VBoxContainer@2510/@Label@2514",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2507/@MarginContainer@2508/@VBoxContainer@2509/@Label@2513",
 					"rect": [
 						266.0,
 						374.0,
@@ -5689,7 +5689,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2508/@MarginContainer@2509/@VBoxContainer@2510/@Label@2515",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2507/@MarginContainer@2508/@VBoxContainer@2509/@Label@2514",
 					"rect": [
 						266.0,
 						434.0,
@@ -5709,7 +5709,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2516/@MarginContainer@2517/@VBoxContainer@2518/@Label@2519",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2515/@MarginContainer@2516/@VBoxContainer@2517/@Label@2518",
 					"rect": [
 						530.0,
 						299.0,
@@ -5729,7 +5729,7 @@
 					"font_size": 21,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2516/@MarginContainer@2517/@VBoxContainer@2518/@Label@2520",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2515/@MarginContainer@2516/@VBoxContainer@2517/@Label@2519",
 					"rect": [
 						530.0,
 						318.0,
@@ -5749,7 +5749,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2516/@MarginContainer@2517/@VBoxContainer@2518/@Label@2521",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2515/@MarginContainer@2516/@VBoxContainer@2517/@Label@2520",
 					"rect": [
 						530.0,
 						353.0,
@@ -5769,7 +5769,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2516/@MarginContainer@2517/@VBoxContainer@2518/@Label@2522",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2515/@MarginContainer@2516/@VBoxContainer@2517/@Label@2521",
 					"rect": [
 						530.0,
 						374.0,
@@ -5789,7 +5789,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2516/@MarginContainer@2517/@VBoxContainer@2518/@Label@2523",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2515/@MarginContainer@2516/@VBoxContainer@2517/@Label@2522",
 					"rect": [
 						530.0,
 						434.0,
@@ -5809,7 +5809,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2524/@MarginContainer@2525/@VBoxContainer@2526/@Label@2527",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2523/@MarginContainer@2524/@VBoxContainer@2525/@Label@2526",
 					"rect": [
 						794.0,
 						299.0,
@@ -5829,7 +5829,7 @@
 					"font_size": 21,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2524/@MarginContainer@2525/@VBoxContainer@2526/@Label@2528",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2523/@MarginContainer@2524/@VBoxContainer@2525/@Label@2527",
 					"rect": [
 						794.0,
 						318.0,
@@ -5849,7 +5849,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2524/@MarginContainer@2525/@VBoxContainer@2526/@Label@2529",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2523/@MarginContainer@2524/@VBoxContainer@2525/@Label@2528",
 					"rect": [
 						794.0,
 						353.0,
@@ -5869,7 +5869,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2524/@MarginContainer@2525/@VBoxContainer@2526/@Label@2530",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2523/@MarginContainer@2524/@VBoxContainer@2525/@Label@2529",
 					"rect": [
 						794.0,
 						374.0,
@@ -5889,7 +5889,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@996/@Button@2524/@MarginContainer@2525/@VBoxContainer@2526/@Label@2531",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@993/@Button@2523/@MarginContainer@2524/@VBoxContainer@2525/@Label@2530",
 					"rect": [
 						794.0,
 						434.0,
@@ -5909,7 +5909,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@997/@Label@998",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@994/@Label@995",
 					"rect": [
 						230.0,
 						490.0,
@@ -5929,7 +5929,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@986/@PanelContainer@987/@VBoxContainer@988/@HBoxContainer@997/@Button@1000",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@983/@PanelContainer@984/@VBoxContainer@985/@HBoxContainer@994/@Button@997",
 					"rect": [
 						820.0,
 						475.0,
@@ -5958,7 +5958,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@HBoxContainer@885/@Label@886",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@HBoxContainer@882/@Label@883",
 					"rect": [
 						32.0,
 						160.0,
@@ -5978,7 +5978,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@HBoxContainer@885/@Label@888",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@HBoxContainer@882/@Label@885",
 					"rect": [
 						275.0,
 						160.0,
@@ -5998,7 +5998,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2718/@VBoxContainer@2720/@HBoxContainer@2721/@Label@2722",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2717/@VBoxContainer@2719/@HBoxContainer@2720/@Label@2721",
 					"rect": [
 						41.0,
 						177.0,
@@ -6018,7 +6018,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2718/@VBoxContainer@2720/@HBoxContainer@2721/@Label@2724",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2717/@VBoxContainer@2719/@HBoxContainer@2720/@Label@2723",
 					"rect": [
 						274.0,
 						177.0,
@@ -6038,7 +6038,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2726/@VBoxContainer@2728/@HBoxContainer@2729/@Label@2730",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2725/@VBoxContainer@2727/@HBoxContainer@2728/@Label@2729",
 					"rect": [
 						41.0,
 						204.0,
@@ -6058,7 +6058,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2726/@VBoxContainer@2728/@HBoxContainer@2729/@Label@2732",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2725/@VBoxContainer@2727/@HBoxContainer@2728/@Label@2731",
 					"rect": [
 						275.0,
 						204.0,
@@ -6078,7 +6078,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2734/@VBoxContainer@2736/@HBoxContainer@2737/@Label@2738",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2733/@VBoxContainer@2735/@HBoxContainer@2736/@Label@2737",
 					"rect": [
 						41.0,
 						231.0,
@@ -6098,7 +6098,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2734/@VBoxContainer@2736/@HBoxContainer@2737/@Label@2740",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2733/@VBoxContainer@2735/@HBoxContainer@2736/@Label@2739",
 					"rect": [
 						252.0,
 						231.0,
@@ -6118,7 +6118,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2742/@VBoxContainer@2744/@HBoxContainer@2745/@Label@2746",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2741/@VBoxContainer@2743/@HBoxContainer@2744/@Label@2745",
 					"rect": [
 						41.0,
 						258.0,
@@ -6138,7 +6138,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2742/@VBoxContainer@2744/@HBoxContainer@2745/@Label@2748",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2741/@VBoxContainer@2743/@HBoxContainer@2744/@Label@2747",
 					"rect": [
 						275.0,
 						258.0,
@@ -6158,7 +6158,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@HBoxContainer@891/@Label@893",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@HBoxContainer@888/@Label@890",
 					"rect": [
 						38.0,
 						25.0,
@@ -6178,7 +6178,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@HBoxContainer@891/@Label@894",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@HBoxContainer@888/@Label@891",
 					"rect": [
 						86.0,
 						22.0,
@@ -6198,7 +6198,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@Label@897",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@Label@894",
 					"rect": [
 						28.0,
 						45.0,
@@ -6218,7 +6218,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@Label@902",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@Label@899",
 					"rect": [
 						28.0,
 						67.0,
@@ -6238,7 +6238,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@905",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@902",
 					"rect": [
 						545.0,
 						20.0,
@@ -6258,7 +6258,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@907",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@904",
 					"rect": [
 						605.0,
 						22.0,
@@ -6278,7 +6278,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@909",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@906",
 					"rect": [
 						705.0,
 						22.0,
@@ -6290,15 +6290,15 @@
 				},
 				{
 					"color": [
-						0.588235318660736,
-						0.545098066329956,
-						0.490196079015732,
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
 						1.0
 					],
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@914/@Label@915",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@911/@Label@912",
 					"rect": [
 						30.0,
 						634.0,
@@ -6313,12 +6313,12 @@
 						0.878431379795074,
 						0.419607847929001,
 						0.352941185235977,
-						0.589462637901306
+						0.573333323001862
 					],
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@914/@Label@917",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@911/@Label@914",
 					"rect": [
 						260.0,
 						634.0,
@@ -6338,7 +6338,7 @@
 					"font_size": 26,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@918/@Label@919",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@915/@Label@916",
 					"rect": [
 						30.0,
 						649.0,
@@ -6350,15 +6350,15 @@
 				},
 				{
 					"color": [
-						0.550000011920929,
-						0.600000023841858,
-						0.579999983310699,
-						0.850000023841858
+						0.740000009536743,
+						0.779999971389771,
+						0.759999990463257,
+						0.949999988079071
 					],
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@918/@Label@920",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@915/@Label@917",
 					"rect": [
 						65.0,
 						670.0,
@@ -6378,7 +6378,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@925/@Label@927",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@922/@Label@924",
 					"rect": [
 						1223.0,
 						631.0,
@@ -6398,7 +6398,7 @@
 					"font_size": 30,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@930",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@927",
 					"rect": [
 						1171.0,
 						645.0,
@@ -6418,7 +6418,7 @@
 					"font_size": 16,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@931",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@928",
 					"rect": [
 						1211.0,
 						663.0,
@@ -6438,7 +6438,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@932",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@929",
 					"rect": [
 						1223.0,
 						665.0,
@@ -6458,7 +6458,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@933/@Label@934",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@930/@Label@931",
 					"rect": [
 						982.0,
 						686.0,
@@ -6478,7 +6478,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@933/@Label@936",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@930/@Label@933",
 					"rect": [
 						1230.0,
 						686.0,
@@ -6498,7 +6498,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2309/@Label@2310",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2308/@Label@2309",
 					"rect": [
 						1143.0,
 						550.0,
@@ -6518,7 +6518,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2309/@Label@2311",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2308/@Label@2310",
 					"rect": [
 						1154.0,
 						550.0,
@@ -6538,7 +6538,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2312/@Label@2313",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2311/@Label@2312",
 					"rect": [
 						1198.0,
 						550.0,
@@ -6558,7 +6558,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2312/@Label@2314",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2311/@Label@2313",
 					"rect": [
 						1209.0,
 						550.0,
@@ -6578,7 +6578,7 @@
 					"font_size": 22,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@943/@Label@944",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@940/@Label@941",
 					"rect": [
 						320.0,
 						88.0,
@@ -6598,7 +6598,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@943/@Label@945",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@940/@Label@942",
 					"rect": [
 						320.0,
 						119.0,
@@ -6618,7 +6618,7 @@
 					"font_size": 26,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1017/@VBoxContainer@1018/@Label@1019",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1014/@VBoxContainer@1015/@Label@1016",
 					"rect": [
 						186.0,
 						194.0,
@@ -6638,7 +6638,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1017/@VBoxContainer@1018/@Label@1020",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1014/@VBoxContainer@1015/@Label@1017",
 					"rect": [
 						186.0,
 						233.0,
@@ -6658,7 +6658,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1017/@Button@1022",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1014/@Button@1019",
 					"rect": [
 						948.0,
 						194.0,
@@ -6678,7 +6678,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1024/@PanelContainer@2652/@VBoxContainer@2653/@Label@2654",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1021/@PanelContainer@2651/@VBoxContainer@2652/@Label@2653",
 					"rect": [
 						198.0,
 						281.0,
@@ -6698,7 +6698,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1024/@PanelContainer@2652/@VBoxContainer@2653/@Label@2655",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1021/@PanelContainer@2651/@VBoxContainer@2652/@Label@2654",
 					"rect": [
 						198.0,
 						301.0,
@@ -6718,7 +6718,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1024/@PanelContainer@2652/@VBoxContainer@2653/@Label@2656",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1021/@PanelContainer@2651/@VBoxContainer@2652/@Label@2655",
 					"rect": [
 						198.0,
 						327.0,
@@ -6738,7 +6738,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1024/@PanelContainer@2652/@VBoxContainer@2653/@Label@2657",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1021/@PanelContainer@2651/@VBoxContainer@2652/@Label@2656",
 					"rect": [
 						198.0,
 						347.0,
@@ -6758,7 +6758,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1024/@PanelContainer@2652/@VBoxContainer@2653/@Label@2659",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1021/@PanelContainer@2651/@VBoxContainer@2652/@Label@2658",
 					"rect": [
 						198.0,
 						426.0,
@@ -6778,7 +6778,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1024/@PanelContainer@2652/@VBoxContainer@2653/@Button@2660",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1021/@PanelContainer@2651/@VBoxContainer@2652/@Button@2659",
 					"rect": [
 						198.0,
 						446.0,
@@ -6798,7 +6798,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1024/@PanelContainer@2661/@VBoxContainer@2662/@Label@2663",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1021/@PanelContainer@2660/@VBoxContainer@2661/@Label@2662",
 					"rect": [
 						657.0,
 						281.0,
@@ -6818,7 +6818,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1024/@PanelContainer@2661/@VBoxContainer@2662/@Label@2664",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1021/@PanelContainer@2660/@VBoxContainer@2661/@Label@2663",
 					"rect": [
 						657.0,
 						301.0,
@@ -6838,7 +6838,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1024/@PanelContainer@2661/@VBoxContainer@2662/@Label@2665",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1021/@PanelContainer@2660/@VBoxContainer@2661/@Label@2664",
 					"rect": [
 						657.0,
 						327.0,
@@ -6858,7 +6858,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1024/@PanelContainer@2661/@VBoxContainer@2662/@Label@2666",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1021/@PanelContainer@2660/@VBoxContainer@2661/@Label@2665",
 					"rect": [
 						657.0,
 						347.0,
@@ -6878,7 +6878,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1024/@PanelContainer@2661/@VBoxContainer@2662/@Label@2668",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1021/@PanelContainer@2660/@VBoxContainer@2661/@Label@2667",
 					"rect": [
 						657.0,
 						426.0,
@@ -6898,7 +6898,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@HBoxContainer@1024/@PanelContainer@2661/@VBoxContainer@2662/@Button@2669",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@HBoxContainer@1021/@PanelContainer@2660/@VBoxContainer@2661/@Button@2668",
 					"rect": [
 						657.0,
 						446.0,
@@ -6918,7 +6918,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1014/@PanelContainer@1015/@VBoxContainer@1016/@Label@1025",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@1011/@PanelContainer@1012/@VBoxContainer@1013/@Label@1022",
 					"rect": [
 						186.0,
 						511.0,
@@ -6947,7 +6947,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@HBoxContainer@885/@Label@886",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@HBoxContainer@882/@Label@883",
 					"rect": [
 						32.0,
 						160.0,
@@ -6967,7 +6967,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@HBoxContainer@885/@Label@888",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@HBoxContainer@882/@Label@885",
 					"rect": [
 						275.0,
 						160.0,
@@ -6987,7 +6987,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2959/@VBoxContainer@2961/@HBoxContainer@2962/@Label@2963",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2958/@VBoxContainer@2960/@HBoxContainer@2961/@Label@2962",
 					"rect": [
 						41.0,
 						177.0,
@@ -7007,7 +7007,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2959/@VBoxContainer@2961/@HBoxContainer@2962/@Label@2965",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2958/@VBoxContainer@2960/@HBoxContainer@2961/@Label@2964",
 					"rect": [
 						274.0,
 						177.0,
@@ -7027,7 +7027,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2967/@VBoxContainer@2969/@HBoxContainer@2970/@Label@2971",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2966/@VBoxContainer@2968/@HBoxContainer@2969/@Label@2970",
 					"rect": [
 						41.0,
 						204.0,
@@ -7047,7 +7047,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2967/@VBoxContainer@2969/@HBoxContainer@2970/@Label@2973",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2966/@VBoxContainer@2968/@HBoxContainer@2969/@Label@2972",
 					"rect": [
 						275.0,
 						204.0,
@@ -7067,7 +7067,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2975/@VBoxContainer@2977/@HBoxContainer@2978/@Label@2979",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2974/@VBoxContainer@2976/@HBoxContainer@2977/@Label@2978",
 					"rect": [
 						41.0,
 						231.0,
@@ -7087,7 +7087,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2975/@VBoxContainer@2977/@HBoxContainer@2978/@Label@2981",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2974/@VBoxContainer@2976/@HBoxContainer@2977/@Label@2980",
 					"rect": [
 						252.0,
 						231.0,
@@ -7107,7 +7107,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2983/@VBoxContainer@2985/@HBoxContainer@2986/@Label@2987",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2982/@VBoxContainer@2984/@HBoxContainer@2985/@Label@2986",
 					"rect": [
 						41.0,
 						258.0,
@@ -7127,7 +7127,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@PanelContainer@883/@VBoxContainer@884/@VBoxContainer@889/@HBoxContainer@2983/@VBoxContainer@2985/@HBoxContainer@2986/@Label@2989",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@PanelContainer@880/@VBoxContainer@881/@VBoxContainer@886/@HBoxContainer@2982/@VBoxContainer@2984/@HBoxContainer@2985/@Label@2988",
 					"rect": [
 						275.0,
 						258.0,
@@ -7147,7 +7147,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@HBoxContainer@891/@Label@893",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@HBoxContainer@888/@Label@890",
 					"rect": [
 						38.0,
 						25.0,
@@ -7167,7 +7167,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@HBoxContainer@891/@Label@894",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@HBoxContainer@888/@Label@891",
 					"rect": [
 						86.0,
 						22.0,
@@ -7187,7 +7187,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@Label@897",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@Label@894",
 					"rect": [
 						28.0,
 						45.0,
@@ -7207,7 +7207,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@890/@Label@902",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@887/@Label@899",
 					"rect": [
 						28.0,
 						67.0,
@@ -7227,7 +7227,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@905",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@902",
 					"rect": [
 						529.0,
 						20.0,
@@ -7247,7 +7247,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@907",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@904",
 					"rect": [
 						589.0,
 						22.0,
@@ -7267,7 +7267,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@904/@Label@909",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@901/@Label@906",
 					"rect": [
 						721.0,
 						22.0,
@@ -7279,15 +7279,15 @@
 				},
 				{
 					"color": [
-						0.588235318660736,
-						0.545098066329956,
-						0.490196079015732,
+						0.713725507259369,
+						0.666666686534882,
+						0.600000023841858,
 						1.0
 					],
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@914/@Label@915",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@911/@Label@912",
 					"rect": [
 						30.0,
 						634.0,
@@ -7302,12 +7302,12 @@
 						0.878431379795074,
 						0.419607847929001,
 						0.352941185235977,
-						0.57962965965271
+						0.620000004768372
 					],
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@914/@Label@917",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@911/@Label@914",
 					"rect": [
 						260.0,
 						634.0,
@@ -7327,7 +7327,7 @@
 					"font_size": 26,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@918/@Label@919",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@915/@Label@916",
 					"rect": [
 						30.0,
 						649.0,
@@ -7339,15 +7339,15 @@
 				},
 				{
 					"color": [
-						0.550000011920929,
-						0.600000023841858,
-						0.579999983310699,
-						0.850000023841858
+						0.740000009536743,
+						0.779999971389771,
+						0.759999990463257,
+						0.949999988079071
 					],
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@913/@HBoxContainer@918/@Label@920",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@910/@HBoxContainer@915/@Label@917",
 					"rect": [
 						65.0,
 						670.0,
@@ -7367,7 +7367,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@925/@Label@927",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@922/@Label@924",
 					"rect": [
 						1223.0,
 						631.0,
@@ -7387,7 +7387,7 @@
 					"font_size": 30,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@930",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@927",
 					"rect": [
 						1171.0,
 						645.0,
@@ -7407,7 +7407,7 @@
 					"font_size": 16,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@931",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@928",
 					"rect": [
 						1211.0,
 						663.0,
@@ -7427,7 +7427,7 @@
 					"font_size": 15,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@928/@Label@932",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@925/@Label@929",
 					"rect": [
 						1223.0,
 						665.0,
@@ -7447,7 +7447,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@933/@Label@934",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@930/@Label@931",
 					"rect": [
 						982.0,
 						686.0,
@@ -7467,7 +7467,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@924/@HBoxContainer@933/@Label@936",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@921/@HBoxContainer@930/@Label@933",
 					"rect": [
 						1230.0,
 						686.0,
@@ -7487,7 +7487,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2309/@Label@2310",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2308/@Label@2309",
 					"rect": [
 						1143.0,
 						550.0,
@@ -7507,7 +7507,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2309/@Label@2311",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2308/@Label@2310",
 					"rect": [
 						1154.0,
 						550.0,
@@ -7527,7 +7527,7 @@
 					"font_size": 9,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2312/@Label@2313",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2311/@Label@2312",
 					"rect": [
 						1198.0,
 						550.0,
@@ -7547,7 +7547,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@HBoxContainer@938/@HBoxContainer@2312/@Label@2314",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@HBoxContainer@935/@HBoxContainer@2311/@Label@2313",
 					"rect": [
 						1209.0,
 						550.0,
@@ -7567,7 +7567,7 @@
 					"font_size": 22,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@943/@Label@944",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@940/@Label@941",
 					"rect": [
 						320.0,
 						88.0,
@@ -7587,7 +7587,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": true,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/HUDContent/@VBoxContainer@943/@Label@945",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/HUDContent/@VBoxContainer@940/@Label@942",
 					"rect": [
 						320.0,
 						119.0,
@@ -7607,7 +7607,7 @@
 					"font_size": 26,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1005/@VBoxContainer@1006/@Label@1007",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1002/@VBoxContainer@1003/@Label@1004",
 					"rect": [
 						196.0,
 						134.0,
@@ -7627,7 +7627,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1005/@VBoxContainer@1006/@Label@1008",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1002/@VBoxContainer@1003/@Label@1005",
 					"rect": [
 						196.0,
 						173.0,
@@ -7647,7 +7647,7 @@
 					"font_size": 15,
 					"kind": "button",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1005/@Button@1010",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1002/@Button@1007",
 					"rect": [
 						938.0,
 						134.0,
@@ -7667,7 +7667,7 @@
 					"font_size": 14,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@Label@2792",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@Label@2791",
 					"rect": [
 						211.0,
 						222.0,
@@ -7687,7 +7687,7 @@
 					"font_size": 24,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@Label@2794",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@Label@2793",
 					"rect": [
 						211.0,
 						252.0,
@@ -7707,7 +7707,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@Label@2795",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@Label@2794",
 					"rect": [
 						211.0,
 						290.0,
@@ -7727,7 +7727,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@Label@2796",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@Label@2795",
 					"rect": [
 						211.0,
 						312.0,
@@ -7747,7 +7747,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@Label@2797",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@Label@2796",
 					"rect": [
 						211.0,
 						365.0,
@@ -7767,7 +7767,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@Label@2798",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@Label@2797",
 					"rect": [
 						211.0,
 						387.0,
@@ -7787,7 +7787,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@Label@2799",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@Label@2798",
 					"rect": [
 						211.0,
 						409.0,
@@ -7807,7 +7807,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@Label@2800",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@Label@2799",
 					"rect": [
 						211.0,
 						431.0,
@@ -7827,7 +7827,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@Label@2802",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@Label@2801",
 					"rect": [
 						211.0,
 						458.0,
@@ -7847,7 +7847,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@HBoxContainer@2803/@Label@2804",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@HBoxContainer@2802/@Label@2803",
 					"rect": [
 						211.0,
 						480.0,
@@ -7867,7 +7867,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@HBoxContainer@2803/@Label@2806",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@HBoxContainer@2802/@Label@2805",
 					"rect": [
 						446.0,
 						480.0,
@@ -7887,7 +7887,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@HBoxContainer@2807/@Label@2808",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@HBoxContainer@2806/@Label@2807",
 					"rect": [
 						211.0,
 						500.0,
@@ -7907,7 +7907,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@HBoxContainer@2807/@Label@2810",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@HBoxContainer@2806/@Label@2809",
 					"rect": [
 						446.0,
 						500.0,
@@ -7927,7 +7927,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@HBoxContainer@2811/@Label@2812",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@HBoxContainer@2810/@Label@2811",
 					"rect": [
 						211.0,
 						520.0,
@@ -7947,7 +7947,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@HBoxContainer@2811/@Label@2814",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@HBoxContainer@2810/@Label@2813",
 					"rect": [
 						446.0,
 						520.0,
@@ -7967,7 +7967,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@HBoxContainer@2815/@Label@2816",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@HBoxContainer@2814/@Label@2815",
 					"rect": [
 						211.0,
 						540.0,
@@ -7987,7 +7987,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@HBoxContainer@2815/@Label@2818",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@HBoxContainer@2814/@Label@2817",
 					"rect": [
 						446.0,
 						540.0,
@@ -8007,7 +8007,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@HBoxContainer@2819/@Label@2820",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@HBoxContainer@2818/@Label@2819",
 					"rect": [
 						211.0,
 						560.0,
@@ -8027,7 +8027,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@HBoxContainer@2819/@Label@2822",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@HBoxContainer@2818/@Label@2821",
 					"rect": [
 						446.0,
 						560.0,
@@ -8047,7 +8047,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@HBoxContainer@2823/@Label@2824",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@HBoxContainer@2822/@Label@2823",
 					"rect": [
 						211.0,
 						580.0,
@@ -8067,7 +8067,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@HBoxContainer@2823/@Label@2826",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@HBoxContainer@2822/@Label@2825",
 					"rect": [
 						446.0,
 						580.0,
@@ -8087,7 +8087,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2790/@VBoxContainer@2791/@Label@2827",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2789/@VBoxContainer@2790/@Label@2826",
 					"rect": [
 						211.0,
 						600.0,
@@ -8107,7 +8107,7 @@
 					"font_size": 14,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2828/@VBoxContainer@2829/@Label@2830",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2827/@VBoxContainer@2828/@Label@2829",
 					"rect": [
 						511.0,
 						222.0,
@@ -8127,7 +8127,7 @@
 					"font_size": 13,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2828/@VBoxContainer@2829/@HBoxContainer@2832/@VBoxContainer@2834/@Label@2835",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2827/@VBoxContainer@2828/@HBoxContainer@2831/@VBoxContainer@2833/@Label@2834",
 					"rect": [
 						522.0,
 						252.0,
@@ -8147,7 +8147,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2828/@VBoxContainer@2829/@HBoxContainer@2832/@VBoxContainer@2834/@Label@2836",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2827/@VBoxContainer@2828/@HBoxContainer@2831/@VBoxContainer@2833/@Label@2835",
 					"rect": [
 						522.0,
 						270.0,
@@ -8167,7 +8167,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2828/@VBoxContainer@2829/@HBoxContainer@2832/@Label@2837",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2827/@VBoxContainer@2828/@HBoxContainer@2831/@Label@2836",
 					"rect": [
 						738.0,
 						261.0,
@@ -8187,7 +8187,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2828/@VBoxContainer@2829/@Label@2839",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2827/@VBoxContainer@2828/@Label@2838",
 					"rect": [
 						511.0,
 						603.0,
@@ -8207,7 +8207,7 @@
 					"font_size": 14,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2840/@VBoxContainer@2841/@Label@2842",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2839/@VBoxContainer@2840/@Label@2841",
 					"rect": [
 						812.0,
 						222.0,
@@ -8227,7 +8227,7 @@
 					"font_size": 20,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2840/@VBoxContainer@2841/@Label@2844",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2839/@VBoxContainer@2840/@Label@2843",
 					"rect": [
 						812.0,
 						252.0,
@@ -8247,7 +8247,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2840/@VBoxContainer@2841/@Label@2845",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2839/@VBoxContainer@2840/@Label@2844",
 					"rect": [
 						812.0,
 						285.0,
@@ -8267,7 +8267,7 @@
 					"font_size": 16,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2840/@VBoxContainer@2841/@Label@2846",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2839/@VBoxContainer@2840/@Label@2845",
 					"rect": [
 						812.0,
 						307.0,
@@ -8287,7 +8287,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2840/@VBoxContainer@2841/@Label@2847",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2839/@VBoxContainer@2840/@Label@2846",
 					"rect": [
 						812.0,
 						334.0,
@@ -8307,7 +8307,7 @@
 					"font_size": 12,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2840/@VBoxContainer@2841/@Label@2849",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2839/@VBoxContainer@2840/@Label@2848",
 					"rect": [
 						812.0,
 						541.0,
@@ -8327,7 +8327,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2840/@VBoxContainer@2841/@Label@2850",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2839/@VBoxContainer@2840/@Label@2849",
 					"rect": [
 						812.0,
 						563.0,
@@ -8347,7 +8347,7 @@
 					"font_size": 11,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2840/@VBoxContainer@2841/@Label@2851",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2839/@VBoxContainer@2840/@Label@2850",
 					"rect": [
 						812.0,
 						583.0,
@@ -8367,7 +8367,7 @@
 					"font_size": 10,
 					"kind": "label",
 					"outline": false,
-					"path": "/root/@SubViewport@755/Main/UI/GameHUD/@Control@1002/@PanelContainer@1003/@VBoxContainer@1004/@HBoxContainer@1012/@PanelContainer@2840/@VBoxContainer@2841/@Label@2852",
+					"path": "/root/@SubViewport@753/Main/UI/GameHUD/@Control@999/@PanelContainer@1000/@VBoxContainer@1001/@HBoxContainer@1009/@PanelContainer@2839/@VBoxContainer@2840/@Label@2851",
 					"rect": [
 						812.0,
 						603.0,

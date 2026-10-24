@@ -33,7 +33,7 @@ const FIELDS := {
 	"ui_volume": {"category": "audio", "type": "slider", "label": "界面反馈音量", "hint": "菜单与交互提示", "default": 1.0, "min": 0.0, "max": 1.0, "step": 0.01, "unit": "%", "precision": 0, "percent": true, "description": "控制 UI Bus；换弹、拾取、界面提示等 2D 反馈已路由到该总线。"},
 
 	"hud_scale": {"category": "hud", "type": "slider", "label": "HUD 整体缩放", "hint": "战斗信息尺寸", "default": 1.0, "min": 0.9, "max": 1.1, "step": 0.1, "unit": "%", "precision": 0, "percent": true, "description": "控制 GameHUD 的 _game_layer 缩放，和旧版 90/100/110% 一致。"},
-	"hud_opacity": {"category": "hud", "type": "slider", "label": "HUD 背景浓度", "hint": "遮罩与小队的背景透明度", "default": 0.9, "min": 0.4, "max": 1.0, "step": 0.05, "unit": "%", "precision": 0, "percent": true, "description": "调节 HUD 渐变遮罩的 alpha，让玩家在复杂场景中增加或降低背景对比；文字本身不变。"},
+	"hud_opacity": {"category": "hud", "type": "slider", "label": "HUD 背景浓度", "hint": "局部信息背景的浓度", "default": 0.9, "min": 0.4, "max": 1.0, "step": 0.05, "unit": "%", "precision": 0, "percent": true, "description": "只调节任务、生命、弹药等局部背景的 alpha，不覆盖大片游戏视野；文字本身不变。"},
 	"crosshair_size": {"category": "hud", "type": "slider", "label": "准星大小", "hint": "准星整体尺寸", "default": 1.0, "min": 0.7, "max": 1.4, "step": 0.05, "unit": "%", "precision": 0, "percent": true, "description": "直接缩放 DeadCrosshair 的绘制尺寸，不是只改设置页示意。"},
 	"crosshair_color": {"category": "hud", "type": "select", "label": "准星颜色", "hint": "与环境背景的对比", "default": "white", "options": [["white", "暖白"], ["amber", "琥珀"], ["mint", "浅青"]], "description": "改变实际准星颜色；准星保留黑色阴影，避免只靠颜色。"},
 	"crosshair_thickness": {"category": "hud", "type": "slider", "label": "准星线条粗细", "hint": "准星线与中心点", "default": 1.0, "min": 0.6, "max": 2.0, "step": 0.1, "unit": "×", "precision": 1, "description": "直接改变 DeadCrosshair 的线宽与中心点大小。"},

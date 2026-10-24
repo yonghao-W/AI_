@@ -82,6 +82,13 @@ func build() -> void:
 		fill.omni_range = 16.0
 		fill.light_specular = 0.2
 		add_child(fill)
+	var ceiling_fill := OmniLight3D.new()
+	ceiling_fill.position = Vector3(0.0, 10.25, 1.0)
+	ceiling_fill.light_color = Color("#b9c4cc")
+	ceiling_fill.light_energy = 0.55
+	ceiling_fill.omni_range = 9.0
+	ceiling_fill.light_specular = 0.0
+	add_child(ceiling_fill)
 
 
 func _apply_materials(model: Node) -> void:

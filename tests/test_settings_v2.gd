@@ -204,7 +204,7 @@ func _test_hud_and_panels() -> void:
 	_check(not game.hud.get("_mission_panel").visible, "Objective toggle did not hide mission panel")
 	game.hud.set_interaction("E  测试交互")
 	_check(not game.hud.get("_interaction_panel").visible, "Hints toggle did not hide interaction prompt")
-	_check(is_equal_approx(float(game.hud.get("_scrim_top").modulate.a), 0.6), "HUD opacity did not reach scrim")
+	_check(is_equal_approx(float(game.hud.get("_hud_backdrops")[0].modulate.a), 0.6), "HUD opacity did not reach scrim")
 	_check(is_equal_approx(float(game.hud.get("_vignette").get("_strength_scale")), 0.0), "Damage flash strength did not reach vignette")
 	_service.set_pending("show_objective", true)
 	_service.set_pending("hints", true)

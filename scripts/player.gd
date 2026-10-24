@@ -138,11 +138,19 @@ func _build_camera() -> void:
 	flashlight.position = Vector3(0.12, -0.1, 0.0)
 	flashlight.spot_range = 28.0
 	flashlight.spot_angle = 34.0
-	flashlight.light_energy = 1.7
+	flashlight.spot_angle_attenuation = 2.2
+	flashlight.light_energy = 1.35
 	flashlight.light_color = Color("#ffe9c7")
 	flashlight.shadow_enabled = false
 	flashlight.light_cull_mask = 0xFFFFFFFF ^ 2
 	_camera.add_child(flashlight)
+	var viewmodel_light := OmniLight3D.new()
+	viewmodel_light.position = Vector3(0.0, 0.05, -0.15)
+	viewmodel_light.light_color = Color("#dfe8ef")
+	viewmodel_light.light_energy = 0.65
+	viewmodel_light.omni_range = 2.4
+	viewmodel_light.shadow_enabled = false
+	_camera.add_child(viewmodel_light)
 
 
 func _build_weapon_rigs() -> void:
