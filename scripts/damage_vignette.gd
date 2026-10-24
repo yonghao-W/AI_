@@ -4,6 +4,7 @@ extends Control
 var _flash := 0.0
 var _low_health := false
 var _time := 0.0
+var _strength_scale := 1.0
 
 
 func _ready() -> void:
@@ -19,6 +20,11 @@ func set_low_health(value: bool) -> void:
 	_low_health = value
 
 
+func set_strength(value: float) -> void:
+	_strength_scale = clampf(value, 0.0, 1.0)
+	queue_redraw()
+
+
 func _process(delta: float) -> void:
 	_time += delta
 	_flash = maxf(0.0, _flash - delta * 2.6)
@@ -27,9 +33,9 @@ func _process(delta: float) -> void:
 
 func _draw() -> void:
 	var size := get_rect().size
-	var strength := _flash * 0.8
+	var strength := _flash * 0.8 * _strength_scale
 	if _low_health:
-		strength = maxf(strength, 0.35 + 0.15 * sin(_time * 4.2))
+		strength = maxf(strength, (0.35 + 0.15 * sin(_time * 4.2)) * _strength_scale)
 	if strength <= 0.01:
 		return
 	for i in range(9):

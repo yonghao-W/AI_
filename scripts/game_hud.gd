@@ -2,6 +2,7 @@ class_name GameHUD
 extends Control
 
 signal resume_requested
+signal settings_requested
 signal lobby_requested
 signal card_picked(index: int)
 signal draw_cancelled
@@ -95,6 +96,8 @@ var _carry_preview := false
 var _last_mag := 0
 var _last_reloading := false
 var _pause_resume: Button
+var _hints_enabled := true
+var _settings: Node
 
 
 func _ready() -> void:
@@ -103,10 +106,10 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_build()
 	resized.connect(_apply_hud_scale)
-	_apply_hud_scale()
-	var settings := get_node_or_null("/root/UISettings")
-	if settings != null and settings.has_signal("changed"):
-		settings.changed.connect(func(_key: String) -> void: _apply_hud_scale())
+	_settings = get_node_or_null("/root/UISettings")
+	if _settings != null and _settings.has_signal("changed"):
+		_settings.changed.connect(func(_key: String) -> void: _apply_settings())
+	_apply_settings()
 
 
 func _build() -> void:
@@ -214,6 +217,32 @@ func _corner_scrim_texture() -> GradientTexture2D:
 	texture.width = 128
 	texture.height = 128
 	return texture
+
+
+func _apply_settings() -> void:
+	_apply_hud_scale()
+	if _settings == null:
+		return
+	if _crosshair != null:
+		_crosshair.set_style(
+			float(_settings.get_value("crosshair_size")),
+			String(_settings.get_value("crosshair_color")),
+			float(_settings.get_value("crosshair_thickness")),
+			bool(_settings.get_value("hit_marker"))
+		)
+	if _minimap != null:
+		_minimap.visible = bool(_settings.get_value("show_minimap"))
+	if _mission_panel != null:
+		_mission_panel.visible = bool(_settings.get_value("show_objective"))
+	_hints_enabled = bool(_settings.get_value("hints"))
+	if not _hints_enabled and _interaction_panel != null:
+		_interaction_panel.visible = false
+	if _vignette != null:
+		_vignette.set_strength(float(_settings.get_value("damage_flash")))
+	var opacity := clampf(float(_settings.get_value("hud_opacity")), 0.3, 1.0)
+	for scrim in [_scrim_top, _scrim_left, _scrim_right, _scrim_corner]:
+		if scrim != null:
+			scrim.modulate.a = opacity
 
 
 func _apply_hud_scale() -> void:
@@ -844,6 +873,12 @@ func _build_pause_overlay() -> void:
 	DeadCityUI.style_button(_pause_resume, DeadCityUI.AMBER, true)
 	_pause_resume.pressed.connect(func() -> void: resume_requested.emit())
 	body.add_child(_pause_resume)
+	var settings_button := Button.new()
+	settings_button.text = "设置"
+	settings_button.custom_minimum_size = Vector2(0, 40)
+	DeadCityUI.style_button(settings_button, DeadCityUI.MUTED, false)
+	settings_button.pressed.connect(func() -> void: settings_requested.emit())
+	body.add_child(settings_button)
 	var back := Button.new()
 	back.text = "返回行动大厅"
 	back.custom_minimum_size = Vector2(0, 40)
@@ -1193,7 +1228,7 @@ func set_interaction(text: String) -> void:
 	if _interaction_label == null:
 		return
 	_interaction_label.text = text
-	_interaction_panel.visible = not text.is_empty() and not _game_over and not _paused and not _down_active and not overlay_open()
+	_interaction_panel.visible = _hints_enabled and not text.is_empty() and not _game_over and not _paused and not _down_active and not overlay_open()
 
 
 func show_draw(options: Array) -> void:

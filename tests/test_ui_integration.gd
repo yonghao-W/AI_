@@ -110,7 +110,7 @@ func _test_menu_views(game: Node) -> void:
 	_check(String(menu.get("_view")).is_empty(), "Continue opened a view despite being disabled")
 	_check(String(menu.get("_toast").text).contains("不保存"), "Continue did not explain the missing save")
 	# 单人 / 联机 / 设置 / 退出 都必须进入真实子界面。
-	for entry in [[1, "solo"], [2, "coop"], [4, "settings"], [5, "quit"]]:
+	for entry in [[1, "solo"], [2, "coop"], [5, "quit"]]:
 		nav[int(entry[0])].pressed.emit()
 		await process_frame
 		_check(String(menu.get("_view")) == String(entry[1]), "Menu entry %d did not open view %s" % [int(entry[0]), entry[1]])
@@ -118,6 +118,18 @@ func _test_menu_views(game: Node) -> void:
 		menu.call("_close_view")
 		await process_frame
 		_check(String(menu.get("_view")).is_empty(), "View %s did not close" % entry[1])
+	# 设置：用户入口打开新的原生设置中心，而不是旧的内联视图。
+	nav[4].pressed.emit()
+	await process_frame
+	var settings_panel = game.get("_settings_panel")
+	_check(settings_panel != null and settings_panel.visible, "Settings center did not open from the main menu")
+	if settings_panel != null:
+		var nav_buttons: Dictionary = settings_panel.get("_nav_buttons")
+		_check(nav_buttons.size() == 6, "Settings center must expose six categories, got %d" % nav_buttons.size())
+		settings_panel.close()
+		await process_frame
+		_check(not settings_panel.visible, "Settings center did not close")
+
 	# 角色整备：真实军械库，使用真实档案。
 	nav[3].pressed.emit()
 	await process_frame
@@ -139,55 +151,38 @@ func _test_menu_views(game: Node) -> void:
 
 
 func _test_settings(game: Node) -> void:
-	var menu = game.menu
-	menu.open_view("settings")
-	await process_frame
 	var settings = root.get_node_or_null("UISettings")
 	_check(settings != null, "UISettings autoload is missing")
 	if settings == null:
 		return
-	# 从已知默认值开始，测试结束再恢复运行前的玩家设置。
+	# 新设置中心从主菜单打开，六分类可见。
+	game.menu.settings_requested.emit()
+	await process_frame
+	var panel = game.get("_settings_panel")
+	_check(panel != null and panel.visible, "Settings center did not open from menu")
+	if panel != null:
+		_check(panel.get("_nav_buttons").size() == 6, "Settings center must expose six categories")
+		panel.close()
+		await process_frame
+		_check(not panel.visible, "Settings center did not close")
+	# 复用统一服务验证 HUD 缩放/高对比/减少动效与持久化。
 	settings.set_hud_scale(1.0)
 	settings.set_reduced_motion(false)
 	settings.set_high_contrast(false)
 	await process_frame
-	var boxes: Array = menu.find_children("*", "CheckBox", true, false)
-	_check(boxes.size() == 4, "Settings must expose four real checkboxes, got %d" % boxes.size())
-	var contrast_box: CheckBox = null
-	var motion_box: CheckBox = null
-	for raw in boxes:
-		var box := raw as CheckBox
-		if box == null:
-			continue
-		if box.text.begins_with("高对比度"):
-			contrast_box = box
-		elif box.text.begins_with("减弱动态"):
-			motion_box = box
-	_check(contrast_box != null and motion_box != null, "Accessibility checkboxes are missing from settings")
-	if contrast_box == null or motion_box == null:
-		return
-	var option: OptionButton = null
-	for raw in menu.find_children("*", "OptionButton", true, false):
-		option = raw as OptionButton
-		break
-	_check(option != null, "HUD scale selector is missing")
-	if option != null:
-		option.item_selected.emit(2)
-		await process_frame
-		_check(is_equal_approx(float(settings.hud_scale), 1.1), "HUD scale 110%% did not reach UISettings")
-		var hud_layer: Control = game.hud.get("_game_layer")
-		_check(is_equal_approx(hud_layer.scale.x, 1.1), "HUD content did not scale to 110%%")
-		_check(is_equal_approx(hud_layer.size.x, game.hud.size.x / 1.1), "HUD 110%% layout width is inconsistent")
-	contrast_box.button_pressed = true
+	settings.set_hud_scale(1.1)
 	await process_frame
-	_check(bool(settings.high_contrast), "High contrast did not apply from settings")
+	var hud_layer: Control = game.hud.get("_game_layer")
+	_check(is_equal_approx(hud_layer.scale.x, 1.1), "HUD content did not scale to 110%%")
+	_check(is_equal_approx(hud_layer.size.x, game.hud.size.x / 1.1), "HUD 110%% layout width is inconsistent")
+	settings.set_high_contrast(true)
+	await process_frame
 	var health_label: Label = game.hud.get("_health_label")
 	_check(health_label.get_theme_constant("outline_size") == 3, "High contrast did not outline HUD labels")
-	var backdrop = menu.get("_backdrop")
+	var backdrop = game.menu.get("_backdrop")
 	_check(backdrop.get("_contrast_layer").visible, "High contrast did not strengthen the menu backdrop")
-	motion_box.button_pressed = true
+	settings.set_reduced_motion(true)
 	await process_frame
-	_check(bool(settings.reduced_motion), "Reduced motion did not apply from settings")
 	_check(not backdrop.get("_dust").emitting, "Reduced motion left menu dust emitting")
 	_check(is_equal_approx(float(settings.motion_duration(0.4)), 0.001), "Reduced motion did not collapse animation duration")
 	var saved := ConfigFile.new()
@@ -197,11 +192,9 @@ func _test_settings(game: Node) -> void:
 		_check(is_equal_approx(float(saved.get_value("ui", "hud_scale", 0.0)), 1.1), "Persisted HUD scale mismatch")
 		_check(bool(saved.get_value("accessibility", "reduced_motion", false)), "Persisted reduced-motion mismatch")
 		_check(bool(saved.get_value("accessibility", "high_contrast", false)), "Persisted high-contrast mismatch")
-	# 还原运行前的玩家设置，避免测试污染。
-	contrast_box.button_pressed = false
-	motion_box.button_pressed = false
-	if option != null:
-		option.item_selected.emit(1)
+	settings.set_high_contrast(false)
+	settings.set_reduced_motion(false)
+	settings.set_hud_scale(1.0)
 	await process_frame
 	_check(not bool(settings.high_contrast) and not bool(settings.reduced_motion), "Settings test did not restore defaults")
 	_check(is_equal_approx(float(settings.hud_scale), 1.0), "HUD scale did not restore to 100%")
@@ -210,8 +203,6 @@ func _test_settings(game: Node) -> void:
 		settings.set_reduced_motion(bool(settings_baseline["reduced_motion"]))
 		settings.set_high_contrast(bool(settings_baseline["high_contrast"]))
 		await process_frame
-	menu.call("_close_view")
-	await process_frame
 
 
 func _start_solo(game: Node) -> void:

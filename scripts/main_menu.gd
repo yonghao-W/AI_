@@ -12,6 +12,7 @@ signal lobby_start_requested
 signal lobby_leave_requested
 signal buy_weapon_requested(weapon_id: String)
 signal equip_weapon_requested(weapon_id: String)
+signal settings_requested
 
 const MAX_PLAYER_ROWS := 4
 const ROOT_ITEMS := [
@@ -272,7 +273,7 @@ func _activate(index: int) -> void:
 		3:
 			open_armory()
 		4:
-			_open_view("settings")
+			settings_requested.emit()
 		5:
 			_open_view("quit")
 
@@ -342,8 +343,6 @@ func _open_view(kind: String) -> void:
 			_build_solo_view(body)
 		"coop":
 			_build_coop_view(body)
-		"settings":
-			_build_settings_view(body)
 		"quit":
 			_build_quit_view(body)
 
@@ -540,98 +539,6 @@ func _build_coop_view(body: VBoxContainer) -> void:
 	_ip_edit = _coop_ip_edit
 	_port_edit = _coop_port_edit
 	_coop_name_edit.grab_focus.call_deferred()
-
-
-func _build_settings_view(body: VBoxContainer) -> void:
-	_view_header(body, "设置", "立即生效并保存到 user://ui_settings.cfg")
-	var settings = _settings()
-	body.add_child(_settings_slider("主音量", float(settings.master_volume) if settings != null else 0.85, func(value: float) -> void:
-		if settings != null:
-			settings.set_master_volume(value)
-	))
-	body.add_child(_settings_check("全屏", bool(settings.fullscreen) if settings != null else false, func(value: bool) -> void:
-		if settings != null:
-			settings.set_fullscreen(value)
-	))
-	body.add_child(_settings_check("垂直同步", bool(settings.vsync) if settings != null else true, func(value: bool) -> void:
-		if settings != null:
-			settings.set_vsync(value)
-	))
-	var scale_row := HBoxContainer.new()
-	scale_row.add_theme_constant_override("separation", 12)
-	scale_row.add_child(DeadCityUI.make_label("HUD 缩放", 12, DeadCityUI.TEXT, DeadCityUI.display_font()))
-	var scale_spacer := Control.new()
-	scale_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	scale_row.add_child(scale_spacer)
-	var scale_option := OptionButton.new()
-	scale_option.custom_minimum_size = Vector2(150, 34)
-	scale_option.add_item("90%", 0)
-	scale_option.add_item("100%", 1)
-	scale_option.add_item("110%", 2)
-	var current_scale := float(settings.hud_scale) if settings != null else 1.0
-	scale_option.selected = 0 if current_scale < 0.95 else (2 if current_scale > 1.05 else 1)
-	scale_option.item_selected.connect(func(index: int) -> void:
-		if settings != null:
-			settings.set_hud_scale([0.9, 1.0, 1.1][index])
-	)
-	scale_row.add_child(scale_option)
-	body.add_child(scale_row)
-	body.add_child(_settings_check("减弱动态（关闭浮尘、视差与位移动画）", bool(settings.reduced_motion) if settings != null else false, func(value: bool) -> void:
-		if settings != null:
-			settings.set_reduced_motion(value)
-	))
-	body.add_child(_settings_check("高对比度", bool(settings.high_contrast) if settings != null else false, func(value: bool) -> void:
-		if settings != null:
-			settings.set_high_contrast(value)
-	))
-	body.add_child(DeadCityUI.make_label("联机暂停不会停止服务器模拟；单人暂停会停止世界。", 10, DeadCityUI.MUTED_2, DeadCityUI.display_font()))
-	var spacer := Control.new()
-	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	body.add_child(spacer)
-	var buttons := _view_buttons(body)
-	var back := Button.new()
-	back.text = "完成"
-	back.custom_minimum_size = Vector2(0, 44)
-	back.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	DeadCityUI.style_button(back, DeadCityUI.AMBER, true)
-	back.pressed.connect(_close_view)
-	buttons.add_child(back)
-	back.grab_focus.call_deferred()
-
-
-func _settings_slider(label_text: String, value: float, on_change: Callable) -> Control:
-	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 4)
-	var row := HBoxContainer.new()
-	box.add_child(row)
-	row.add_child(DeadCityUI.make_label(label_text, 12, DeadCityUI.TEXT, DeadCityUI.display_font()))
-	var spacer := Control.new()
-	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(spacer)
-	var value_label := DeadCityUI.make_label("%d%%" % int(round(value * 100.0)), 11, DeadCityUI.AMBER, DeadCityUI.display_font())
-	row.add_child(value_label)
-	var slider := HSlider.new()
-	slider.min_value = 0.0
-	slider.max_value = 1.0
-	slider.step = 0.05
-	slider.value = value
-	slider.custom_minimum_size = Vector2(0, 22)
-	slider.value_changed.connect(func(v: float) -> void:
-		value_label.text = "%d%%" % int(round(v * 100.0))
-		on_change.call(v)
-	)
-	box.add_child(slider)
-	return box
-
-
-func _settings_check(label_text: String, value: bool, on_change: Callable) -> CheckBox:
-	var check := CheckBox.new()
-	check.text = label_text
-	check.button_pressed = value
-	check.custom_minimum_size = Vector2(0, 36)
-	check.add_theme_font_size_override("font_size", 12)
-	check.toggled.connect(on_change)
-	return check
 
 
 func _build_quit_view(body: VBoxContainer) -> void:
@@ -1224,6 +1131,9 @@ func focus_name() -> void:
 func open_view(kind: String) -> void:
 	## 供自动化截图与外部流程打开指定子界面；不改变任何游戏数据。
 	if kind.is_empty():
+		return
+	if kind == "settings":
+		settings_requested.emit()
 		return
 	_open_view(kind)
 

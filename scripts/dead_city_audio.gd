@@ -28,13 +28,13 @@ func _ready() -> void:
 func _build_pools() -> void:
 	for i in range(10):
 		var voice := AudioStreamPlayer.new()
-		voice.bus = "Master"
+		voice.bus = "SFX"
 		voice.volume_db = 0.0
 		add_child(voice)
 		_players.append(voice)
 	for i in range(8):
 		var voice := AudioStreamPlayer3D.new()
-		voice.bus = "Master"
+		voice.bus = "SFX"
 		voice.unit_size = 18.0
 		voice.max_distance = 95.0
 		voice.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_DISTANCE
@@ -56,13 +56,13 @@ func play_weapon_shot(weapon_id: String, aiming: bool = false) -> void:
 	if not _streams.has(key):
 		key = "shot_smg"
 	var volume := -6.0 if aiming else -3.0
-	_play_2d(key, volume, randf_range(0.965, 1.035))
+	_play_2d(key, volume, randf_range(0.965, 1.035), "SFX")
 
 
 func play_ui(kind: String, volume: float = 0.0, pitch: float = 1.0) -> void:
 	var key := "ui_" + kind
 	if _streams.has(key):
-		_play_2d(key, volume, pitch)
+		_play_2d(key, volume, pitch, "UI")
 
 
 func play_zombie(kind: String, world_pos: Vector3) -> void:
@@ -83,12 +83,13 @@ func play_zombie(kind: String, world_pos: Vector3) -> void:
 	_play_3d(key, world_pos, volume, randf_range(0.88, 1.12))
 
 
-func _play_2d(key: String, volume: float, pitch: float) -> void:
+func _play_2d(key: String, volume: float, pitch: float, bus_name: String = "SFX") -> void:
 	if _players.is_empty():
 		return
 	var voice := _players[_next_2d]
 	_next_2d = (_next_2d + 1) % _players.size()
 	voice.stream = _streams.get(key, null)
+	voice.bus = bus_name
 	voice.volume_db = volume
 	voice.pitch_scale = maxf(0.05, pitch)
 	voice.play()
@@ -99,6 +100,7 @@ func _play_3d(key: String, world_pos: Vector3, volume: float, pitch: float) -> v
 		return
 	var voice := _players_3d[_next_3d]
 	_next_3d = (_next_3d + 1) % _players_3d.size()
+	voice.bus = "SFX"
 	voice.global_position = world_pos
 	voice.stream = _streams.get(key, null)
 	voice.volume_db = volume

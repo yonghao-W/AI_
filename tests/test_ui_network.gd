@@ -128,6 +128,21 @@ func _run() -> void:
 	if _hosting and game.director != null:
 		var break_after := float(game.director.get("_break_left"))
 		_check(break_after < break_before - 0.4, "Host pause stopped the server director (break %.2f -> %.2f)" % [break_before, break_after])
+	# 联机暂停中打开设置中心，不应停止服务器模拟，也不应解除暂停状态。
+	game.hud.settings_requested.emit()
+	await process_frame
+	var settings_panel = game.get("_settings_panel")
+	_check(settings_panel != null and settings_panel.visible, "Co-op settings center did not open")
+	var break_settings_before := float(game.director.get("_break_left")) if game.director != null else 0.0
+	await create_timer(1.0).timeout
+	if _hosting and game.director != null:
+		var break_settings_after := float(game.director.get("_break_left"))
+		_check(break_settings_after < break_settings_before - 0.2, "Co-op settings stopped the server director (break %.2f -> %.2f)" % [break_settings_before, break_settings_after])
+	_check(bool(game.get("_paused")) and game.hud.get("_pause_overlay").visible, "Opening co-op settings cleared pause state")
+	settings_panel.close()
+	await process_frame
+	_check(not settings_panel.visible and bool(game.get("_paused")), "Closing co-op settings lost pause state")
+
 	game.call("_resume_game")
 	await process_frame
 	_check(not bool(game.get("_paused")) and game.player != null and game.player.input_enabled, "Co-op resume did not restore input")

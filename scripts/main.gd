@@ -62,6 +62,8 @@ var _interact_action := ""
 var _interact_target := -1
 var _teleport_grace := 0.0
 var _paused := false
+var _settings_panel: SettingsPanel
+var _settings_from_game := false
 var _starting_match := false
 var _networked := false
 var _leaving := false
@@ -143,6 +145,14 @@ func _build_ui() -> void:
 	ui.add_child(hud)
 	hud.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	hud.visible = false
+	_settings_panel = SettingsPanel.new()
+	_settings_panel.name = "SettingsPanel"
+	ui.add_child(_settings_panel)
+	_settings_panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_settings_panel.visible = false
+	_settings_panel.closed.connect(_on_settings_closed)
+	menu.settings_requested.connect(_open_settings_center.bind(false))
+	hud.settings_requested.connect(_open_settings_center.bind(true))
 	menu.host_requested.connect(_on_host_requested)
 	menu.join_requested.connect(_on_join_requested)
 	menu.solo_requested.connect(_on_solo_requested)
@@ -901,6 +911,8 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if _settings_panel != null and _settings_panel.visible:
+		return
 	if not game_started or game_over:
 		return
 	if _draw_open:
@@ -917,7 +929,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					_on_card_picked(2)
 				get_viewport().set_input_as_handled()
 		return
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel"):
 		if _overlay_open():
 			_close_overlays()
 		elif _paused:
@@ -930,7 +942,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event is InputEventKey:
 			var overlay_key := event as InputEventKey
 			if overlay_key.pressed and not overlay_key.echo:
-				if overlay_key.physical_keycode == KEY_TAB or overlay_key.physical_keycode == KEY_B:
+				if event.is_action_pressed("intel") or event.is_action_pressed("backpack"):
 					_close_overlays()
 					get_viewport().set_input_as_handled()
 		return
@@ -939,18 +951,46 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		var key := event as InputEventKey
 		if key.pressed and not key.echo:
-			if key.physical_keycode == KEY_TAB:
+			if event.is_action_pressed("intel"):
 				_open_intel()
 				get_viewport().set_input_as_handled()
-			elif key.physical_keycode == KEY_B:
+			elif event.is_action_pressed("backpack"):
 				_open_backpack()
 				get_viewport().set_input_as_handled()
-			elif key.physical_keycode == KEY_E:
+			elif event.is_action_pressed("interact"):
 				_request_interact()
 				get_viewport().set_input_as_handled()
-			elif key.physical_keycode == KEY_G:
+			elif event.is_action_pressed("drop_core"):
 				_request_drop()
 				get_viewport().set_input_as_handled()
+
+
+func _open_settings_center(from_game: bool) -> void:
+	if _settings_panel == null:
+		return
+	if _settings_panel.visible:
+		return
+	_settings_from_game = from_game and game_started and not game_over
+	if _settings_from_game and not _paused:
+		_pause_game()
+	_release_mouse()
+	_settings_panel.open(_settings_from_game)
+
+
+func _on_settings_closed() -> void:
+	if _settings_from_game:
+		if _paused and hud != null:
+			hud.set_pause_visible(true)
+			var resume_button := hud.get("_pause_resume") as Button
+			if resume_button != null:
+				resume_button.grab_focus.call_deferred()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		if menu != null:
+			menu.visible = true
+			menu.call("_select", 4, true)
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	_settings_from_game = false
 
 
 func _pause_game() -> void:

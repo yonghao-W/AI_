@@ -91,9 +91,13 @@ var _tp_body: Node3D
 var _melee_swing_left := 0.0
 var _melee_swing_total := 0.5
 var _melee_weapon_id := ""
+var _settings: Node
+var _aim_held := false
+var _aim_toggle := false
 
 
 func _ready() -> void:
+	_settings = get_node_or_null("/root/UISettings")
 	_gravity = GRAVITY
 	collision_layer = 2
 	collision_mask = 1
@@ -125,7 +129,7 @@ func _build_camera() -> void:
 	_head.position = Vector3(0.0, 1.55, 0.0)
 	add_child(_head)
 	_camera = Camera3D.new()
-	_camera.fov = 78.0
+	_camera.fov = _setting_float("fov", 78.0)
 	_camera.near = 0.045
 	_camera.far = 320.0
 	_camera.current = true
@@ -575,33 +579,56 @@ func set_input_enabled(value: bool) -> void:
 	input_enabled = value
 	if not value:
 		aiming = false
+		_aim_held = false
+		_aim_toggle = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not game_active or not input_enabled or not alive:
 		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		var motion := event as InputEventMouseMotion
-		_yaw = wrapf(_yaw - motion.relative.x * SENSITIVITY, -PI, PI)
-		_pitch = clampf(_pitch - motion.relative.y * SENSITIVITY, -1.47, 1.47)
-		rotation.y = _yaw
-		_head.rotation.x = _pitch
-	elif event is InputEventKey:
-		var key := event as InputEventKey
-		if key.pressed and not key.echo:
-			if key.physical_keycode == KEY_R:
-				start_reload()
-			elif key.physical_keycode == KEY_SPACE:
-				_jump_queued = true
-			elif key.physical_keycode >= KEY_1 and key.physical_keycode <= KEY_5:
-				switch_weapon_slot(int(key.physical_keycode - KEY_1) + 1)
-	elif event is InputEventMouseButton:
-		var button := event as InputEventMouseButton
-		if button.pressed and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			if button.button_index == MOUSE_BUTTON_WHEEL_UP:
-				_cycle_weapon(-1)
-			elif button.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				_cycle_weapon(1)
+		_apply_mouse_look((event as InputEventMouseMotion).relative)
+	elif event.is_action_pressed("aim"):
+		if _setting_string("aim_mode", "hold") == "toggle":
+			_aim_toggle = not _aim_toggle
+		else:
+			_aim_held = true
+		get_viewport().set_input_as_handled()
+	elif event.is_action_released("aim"):
+		_aim_held = false
+	elif event.is_action_pressed("reload"):
+		start_reload()
+	elif event.is_action_pressed("jump"):
+		_jump_queued = true
+	elif event.is_action_pressed("weapon_prev"):
+		_cycle_weapon(-1)
+	elif event.is_action_pressed("weapon_next"):
+		_cycle_weapon(1)
+	elif event.is_action_pressed("weapon_1"):
+		switch_weapon_slot(1)
+	elif event.is_action_pressed("weapon_2"):
+		switch_weapon_slot(2)
+	elif event.is_action_pressed("weapon_3"):
+		switch_weapon_slot(3)
+	elif event.is_action_pressed("weapon_4"):
+		switch_weapon_slot(4)
+	elif event.is_action_pressed("weapon_5"):
+		switch_weapon_slot(5)
+
+
+func _apply_mouse_look(relative: Vector2) -> void:
+	var sens_x := SENSITIVITY * _setting_float("mouse_x", 1.0)
+	var sens_y := SENSITIVITY * _setting_float("mouse_y", 1.0)
+	if aiming:
+		var ads := _setting_float("ads_sens", 0.8)
+		sens_x *= ads
+		sens_y *= ads
+	if _setting_bool("invert_y", false):
+		sens_y = -sens_y
+	_yaw = wrapf(_yaw - relative.x * sens_x, -PI, PI)
+	_pitch = clampf(_pitch - relative.y * sens_y, -1.47, 1.47)
+	rotation.y = _yaw
+	_head.rotation.x = _pitch
 
 
 func _physics_process(delta: float) -> void:
@@ -614,7 +641,7 @@ func _physics_process(delta: float) -> void:
 		_coyote_left = maxf(0.0, _coyote_left - delta)
 		var gravity_scale := FALL_GRAVITY_MULT if velocity.y < 0.0 else 1.0
 		velocity.y -= _gravity * gravity_scale * delta
-		if velocity.y > 0.0 and not Input.is_physical_key_pressed(KEY_SPACE):
+		if velocity.y > 0.0 and not Input.is_action_pressed("jump"):
 			velocity.y -= _gravity * JUMP_CUT * delta
 	if _jump_queued:
 		_jump_buffer = JUMP_BUFFER
@@ -623,17 +650,12 @@ func _physics_process(delta: float) -> void:
 		_jump_buffer = maxf(0.0, _jump_buffer - delta)
 	var can_move := alive and input_enabled
 	var wish := Vector3.ZERO
-	aiming = can_move and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not carrying_core
+	var aim_requested := _aim_held if _setting_string("aim_mode", "hold") == "hold" else _aim_toggle
+	aiming = can_move and aim_requested and not carrying_core
+	if carrying_core or not alive:
+		_aim_toggle = false
 	if can_move:
-		var input_dir := Vector2.ZERO
-		if Input.is_physical_key_pressed(KEY_W):
-			input_dir.y += 1.0
-		if Input.is_physical_key_pressed(KEY_S):
-			input_dir.y -= 1.0
-		if Input.is_physical_key_pressed(KEY_A):
-			input_dir.x -= 1.0
-		if Input.is_physical_key_pressed(KEY_D):
-			input_dir.x += 1.0
+		var input_dir := Input.get_vector("move_left", "move_right", "move_back", "move_forward")
 		input_dir = input_dir.normalized()
 		var forward := -global_transform.basis.z
 		forward.y = 0.0
@@ -645,7 +667,7 @@ func _physics_process(delta: float) -> void:
 		if wish.length_squared() > 0.01:
 			if carrying_core:
 				aiming = false
-		var sprinting := Input.is_physical_key_pressed(KEY_SHIFT) and input_dir.y > 0.2 and not aiming and not carrying_core
+		var sprinting := Input.is_action_pressed("sprint") and input_dir.y > 0.2 and not aiming and not carrying_core
 		var speed := ads_speed if aiming else (sprint_speed if sprinting else walk_speed)
 		if carrying_core:
 			aiming = false
@@ -687,7 +709,7 @@ func _process(delta: float) -> void:
 	if auto_pilot and alive and not carrying_core:
 		_auto_pilot_step(delta)
 	elif alive and input_enabled and not carrying_core and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		trigger_down = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+		trigger_down = Input.is_action_pressed("fire")
 	var automatic := bool(_weapon.get("auto", true))
 	if trigger_down and (automatic or not _trigger_was_down):
 		_fire()
@@ -703,8 +725,10 @@ func _update_visuals(delta: float) -> void:
 	var sway := cos(_bob_time * 1.3) * 0.012 * clampf(horizontal_speed / WALK_SPEED, 0.0, 1.3)
 	_head.position.y = lerpf(_head.position.y, 1.55 + bob - (0.05 if carrying_core else 0.0), delta * 12.0)
 	var ads_pose := aiming and not reloading and not carrying_core and not _third_person
-	var target_fov := 58.0 if ads_pose else (72.0 if _third_person else 78.0)
-	_camera.fov = lerpf(_camera.fov, target_fov, delta * 11.0)
+	var base_fov := _setting_float("fov", 78.0)
+	var ads_fov := _setting_float("ads_fov", 58.0)
+	var target_fov := ads_fov if ads_pose else (base_fov - 6.0 if _third_person else base_fov)
+	_camera.fov = clampf(lerpf(_camera.fov, target_fov, minf(1.0, delta * 11.0)), 20.0, 140.0)
 	var camera_target := Vector3.ZERO
 	if _third_person and alive and not carrying_core:
 		camera_target = Vector3(0.62, 0.5, 3.35)
@@ -1026,6 +1050,8 @@ func set_down() -> void:
 	alive = false
 	reloading = false
 	aiming = false
+	_aim_held = false
+	_aim_toggle = false
 	if _viewmodel != null:
 		_viewmodel.visible = false
 	if _carry_rig != null:
@@ -1033,6 +1059,24 @@ func set_down() -> void:
 	if _tp_root != null:
 		_tp_root.visible = false
 	died.emit()
+
+
+func _setting_float(key: String, fallback: float) -> float:
+	if _settings == null:
+		return fallback
+	return float(_settings.get_value(key))
+
+
+func _setting_bool(key: String, fallback: bool) -> bool:
+	if _settings == null:
+		return fallback
+	return bool(_settings.get_value(key))
+
+
+func _setting_string(key: String, fallback: String) -> String:
+	if _settings == null:
+		return fallback
+	return String(_settings.get_value(key))
 
 
 func set_view_direction(yaw_value: float, pitch_value: float = 0.0) -> void:
@@ -1050,6 +1094,8 @@ func respawn_at(pos: Vector3, face_yaw: float = 0.0) -> void:
 	alive = true
 	reloading = false
 	carrying_core = false
+	_aim_held = false
+	_aim_toggle = false
 	_yaw = face_yaw
 	_pitch = 0.0
 	rotation.y = _yaw
@@ -1072,6 +1118,8 @@ func set_carrying(value: bool) -> void:
 	if value:
 		reloading = false
 		aiming = false
+		_aim_held = false
+		_aim_toggle = false
 		_flash_time = 0.0
 		if _flash_mesh != null:
 			_flash_mesh.visible = false
