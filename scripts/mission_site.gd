@@ -6,15 +6,20 @@ const SAFE_RADIUS := 7.0
 const CONSOLE_POINT := Vector3(0.0, 0.16, -101.4)
 const AMMO_POINT := Vector3(-4.6, 0.16, -94.6)
 const FOUNTAIN_POINT := Vector3(0.0, 0.12, 0.0)
-const FOUNTAIN_RETURN := Vector3(0.0, 0.2, 5.2)
+const FOUNTAIN_RETURN := Vector3(0.0, 0.2, 13.0)
 const BASEMENT_Y := -14.0
-const BASEMENT_ARRIVAL := Vector3(0.0, -13.84, 4.4)
-const BASEMENT_EXIT := Vector3(0.0, -13.84, 9.0)
+const BASEMENT_ARRIVAL := Vector3(0.0, -13.84, -9.4)
+const BASEMENT_EXIT := Vector3(0.0, -13.84, -9.6)
+const RAMP_TOP := Vector3(0.0, 0.18, 12.6)
+const RAMP_BOTTOM := Vector3(0.0, -14.0, -8.2)
+const RAMP_ANGLE := 0.5985
+const HOLE_MIN := Vector2(-3.8, -8.6)
+const HOLE_MAX := Vector2(3.8, 12.6)
 const CORE_COUNT := 3
 const CORE_SITES := [
 	Vector3(-4.6, -14.0, 0.6),
 	Vector3(4.6, -14.0, 0.6),
-	Vector3(0.0, -14.0, -5.2),
+	Vector3(-7.2, -14.0, -9.4),
 ]
 const SAFE_SPAWNS := [
 	Vector3(-2.6, 0.18, -95.9),
@@ -40,7 +45,7 @@ func build() -> void:
 	_unit_box = BoxMesh.new()
 	_unit_box.size = Vector3.ONE
 	_build_base()
-	_build_gateway()
+	_build_surface_entrance()
 	_build_basement()
 	reset_visuals()
 
@@ -86,6 +91,19 @@ func fountain_distance(pos: Vector3) -> float:
 	return _flat_distance(pos, FOUNTAIN_POINT)
 
 
+func entrance_distance(pos: Vector3) -> float:
+	return _flat_distance(pos, Vector3(0.0, 0.16, 12.8))
+
+
+func basement_spawn_points() -> Array:
+	return [
+		Vector3(-9.2, -13.84, -9.4), Vector3(9.2, -13.84, -9.4),
+		Vector3(-9.6, -13.84, 8.8), Vector3(9.6, -13.84, 8.8),
+		Vector3(0.0, -13.84, -9.8), Vector3(0.0, -13.84, 9.9),
+		Vector3(-9.8, -13.84, -0.5), Vector3(9.8, -13.84, -0.5),
+	]
+
+
 func exit_distance(pos: Vector3) -> float:
 	return _flat_distance(pos, BASEMENT_EXIT)
 
@@ -118,7 +136,7 @@ func set_secured_count(count: int) -> void:
 func _process(delta: float) -> void:
 	_time += delta
 	if _gateway_ring != null:
-		_gateway_ring.rotation.y += delta * 0.5
+		_gateway_ring.rotate_object_local(Vector3.UP, delta * 0.6)
 	if _base_ring != null:
 		_base_ring.rotation.y -= delta * 0.22
 	for i in range(_core_nodes.size()):
@@ -231,38 +249,125 @@ func _build_ammo(root: Node3D) -> void:
 	label.pixel_size = 0.0034
 
 
-func _build_gateway() -> void:
+func _build_surface_entrance() -> void:
 	var root := Node3D.new()
-	root.name = "FountainGateway"
+	root.name = "VaultEntrance"
 	add_child(root)
-	var pad := _mesh(root, _cylinder(4.1, 0.08, 32), FOUNTAIN_POINT + Vector3(0.0, 0.08, 0.0), _mat(Color("#1b3036"), 0.8, 0.2))
-	pad.set_meta("gateway_pad", true)
-	_gateway_ring = _mesh(root, _torus(3.9, 4.16, 40, 6), FOUNTAIN_POINT + Vector3(0.0, 0.34, 0.0), _emissive(SAFE_COLOR, 1.9))
-	for i in range(4):
-		var angle := PI * 0.25 + PI * 0.5 * i
-		var pos := FOUNTAIN_POINT + Vector3(cos(angle) * 4.35, 0.0, sin(angle) * 4.35)
-		_box(root, Vector3(0.16, 1.5, 0.16), pos + Vector3(0.0, 0.75, 0.0), _mat(Color("#2c4148"), 0.75, 0.3))
-		var tip := _box(root, Vector3(0.3, 0.3, 0.3), pos + Vector3(0.0, 1.55, 0.0), _emissive(SAFE_COLOR, 2.2))
-		tip.rotation.y = 0.6
-	var diamond := _box(root, Vector3(0.55, 0.55, 0.55), FOUNTAIN_POINT + Vector3(0.0, 3.55, 0.0), _emissive(CORE_COLOR, 2.4))
-	diamond.rotation = Vector3(0.6, 0.4, 0.2)
-	var label := _label3d(root, "地下设施入口\n按 E 进入", 46, SAFE_COLOR)
-	label.position = FOUNTAIN_POINT + Vector3(0.0, 4.15, 0.0)
-	label.pixel_size = 0.0038
+	_static_box(root, Vector3(10.2, 0.28, 28.0), Vector3(-8.9, 0.04, 0.0), Color("#3c5a40"))
+	_static_box(root, Vector3(10.2, 0.28, 28.0), Vector3(8.9, 0.04, 0.0), Color("#3c5a40"))
+	_static_box(root, Vector3(7.6, 0.28, 5.4), Vector3(0.0, 0.04, -11.3), Color("#3c5a40"))
+	_static_box(root, Vector3(7.6, 0.28, 1.4), Vector3(0.0, 0.04, 13.3), Color("#3c5a40"))
+	_static_box(root, Vector3(1.2, 0.32, 21.2), Vector3(-4.4, 0.02, 2.0), Color("#59636c"))
+	_static_box(root, Vector3(1.2, 0.32, 21.2), Vector3(4.4, 0.02, 2.0), Color("#59636c"))
+	_static_box(root, Vector3(10.0, 0.32, 1.2), Vector3(0.0, 0.02, -9.2), Color("#59636c"))
+	_static_box(root, Vector3(10.0, 0.32, 1.2), Vector3(0.0, 0.02, 13.2), Color("#59636c"))
+	_build_ramp(root)
+	_static_box(root, Vector3(0.5, 11.0, 22.4), Vector3(-4.05, -4.9, 2.0), Color("#3a484e"))
+	_static_box(root, Vector3(0.5, 11.0, 22.4), Vector3(4.05, -4.9, 2.0), Color("#3a484e"))
+	for side in [-1.0, 1.0]:
+		var rail_x := 4.15 * float(side)
+		for i in range(9):
+			var z := -7.8 + i * 2.5
+			_box(root, Vector3(0.12, 1.1, 0.12), Vector3(rail_x, 0.75, z), _mat(Color("#2c4148"), 0.7, 0.4))
+		_box(root, Vector3(0.1, 0.1, 20.6), Vector3(rail_x, 1.28, 2.0), _mat(Color("#4e7378"), 0.6, 0.5))
+	_box(root, Vector3(8.4, 0.12, 0.12), Vector3(0.0, 1.28, -9.2), _mat(Color("#4e7378"), 0.6, 0.5))
+	for side in [-1.0, 1.0]:
+		_box(root, Vector3(0.42, 4.4, 0.42), Vector3(4.7 * side, 2.2, 12.6), _mat(Color("#32454b"), 0.7, 0.4))
+	_box(root, Vector3(10.2, 0.36, 3.6), Vector3(0.0, 4.45, 12.2), _mat(Color("#33474d"), 0.8, 0.25))
+	_box(root, Vector3(10.4, 0.14, 0.14), Vector3(0.0, 4.2, 10.4), _emissive(SAFE_COLOR, 1.5))
+	_gateway_ring = _mesh(root, _torus(1.72, 1.9, 40, 6), Vector3(0.0, 2.2, 13.9), _emissive(SAFE_COLOR, 1.7))
+	_gateway_ring.rotation.x = PI * 0.5
+	_box(root, Vector3(8.2, 0.08, 0.28), Vector3(0.0, 4.24, 12.4), _emissive(Color("#7fd4c8"), 1.1))
+	_box(root, Vector3(0.24, 0.08, 3.0), Vector3(-4.55, 4.24, 12.4), _emissive(Color("#7fd4c8"), 0.9))
+	_box(root, Vector3(0.24, 0.08, 3.0), Vector3(4.55, 4.24, 12.4), _emissive(Color("#7fd4c8"), 0.9))
+	var canopy_light := OmniLight3D.new()
+	canopy_light.position = Vector3(0.0, 3.5, 12.8)
+	canopy_light.light_color = Color("#bfe6df")
+	canopy_light.light_energy = 2.2
+	canopy_light.omni_range = 9.0
+	canopy_light.shadow_enabled = false
+	root.add_child(canopy_light)
+	for i in range(7):
+		var bar := _box(root, Vector3(0.85, 0.04, 0.28), Vector3(-3.0 + i * 1.0, RAMP_TOP.y + 0.03, 12.35), _emissive(Color("#d8b25e"), 0.8))
+		bar.rotation.x = -RAMP_ANGLE
+	var label := _label3d(root, "核心储藏层 B1\n沿坡道下行", 48, SAFE_COLOR)
+	label.position = Vector3(0.0, 5.35, 12.2)
+	label.pixel_size = 0.0044
+	var sub := _label3d(root, "无传送 · 步行通道", 26, Color(0.55, 0.8, 0.77))
+	sub.position = Vector3(0.0, 4.82, 12.2)
+	sub.pixel_size = 0.0034
 	var light := OmniLight3D.new()
-	light.position = FOUNTAIN_POINT + Vector3(0.0, 2.8, 0.0)
-	light.light_color = CORE_COLOR
+	light.position = Vector3(0.0, 2.6, 12.0)
+	light.light_color = SAFE_COLOR
 	light.light_energy = 1.6
-	light.omni_range = 9.0
+	light.omni_range = 11.0
 	light.shadow_enabled = false
 	root.add_child(light)
-	var beam_light := OmniLight3D.new()
-	beam_light.position = FOUNTAIN_POINT + Vector3(0.0, 1.2, 0.0)
-	beam_light.light_color = SAFE_COLOR
-	beam_light.light_energy = 1.1
-	beam_light.omni_range = 7.0
-	beam_light.shadow_enabled = false
-	root.add_child(beam_light)
+	var down_light := OmniLight3D.new()
+	down_light.position = Vector3(0.0, -1.4, 9.0)
+	down_light.light_color = Color("#bfe6df")
+	down_light.light_energy = 1.4
+	down_light.omni_range = 10.0
+	down_light.shadow_enabled = false
+	root.add_child(down_light)
+
+
+func _build_ramp(root: Node3D) -> void:
+	var drop := RAMP_BOTTOM - RAMP_TOP
+	var length := drop.length()
+	var direction := drop.normalized()
+	var up := Vector3(0.0, cos(RAMP_ANGLE), -sin(RAMP_ANGLE))
+	var box_length := length + 0.4
+	var surface_center := RAMP_TOP + direction * (box_length * 0.5)
+	var body := StaticBody3D.new()
+	body.position = surface_center - up * 0.25
+	body.rotation.x = -RAMP_ANGLE
+	body.collision_layer = 1
+	body.collision_mask = 0
+	var shape := CollisionShape3D.new()
+	var box := BoxShape3D.new()
+	box.size = Vector3(7.3, 0.5, box_length)
+	shape.shape = box
+	body.add_child(shape)
+	var mesh := MeshInstance3D.new()
+	mesh.mesh = _unit_box
+	mesh.scale = Vector3(7.3, 0.5, box_length)
+	mesh.material_override = _mat(Color("#4a585e"), 0.9, 0.05)
+	body.add_child(mesh)
+	root.add_child(body)
+	for i in range(18):
+		var t := (i + 0.5) / 18.0
+		var world := RAMP_TOP.lerp(RAMP_BOTTOM, t) + up * 0.02
+		var tread := _box(root, Vector3(7.0, 0.05, 0.34), world, _mat(Color("#6f8087"), 0.85, 0.1))
+		tread.rotation.x = -RAMP_ANGLE
+	for side in [-1.0, 1.0]:
+		for i in range(6):
+			var t := (i + 0.5) / 6.0
+			var pos := RAMP_TOP.lerp(RAMP_BOTTOM, t) + up * 0.06 + Vector3(3.45 * side, 0.0, 0.0)
+			var strip := _box(root, Vector3(0.1, 0.06, 1.1), pos, _emissive(Color("#7fd4c8"), 1.4))
+			strip.rotation.x = -RAMP_ANGLE
+		for i in range(7):
+			var t := (i + 0.5) / 7.0
+			var pos := RAMP_TOP.lerp(RAMP_BOTTOM, t) + up * 1.35 + Vector3(3.72 * side, 0.0, 0.0)
+			var guide := _box(root, Vector3(0.1, 0.5, 0.22), pos, _emissive(Color("#7fd4c8"), 1.8))
+			guide.rotation.x = -RAMP_ANGLE
+	for i in range(5):
+		var t := (i + 0.5) / 5.0
+		var pos := RAMP_TOP.lerp(RAMP_BOTTOM, t) + up * 2.5
+		var light := OmniLight3D.new()
+		light.position = pos
+		light.light_color = Color("#cfe3e2")
+		light.light_energy = 2.2
+		light.omni_range = 11.5
+		light.shadow_enabled = false
+		root.add_child(light)
+	var landing_light := OmniLight3D.new()
+	landing_light.position = Vector3(0.0, -9.4, -7.8)
+	landing_light.light_color = Color("#cfe3e2")
+	landing_light.light_energy = 0.9
+	landing_light.omni_range = 8.0
+	landing_light.shadow_enabled = false
+	root.add_child(landing_light)
 
 
 func _build_basement() -> void:
@@ -270,7 +375,13 @@ func _build_basement() -> void:
 	root.name = "CoreVault"
 	add_child(root)
 	_static_box(root, Vector3(23.6, 0.5, 23.6), Vector3(0.0, -14.25, 0.0), Color("#20272b"))
-	_static_box(root, Vector3(23.6, 0.4, 23.6), Vector3(0.0, -10.4, 0.0), Color("#171d21"))
+	_static_box(root, Vector3(7.95, 0.4, 23.6), Vector3(-7.825, -10.4, 0.0), Color("#171d21"))
+	_static_box(root, Vector3(7.95, 0.4, 23.6), Vector3(7.825, -10.4, 0.0), Color("#171d21"))
+	_static_box(root, Vector3(7.7, 0.4, 3.2), Vector3(0.0, -10.4, -10.2), Color("#171d21"))
+	_static_box(root, Vector3(7.7, 0.4, 13.6), Vector3(0.0, -10.4, 5.0), Color("#171d21"))
+	for side in [-1.0, 1.0]:
+		_box(root, Vector3(0.12, 0.1, 6.8), Vector3(3.85 * side, -10.62, -5.2), _emissive(Color("#4f8c8a"), 0.7))
+	_box(root, Vector3(7.7, 0.1, 0.12), Vector3(0.0, -10.62, -1.8), _emissive(Color("#4f8c8a"), 0.7))
 	_static_box(root, Vector3(23.6, 3.4, 0.5), Vector3(0.0, -12.3, -11.25), Color("#2a3236"))
 	_static_box(root, Vector3(23.6, 3.4, 0.5), Vector3(0.0, -12.3, 11.25), Color("#2a3236"))
 	_static_box(root, Vector3(0.5, 3.4, 23.0), Vector3(-11.25, -12.3, 0.0), Color("#2a3236"))
@@ -319,20 +430,21 @@ func _build_basement() -> void:
 	var sign_label := _label3d(root, "核心储藏层 · B1", 58, CORE_COLOR)
 	sign_label.position = Vector3(0.0, -11.15, -10.9)
 	sign_label.pixel_size = 0.0045
-	var warning := _label3d(root, "感染者无法进入 · 回收全部核心后返回基地", 30, Color(0.72, 0.82, 0.82))
+	var warning := _label3d(root, "感染者从坡道涌入 · 回收全部核心后步行返回基地", 28, Color(0.72, 0.82, 0.82))
 	warning.position = Vector3(0.0, -11.6, -10.9)
 	warning.pixel_size = 0.0036
 
 
 func _build_exit_pad(root: Node3D) -> void:
-	var pad := _mesh(root, _cylinder(1.6, 0.06, 24), BASEMENT_EXIT + Vector3(0.0, -0.03, 0.0), _mat(Color("#224146"), 0.7, 0.2))
+	var pad := _mesh(root, _cylinder(1.45, 0.06, 24), BASEMENT_EXIT + Vector3(0.0, -0.03, 0.0), _mat(Color("#224146"), 0.7, 0.2))
 	pad.name = "ExitPad"
-	var ring := _mesh(root, _torus(1.45, 1.62, 28, 6), BASEMENT_EXIT + Vector3(0.0, 0.1, 0.0), _emissive(SAFE_COLOR, 2.2))
+	var ring := _mesh(root, _torus(1.3, 1.45, 28, 6), BASEMENT_EXIT + Vector3(0.0, 0.1, 0.0), _emissive(SAFE_COLOR, 2.2))
 	ring.name = "ExitRing"
-	var arrow := _box(root, Vector3(0.3, 0.9, 0.3), BASEMENT_EXIT + Vector3(0.0, 0.65, 0.0), _emissive(SAFE_COLOR, 1.5))
-	arrow.rotation.x = 0.5
-	var label := _label3d(root, "返回地表  [E]", 38, SAFE_COLOR)
-	label.position = BASEMENT_EXIT + Vector3(0.0, 1.75, 0.0)
+	for i in range(2):
+		var arrow := _box(root, Vector3(0.85, 0.14, 0.3), BASEMENT_EXIT + Vector3(0.0, 0.14, -0.5 + i * 0.55), _emissive(SAFE_COLOR, 1.5))
+		arrow.rotation.y = 0.0
+	var label := _label3d(root, "上行坡道 · 返回地表", 38, SAFE_COLOR)
+	label.position = BASEMENT_EXIT + Vector3(0.0, 1.9, 0.0)
 	label.pixel_size = 0.0034
 	var light := OmniLight3D.new()
 	light.position = BASEMENT_EXIT + Vector3(0.0, 1.4, 0.0)
