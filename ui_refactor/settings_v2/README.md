@@ -13,7 +13,7 @@
 | 画面与镜头 | 窗口化/无边框/独占全屏、分辨率、VSync、帧率上限、3D 渲染比例 | `DisplayServer`、`Engine.max_fps`、根 Viewport `scaling_3d_scale` |
 | 声音 | 总音量、战斗音效、界面反馈 | Master / SFX / UI Audio Bus；武器与感染者→SFX，界面提示→UI |
 | 界面与准星 | HUD 缩放/背景浓度、准星大小/颜色/粗细、命中反馈、小地图、任务目标 | `game_hud.gd`、`crosshair.gd`、HUD 遮罩与面板 |
-| 按键绑定 | 移动、跳跃、冲刺、射击、瞄准、换弹、交互、放下核心、武器切换、情报、背包、暂停 | `InputMap` + `player.gd` / `main.gd` |
+| 按键绑定 | 移动、跳跃、冲刺、射击、瞄准、换弹、交互、放下核心、武器切换、情报、背包、暂停、UI 确认/返回 | `InputMap` + `player.gd` / `main.gd` |
 | 辅助功能 | 高对比度、减少动效、受伤闪烁强度、交互提示 | HUD/菜单主题、浮尘/视差/过渡、`DamageVignette` |
 
 当前工程**没有**音乐、独立环境音、语音、蹲伏、镜头晃动控制器、字幕系统，或可安全运行时切换的阴影/抗锯齿/后处理路径，因此没有为这些项目提供假滑块。设置页会明确说明。
@@ -38,10 +38,10 @@ HUD 背景浓度只调整 HUD 渐变遮罩的 alpha，不改变文字亮度。
 
 ## 3. 交互
 
-- 左侧六分类导航；中部 `ScrollContainer` 选项；右侧当前项说明与 FOV/准星示意；底部应用/取消/恢复本页默认。
+- 左侧六分类导航；中部 `ScrollContainer` 选项；右侧当前项说明与 FOV/准星示意；底部应用/取消/本页默认/全部默认。
 - 滑块即时预览（灵敏度、FOV、音量、HUD、准星）；取消恢复上次应用值。
 - 显示模式/分辨率等显示设置：应用时弹出 10 秒确认；未确认自动恢复原设置。
-- 按键捕获：点击按键行后按键盘/鼠标；Esc 取消；冲突按键拒绝并提示；保留 Esc/`ui_cancel` 安全返回路径。
+- 按键捕获：点击按键行后按键盘/鼠标；Esc 取消；冲突按键拒绝并提示。UI 确认/返回也进入 InputMap，并保留 Space 确认、Escape 返回安全路径。
 - 主菜单与暂停菜单打开同一实例；联机暂停中打开设置不会暂停服务器模拟。
 - 减少动效时关闭非必要过渡；不延迟输入。
 
@@ -57,7 +57,7 @@ HUD 背景浓度只调整 HUD 渐变遮罩的 alpha，不改变文字亮度。
 
 ## 5. 测试
 
-- `tests/test_settings_v2.gd`：99 checks / 0 failures
+- `tests/test_settings_v2.gd`：106 checks / 0 failures
 - `tests/test_ui_integration.gd`：105 / 0
 - `tests/test_ui_display.gd`：120 / 0，4 条 UI 放大压力 warning
 - `tests/test_ui_network.gd`（4 人）：HOST 23 / 3×CLIENT 19，0 失败

@@ -78,6 +78,8 @@ const KEY_ACTIONS := {
 	"intel": {"category": "keybind", "label": "战术情报", "hint": "打开/关闭情报", "default": "K:4194306", "description": "Tab。迁移到 InputMap 的 intel。"},
 	"backpack": {"category": "keybind", "label": "战术背包", "hint": "打开/关闭背包", "default": "K:66", "description": "B。关闭后恢复输入与鼠标捕获。"},
 	"pause": {"category": "keybind", "label": "暂停 / 返回", "hint": "游戏内暂停入口", "default": "K:4194305", "description": "Escape。额外保留 ui_cancel 作为安全返回路径，避免误绑后无法退出。"},
+	"ui_confirm": {"category": "keybind", "label": "UI 确认", "hint": "菜单确认 / 激活", "default": "K:4194309", "description": "Enter。写入 InputMap 的 ui_accept；Space 始终保留为安全确认键。"},
+	"ui_back": {"category": "keybind", "label": "UI 返回", "hint": "关闭界面 / 返回上级", "default": "K:4194305", "description": "Escape。写入 InputMap 的 ui_cancel；Escape 始终保留为安全返回键。"},
 }
 
 

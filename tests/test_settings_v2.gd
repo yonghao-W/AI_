@@ -53,7 +53,7 @@ func _test_defaults() -> void:
 	_check(is_equal_approx(float(_service.get_value("mouse_x")), 1.0), "Default mouse X is not 1.0")
 	_check(String(_service.get_value("aim_mode")) == "hold", "Default aim mode is not hold")
 	_check(_service.bus_names().has("SFX") and _service.bus_names().has("UI"), "SFX/UI audio buses missing")
-	for action in ["move_forward", "fire", "aim", "reload", "interact", "intel", "backpack", "pause"]:
+	for action in ["move_forward", "fire", "aim", "reload", "interact", "intel", "backpack", "pause", "ui_accept", "ui_cancel"]:
 		_check(InputMap.has_action(action), "InputMap action missing: " + action)
 		_check(InputMap.action_get_events(action).size() > 0, "InputMap action has no event: " + action)
 
@@ -127,6 +127,24 @@ func _test_keybindings() -> void:
 	_check(String(saved.get_value("input", "jump", "")) == "K:%d" % KEY_J, "Saved keybinding mismatch")
 	_service.load_settings()
 	_check(_service.key_label("jump") == "J", "Keybinding did not survive reload")
+	# UI 返回重绑后仍保留 Escape 安全路径；UI 确认仍保留 Space。
+	var q_event := InputEventKey.new()
+	q_event.physical_keycode = KEY_Q
+	_check(_service.set_pending_key("ui_back", q_event), "UI back rebind was rejected")
+	_service.apply()
+	var has_escape := false
+	var has_q := false
+	for event in InputMap.action_get_events("ui_cancel"):
+		if event is InputEventKey:
+			var key_event := event as InputEventKey
+			has_escape = has_escape or key_event.physical_keycode == KEY_ESCAPE
+			has_q = has_q or key_event.physical_keycode == KEY_Q
+	_check(has_q and has_escape, "UI back rebind lost the Escape safety path")
+	var has_space := false
+	for event in InputMap.action_get_events("ui_accept"):
+		if event is InputEventKey and (event as InputEventKey).physical_keycode == KEY_SPACE:
+			has_space = true
+	_check(has_space, "UI confirm lost the Space safety path")
 	_service.reset_all()
 	_service.apply()
 

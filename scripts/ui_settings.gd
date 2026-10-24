@@ -322,15 +322,38 @@ func _apply_display() -> void:
 
 func _apply_input() -> void:
 	for action in SettingsSchema.KEY_ACTIONS.keys():
-		if not InputMap.has_action(action):
-			InputMap.add_action(action)
-		InputMap.action_erase_events(action)
+		var input_action := _input_action_name(action)
+		if not InputMap.has_action(input_action):
+			InputMap.add_action(input_action)
+		InputMap.action_erase_events(input_action)
 		var encoded := String(_pending.get(action, SettingsSchema.KEY_ACTIONS[action]["default"]))
 		var event := SettingsSchema.event_from_string(encoded)
-		if SettingsSchema.string_from_event(event) == encoded:
-			InputMap.action_add_event(action, event)
-		else:
-			InputMap.action_add_event(action, SettingsSchema.event_from_string(SettingsSchema.KEY_ACTIONS[action]["default"]))
+		if SettingsSchema.string_from_event(event) != encoded:
+			event = SettingsSchema.event_from_string(SettingsSchema.KEY_ACTIONS[action]["default"])
+		InputMap.action_add_event(input_action, event)
+		_add_safety_event(input_action, action)
+
+
+func _input_action_name(action: String) -> String:
+	match action:
+		"ui_confirm":
+			return "ui_accept"
+		"ui_back":
+			return "ui_cancel"
+		_:
+			return action
+
+
+func _add_safety_event(input_action: String, action: String) -> void:
+	var safety_key := KEY_SPACE if action == "ui_confirm" else (KEY_ESCAPE if action == "ui_back" else 0)
+	if safety_key == 0:
+		return
+	for existing in InputMap.action_get_events(input_action):
+		if existing is InputEventKey and (existing as InputEventKey).physical_keycode == safety_key:
+			return
+	var safety := InputEventKey.new()
+	safety.physical_keycode = safety_key
+	InputMap.action_add_event(input_action, safety)
 
 
 func set_master_volume(value: float) -> void:

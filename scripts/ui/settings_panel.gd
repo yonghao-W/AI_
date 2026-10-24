@@ -190,12 +190,18 @@ func _build_footer() -> Control:
 	row.add_child(_status)
 	_dirty_label = _label("已保存", 10, DeadCityUI.MUTED_2)
 	row.add_child(_dirty_label)
-	var reset := Button.new()
-	reset.text = "恢复本页默认"
-	reset.custom_minimum_size = Vector2(136, 40)
-	DeadCityUI.style_button(reset, DeadCityUI.MUTED, false)
-	reset.pressed.connect(_reset_page)
-	row.add_child(reset)
+	var reset_page := Button.new()
+	reset_page.text = "本页默认"
+	reset_page.custom_minimum_size = Vector2(96, 40)
+	DeadCityUI.style_button(reset_page, DeadCityUI.MUTED, false)
+	reset_page.pressed.connect(_reset_page)
+	row.add_child(reset_page)
+	var reset_all := Button.new()
+	reset_all.text = "全部默认"
+	reset_all.custom_minimum_size = Vector2(96, 40)
+	DeadCityUI.style_button(reset_all, DeadCityUI.MUTED, false)
+	reset_all.pressed.connect(_reset_all)
+	row.add_child(reset_all)
 	var cancel := Button.new()
 	cancel.text = "取消修改"
 	cancel.custom_minimum_size = Vector2(112, 40)
@@ -415,6 +421,13 @@ func _reset_page() -> void:
 	_service.reset_category(_category)
 	_select_category(_category)
 	_status.text = "本页已恢复默认，点击应用后保存。"
+	_update_dirty()
+
+
+func _reset_all() -> void:
+	_service.reset_all()
+	_select_category(_category)
+	_status.text = "全部设置已恢复默认，点击应用后保存。"
 	_update_dirty()
 
 
