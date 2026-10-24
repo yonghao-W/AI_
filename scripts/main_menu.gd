@@ -8,6 +8,8 @@ signal quit_requested
 signal lobby_ready_requested(ready: bool)
 signal lobby_start_requested
 signal lobby_leave_requested
+signal buy_weapon_requested(weapon_id: String)
+signal equip_weapon_requested(weapon_id: String)
 
 const MAX_PLAYER_ROWS := 4
 
@@ -34,6 +36,10 @@ var _lobby_payload: Dictionary = {}
 var _lobby_local_id := 1
 var _lobby_is_host := false
 var _lobby_local_ready := false
+var _armory_layer: Control
+var _armory_cards: HBoxContainer
+var _armory_credits: Label
+var _armory_status: Label
 var _profile: Dictionary = MetaProfile.empty_profile()
 var _busy := false
 
@@ -155,6 +161,7 @@ func _build() -> void:
 	columns.add_child(right)
 	_build_briefing(right)
 	_build_lobby()
+	_build_armory()
 	_host_button.pressed.connect(_on_host_pressed)
 	_join_button.pressed.connect(_on_join_pressed)
 	_solo_button.pressed.connect(_on_solo_pressed)
@@ -190,6 +197,11 @@ func _build_archive(parent: VBoxContainer) -> void:
 	_profile_last = _label(MetaProfile.last_run_line(MetaProfile.empty_profile()), 10, Color(0.48, 0.6, 0.62))
 	_profile_last.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	right.add_child(_profile_last)
+	var armory := _button("军械库", DeadCityUI.AMBER, true)
+	armory.custom_minimum_size = Vector2(116, 40)
+	armory.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	armory.pressed.connect(open_armory)
+	body.add_child(armory)
 
 
 func _build_lobby() -> void:
@@ -274,6 +286,169 @@ func _build_lobby() -> void:
 func _on_lobby_ready_pressed() -> void:
 	_lobby_local_ready = not _lobby_local_ready
 	lobby_ready_requested.emit(_lobby_local_ready)
+
+
+func _build_armory() -> void:
+	_armory_layer = Control.new()
+	_armory_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_armory_layer.mouse_filter = Control.MOUSE_FILTER_STOP
+	_armory_layer.visible = false
+	add_child(_armory_layer)
+	var tint := ColorRect.new()
+	tint.color = Color(0.008, 0.02, 0.028, 0.95)
+	tint.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	tint.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_armory_layer.add_child(tint)
+	var center := CenterContainer.new()
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	center.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_armory_layer.add_child(center)
+	var panel := PanelContainer.new()
+	panel.add_theme_stylebox_override("panel", DeadCityUI.panel_style(Color(0.035, 0.06, 0.073, 0.99), 18, Color(0.72, 0.58, 0.28, 0.8), 1))
+	center.add_child(panel)
+	var body := VBoxContainer.new()
+	body.add_theme_constant_override("separation", 11)
+	panel.add_child(body)
+	var header := HBoxContainer.new()
+	header.add_theme_constant_override("separation", 16)
+	body.add_child(header)
+	var titles := VBoxContainer.new()
+	titles.add_theme_constant_override("separation", 0)
+	header.add_child(titles)
+	titles.add_child(_label("军械库", 32, DeadCityUI.TEXT))
+	titles.add_child(_label("ARMORY  //  信用点永久解锁武器，行动时携带所选主武器", 11, DeadCityUI.AMBER))
+	var header_spacer := Control.new()
+	header_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header.add_child(header_spacer)
+	var credits_box := VBoxContainer.new()
+	credits_box.add_theme_constant_override("separation", 0)
+	header.add_child(credits_box)
+	var credits_tag := _label("可用信用点", 10, DeadCityUI.MUTED)
+	credits_tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	credits_box.add_child(credits_tag)
+	_armory_credits = _label("0", 24, DeadCityUI.AMBER)
+	_armory_credits.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	credits_box.add_child(_armory_credits)
+	var close := _button("关闭", DeadCityUI.MUTED, false)
+	close.custom_minimum_size = Vector2(102, 38)
+	close.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	close.pressed.connect(close_armory)
+	header.add_child(close)
+	body.add_child(_divider())
+	_armory_cards = HBoxContainer.new()
+	_armory_cards.add_theme_constant_override("separation", 12)
+	body.add_child(_armory_cards)
+	body.add_child(_divider())
+	_armory_status = _label("击杀感染者与回收核心可获得信用点。", 12, DeadCityUI.MUTED)
+	_armory_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.add_child(_armory_status)
+	var hint := _label("行动中按 1-5 或滚轮切换武器；搬运核心时无法开火。未解锁武器可在行动结算后购买。", 11, Color(0.48, 0.6, 0.62))
+	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.add_child(hint)
+
+
+func open_armory() -> void:
+	if _armory_layer == null:
+		return
+	hide_lobby()
+	_armory_layer.visible = true
+	set_armory_status("击杀感染者与回收核心可获得信用点。", false)
+	_render_armory()
+
+
+func close_armory() -> void:
+	if _armory_layer != null:
+		_armory_layer.visible = false
+
+
+func refresh_armory() -> void:
+	if _armory_layer != null and _armory_layer.visible:
+		_render_armory()
+
+
+func set_armory_status(text: String, is_error: bool = false) -> void:
+	if _armory_status == null:
+		return
+	_armory_status.text = text
+	_armory_status.add_theme_color_override("font_color", DeadCityUI.RED if is_error else DeadCityUI.MUTED)
+
+
+func _render_armory() -> void:
+	if _armory_cards == null:
+		return
+	for child in _armory_cards.get_children():
+		_armory_cards.remove_child(child)
+		child.queue_free()
+	var credits := int(_profile.get("credits", 0))
+	var selected := String(_profile.get("selected_weapon", WeaponCatalog.DEFAULT_SELECTED))
+	if _armory_credits != null:
+		_armory_credits.text = str(credits)
+	var ids := WeaponCatalog.ordered_ids()
+	for index in range(ids.size()):
+		var weapon_id := String(ids[index])
+		var weapon := WeaponCatalog.data(weapon_id)
+		var owned := MetaProfile.owns_weapon(_profile, weapon_id)
+		var active: bool = weapon_id == selected
+		var price := WeaponCatalog.price_of(weapon_id)
+		var accent := WeaponCatalog.accent(weapon_id)
+		var card := PanelContainer.new()
+		card.custom_minimum_size = Vector2(168, 0)
+		card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var border := accent if active else Color(accent.r, accent.g, accent.b, 0.5 if owned else 0.24)
+		var fill := Color(0.06, 0.1, 0.11, 0.95) if active else Color(0.04, 0.062, 0.072, 0.85 if owned else 0.5)
+		var style := DeadCityUI.panel_style(fill, 9, border, 2 if active else 1)
+		style.content_margin_left = 13.0
+		style.content_margin_right = 13.0
+		style.content_margin_top = 13.0
+		style.content_margin_bottom = 13.0
+		card.add_theme_stylebox_override("panel", style)
+		_armory_cards.add_child(card)
+		var box := VBoxContainer.new()
+		box.add_theme_constant_override("separation", 5)
+		card.add_child(box)
+		box.add_child(_label("SLOT %d" % (index + 1), 10, accent))
+		box.add_child(_label(String(weapon.get("name", "未知")), 16, DeadCityUI.TEXT if owned else Color(0.6, 0.66, 0.68)))
+		box.add_child(_label(String(weapon.get("tag", "")), 10, accent if owned else Color(0.44, 0.5, 0.52)))
+		var stat := _label(WeaponCatalog.stat_line(weapon_id), 10, Color(0.6, 0.72, 0.73) if owned else Color(0.44, 0.5, 0.52))
+		stat.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		stat.custom_minimum_size = Vector2(0, 54)
+		box.add_child(stat)
+		var gap := Control.new()
+		gap.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		box.add_child(gap)
+		var button := Button.new()
+		button.custom_minimum_size = Vector2(0, 38)
+		button.focus_mode = Control.FOCUS_NONE
+		if active:
+			box.add_child(_label("当前出战", 10, DeadCityUI.GREEN))
+			button.text = "已装备"
+			button.disabled = true
+			DeadCityUI.style_button(button, accent, false)
+		elif owned:
+			button.text = "装备"
+			DeadCityUI.style_button(button, accent, true)
+			button.pressed.connect(_on_equip_pressed.bind(weapon_id))
+		else:
+			if price <= 0:
+				button.text = "解锁"
+				DeadCityUI.style_button(button, accent, true)
+			else:
+				button.text = "解锁 · %d" % price
+				if credits < price:
+					button.disabled = true
+					DeadCityUI.style_button(button, DeadCityUI.MUTED, false)
+				else:
+					DeadCityUI.style_button(button, accent, true)
+			button.pressed.connect(_on_buy_pressed.bind(weapon_id))
+		box.add_child(button)
+
+
+func _on_buy_pressed(weapon_id: String) -> void:
+	buy_weapon_requested.emit(weapon_id)
+
+
+func _on_equip_pressed(weapon_id: String) -> void:
+	equip_weapon_requested.emit(weapon_id)
 
 
 func show_lobby(is_host: bool, local_id: int, payload: Dictionary) -> void:
@@ -389,15 +564,18 @@ func set_profile(profile: Dictionary) -> void:
 	var bonus := MetaProfile.legacy_bonus(profile)
 	_profile_level.text = "幸存者血脉 Lv.%d" % level
 	_profile_level.add_theme_color_override("font_color", DeadCityUI.CYAN if level > 0 else DeadCityUI.TEXT)
-	_profile_stats.text = "行动 %d 次 · 完成 %d 次 · 最佳战力 %d · 起始备弹 +%d" % [
+	_profile_stats.text = "行动 %d 次 · 完成 %d 次 · 最佳战力 %d · 起始备弹 +%d · 信用点 %d" % [
 		int(profile.get("runs", 0)),
 		int(profile.get("victories", 0)),
 		int(profile.get("best_power", 0)),
 		int(bonus["reserve"]),
+		int(profile.get("credits", 0)),
 	]
 	_profile_last.text = MetaProfile.last_run_line(profile)
 	if _lobby_archive != null:
 		_lobby_archive.text = MetaProfile.archive_line(profile)
+	if _armory_layer != null and _armory_layer.visible:
+		_render_armory()
 
 
 func _build_briefing(parent: VBoxContainer) -> void:
@@ -613,6 +791,7 @@ func set_status(text: String, is_error: bool = false) -> void:
 func present(message: String = "", is_error: bool = false) -> void:
 	visible = true
 	hide_lobby()
+	close_armory()
 	set_busy(false)
 	if not message.is_empty():
 		set_status(message, is_error)

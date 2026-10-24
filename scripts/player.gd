@@ -6,9 +6,8 @@ signal health_changed(health: float)
 signal damaged(amount: float)
 signal hit_marker(headshot: bool)
 signal died
+signal weapon_changed(weapon_id: String, slot: int)
 
-const MAG_SIZE := 30
-const MAX_RESERVE := 150
 const WALK_SPEED := 5.2
 const SPRINT_SPEED := 7.3
 const ADS_SPEED := 3.1
@@ -20,15 +19,12 @@ const COYOTE_TIME := 0.11
 const JUMP_BUFFER := 0.12
 const GROUND_ACCEL := 48.0
 const AIR_ACCEL := 18.0
-const FIRE_INTERVAL := 0.102
-const RELOAD_TIME := 1.55
-const BODY_DAMAGE := 34.0
-const RANGE := 140.0
 const HIT_MASK := 1 | 4
 const SENSITIVITY := 0.0022
 
 var effects: CombatEffects
 var main_ref: Node
+var audio: Node
 var health := 100.0
 var alive := true
 var input_enabled := true
@@ -36,23 +32,26 @@ var game_active := false
 var aiming := false
 var auto_pilot := false
 var carrying_core := false
-var mag := MAG_SIZE
-var reserve := 90
+var mag := 12
+var reserve := 72
 var reloading := false
-var mag_size := MAG_SIZE
-var reload_time := RELOAD_TIME
+var mag_size := 12
+var reload_time := 1.2
+var fire_interval := 0.19
+var reserve_cap := 72
 var walk_speed := WALK_SPEED
 var sprint_speed := SPRINT_SPEED
 var ads_speed := ADS_SPEED
 var damage_reduction := 0.0
 var reserve_bonus := 0
 var meta_reload_mult := 1.0
+var weapons_owned: Array[String] = []
+var weapon_index := 0
 
 var _yaw := 0.0
 var _pitch := 0.0
 var _fire_cooldown := 0.0
 var _reload_left := 0.0
-var _regen_timer := 0.0
 var _flash_time := 0.0
 var _gun_kick := 0.0
 var _jump_queued := false
@@ -60,6 +59,8 @@ var _jump_buffer := 0.0
 var _coyote_left := 0.0
 var _bob_time := 0.0
 var _auto_fire_timer := 0.0
+var _switch_lock := 0.0
+var _trigger_was_down := false
 var _gravity := 9.8
 var _head: Node3D
 var _camera: Camera3D
@@ -69,6 +70,11 @@ var _flash_mesh: MeshInstance3D
 var _flash_light: OmniLight3D
 var _magazine: MeshInstance3D
 var _magazine_base := Vector3.ZERO
+var _magazine_rot_base := -0.22
+var _weapon: Dictionary = {}
+var _upgrades: Dictionary = {"mag": 0, "reload": 0, "rate": 0}
+var _ammo_states: Dictionary = {}
+var _rig_data: Dictionary = {}
 var _carry_rig: Node3D
 var _carry_orb: MeshInstance3D
 var _carry_ring: MeshInstance3D
@@ -98,8 +104,9 @@ func _ready() -> void:
 	_unit_cylinder.height = 1.0
 	_unit_cylinder.radial_segments = 10
 	_build_camera()
-	_build_weapon()
+	_build_weapon_rigs()
 	_build_carry_visual()
+	set_loadout(WeaponCatalog.default_owned(), WeaponCatalog.DEFAULT_SELECTED)
 
 
 func _build_camera() -> void:
@@ -123,57 +130,122 @@ func _build_camera() -> void:
 	_camera.add_child(flashlight)
 
 
-func _build_weapon() -> void:
-	_viewmodel = Node3D.new()
-	_viewmodel.position = Vector3(0.31, -0.29, -0.53)
-	_viewmodel.rotation = Vector3(0.0, -0.04, 0.0)
-	_viewmodel.scale = Vector3.ONE * 0.88
-	_camera.add_child(_viewmodel)
+func _build_weapon_rigs() -> void:
+	for raw in WeaponCatalog.ordered_ids():
+		_build_weapon_rig(String(raw))
+
+
+func _build_weapon_rig(id: String) -> void:
+	var data := WeaponCatalog.data(id)
+	var accent_color := Color(data.get("accent", "#59d8c8"))
+	var root := Node3D.new()
+	root.position = Vector3(0.31, -0.29, -0.53)
+	root.rotation = Vector3(0.0, -0.04, 0.0)
+	root.scale = Vector3.ONE * 0.88
+	root.visible = false
+	_camera.add_child(root)
 	var steel := _mat(Color("#28323a"), 0.72, 0.32)
 	var dark := _mat(Color("#12181d"), 0.82, 0.2)
-	var accent := _mat(Color("#4bbdb4"), 0.45, 0.15, 1.1)
+	var accent := _mat(accent_color, 0.45, 0.15, 1.1)
 	var glove := _mat(Color("#283831"), 0.95, 0.0)
 	var sleeve := _mat(Color("#1d2a25"), 0.95, 0.0)
-	_part(_viewmodel, Vector3(0.16, 0.16, 0.5), Vector3(0.0, 0.0, -0.2), steel)
-	_part(_viewmodel, Vector3(0.12, 0.12, 0.34), Vector3(0.0, 0.015, -0.45), dark)
+	var muzzle_z := -0.88
+	var magazine: MeshInstance3D = null
+	var mag_base := Vector3.ZERO
+	match id:
+		"pistol":
+			_part(root, Vector3(0.105, 0.105, 0.4), Vector3(0.0, 0.03, -0.17), steel)
+			_part(root, Vector3(0.085, 0.07, 0.14), Vector3(0.0, 0.02, -0.42), dark)
+			_part(root, Vector3(0.09, 0.22, 0.13), Vector3(0.0, -0.15, 0.03), dark).rotation.x = 0.2
+			magazine = _part(root, Vector3(0.07, 0.18, 0.09), Vector3(0.0, -0.16, 0.04), steel)
+			magazine.rotation.x = 0.2
+			_part(root, Vector3(0.03, 0.035, 0.08), Vector3(0.0, 0.1, -0.34), accent)
+			_part(root, Vector3(0.04, 0.06, 0.06), Vector3(0.0, 0.1, 0.04), dark)
+			muzzle_z = -0.5
+		"smg":
+			_part(root, Vector3(0.14, 0.14, 0.42), Vector3(0.0, 0.0, -0.16), steel)
+			_add_barrel(root, 0.02, -0.34, -0.55, 0.032, dark)
+			_part(root, Vector3(0.1, 0.11, 0.22), Vector3(0.0, -0.01, 0.13), steel)
+			_part(root, Vector3(0.05, 0.05, 0.16), Vector3(0.0, 0.01, 0.26), dark)
+			magazine = _part(root, Vector3(0.085, 0.26, 0.11), Vector3(0.0, -0.19, -0.09), dark)
+			magazine.rotation.x = -0.1
+			_part(root, Vector3(0.145, 0.03, 0.24), Vector3(0.0, 0.08, -0.2), accent)
+			_part(root, Vector3(0.035, 0.05, 0.09), Vector3(0.0, 0.11, -0.05), accent)
+			muzzle_z = -0.62
+		"rifle":
+			_part(root, Vector3(0.145, 0.145, 0.6), Vector3(0.0, 0.0, -0.24), steel)
+			_add_barrel(root, 0.02, -0.52, -0.82, 0.03, dark)
+			_part(root, Vector3(0.095, 0.1, 0.26), Vector3(0.0, -0.01, 0.18), steel)
+			_part(root, Vector3(0.05, 0.06, 0.16), Vector3(0.0, 0.015, 0.32), dark)
+			magazine = _part(root, Vector3(0.09, 0.24, 0.12), Vector3(0.0, -0.17, -0.14), dark)
+			magazine.rotation.x = -0.16
+			_part(root, Vector3(0.15, 0.03, 0.34), Vector3(0.0, 0.085, -0.3), accent)
+			_part(root, Vector3(0.05, 0.07, 0.14), Vector3(0.0, 0.115, -0.08), dark)
+			_part(root, Vector3(0.03, 0.03, 0.06), Vector3(0.0, 0.13, 0.03), accent)
+			muzzle_z = -0.9
+		"shotgun":
+			_part(root, Vector3(0.15, 0.14, 0.52), Vector3(0.0, 0.0, -0.2), steel)
+			_add_barrel(root, 0.035, -0.44, -0.9, 0.045, dark)
+			_add_barrel(root, -0.055, -0.44, -0.82, 0.035, dark)
+			_part(root, Vector3(0.13, 0.1, 0.2), Vector3(0.0, -0.075, -0.48), accent)
+			_part(root, Vector3(0.1, 0.11, 0.26), Vector3(0.0, -0.01, 0.18), steel)
+			_part(root, Vector3(0.07, 0.1, 0.16), Vector3(0.0, -0.11, 0.05), dark)
+			magazine = _part(root, Vector3(0.085, 0.12, 0.08), Vector3(0.0, -0.14, 0.06), dark)
+			_part(root, Vector3(0.15, 0.03, 0.26), Vector3(0.0, 0.08, -0.24), accent)
+			muzzle_z = -0.94
+		"lmg":
+			_part(root, Vector3(0.18, 0.17, 0.58), Vector3(0.0, 0.0, -0.22), steel)
+			_add_barrel(root, 0.02, -0.5, -0.88, 0.036, dark)
+			_part(root, Vector3(0.12, 0.11, 0.24), Vector3(0.0, -0.01, 0.18), steel)
+			_part(root, Vector3(0.06, 0.06, 0.16), Vector3(0.0, 0.01, 0.32), dark)
+			magazine = _part(root, Vector3(0.19, 0.2, 0.19), Vector3(0.0, -0.2, -0.1), dark)
+			_part(root, Vector3(0.17, 0.035, 0.36), Vector3(0.0, 0.1, -0.28), accent)
+			_part(root, Vector3(0.05, 0.06, 0.2), Vector3(0.0, 0.125, -0.05), dark)
+			_part(root, Vector3(0.03, 0.05, 0.04), Vector3(-0.08, 0.11, -0.52), accent)
+			_part(root, Vector3(0.09, 0.09, 0.1), Vector3(0.0, -0.02, -0.55), steel)
+			muzzle_z = -0.94
+	mag_base = magazine.position if magazine != null else Vector3.ZERO
+	_part(root, Vector3(0.12, 0.13, 0.22), Vector3(0.06, -0.16, -0.34), glove)
+	_part(root, Vector3(0.12, 0.12, 0.24), Vector3(-0.03, -0.22, 0.08), glove)
+	_part(root, Vector3(0.15, 0.16, 0.34), Vector3(0.1, -0.29, -0.42), sleeve).rotation.z = -0.25
+	_part(root, Vector3(0.14, 0.15, 0.3), Vector3(-0.06, -0.35, 0.1), sleeve).rotation.z = 0.15
+	var muzzle := Node3D.new()
+	muzzle.position = Vector3(0.0, 0.025, muzzle_z)
+	root.add_child(muzzle)
+	var flash := MeshInstance3D.new()
+	var flash_mesh := BoxMesh.new()
+	flash_mesh.size = Vector3(0.16, 0.16, 0.32) if id in ["shotgun", "lmg"] else Vector3(0.13, 0.13, 0.26)
+	flash.mesh = flash_mesh
+	flash.material_override = _mat(Color("#ffd27a"), 0.0, 0.0, 4.0, true)
+	flash.visible = false
+	flash.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	muzzle.add_child(flash)
+	var light := OmniLight3D.new()
+	light.light_color = Color("#ffc16d")
+	light.light_energy = 0.0
+	light.omni_range = 7.0
+	light.shadow_enabled = false
+	light.light_cull_mask = 0xFFFFFFFF ^ 2
+	muzzle.add_child(light)
+	_assign_viewmodel_layer(root)
+	_rig_data[id] = {
+		"root": root,
+		"muzzle": muzzle,
+		"flash": flash,
+		"light": light,
+		"magazine": magazine,
+		"mag_base": mag_base,
+	}
+
+
+func _add_barrel(root: Node3D, y: float, z_from: float, z_to: float, radius: float, material: Material) -> void:
 	var barrel := MeshInstance3D.new()
 	barrel.mesh = _unit_cylinder
-	barrel.scale = Vector3(0.034, 0.38, 0.034)
+	barrel.scale = Vector3(radius, absf(z_to - z_from), radius)
 	barrel.rotation.x = PI * 0.5
-	barrel.position = Vector3(0.0, 0.025, -0.67)
-	barrel.material_override = dark
-	_viewmodel.add_child(barrel)
-	_part(_viewmodel, Vector3(0.12, 0.13, 0.27), Vector3(0.0, -0.005, 0.16), steel)
-	_magazine = _part(_viewmodel, Vector3(0.1, 0.24, 0.14), Vector3(0.0, -0.18, -0.06), dark)
-	_magazine.rotation.x = -0.22
-	_magazine_base = _magazine.position
-	_part(_viewmodel, Vector3(0.09, 0.2, 0.11), Vector3(0.0, -0.17, 0.1), dark).rotation.x = 0.3
-	_part(_viewmodel, Vector3(0.035, 0.09, 0.1), Vector3(0.0, 0.12, -0.14), accent)
-	_part(_viewmodel, Vector3(0.09, 0.05, 0.06), Vector3(0.0, 0.11, 0.05), dark)
-	_part(_viewmodel, Vector3(0.168, 0.028, 0.3), Vector3(0.0, 0.065, -0.24), accent)
-	_part(_viewmodel, Vector3(0.12, 0.13, 0.22), Vector3(0.06, -0.16, -0.34), glove)
-	_part(_viewmodel, Vector3(0.12, 0.12, 0.24), Vector3(-0.03, -0.22, 0.08), glove)
-	_part(_viewmodel, Vector3(0.15, 0.16, 0.34), Vector3(0.1, -0.29, -0.42), sleeve).rotation.z = -0.25
-	_part(_viewmodel, Vector3(0.14, 0.15, 0.3), Vector3(-0.06, -0.35, 0.1), sleeve).rotation.z = 0.15
-	_muzzle = Node3D.new()
-	_muzzle.position = Vector3(0.0, 0.025, -0.88)
-	_viewmodel.add_child(_muzzle)
-	_flash_mesh = MeshInstance3D.new()
-	var flash_mesh := BoxMesh.new()
-	flash_mesh.size = Vector3(0.13, 0.13, 0.26)
-	_flash_mesh.mesh = flash_mesh
-	_flash_mesh.material_override = _mat(Color("#ffd27a"), 0.0, 0.0, 4.0, true)
-	_flash_mesh.visible = false
-	_flash_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	_muzzle.add_child(_flash_mesh)
-	_flash_light = OmniLight3D.new()
-	_flash_light.light_color = Color("#ffc16d")
-	_flash_light.light_energy = 0.0
-	_flash_light.omni_range = 7.0
-	_flash_light.shadow_enabled = false
-	_flash_light.light_cull_mask = 0xFFFFFFFF ^ 2
-	_muzzle.add_child(_flash_light)
-	_assign_viewmodel_layer(_viewmodel)
+	barrel.position = Vector3(0.0, y, (z_from + z_to) * 0.5)
+	barrel.material_override = material
+	root.add_child(barrel)
 
 
 func _assign_viewmodel_layer(node: Node) -> void:
@@ -181,6 +253,147 @@ func _assign_viewmodel_layer(node: Node) -> void:
 		(node as VisualInstance3D).layers = 2
 	for child in node.get_children():
 		_assign_viewmodel_layer(child)
+
+
+func set_loadout(owned: Array, selected: String) -> void:
+	var cleaned: Array[String] = []
+	for raw in owned:
+		var id := String(raw)
+		if WeaponCatalog.has_weapon(id) and not cleaned.has(id):
+			cleaned.append(id)
+	if cleaned.is_empty():
+		cleaned = WeaponCatalog.default_owned()
+	weapons_owned = cleaned
+	for id in weapons_owned:
+		if not _ammo_states.has(id):
+			_ammo_states[id] = {
+				"mag": _mag_size_for(id),
+				"reserve": _reserve_cap_for(id),
+			}
+	var index := weapons_owned.find(selected)
+	_equip_index(maxi(index, 0), false)
+
+
+func current_weapon_id() -> String:
+	return String(_weapon.get("id", "pistol"))
+
+
+func weapon_profile() -> Dictionary:
+	return _weapon.duplicate(true)
+
+
+func loadout_summary() -> Array:
+	var result: Array = []
+	for i in range(weapons_owned.size()):
+		var id := weapons_owned[i]
+		var state: Dictionary = _ammo_states.get(id, {})
+		result.append({
+			"slot": i + 1,
+			"id": id,
+			"name": WeaponCatalog.short_name(id),
+			"full_name": WeaponCatalog.display_name(id),
+			"accent": WeaponCatalog.accent(id),
+			"active": i == weapon_index,
+			"mag": int(state.get("mag", 0)),
+			"reserve": int(state.get("reserve", 0)),
+			"mag_size": _mag_size_for(id),
+		})
+	return result
+
+
+func switch_weapon_slot(slot: int) -> bool:
+	var index := slot - 1
+	if index < 0 or index >= weapons_owned.size() or index == weapon_index:
+		return false
+	if carrying_core or reloading or _switch_lock > 0.0 or not alive:
+		return false
+	_equip_index(index, true)
+	return true
+
+
+func _cycle_weapon(direction: int) -> void:
+	if weapons_owned.size() < 2 or carrying_core or reloading or _switch_lock > 0.0 or not alive:
+		return
+	_equip_index(wrapi(weapon_index + direction, 0, weapons_owned.size()), true)
+
+
+func _equip_index(index: int, announce: bool) -> void:
+	if weapons_owned.is_empty():
+		return
+	index = clampi(index, 0, weapons_owned.size() - 1)
+	if not _weapon.is_empty():
+		_ammo_states[current_weapon_id()] = {"mag": mag, "reserve": reserve}
+	weapon_index = index
+	var id := weapons_owned[weapon_index]
+	_weapon = WeaponCatalog.data(id)
+	if not _ammo_states.has(id):
+		_ammo_states[id] = {"mag": int(_weapon.get("mag", 0)), "reserve": int(_weapon.get("reserve", 0))}
+	var state: Dictionary = _ammo_states[id]
+	_apply_weapon_stats()
+	mag = clampi(int(state.get("mag", mag_size)), 0, mag_size)
+	reserve = clampi(int(state.get("reserve", reserve_cap)), 0, reserve_cap)
+	reloading = false
+	_reload_left = 0.0
+	_trigger_was_down = false
+	_switch_lock = 0.2 if announce else 0.0
+	_fire_cooldown = maxf(_fire_cooldown, 0.12)
+	for key in _rig_data.keys():
+		var other: Dictionary = _rig_data[key]
+		var other_root: Node3D = other.get("root") as Node3D
+		if other_root != null:
+			other_root.visible = false
+	var rig: Dictionary = _rig_data.get(id, {})
+	if not rig.is_empty():
+		_viewmodel = rig.get("root") as Node3D
+		_muzzle = rig.get("muzzle") as Node3D
+		_flash_mesh = rig.get("flash") as MeshInstance3D
+		_flash_light = rig.get("light") as OmniLight3D
+		_magazine = rig.get("magazine") as MeshInstance3D
+		_magazine_base = rig.get("mag_base", Vector3.ZERO)
+		_magazine_rot_base = _magazine.rotation.x if _magazine != null else -0.22
+		if _viewmodel != null:
+			_viewmodel.visible = alive and not carrying_core
+	ammo_changed.emit(mag, reserve, false)
+	weapon_changed.emit(id, weapon_index + 1)
+	if announce:
+		_play_ui("switch", -6.0, randf_range(0.94, 1.06))
+
+
+func _apply_weapon_stats() -> void:
+	var id := current_weapon_id()
+	mag_size = _mag_size_for(id)
+	reserve_cap = _reserve_cap_for(id)
+	reload_time = _reload_time_for(id)
+	fire_interval = _fire_interval_for(id)
+
+
+func _mag_size_for(id: String) -> int:
+	var data := WeaponCatalog.data(id)
+	var level := int(_upgrades.get("mag", 0))
+	var per := 2 if id == "shotgun" else 6
+	return int(data.get("mag", 12)) + per * level
+
+
+func _reserve_cap_for(id: String) -> int:
+	var data := WeaponCatalog.data(id)
+	return int(data.get("reserve", 72)) + reserve_bonus
+
+
+func _reload_time_for(id: String) -> float:
+	var data := WeaponCatalog.data(id)
+	var level := int(_upgrades.get("reload", 0))
+	return maxf(0.5, float(data.get("reload", 1.2)) * (1.0 - 0.1 * level) * meta_reload_mult)
+
+
+func _fire_interval_for(id: String) -> float:
+	var data := WeaponCatalog.data(id)
+	var level := int(_upgrades.get("rate", 0))
+	return maxf(0.042, float(data.get("interval", 0.12)) * (1.0 - 0.07 * level))
+
+
+func _play_ui(kind: String, volume: float = 0.0, pitch: float = 1.0) -> void:
+	if audio != null and audio.has_method("play_ui"):
+		audio.call("play_ui", kind, volume, pitch)
 
 
 func _build_carry_visual() -> void:
@@ -262,6 +475,15 @@ func _unhandled_input(event: InputEvent) -> void:
 				start_reload()
 			elif key.physical_keycode == KEY_SPACE:
 				_jump_queued = true
+			elif key.physical_keycode >= KEY_1 and key.physical_keycode <= KEY_5:
+				switch_weapon_slot(int(key.physical_keycode - KEY_1) + 1)
+	elif event is InputEventMouseButton:
+		var button := event as InputEventMouseButton
+		if button.pressed and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			if button.button_index == MOUSE_BUTTON_WHEEL_UP:
+				_cycle_weapon(-1)
+			elif button.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				_cycle_weapon(1)
 
 
 func _physics_process(delta: float) -> void:
@@ -283,6 +505,7 @@ func _physics_process(delta: float) -> void:
 		_jump_buffer = maxf(0.0, _jump_buffer - delta)
 	var can_move := alive and input_enabled
 	var wish := Vector3.ZERO
+	aiming = can_move and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not carrying_core
 	if can_move:
 		var input_dir := Vector2.ZERO
 		if Input.is_physical_key_pressed(KEY_W):
@@ -302,7 +525,8 @@ func _physics_process(delta: float) -> void:
 		right = right.normalized()
 		wish = (right * input_dir.x + forward * input_dir.y).normalized()
 		if wish.length_squared() > 0.01:
-			aiming = Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not carrying_core
+			if carrying_core:
+				aiming = false
 		var sprinting := Input.is_physical_key_pressed(KEY_SHIFT) and input_dir.y > 0.2 and not aiming and not carrying_core
 		var speed := ads_speed if aiming else (sprint_speed if sprinting else walk_speed)
 		if carrying_core:
@@ -337,16 +561,17 @@ func _process(delta: float) -> void:
 		_reload_left -= delta
 		if _reload_left <= 0.0:
 			_finish_reload()
-	_regen_timer += delta
-	if not reloading and reserve < MAX_RESERVE and _regen_timer >= 2.2:
-		_regen_timer = 0.0
-		reserve += 1
-		ammo_changed.emit(mag, reserve, false)
+	_switch_lock = maxf(0.0, _switch_lock - delta)
 	_update_visuals(delta)
+	var trigger_down := false
 	if auto_pilot and alive and not carrying_core:
 		_auto_pilot_step(delta)
-	elif alive and input_enabled and not carrying_core and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	elif alive and input_enabled and not carrying_core and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		trigger_down = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	var automatic := bool(_weapon.get("auto", true))
+	if trigger_down and (automatic or not _trigger_was_down):
 		_fire()
+	_trigger_was_down = trigger_down
 
 
 func _update_visuals(delta: float) -> void:
@@ -372,18 +597,20 @@ func _update_visuals(delta: float) -> void:
 		mag_off = 1.0 - _smooth01((reload_t - 0.58) / 0.18)
 	var mag_visible := not (reload_t > 0.39 and reload_t < 0.57)
 
-	var target_pos := Vector3(0.0, -0.155, -0.42) if ads_pose else Vector3(0.31, -0.29, -0.53)
-	target_pos.x += sway + 0.055 * tilt
-	target_pos.y += bob * 0.5 - _gun_kick * 0.02 - 0.085 * tilt
-	target_pos.z += _gun_kick * 0.085
-	_viewmodel.position = _viewmodel.position.lerp(target_pos, delta * (18.0 if reloading else 14.0))
-	_viewmodel.rotation.x = _gun_kick * 0.075 + sin(_bob_time * 0.7) * 0.003 - 0.3 * tilt
-	_viewmodel.rotation.z = 0.3 * tilt
-	_viewmodel.visible = alive and not carrying_core
-	_magazine.visible = alive and mag_visible
-	_magazine.position = _magazine_base + Vector3(0.015 * mag_off, -0.42 * mag_off, 0.02 * mag_off)
-	_magazine.rotation.x = -0.22 + 0.55 * mag_off
-	_magazine.rotation.z = 0.35 * mag_off
+	if _viewmodel != null:
+		var target_pos := Vector3(0.0, -0.155, -0.42) if ads_pose else Vector3(0.31, -0.29, -0.53)
+		target_pos.x += sway + 0.055 * tilt
+		target_pos.y += bob * 0.5 - _gun_kick * 0.02 - 0.085 * tilt
+		target_pos.z += _gun_kick * 0.085
+		_viewmodel.position = _viewmodel.position.lerp(target_pos, delta * (18.0 if reloading else 14.0))
+		_viewmodel.rotation.x = _gun_kick * 0.075 + sin(_bob_time * 0.7) * 0.003 - 0.3 * tilt
+		_viewmodel.rotation.z = 0.3 * tilt
+		_viewmodel.visible = alive and not carrying_core
+	if _magazine != null:
+		_magazine.visible = alive and mag_visible
+		_magazine.position = _magazine_base + Vector3(0.015 * mag_off, -0.42 * mag_off, 0.02 * mag_off)
+		_magazine.rotation.x = _magazine_rot_base + 0.55 * mag_off
+		_magazine.rotation.z = 0.35 * mag_off
 
 	if _carry_rig != null:
 		var carry_pose := carrying_core and alive
@@ -406,49 +633,77 @@ func _smooth01(value: float) -> float:
 
 
 func _fire() -> void:
-	if not alive or reloading or carrying_core or _fire_cooldown > 0.0 or not game_active:
+	if not alive or reloading or carrying_core or _fire_cooldown > 0.0 or not game_active or _switch_lock > 0.0:
 		return
 	if mag <= 0:
+		if not _trigger_was_down:
+			_play_ui("empty", -8.0)
 		start_reload()
 		return
 	mag -= 1
-	_fire_cooldown = FIRE_INTERVAL
-	_flash_time = 0.05
-	_gun_kick = 1.0
-	var from := _camera.global_position
-	var spread := 0.0026 if aiming else 0.013
+	_sync_ammo_state()
+	_fire_cooldown = fire_interval
+	_flash_time = 0.04 if aiming else 0.055
+	_gun_kick = minf(1.6, float(_weapon.get("kick", 1.0)))
+	var weapon_id := current_weapon_id()
+	var pellets := maxi(1, int(_weapon.get("pellets", 1)))
+	var spread := float(_weapon.get("ads_spread", 0.004)) if aiming else float(_weapon.get("spread", 0.01))
 	if Vector2(velocity.x, velocity.z).length() > 1.0:
 		spread += 0.006
-	var offset := Vector3(randf_range(-spread, spread), randf_range(-spread, spread), 0.0)
-	var direction := (_camera.global_transform.basis * (Vector3(0.0, 0.0, -1.0) + offset)).normalized()
-	var to := from + direction * RANGE
-	var query := PhysicsRayQueryParameters3D.create(from, to, HIT_MASK, [get_rid()])
-	var hit := get_world_3d().direct_space_state.intersect_ray(query)
-	var end := to
-	var normal := -direction
-	var flesh_hit := false
-	var headshot := false
-	var zombie_id := -1
-	if not hit.is_empty():
-		end = hit["position"]
-		normal = hit["normal"]
-		var collider: Object = hit["collider"]
-		if collider != null and collider.has_meta("zombie_id"):
-			zombie_id = int(collider.get_meta("zombie_id"))
-			flesh_hit = true
-			var proxy: Node = collider.get_meta("zombie_proxy", null)
-			if is_instance_valid(proxy):
-				headshot = end.y > proxy.global_position.y + float(proxy.call("head_height"))
-				if proxy.has_method("receive_hit"):
-					proxy.call("receive_hit", headshot)
-	if effects != null:
-		effects.tracer(_muzzle.global_position, end)
-		effects.impact(end, normal, flesh_hit)
-	if flesh_hit:
-		hit_marker.emit(headshot)
-		if main_ref != null and main_ref.has_method("request_zombie_hit"):
-			main_ref.call("request_zombie_hit", zombie_id, headshot)
+	if not is_on_floor():
+		spread += 0.01
+	if auto_pilot:
+		spread *= 0.4
+	var weapon_range := float(_weapon.get("range", 100.0))
+	var from := _camera.global_position
+	var muzzle_pos := _muzzle.global_position if _muzzle != null else from
+	var hit_any := false
+	var head_any := false
+	for pellet in range(pellets):
+		var offset := Vector3(randf_range(-spread, spread), randf_range(-spread, spread), 0.0)
+		var direction := (_camera.global_transform.basis * (Vector3(0.0, 0.0, -1.0) + offset)).normalized()
+		var to := from + direction * weapon_range
+		var query := PhysicsRayQueryParameters3D.create(from, to, HIT_MASK, [get_rid()])
+		var hit := get_world_3d().direct_space_state.intersect_ray(query)
+		var end := to
+		var normal := -direction
+		var flesh_hit := false
+		var headshot := false
+		var zombie_id := -1
+		if not hit.is_empty():
+			end = hit["position"]
+			normal = hit["normal"]
+			var collider: Object = hit["collider"]
+			if collider != null and collider.has_meta("zombie_id"):
+				zombie_id = int(collider.get_meta("zombie_id"))
+				flesh_hit = true
+				var proxy: Node = collider.get_meta("zombie_proxy", null)
+				if is_instance_valid(proxy):
+					headshot = end.y > proxy.global_position.y + float(proxy.call("head_height"))
+					if proxy.has_method("receive_hit"):
+						proxy.call("receive_hit", headshot)
+		if effects != null:
+			if pellet < 3:
+				effects.tracer(muzzle_pos, end)
+			effects.impact(end, normal, flesh_hit)
+		if flesh_hit:
+			hit_any = true
+			head_any = head_any or headshot
+			if main_ref != null and main_ref.has_method("request_zombie_hit"):
+				main_ref.call("request_zombie_hit", zombie_id, headshot, weapon_id)
+	if hit_any:
+		hit_marker.emit(head_any)
+	if audio != null and audio.has_method("play_weapon_shot"):
+		audio.call("play_weapon_shot", weapon_id, aiming)
 	ammo_changed.emit(mag, reserve, reloading)
+	if mag <= 0:
+		start_reload()
+
+
+func _sync_ammo_state() -> void:
+	if _weapon.is_empty():
+		return
+	_ammo_states[current_weapon_id()] = {"mag": mag, "reserve": reserve}
 
 
 func _auto_pilot_step(delta: float) -> void:
@@ -490,6 +745,7 @@ func start_reload() -> void:
 		return
 	reloading = true
 	_reload_left = reload_time
+	_play_ui("reload", -4.0, randf_range(0.96, 1.05))
 	ammo_changed.emit(mag, reserve, true)
 
 
@@ -499,11 +755,14 @@ func _finish_reload() -> void:
 	mag += taken
 	reserve -= taken
 	reloading = false
+	_sync_ammo_state()
+	_play_ui("reload_done", -6.0)
 	ammo_changed.emit(mag, reserve, false)
 
 
 func add_reserve(amount: int) -> void:
-	reserve = mini(MAX_RESERVE, reserve + amount)
+	reserve = mini(reserve_cap, reserve + amount)
+	_sync_ammo_state()
 	ammo_changed.emit(mag, reserve, reloading)
 
 
@@ -511,15 +770,32 @@ func refill_ammo() -> void:
 	if not alive:
 		return
 	reloading = false
+	for id in weapons_owned:
+		_ammo_states[id] = {
+			"mag": _mag_size_for(id),
+			"reserve": _reserve_cap_for(id),
+		}
+	_apply_weapon_stats()
 	mag = mag_size
-	reserve = MAX_RESERVE
+	reserve = reserve_cap
+	_sync_ammo_state()
+	_play_ui("supply", -4.0)
 	ammo_changed.emit(mag, reserve, false)
 
 
 func set_meta_bonus(reserve_bonus_value: int, reload_multiplier: float) -> void:
 	reserve_bonus = maxi(0, reserve_bonus_value)
 	meta_reload_mult = clampf(reload_multiplier, 0.5, 1.0)
-	reserve = maxi(reserve, 90 + reserve_bonus)
+	for key in _ammo_states.keys():
+		var id := String(key)
+		var state: Dictionary = _ammo_states[key]
+		var cap := _reserve_cap_for(id)
+		state["reserve"] = mini(cap, int(state.get("reserve", 0)) + reserve_bonus)
+	_apply_weapon_stats()
+	if not _weapon.is_empty():
+		reserve = mini(reserve_cap, reserve + reserve_bonus)
+		_sync_ammo_state()
+		ammo_changed.emit(mag, reserve, reloading)
 
 
 func apply_health(value: float) -> void:
@@ -536,7 +812,8 @@ func set_down() -> void:
 	alive = false
 	reloading = false
 	aiming = false
-	_viewmodel.visible = false
+	if _viewmodel != null:
+		_viewmodel.visible = false
 	if _carry_rig != null:
 		_carry_rig.visible = false
 	died.emit()
@@ -554,12 +831,11 @@ func respawn_at(pos: Vector3, face_yaw: float = 0.0) -> void:
 	rotation.y = _yaw
 	_head.rotation.x = 0.0
 	_head.position.y = 1.55
-	_viewmodel.visible = true
+	if _viewmodel != null:
+		_viewmodel.visible = true
 	if _carry_rig != null:
 		_carry_rig.visible = false
-	mag = mag_size
-	reserve = maxi(reserve, 90 + reserve_bonus)
-	ammo_changed.emit(mag, reserve, false)
+	refill_ammo()
 	health_changed.emit(health)
 
 
@@ -591,18 +867,24 @@ func face_yaw(value: float) -> void:
 
 
 func apply_team_upgrades(upgrades: Dictionary) -> void:
-	var mag_level := int(upgrades.get("mag", 0))
-	var reload_level := int(upgrades.get("reload", 0))
-	var speed_level := int(upgrades.get("speed", 0))
-	mag_size = MAG_SIZE + 6 * mag_level
-	reload_time = maxf(0.55, RELOAD_TIME * (1.0 - 0.12 * reload_level) * meta_reload_mult)
+	_upgrades = {
+		"mag": int(upgrades.get("mag", 0)),
+		"reload": int(upgrades.get("reload", 0)),
+		"rate": int(upgrades.get("rate", 0)),
+		"speed": int(upgrades.get("speed", 0)),
+		"armor": int(upgrades.get("armor", 0)),
+	}
+	_apply_weapon_stats()
+	var speed_level := int(_upgrades["speed"])
 	var speed_mult := 1.0 + 0.05 * speed_level
 	walk_speed = WALK_SPEED * speed_mult
 	sprint_speed = SPRINT_SPEED * speed_mult
 	ads_speed = ADS_SPEED * speed_mult
-	damage_reduction = clampf(0.08 * int(upgrades.get("armor", 0)), 0.0, 0.4)
+	damage_reduction = clampf(0.08 * int(_upgrades["armor"]), 0.0, 0.4)
 	mag = mini(mag, mag_size)
+	reserve = mini(reserve, reserve_cap)
 	if not reloading:
+		_sync_ammo_state()
 		ammo_changed.emit(mag, reserve, false)
 
 
@@ -617,7 +899,7 @@ func is_reloading() -> bool:
 
 
 func get_spread_normalized() -> float:
-	var value := 0.25
+	var value := clampf(float(_weapon.get("spread", 0.012)) / 0.03, 0.15, 1.0) * 0.6
 	if aiming:
 		value = 0.05
 	if Vector2(velocity.x, velocity.z).length() > 1.0:

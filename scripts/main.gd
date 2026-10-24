@@ -5,8 +5,6 @@ const RESPAWN_TIME := 8.0
 const SNAPSHOT_INTERVAL := 1.0 / 15.0
 const SUMMARY_INTERVAL := 0.25
 const STATE_INTERVAL := 1.0 / 12.0
-const BODY_DAMAGE := 34.0
-const HEADSHOT_DAMAGE := 100.0
 const ZOMBIE_SCORE := {"walker": 10, "crawler": 14, "runner": 16, "brute": 30}
 const ZOMBIE_NAMES := {"walker": "普通丧尸", "crawler": "爬行丧尸", "runner": "疾行丧尸", "brute": "重装丧尸"}
 const CORES_REQUIRED := 3
@@ -15,9 +13,10 @@ const MISSION_BONUS := 300
 const CARD_MAX_LEVEL := 3
 const DRAW_TIMEOUT := 25.0
 const CARD_POOL := [
-	{"key": "mag", "title": "扩容弹匣", "desc": "全队弹匣容量 +6 发", "accent": "#59d8c8"},
-	{"key": "reload", "title": "快速装填", "desc": "全队换弹时间 -12%", "accent": "#ffcb66"},
+	{"key": "mag", "title": "扩容弹匣", "desc": "全队弹匣容量 +6 发（霰弹 +2）", "accent": "#59d8c8"},
+	{"key": "reload", "title": "快速装填", "desc": "全队换弹时间 -10%", "accent": "#ffcb66"},
 	{"key": "damage", "title": "膛压强化", "desc": "全队枪械伤害 +14%", "accent": "#ff8d6b"},
+	{"key": "rate", "title": "枪机抛光", "desc": "全队射速 +7%", "accent": "#83c8ff"},
 	{"key": "speed", "title": "轻装疾行", "desc": "全队移动速度 +5%", "accent": "#83d66f"},
 	{"key": "armor", "title": "防弹插板", "desc": "全队受到伤害 -8%", "accent": "#b997ff"},
 ]
@@ -25,6 +24,7 @@ const CARD_POOL := [
 var menu: MainMenu
 var hud: GameHUD
 var player: LocalPlayer
+var audio: DeadCityAudio
 
 var _world: Node3D
 var city: CityBuilder
@@ -35,6 +35,7 @@ var layout: Dictionary = {}
 var players: Dictionary = {}
 var remote_avatars: Dictionary = {}
 var zombie_proxies: Dictionary = {}
+var _zombie_states: Dictionary = {}
 
 var local_id := 1
 var local_name := "幸存者"
@@ -49,7 +50,9 @@ var cores_secured := 0
 var core_states: Array = []
 var draw_tokens := 0
 var mission_complete := false
-var team_upgrades := {"mag": 0, "reload": 0, "damage": 0, "speed": 0, "armor": 0}
+var team_upgrades := {"mag": 0, "reload": 0, "damage": 0, "rate": 0, "speed": 0, "armor": 0}
+var _mission_hint_text := "前往市中心喷泉，按 E 进入地下设施"
+var _mission_zone_text := "基地安全区"
 var _pending_draw: Dictionary = {}
 var _draw_open := false
 var _draw_options: Array = []
@@ -90,6 +93,9 @@ var _cli_mission := false
 var _cli_mission_delay := 2.8
 var _cli_mission_shots := ""
 var _cli_reload_shot := ""
+var _cli_armory_shot := ""
+var _cli_intel_shot := ""
+var _cli_backpack_shot := ""
 
 
 func _ready() -> void:
@@ -99,6 +105,9 @@ func _ready() -> void:
 	multiplayer.server_disconnected.connect(_on_net_server_disconnected)
 	multiplayer.peer_disconnected.connect(_on_net_peer_disconnected)
 	multiplayer.peer_connected.connect(_on_net_peer_connected)
+	audio = DeadCityAudio.new()
+	audio.name = "Audio"
+	add_child(audio)
 	_build_ui()
 	_meta = MetaProfile.load_profile()
 	menu.set_profile(_meta)
@@ -128,10 +137,13 @@ func _build_ui() -> void:
 	menu.lobby_ready_requested.connect(_on_lobby_ready_requested)
 	menu.lobby_start_requested.connect(_on_lobby_start_requested)
 	menu.lobby_leave_requested.connect(_on_lobby_leave_requested)
+	menu.buy_weapon_requested.connect(_on_buy_weapon_requested)
+	menu.equip_weapon_requested.connect(_on_equip_weapon_requested)
 	hud.resume_requested.connect(_resume_game)
 	hud.lobby_requested.connect(_on_lobby_requested)
 	hud.card_picked.connect(_on_card_picked)
 	hud.draw_cancelled.connect(_on_draw_cancelled)
+	hud.weapon_selected.connect(_on_backpack_weapon_selected)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
@@ -167,10 +179,16 @@ func _parse_cli() -> void:
 			_cli_mission_shots = arg.trim_prefix("--mission-shots=")
 		elif arg.begins_with("--reload-shot="):
 			_cli_reload_shot = arg.trim_prefix("--reload-shot=")
+		elif arg.begins_with("--armory-shot="):
+			_cli_armory_shot = arg.trim_prefix("--armory-shot=")
+		elif arg.begins_with("--intel-shot="):
+			_cli_intel_shot = arg.trim_prefix("--intel-shot=")
+		elif arg.begins_with("--backpack-shot="):
+			_cli_backpack_shot = arg.trim_prefix("--backpack-shot=")
 
 
 func _cli_active() -> bool:
-	return _cli_host or _cli_solo or not _cli_join.is_empty() or not _cli_capture.is_empty() or not _cli_menu_shot.is_empty() or _cli_mission or not _cli_reload_shot.is_empty()
+	return _cli_host or _cli_solo or not _cli_join.is_empty() or not _cli_capture.is_empty() or not _cli_menu_shot.is_empty() or _cli_mission or not _cli_reload_shot.is_empty() or not _cli_armory_shot.is_empty() or not _cli_intel_shot.is_empty() or not _cli_backpack_shot.is_empty()
 
 
 func _run_cli() -> void:
@@ -181,6 +199,12 @@ func _run_cli() -> void:
 	if not _cli_menu_shot.is_empty():
 		await get_tree().create_timer(0.8).timeout
 		_capture(_cli_menu_shot)
+	if not _cli_armory_shot.is_empty():
+		await get_tree().create_timer(0.9).timeout
+		menu.open_armory()
+		await get_tree().create_timer(0.45).timeout
+		await _capture(_cli_armory_shot)
+		menu.close_armory()
 	var delay := 0.6
 	if not _cli_join.is_empty():
 		delay = 2.2
@@ -199,6 +223,20 @@ func _run_cli() -> void:
 		_run_mission_auto()
 	if not _cli_reload_shot.is_empty():
 		_run_reload_auto()
+	if not _cli_intel_shot.is_empty():
+		await _wait_for_game()
+		await get_tree().create_timer(1.2).timeout
+		_open_intel()
+		await get_tree().create_timer(0.4).timeout
+		await _capture(_cli_intel_shot)
+		_close_overlays()
+	if not _cli_backpack_shot.is_empty():
+		await _wait_for_game()
+		await get_tree().create_timer(1.4).timeout
+		_open_backpack()
+		await get_tree().create_timer(0.4).timeout
+		await _capture(_cli_backpack_shot)
+		_close_overlays()
 	if not _cli_capture.is_empty():
 		await get_tree().create_timer(_cli_capture_after).timeout
 		_capture(_cli_capture)
@@ -329,6 +367,32 @@ func _on_solo_requested(requested_name: String, world_seed: int) -> void:
 	seed_value = world_seed
 	menu.set_busy(true, "正在准备单人演练…")
 	_start_solo_match()
+
+
+func _on_buy_weapon_requested(weapon_id: String) -> void:
+	if game_started:
+		return
+	var result := MetaProfile.buy_weapon(_meta, weapon_id)
+	var ok := bool(result.get("ok", false))
+	if menu != null:
+		menu.set_armory_status(String(result.get("message", "")), not ok)
+	if ok:
+		_persist_meta()
+		if audio != null:
+			audio.play_ui("supply", -4.0)
+
+
+func _on_equip_weapon_requested(weapon_id: String) -> void:
+	if game_started:
+		return
+	var result := MetaProfile.select_weapon(_meta, weapon_id)
+	var ok := bool(result.get("ok", false))
+	if menu != null:
+		menu.set_armory_status(String(result.get("message", "")), not ok)
+	if ok:
+		_persist_meta()
+		if audio != null:
+			audio.play_ui("switch", -6.0)
 
 
 func _on_join_requested(requested_name: String, address: String, port: int) -> void:
@@ -566,7 +630,8 @@ func _prepare_world(world_seed: int) -> bool:
 		_server_reset_mission()
 	hud.setup_world(layout)
 	hud.set_health(100.0)
-	hud.set_ammo(player.mag_size, player.reserve, false, 0.0)
+	hud.set_ammo(player.mag, player.reserve, false, 0.0)
+	hud.set_weapon_strip(player.loadout_summary(), player.weapon_profile())
 	hud.set_mission(cores_secured, CORES_REQUIRED, draw_tokens,
 		"前往市中心喷泉，按 E 进入地下设施", "基地安全区", DeadCityUI.CYAN, team_upgrades, false, MetaProfile.power_of(team_upgrades))
 	hud.hide_loading()
@@ -621,12 +686,15 @@ func _spawn_local_player_node() -> void:
 	_world.add_child(player)
 	player.effects = effects
 	player.main_ref = self
+	player.audio = audio
 	var bonus := MetaProfile.legacy_bonus(_meta)
 	player.set_meta_bonus(int(bonus["reserve"]), float(bonus["reload_mult"]))
+	player.set_loadout(_meta.get("owned_weapons", WeaponCatalog.default_owned()), String(_meta.get("selected_weapon", WeaponCatalog.DEFAULT_SELECTED)))
 	player.set_game_active(false)
 	player.health_changed.connect(_on_local_health_changed)
 	player.damaged.connect(_on_local_damaged)
 	player.hit_marker.connect(_on_local_hit_marker)
+	player.weapon_changed.connect(_on_weapon_changed)
 
 
 func _place_local_player(spawn: Vector3, face_yaw_value: float = PI) -> void:
@@ -639,6 +707,7 @@ func _place_local_player(spawn: Vector3, face_yaw_value: float = PI) -> void:
 	hud.set_down(false)
 	hud.set_health(100.0)
 	hud.set_ammo(player.mag, player.reserve, false, 0.0)
+	hud.set_weapon_strip(player.loadout_summary(), player.weapon_profile())
 
 
 func _process(delta: float) -> void:
@@ -680,18 +749,34 @@ func _unhandled_input(event: InputEvent) -> void:
 				get_viewport().set_input_as_handled()
 		return
 	if event.is_action_pressed("ui_cancel"):
-		if _paused:
+		if _overlay_open():
+			_close_overlays()
+		elif _paused:
 			_resume_game()
 		else:
 			_pause_game()
 		get_viewport().set_input_as_handled()
+		return
+	if _overlay_open():
+		if event is InputEventKey:
+			var overlay_key := event as InputEventKey
+			if overlay_key.pressed and not overlay_key.echo:
+				if overlay_key.physical_keycode == KEY_TAB or overlay_key.physical_keycode == KEY_B:
+					_close_overlays()
+					get_viewport().set_input_as_handled()
 		return
 	if _paused or player == null or not player.alive:
 		return
 	if event is InputEventKey:
 		var key := event as InputEventKey
 		if key.pressed and not key.echo:
-			if key.physical_keycode == KEY_E:
+			if key.physical_keycode == KEY_TAB:
+				_open_intel()
+				get_viewport().set_input_as_handled()
+			elif key.physical_keycode == KEY_B:
+				_open_backpack()
+				get_viewport().set_input_as_handled()
+			elif key.physical_keycode == KEY_E:
 				_request_interact()
 				get_viewport().set_input_as_handled()
 			elif key.physical_keycode == KEY_G:
@@ -702,6 +787,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _pause_game() -> void:
 	if not game_started or game_over:
 		return
+	if _overlay_open():
+		hud.call("close_overlays")
 	_paused = true
 	if solo_mode:
 		get_tree().paused = true
@@ -734,6 +821,80 @@ func _capture_mouse() -> void:
 
 func _release_mouse() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func _overlay_open() -> bool:
+	return hud != null and hud.has_method("overlay_open") and bool(hud.call("overlay_open"))
+
+
+func _open_intel() -> void:
+	if hud == null or player == null:
+		return
+	hud.call("open_intel", _intel_payload())
+	_set_overlay_input(false)
+
+
+func _open_backpack() -> void:
+	if hud == null or player == null:
+		return
+	hud.call("open_backpack", player.loadout_summary(), player.weapon_profile(), team_upgrades)
+	_set_overlay_input(false)
+
+
+func _close_overlays() -> void:
+	if hud != null:
+		hud.call("close_overlays")
+	_set_overlay_input(true)
+
+
+func _set_overlay_input(active: bool) -> void:
+	if player != null and not _paused and not game_over:
+		player.set_input_enabled(active and player.alive)
+	if active and not _paused and not game_over:
+		_capture_mouse()
+	else:
+		_release_mouse()
+
+
+func _intel_payload() -> Dictionary:
+	var local_info: Dictionary = players.get(local_id, {})
+	return {
+		"mission": {
+			"cores": cores_secured,
+			"required": CORES_REQUIRED,
+			"tokens": draw_tokens,
+			"hint": _mission_hint_text,
+			"zone": _mission_zone_text,
+			"upgrades": team_upgrades.duplicate(),
+			"power": MetaProfile.power_of(team_upgrades),
+			"frenzy": director != null and director.is_frenzy(),
+			"wave": _run_wave,
+			"score": team_score,
+		},
+		"roster": _roster_payload(),
+		"player": {
+			"name": String(local_info.get("name", local_name)),
+			"health": player.health if player != null else 100.0,
+			"weapon": player.weapon_profile() if player != null else {},
+			"loadout": player.loadout_summary() if player != null else [],
+			"kills": int(local_info.get("kills", 0)),
+			"reserve_bonus": int(MetaProfile.legacy_bonus(_meta).get("reserve", 0)),
+		},
+	}
+
+
+func _on_backpack_weapon_selected(weapon_id: String) -> void:
+	if player == null:
+		return
+	var index := player.weapons_owned.find(weapon_id)
+	if index < 0:
+		if hud != null:
+			hud.announce("尚未解锁", "%s 可在主菜单军械库购买" % WeaponCatalog.display_name(weapon_id), DeadCityUI.AMBER, 1.6)
+		return
+	if player.switch_weapon_slot(index + 1):
+		_close_overlays()
+	elif hud != null:
+		hud.announce("无法切换", "搬运核心或换弹时无法切换武器", DeadCityUI.AMBER, 1.4)
 
 
 func _server_step(delta: float) -> void:
@@ -796,7 +957,7 @@ func _server_update_players(delta: float) -> void:
 			if hurt > 0.0:
 				info["hurt_cool"] = maxf(0.0, hurt - delta)
 			elif float(info["health"]) < 100.0:
-				info["health"] = minf(100.0, float(info["health"]) + 4.5 * delta)
+				info["health"] = minf(100.0, float(info["health"]) + 2.2 * delta)
 		else:
 			var left := maxf(0.0, float(info.get("respawn_left", 0.0)) - delta)
 			info["respawn_left"] = left
@@ -819,7 +980,7 @@ func _on_zombie_attacked(player_id: int, damage: float) -> void:
 		return
 	var reduction := clampf(0.08 * int(team_upgrades.get("armor", 0)), 0.0, 0.4)
 	info["health"] = maxf(0.0, float(info["health"]) - damage * (1.0 - reduction))
-	info["hurt_cool"] = 5.0
+	info["hurt_cool"] = 6.0
 	if float(info["health"]) <= 0.0:
 		_down_player(player_id)
 
@@ -881,6 +1042,8 @@ func _handle_game_over(stats: String, victory: bool = false) -> void:
 	_paused = false
 	_draw_open = false
 	get_tree().paused = false
+	if hud != null:
+		hud.call("close_overlays")
 	hud.set_pause_visible(false)
 	hud.set_down(false)
 	if not victory:
@@ -1023,22 +1186,25 @@ func _fail_connection(message: String) -> void:
 	menu.present(message, true)
 
 
-func request_zombie_hit(zid: int, headshot: bool) -> void:
+func request_zombie_hit(zid: int, headshot: bool, weapon_id: String = "smg") -> void:
 	if not game_started or game_over or player == null or not player.alive:
 		return
 	if is_server:
-		_server_apply_hit(local_id, zid, headshot)
+		_server_apply_hit(local_id, zid, headshot, weapon_id)
 	else:
-		rpc_id(1, "_net_request_hit", zid, headshot)
+		rpc_id(1, "_net_request_hit", zid, headshot, weapon_id)
 
 
-func _server_apply_hit(shooter_id: int, zid: int, headshot: bool) -> void:
+func _server_apply_hit(shooter_id: int, zid: int, headshot: bool, weapon_id: String = "smg") -> void:
 	if not is_server or game_over:
 		return
 	var info: Dictionary = players.get(shooter_id, {})
 	if info.is_empty() or not bool(info["alive"]):
 		return
-	var damage := HEADSHOT_DAMAGE if headshot else BODY_DAMAGE
+	var weapon := WeaponCatalog.data(weapon_id)
+	var damage := float(weapon.get("damage", 19.0))
+	if headshot:
+		damage *= float(weapon.get("headshot", 2.4))
 	damage *= 1.0 + 0.14 * int(team_upgrades.get("damage", 0))
 	var result: Dictionary = director.damage_zombie(zid, damage)
 	if not bool(result.get("ok", false)):
@@ -1163,11 +1329,11 @@ func _net_submit_state(pos: Vector3, yaw: float) -> void:
 
 
 @rpc("any_peer", "call_remote", "reliable")
-func _net_request_hit(zid: int, headshot: bool) -> void:
+func _net_request_hit(zid: int, headshot: bool, weapon_id: String) -> void:
 	if not is_server:
 		return
 	var sender := multiplayer.get_remote_sender_id()
-	_server_apply_hit(sender, zid, headshot)
+	_server_apply_hit(sender, zid, headshot, weapon_id)
 
 
 @rpc("authority", "call_remote", "unreliable_ordered")
@@ -1281,14 +1447,29 @@ func _update_zombies(zombie_data: Array) -> void:
 			proxy.setup(id, String(data[5]))
 			_world.add_child(proxy)
 			zombie_proxies[id] = proxy
-		proxy.set_network_state(Vector3(float(data[1]), float(data[2]), float(data[3])), float(data[4]), int(data[6]))
+			if _zombie_audio_hear(Vector3(float(data[1]), float(data[2]), float(data[3])), 55.0):
+				audio.play_zombie("growl", Vector3(float(data[1]), float(data[2]), float(data[3])))
+		var state := int(data[6])
+		if state == 1 and int(_zombie_states.get(id, 0)) != 1:
+			audio.play_zombie("attack", Vector3(float(data[1]), float(data[2]), float(data[3])))
+		_zombie_states[id] = state
+		proxy.set_network_state(Vector3(float(data[1]), float(data[2]), float(data[3])), float(data[4]), state)
 	for id in zombie_proxies.keys():
 		if present.has(id):
 			continue
 		var proxy: ZombieProxy = zombie_proxies[id]
 		if proxy != null and is_instance_valid(proxy):
+			if _zombie_audio_hear(proxy.global_position, 70.0):
+				audio.play_zombie("death", proxy.global_position)
 			proxy.play_death()
 		zombie_proxies.erase(id)
+		_zombie_states.erase(id)
+
+
+func _zombie_audio_hear(world_pos: Vector3, radius: float) -> bool:
+	if player == null or audio == null:
+		return false
+	return player.global_position.distance_to(world_pos) <= radius
 
 
 func _handle_zombie_killed(zid: int, kind: String, death_pos: Vector3, headshot: bool, killer_id: int, killer_name: String, killer_color: Color, points: int) -> void:
@@ -1298,7 +1479,10 @@ func _handle_zombie_killed(zid: int, kind: String, death_pos: Vector3, headshot:
 		if effects != null:
 			effects.zombie_death(death_pos, kind)
 		proxy.play_death()
+	if _zombie_audio_hear(death_pos, 70.0):
+		audio.play_zombie("death", death_pos)
 	zombie_proxies.erase(zid)
+	_zombie_states.erase(zid)
 	if killer_id == local_id:
 		hud.show_hit(headshot, true)
 		hud.push_kill("你 击杀 %s  +%d" % [kind_name, points], killer_color)
@@ -1332,6 +1516,15 @@ func _notify_player_respawn(player_id: int, spawn: Vector3) -> void:
 
 func _on_local_health_changed(health: float) -> void:
 	hud.set_health(health, 100.0)
+
+
+func _on_weapon_changed(weapon_id: String, slot: int) -> void:
+	if hud == null or player == null:
+		return
+	hud.set_weapon_strip(player.loadout_summary(), player.weapon_profile())
+	hud.announce(WeaponCatalog.display_name(weapon_id), "%s · 槽位 %d · %s" % [
+		WeaponCatalog.short_name(weapon_id), slot, String(player.weapon_profile().get("tag", ""))],
+		WeaponCatalog.accent(weapon_id), 1.1)
 
 
 func _on_local_damaged(amount: float) -> void:
@@ -1557,7 +1750,7 @@ func _server_reset_mission() -> void:
 	cores_secured = 0
 	mission_complete = false
 	draw_tokens = 0
-	team_upgrades = {"mag": 0, "reload": 0, "damage": 0, "speed": 0, "armor": 0}
+	team_upgrades = {"mag": 0, "reload": 0, "damage": 0, "rate": 0, "speed": 0, "armor": 0}
 	core_states.clear()
 	for i in range(MissionSite.CORE_COUNT):
 		core_states.append({"state": "site", "carrier": 0, "pos": mission.core_site_pos(i)})
@@ -1567,6 +1760,8 @@ func _server_reset_mission() -> void:
 	if mission != null:
 		mission.reset_visuals()
 	_apply_mission_visuals()
+	if director != null:
+		director.set_frenzy(false)
 	if player != null:
 		player.set_carrying(false)
 		player.apply_team_upgrades(team_upgrades)
@@ -1748,7 +1943,26 @@ func _server_pick_core(player_id: int, index: int) -> void:
 	entry["carrier"] = player_id
 	entry["pos"] = pos
 	_sync_mission_after_change()
+	if player_id == local_id and audio != null:
+		audio.play_ui("core", -4.0)
 	_broadcast_announce("已获取核心", "搬运核心时无法射击或换弹 · 返回基地交付台", MissionSite.CORE_COLOR)
+	if cores_secured >= CORES_REQUIRED - 1 and director != null and not director.is_frenzy():
+		director.set_frenzy(true)
+		_broadcast_announce("最后的核心 · 尸潮狂暴", "感染者进入暴走状态 · 拼死护送核心返回基地", DeadCityUI.RED)
+		_broadcast_sound("frenzy")
+
+
+func _broadcast_sound(kind: String, volume: float = -1.0) -> void:
+	if audio != null:
+		audio.play_ui(kind, volume)
+	if multiplayer.get_peers().size() > 0:
+		rpc("_net_sound", kind)
+
+
+@rpc("authority", "call_remote", "reliable")
+func _net_sound(kind: String) -> void:
+	if audio != null:
+		audio.play_ui(kind, -1.0)
 
 
 func _server_release_core(player_id: int, silent: bool = false) -> bool:
@@ -1788,6 +2002,8 @@ func _server_secure_core(player_id: int) -> void:
 	if director != null:
 		director.set_escalation(cores_secured)
 	_sync_mission_after_change()
+	if player_id == local_id and audio != null:
+		audio.play_ui("supply", -3.0)
 	if cores_secured >= CORES_REQUIRED:
 		_broadcast_announce("核心全部回收", "B1 核心已全部运回基地", DeadCityUI.GREEN)
 		_server_game_over(true)
@@ -1809,7 +2025,8 @@ func _server_resupply_ammo(player_id: int) -> void:
 	if player_id == local_id:
 		if player != null:
 			player.refill_ammo()
-		hud.announce("弹药已补给", "弹匣与备弹已补满", DeadCityUI.CYAN, 1.8)
+			hud.set_weapon_strip(player.loadout_summary(), player.weapon_profile())
+		hud.announce("弹药已补给", "所有枪械弹匣与备弹已补满", DeadCityUI.CYAN, 1.8)
 	elif multiplayer.get_peers().size() > 0:
 		rpc_id(player_id, "_net_resupply")
 
@@ -2080,6 +2297,8 @@ func _update_mission_hud() -> void:
 		prompt = _interaction_prompt()
 	else:
 		_interact_action = ""
+	_mission_hint_text = hint
+	_mission_zone_text = zone
 	hud.set_mission(cores_secured, CORES_REQUIRED, draw_tokens, hint, zone, zone_color, team_upgrades,
 		player != null and player.carrying_core, MetaProfile.power_of(team_upgrades))
 	hud.set_interaction(prompt)
@@ -2217,7 +2436,7 @@ func _return_to_menu(message: String) -> void:
 	core_states.clear()
 	draw_tokens = 0
 	mission_complete = false
-	team_upgrades = {"mag": 0, "reload": 0, "damage": 0, "speed": 0, "armor": 0}
+	team_upgrades = {"mag": 0, "reload": 0, "damage": 0, "rate": 0, "speed": 0, "armor": 0}
 	_pending_draw.clear()
 	_draw_open = false
 	_draw_options.clear()

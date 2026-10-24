@@ -5,6 +5,7 @@ signal resume_requested
 signal lobby_requested
 signal card_picked(index: int)
 signal draw_cancelled
+signal weapon_selected(weapon_id: String)
 
 var _roster_panel: PanelContainer
 var _roster_box: VBoxContainer
@@ -56,6 +57,21 @@ var _interaction_label: Label
 var _draw_overlay: Control
 var _draw_cards_box: HBoxContainer
 var _draw_footer: Label
+var _weapon_title: Label
+var _weapon_mode: Label
+var _weapon_strip: HBoxContainer
+var _weapon_slots: Dictionary = {}
+var _weapon_profile: Dictionary = {}
+var _loadout: Array = []
+var _team_upgrades: Dictionary = {}
+var _intel_overlay: Control
+var _intel_body: HBoxContainer
+var _intel_data: Dictionary = {}
+var _intel_open := false
+var _backpack_overlay: Control
+var _backpack_body: HBoxContainer
+var _backpack_footer: Label
+var _backpack_open := false
 var _down_active := false
 var _down_left := 0.0
 var _game_over := false
@@ -84,6 +100,7 @@ func _build() -> void:
 	_build_minimap()
 	_build_health()
 	_build_ammo()
+	_build_weapon_strip()
 	_crosshair = DeadCrosshair.new()
 	_crosshair.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_crosshair)
@@ -91,15 +108,15 @@ func _build() -> void:
 	_build_interaction()
 	_build_kill_feed()
 	_build_banner()
-	var hint := _label("WASD 移动  ·  左键射击  ·  R 换弹  ·  E 互动  ·  G 放下核心  ·  ESC 菜单", 11, Color(0.62, 0.72, 0.72, 0.7))
+	var hint := _label("TAB 情报  ·  B 背包  ·  1-5 / 滚轮 切枪  ·  左键射击  ·  R 换弹  ·  E 互动  ·  ESC 菜单", 11, Color(0.62, 0.72, 0.72, 0.7))
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	add_child(hint)
 	hint.anchor_left = 0.5
 	hint.anchor_right = 0.5
 	hint.anchor_top = 1.0
 	hint.anchor_bottom = 1.0
-	hint.offset_left = -290.0
-	hint.offset_right = 290.0
+	hint.offset_left = -330.0
+	hint.offset_right = 330.0
 	hint.offset_top = -24.0
 	hint.offset_bottom = -6.0
 	_build_death_overlay()
@@ -107,11 +124,17 @@ func _build() -> void:
 	_build_pause_overlay()
 	_build_loading_overlay()
 	_build_draw_overlay()
+	_build_intel_overlay()
+	_build_backpack_overlay()
+	_roster_panel.visible = false
+	_mission_panel.visible = false
 	_death_overlay.visible = false
 	_gameover_overlay.visible = false
 	_pause_overlay.visible = false
 	_loading_overlay.visible = false
 	_draw_overlay.visible = false
+	_intel_overlay.visible = false
+	_backpack_overlay.visible = false
 
 
 func _build_roster() -> void:
@@ -296,7 +319,7 @@ func _build_health() -> void:
 	_health_bar.add_theme_stylebox_override("background", DeadCityUI.panel_style(Color("#172126"), 3))
 	_health_bar.add_theme_stylebox_override("fill", DeadCityUI.panel_style(Color("#d34f4b"), 3))
 	body.add_child(_health_bar)
-	body.add_child(_label("脱离战斗 5 秒后缓慢恢复", 10, Color(0.4, 0.5, 0.52)))
+	body.add_child(_label("脱离战斗 6 秒后缓慢恢复", 10, Color(0.4, 0.5, 0.52)))
 
 
 func _build_ammo() -> void:
@@ -308,11 +331,13 @@ func _build_ammo() -> void:
 	panel.add_child(body)
 	var top := HBoxContainer.new()
 	body.add_child(top)
-	top.add_child(_label("MK-3 突击步枪", 11, Color(0.55, 0.65, 0.67)))
+	_weapon_title = _label("VX-9 冲锋枪", 11, Color(0.55, 0.65, 0.67))
+	top.add_child(_weapon_title)
 	var spacer := Control.new()
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(spacer)
-	top.add_child(_label("自动", 10, DeadCityUI.AMBER))
+	_weapon_mode = _label("全自动", 10, DeadCityUI.AMBER)
+	top.add_child(_weapon_mode)
 	var ammo_row := HBoxContainer.new()
 	ammo_row.add_theme_constant_override("separation", 5)
 	body.add_child(ammo_row)
@@ -340,7 +365,82 @@ func _build_ammo() -> void:
 	_reload_bar.add_theme_stylebox_override("fill", DeadCityUI.panel_style(DeadCityUI.AMBER, 3))
 	_reload_bar.visible = false
 	body.add_child(_reload_bar)
-	body.add_child(_label("后备弹药缓慢补给", 10, Color(0.4, 0.5, 0.52)))
+	body.add_child(_label("弹药仅能在基地补给台补满", 10, Color(0.4, 0.5, 0.52)))
+
+
+func _build_weapon_strip() -> void:
+	var panel := _hud_panel()
+	add_child(panel)
+	_place(panel, Rect2(-290, -222, 268, 96), 1.0, 1.0)
+	var body := VBoxContainer.new()
+	body.add_theme_constant_override("separation", 4)
+	panel.add_child(body)
+	var top := HBoxContainer.new()
+	body.add_child(top)
+	top.add_child(_label("装备栏", 11, Color(0.55, 0.65, 0.67)))
+	var spacer := Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	top.add_child(spacer)
+	top.add_child(_label("1-5 / 滚轮切枪", 9, Color(0.45, 0.55, 0.58)))
+	_weapon_strip = HBoxContainer.new()
+	_weapon_strip.add_theme_constant_override("separation", 4)
+	body.add_child(_weapon_strip)
+	_refresh_weapon_strip()
+
+
+func _refresh_weapon_strip() -> void:
+	if _weapon_strip == null:
+		return
+	for child in _weapon_strip.get_children():
+		_weapon_strip.remove_child(child)
+		child.queue_free()
+	_weapon_slots.clear()
+	var owned := {}
+	for entry in _loadout:
+		if entry is Dictionary:
+			owned[String(entry.get("id", ""))] = entry
+	var active_id := String(_weapon_profile.get("id", ""))
+	var ids := WeaponCatalog.ordered_ids()
+	for i in range(ids.size()):
+		var id := String(ids[i])
+		var has := owned.has(id)
+		var active := id == active_id
+		var accent := WeaponCatalog.accent(id)
+		var slot := PanelContainer.new()
+		slot.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		slot.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var border := accent if active else Color(0.22, 0.32, 0.34, 0.55 if has else 0.25)
+		var fill := Color(0.06, 0.1, 0.11, 0.92) if active else Color(0.04, 0.062, 0.07, 0.7 if has else 0.35)
+		var style := DeadCityUI.panel_style(fill, 5, border, 2 if active else 1)
+		style.content_margin_left = 4.0
+		style.content_margin_right = 4.0
+		style.content_margin_top = 3.0
+		style.content_margin_bottom = 3.0
+		slot.add_theme_stylebox_override("panel", style)
+		_weapon_strip.add_child(slot)
+		var box := VBoxContainer.new()
+		box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		box.add_theme_constant_override("separation", 0)
+		slot.add_child(box)
+		var number := _label(str(i + 1), 9, accent if has else Color(0.38, 0.44, 0.46))
+		box.add_child(number)
+		var short_label := _label(WeaponCatalog.short_name(id), 11, DeadCityUI.TEXT if active else (Color(0.68, 0.77, 0.78) if has else Color(0.36, 0.42, 0.44)))
+		short_label.add_theme_font_size_override("font_size", 11)
+		box.add_child(short_label)
+		if not has:
+			number.text = str(i + 1) + " 锁"
+		_weapon_slots[id] = slot
+
+
+func set_weapon_strip(loadout: Array, profile: Dictionary) -> void:
+	_loadout = loadout.duplicate(true)
+	_weapon_profile = profile.duplicate(true)
+	if _weapon_title != null:
+		_weapon_title.text = String(profile.get("name", "未知武器"))
+	if _weapon_mode != null:
+		_weapon_mode.text = String(profile.get("tag", ""))
+		_weapon_mode.add_theme_color_override("font_color", WeaponCatalog.accent(String(profile.get("id", "smg"))))
+	_refresh_weapon_strip()
 
 
 func _hud_panel() -> PanelContainer:
@@ -554,6 +654,93 @@ func _build_draw_overlay() -> void:
 	foot.add_child(cancel)
 
 
+func _build_intel_overlay() -> void:
+	_intel_overlay = _overlay(Color(0.008, 0.018, 0.026, 0.86))
+	_intel_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(_intel_overlay)
+	var panel := PanelContainer.new()
+	var style := DeadCityUI.panel_style(Color(0.035, 0.06, 0.072, 0.98), 14, Color(0.35, 0.85, 0.79, 0.55), 1)
+	style.content_margin_left = 26.0
+	style.content_margin_right = 26.0
+	style.content_margin_top = 18.0
+	style.content_margin_bottom = 18.0
+	panel.add_theme_stylebox_override("panel", style)
+	_intel_overlay.add_child(panel)
+	_place(panel, Rect2(-470, -244, 940, 488), 0.5, 0.5)
+	var body := VBoxContainer.new()
+	body.add_theme_constant_override("separation", 9)
+	panel.add_child(body)
+	var header := HBoxContainer.new()
+	body.add_child(header)
+	var titles := VBoxContainer.new()
+	titles.add_theme_constant_override("separation", 1)
+	header.add_child(titles)
+	titles.add_child(_label("战术情报", 26, DeadCityUI.TEXT))
+	titles.add_child(_label("任务 · 小队 · 幸存者档案  |  TAB 关闭", 12, DeadCityUI.MUTED))
+	var header_spacer := Control.new()
+	header_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header.add_child(header_spacer)
+	var close := Button.new()
+	close.text = "关闭  TAB"
+	close.custom_minimum_size = Vector2(146, 36)
+	DeadCityUI.style_button(close, DeadCityUI.MUTED, false)
+	close.pressed.connect(close_overlays)
+	header.add_child(close)
+	var line := ColorRect.new()
+	line.color = Color(0.28, 0.58, 0.56, 0.45)
+	line.custom_minimum_size = Vector2(0, 1)
+	body.add_child(line)
+	_intel_body = HBoxContainer.new()
+	_intel_body.add_theme_constant_override("separation", 14)
+	_intel_body.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	body.add_child(_intel_body)
+
+
+func _build_backpack_overlay() -> void:
+	_backpack_overlay = _overlay(Color(0.008, 0.018, 0.026, 0.86))
+	_backpack_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(_backpack_overlay)
+	var panel := PanelContainer.new()
+	var style := DeadCityUI.panel_style(Color(0.035, 0.06, 0.072, 0.98), 14, Color(0.35, 0.85, 0.79, 0.55), 1)
+	style.content_margin_left = 26.0
+	style.content_margin_right = 26.0
+	style.content_margin_top = 18.0
+	style.content_margin_bottom = 18.0
+	panel.add_theme_stylebox_override("panel", style)
+	_backpack_overlay.add_child(panel)
+	_place(panel, Rect2(-480, -250, 960, 500), 0.5, 0.5)
+	var body := VBoxContainer.new()
+	body.add_theme_constant_override("separation", 9)
+	panel.add_child(body)
+	var header := HBoxContainer.new()
+	body.add_child(header)
+	var titles := VBoxContainer.new()
+	titles.add_theme_constant_override("separation", 1)
+	header.add_child(titles)
+	titles.add_child(_label("战术背包 · 装备切换", 26, DeadCityUI.TEXT))
+	titles.add_child(_label("选择携带的武器；搬运核心或换弹时无法切换  |  B 关闭", 12, DeadCityUI.MUTED))
+	var header_spacer := Control.new()
+	header_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header.add_child(header_spacer)
+	var close := Button.new()
+	close.text = "关闭  B"
+	close.custom_minimum_size = Vector2(146, 36)
+	DeadCityUI.style_button(close, DeadCityUI.MUTED, false)
+	close.pressed.connect(close_overlays)
+	header.add_child(close)
+	var line := ColorRect.new()
+	line.color = Color(0.28, 0.58, 0.56, 0.45)
+	line.custom_minimum_size = Vector2(0, 1)
+	body.add_child(line)
+	_backpack_body = HBoxContainer.new()
+	_backpack_body.add_theme_constant_override("separation", 10)
+	_backpack_body.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	body.add_child(_backpack_body)
+	_backpack_footer = _label("", 11, Color(0.5, 0.64, 0.65))
+	_backpack_footer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.add_child(_backpack_footer)
+
+
 func _build_pause_overlay() -> void:
 	_pause_overlay = _overlay(Color(0.02, 0.04, 0.05, 0.68))
 	_pause_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -656,6 +843,12 @@ func reset_for_match() -> void:
 		_draw_overlay.visible = false
 	if _interaction_panel != null:
 		_interaction_panel.visible = false
+	_intel_open = false
+	_backpack_open = false
+	if _intel_overlay != null:
+		_intel_overlay.visible = false
+	if _backpack_overlay != null:
+		_backpack_overlay.visible = false
 	_crosshair.visible = true
 	_last_wave = 0
 	_last_phase = ""
@@ -667,7 +860,7 @@ func reset_for_match() -> void:
 		_mission_zone.text = "基地安全区"
 		_mission_zone.add_theme_color_override("font_color", DeadCityUI.CYAN)
 		_mission_tokens.text = "抽卡券 ×0"
-		_mission_upgrades.text = "强化 0/0/0/0/0 · 战力 0"
+		_mission_upgrades.text = "强化 0/0/0/0/0/0 · 战力 0"
 		for pip in _mission_pips:
 			pip.color = Color(0.22, 0.3, 0.33, 0.75)
 	_wave_label.text = "准备阶段"
@@ -838,10 +1031,10 @@ func set_mission(cores: int, required: int, tokens: int, hint: String, zone_text
 	_mission_zone.add_theme_color_override("font_color", zone_color)
 	_mission_tokens.text = "抽卡券 ×%d" % tokens
 	_mission_tokens.add_theme_color_override("font_color", DeadCityUI.AMBER if tokens > 0 else Color(0.44, 0.54, 0.56))
-	var upgrade_text := "强化 %d/%d/%d/%d/%d" % [
+	var upgrade_text := "强化 %d/%d/%d/%d/%d/%d" % [
 		int(upgrades.get("mag", 0)), int(upgrades.get("reload", 0)),
-		int(upgrades.get("damage", 0)), int(upgrades.get("speed", 0)),
-		int(upgrades.get("armor", 0)),
+		int(upgrades.get("damage", 0)), int(upgrades.get("rate", 0)),
+		int(upgrades.get("speed", 0)), int(upgrades.get("armor", 0)),
 	]
 	if power >= 0:
 		upgrade_text += " · 战力 %d" % power
@@ -852,7 +1045,7 @@ func set_interaction(text: String) -> void:
 	if _interaction_label == null:
 		return
 	_interaction_label.text = text
-	_interaction_panel.visible = not text.is_empty() and not _game_over and not _paused and not _down_active
+	_interaction_panel.visible = not text.is_empty() and not _game_over and not _paused and not _down_active and not overlay_open()
 
 
 func show_draw(options: Array) -> void:
@@ -892,6 +1085,10 @@ func show_draw(options: Array) -> void:
 	_draw_overlay.visible = true
 	_crosshair.visible = false
 	_interaction_panel.visible = false
+	_intel_open = false
+	_backpack_open = false
+	_intel_overlay.visible = false
+	_backpack_overlay.visible = false
 
 
 func hide_draw() -> void:
@@ -902,6 +1099,256 @@ func hide_draw() -> void:
 
 func _on_card_button(index: int) -> void:
 	card_picked.emit(index)
+
+
+func overlay_open() -> bool:
+	return _intel_open or _backpack_open
+
+
+func intel_open() -> bool:
+	return _intel_open
+
+
+func backpack_open() -> bool:
+	return _backpack_open
+
+
+func open_intel(data: Dictionary) -> void:
+	if _draw_overlay != null and _draw_overlay.visible:
+		return
+	_intel_data = data.duplicate(true)
+	_render_intel()
+	_intel_open = true
+	_backpack_open = false
+	_intel_overlay.visible = true
+	_backpack_overlay.visible = false
+	_interaction_panel.visible = false
+	_crosshair.visible = false
+
+
+func open_backpack(loadout: Array, profile: Dictionary, upgrades: Dictionary) -> void:
+	if _draw_overlay != null and _draw_overlay.visible:
+		return
+	_loadout = loadout.duplicate(true)
+	_weapon_profile = profile.duplicate(true)
+	_team_upgrades = upgrades.duplicate(true)
+	_render_backpack()
+	_backpack_open = true
+	_intel_open = false
+	_backpack_overlay.visible = true
+	_intel_overlay.visible = false
+	_interaction_panel.visible = false
+	_crosshair.visible = false
+
+
+func close_overlays() -> void:
+	_intel_open = false
+	_backpack_open = false
+	if _intel_overlay != null:
+		_intel_overlay.visible = false
+	if _backpack_overlay != null:
+		_backpack_overlay.visible = false
+	_crosshair.visible = not (_paused or _down_active or _game_over)
+
+
+func _clear_box(box: Node) -> void:
+	for child in box.get_children():
+		box.remove_child(child)
+		child.queue_free()
+
+
+func _intel_column(title: String, accent: Color) -> VBoxContainer:
+	var panel := PanelContainer.new()
+	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	panel.size_flags_stretch_ratio = 1.0
+	var style := DeadCityUI.panel_style(Color(0.05, 0.078, 0.09, 0.92), 10, Color(accent.r, accent.g, accent.b, 0.32), 1)
+	style.content_margin_left = 15.0
+	style.content_margin_right = 15.0
+	style.content_margin_top = 13.0
+	style.content_margin_bottom = 13.0
+	panel.add_theme_stylebox_override("panel", style)
+	_intel_body.add_child(panel)
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 5)
+	panel.add_child(box)
+	box.add_child(_label(title, 14, accent))
+	var line := ColorRect.new()
+	line.color = Color(accent.r, accent.g, accent.b, 0.28)
+	line.custom_minimum_size = Vector2(0, 1)
+	box.add_child(line)
+	return box
+
+
+func _render_intel() -> void:
+	_clear_box(_intel_body)
+	var mission: Dictionary = _intel_data.get("mission", {})
+	var upgrades: Dictionary = mission.get("upgrades", {})
+	var cores := int(mission.get("cores", 0))
+	var required := maxi(1, int(mission.get("required", 3)))
+	var power := int(mission.get("power", 0))
+
+	var mission_box := _intel_column("行动目标", DeadCityUI.AMBER)
+	mission_box.add_child(_label("核心回收  %d / %d" % [mini(cores, required), required], 24, DeadCityUI.GREEN if cores >= required else DeadCityUI.AMBER))
+	mission_box.add_child(_label(String(mission.get("zone", "未知区域")), 12, DeadCityUI.CYAN))
+	var hint := _label(String(mission.get("hint", "")), 12, Color(0.66, 0.76, 0.77))
+	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	hint.custom_minimum_size = Vector2(0, 48)
+	mission_box.add_child(hint)
+	mission_box.add_child(_label("街区压力  第 %d 波" % int(mission.get("wave", 1)), 12, Color(0.72, 0.82, 0.83)))
+	mission_box.add_child(_label("队内得分  %s" % _format_number(int(mission.get("score", 0))), 12, DeadCityUI.CYAN))
+	var frenzy := bool(mission.get("frenzy", false))
+	mission_box.add_child(_label("尸潮状态  %s" % ("狂暴暴走" if frenzy else "常规推进"), 12, DeadCityUI.RED if frenzy else Color(0.55, 0.7, 0.7)))
+	mission_box.add_child(_label("抽卡券 ×%d" % int(mission.get("tokens", 0)), 12, DeadCityUI.AMBER))
+	var gap := Control.new()
+	gap.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	mission_box.add_child(gap)
+	mission_box.add_child(_label("战术强化", 12, DeadCityUI.TEXT))
+	var names := {"mag": "弹匣", "reload": "换弹", "damage": "伤害", "rate": "射速", "speed": "移速", "armor": "护甲"}
+	for key in ["mag", "reload", "damage", "rate", "speed", "armor"]:
+		var row := HBoxContainer.new()
+		mission_box.add_child(row)
+		row.add_child(_label(String(names[key]), 11, Color(0.56, 0.68, 0.69)))
+		var row_spacer := Control.new()
+		row_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(row_spacer)
+		row.add_child(_label("Lv %d" % int(upgrades.get(key, 0)), 11, DeadCityUI.CYAN))
+	mission_box.add_child(_label("团队战力  %d" % power, 12, DeadCityUI.AMBER))
+
+	var roster_box := _intel_column("小队状态", DeadCityUI.CYAN)
+	var roster: Array = _intel_data.get("roster", [])
+	if roster.is_empty():
+		roster_box.add_child(_label("暂无队友", 12, DeadCityUI.MUTED))
+	for raw in roster:
+		if not (raw is Dictionary):
+			continue
+		var member: Dictionary = raw
+		var alive := bool(member.get("alive", true))
+		var color: Color = member.get("color", DeadCityUI.CYAN)
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 7)
+		roster_box.add_child(row)
+		var dot := ColorRect.new()
+		dot.color = color if alive else Color(0.35, 0.4, 0.42)
+		dot.custom_minimum_size = Vector2(4, 28)
+		row.add_child(dot)
+		var info := VBoxContainer.new()
+		info.add_theme_constant_override("separation", 0)
+		info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(info)
+		info.add_child(_label(String(member.get("name", "幸存者")), 13, DeadCityUI.TEXT if alive else Color(0.5, 0.56, 0.58)))
+		info.add_child(_label("生命 %d  ·  击杀 %d" % [int(ceil(float(member.get("health", 0.0)))), int(member.get("kills", 0))], 10, Color(0.56, 0.66, 0.67)))
+		var status := _label("在阵线" if alive else "阵亡", 10, DeadCityUI.GREEN if alive else DeadCityUI.RED)
+		status.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		row.add_child(status)
+	if roster.size() < 4:
+		var fill := Control.new()
+		fill.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		roster_box.add_child(fill)
+		roster_box.add_child(_label("空余席位 %d  ·  可从大厅邀请" % (4 - roster.size()), 10, Color(0.42, 0.52, 0.54)))
+
+	var player_box := _intel_column("幸存者档案", DeadCityUI.GREEN)
+	var player: Dictionary = _intel_data.get("player", {})
+	player_box.add_child(_label(String(player.get("name", "幸存者")), 20, DeadCityUI.TEXT))
+	player_box.add_child(_label("生命 %d / 100  ·  击杀 %d" % [int(ceil(float(player.get("health", 100.0)))), int(player.get("kills", 0))], 12, Color(0.68, 0.8, 0.8)))
+	var weapon: Dictionary = player.get("weapon", {})
+	var weapon_id := String(weapon.get("id", "smg"))
+	var weapon_name := _label(String(weapon.get("name", "未知武器")), 16, WeaponCatalog.accent(weapon_id))
+	weapon_name.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	player_box.add_child(weapon_name)
+	var stat := _label(WeaponCatalog.stat_line(weapon_id), 11, Color(0.66, 0.78, 0.79))
+	stat.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	player_box.add_child(stat)
+	var gap2 := Control.new()
+	gap2.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	player_box.add_child(gap2)
+	player_box.add_child(_label("携带装备", 12, DeadCityUI.TEXT))
+	var loadout: Array = player.get("loadout", [])
+	for raw in loadout:
+		if not (raw is Dictionary):
+			continue
+		var entry: Dictionary = raw
+		var active := bool(entry.get("active", false))
+		var suffix := "  ◀ 当前" if active else ""
+		var line := _label("%d  %s  %d/%d%s" % [
+			int(entry.get("slot", 0)), String(entry.get("name", "--")),
+			int(entry.get("mag", 0)), int(entry.get("reserve", 0)), suffix,
+		], 11, WeaponCatalog.accent(String(entry.get("id", "smg"))) if active else Color(0.6, 0.72, 0.73))
+		player_box.add_child(line)
+	var bonus := int(player.get("reserve_bonus", 0))
+	player_box.add_child(_label("血脉备弹加成  +%d" % bonus, 10, Color(0.5, 0.62, 0.63)))
+
+
+func _render_backpack() -> void:
+	_clear_box(_backpack_body)
+	var owned := {}
+	for raw in _loadout:
+		if raw is Dictionary:
+			owned[String(raw.get("id", ""))] = raw
+	var active_id := String(_weapon_profile.get("id", ""))
+	var ids := WeaponCatalog.ordered_ids()
+	for i in range(ids.size()):
+		var id := String(ids[i])
+		var entry: Dictionary = owned.get(id, {})
+		var has := owned.has(id)
+		var active := id == active_id
+		var accent := WeaponCatalog.accent(id)
+		var card := PanelContainer.new()
+		card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		card.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		var border := accent if active else Color(0.24, 0.34, 0.36, 0.55 if has else 0.28)
+		var fill := Color(0.06, 0.1, 0.11, 0.95) if active else Color(0.04, 0.062, 0.072, 0.8 if has else 0.45)
+		var style := DeadCityUI.panel_style(fill, 8, border, 2 if active else 1)
+		style.content_margin_left = 12.0
+		style.content_margin_right = 12.0
+		style.content_margin_top = 12.0
+		style.content_margin_bottom = 12.0
+		card.add_theme_stylebox_override("panel", style)
+		_backpack_body.add_child(card)
+		var box := VBoxContainer.new()
+		box.add_theme_constant_override("separation", 6)
+		card.add_child(box)
+		box.add_child(_label("槽位 %d" % (i + 1), 10, accent if has else Color(0.42, 0.48, 0.5)))
+		var title := _label(WeaponCatalog.display_name(id), 15, DeadCityUI.TEXT if has else Color(0.56, 0.63, 0.65))
+		title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		box.add_child(title)
+		box.add_child(_label(String(WeaponCatalog.data(id).get("tag", "")), 10, accent if has else Color(0.42, 0.48, 0.5)))
+		var stat := _label(WeaponCatalog.stat_line(id), 10, Color(0.6, 0.72, 0.73) if has else Color(0.44, 0.5, 0.52))
+		stat.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		box.add_child(stat)
+		var fill_space := Control.new()
+		fill_space.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		box.add_child(fill_space)
+		if has:
+			var ammo := "弹匣 %d/%d" % [int(entry.get("mag", 0)), int(entry.get("mag_size", 0))]
+			ammo += "  ·  备弹 %d" % int(entry.get("reserve", 0))
+			box.add_child(_label(ammo, 10, Color(0.56, 0.68, 0.69)))
+		else:
+			box.add_child(_label("军械库售价 %d 信用点" % WeaponCatalog.price_of(id), 10, DeadCityUI.AMBER))
+		var button := Button.new()
+		button.custom_minimum_size = Vector2(0, 34)
+		button.focus_mode = Control.FOCUS_NONE
+		if active:
+			button.text = "使用中"
+			button.disabled = true
+			DeadCityUI.style_button(button, accent, false)
+		elif has:
+			button.text = "切换装备"
+			DeadCityUI.style_button(button, accent, true)
+			button.pressed.connect(_on_weapon_button_pressed.bind(id))
+		else:
+			button.text = "未解锁"
+			button.disabled = true
+			DeadCityUI.style_button(button, DeadCityUI.MUTED, false)
+		box.add_child(button)
+	var up := _team_upgrades
+	_backpack_footer.text = "队内强化  弹匣 %d · 换弹 %d · 伤害 %d · 射速 %d · 移速 %d · 护甲 %d     |     新武器请在行动大厅的军械库购买" % [
+		int(up.get("mag", 0)), int(up.get("reload", 0)), int(up.get("damage", 0)),
+		int(up.get("rate", 0)), int(up.get("speed", 0)), int(up.get("armor", 0)),
+	]
+
+
+func _on_weapon_button_pressed(weapon_id: String) -> void:
+	weapon_selected.emit(weapon_id)
 
 
 func set_minimap_entities(local_pos: Vector3, local_yaw: float, remotes: Array, zombies: Array, markers: Array = []) -> void:
@@ -970,6 +1417,10 @@ func show_game_over(stats_text: String, victory: bool = false) -> void:
 	_death_overlay.visible = false
 	if _draw_overlay != null:
 		_draw_overlay.visible = false
+	_intel_open = false
+	_backpack_open = false
+	_intel_overlay.visible = false
+	_backpack_overlay.visible = false
 	_interaction_panel.visible = false
 	_gameover_stats.text = stats_text
 	_gameover_overlay.visible = true
@@ -996,6 +1447,11 @@ func set_pause_visible(value: bool) -> void:
 	var draw_open := _draw_overlay != null and _draw_overlay.visible
 	_paused = value and not _game_over and not draw_open
 	_pause_overlay.visible = _paused
+	if _paused:
+		_intel_open = false
+		_backpack_open = false
+		_intel_overlay.visible = false
+		_backpack_overlay.visible = false
 	_crosshair.visible = not (_paused or _down_active or _game_over or draw_open)
 	if _paused:
 		_interaction_panel.visible = false
