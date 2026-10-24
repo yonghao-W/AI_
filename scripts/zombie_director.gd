@@ -2,6 +2,7 @@ class_name ZombieDirector
 extends Node3D
 
 signal attacked_player(player_id: int, damage: float)
+signal fused(pos: Vector3, mass: int)
 
 var _layout: Dictionary = {}
 var _zombies: Dictionary = {}
@@ -15,6 +16,8 @@ var _spawn_interval := 1.2
 var _escalation := 0
 var _active := false
 var _frenzy := false
+var _fusion_timer := 5.0
+var _basement_active := false
 var _rng := RandomNumberGenerator.new()
 
 
@@ -34,6 +37,8 @@ func start(delay: float = 4.0) -> void:
 	_spawn_delay = 0.0
 	_escalation = 0
 	_frenzy = false
+	_fusion_timer = 5.0
+	_basement_active = false
 	_active = true
 
 
@@ -54,7 +59,7 @@ func set_frenzy(value: bool) -> void:
 			zombie.set_frenzy(value)
 	if value:
 		_spawn_delay = minf(_spawn_delay, 0.1)
-		_to_spawn += 8 + _escalation * 2
+		_to_spawn += 14 + _escalation * 3
 
 
 func is_frenzy() -> bool:
@@ -82,8 +87,10 @@ func tick(delta: float, players: Array) -> void:
 			_begin_wave()
 		return
 	if _phase == "fight":
+		_update_basement(players)
 		_tick_spawning(delta, players)
 		_tick_zombies(delta, players)
+		_tick_fusion(delta)
 		if _to_spawn == 0 and _zombies.is_empty():
 			_phase = "break"
 			_break_left = maxf(3.5, 6.0 - _escalation * 0.7)
@@ -92,32 +99,34 @@ func tick(delta: float, players: Array) -> void:
 
 func _begin_wave() -> void:
 	_phase = "fight"
-	var quota := roundi((7 + _wave * 3) * (1.0 + 0.26 * _escalation))
+	var quota := roundi((10 + _wave * 4) * (1.0 + 0.34 * _escalation))
 	if _frenzy:
-		quota = roundi(quota * 1.35)
-	_to_spawn = mini(52, quota)
-	_spawn_delay = 0.2
-	_spawn_interval = maxf(0.32, 0.95 - _wave * 0.06)
+		quota = roundi(quota * 1.4)
+	_to_spawn = mini(80, quota)
+	_spawn_delay = 0.15
+	_spawn_interval = maxf(0.16, 0.62 - _wave * 0.04)
 
 
 func _tick_spawning(delta: float, players: Array) -> void:
-	var alive_cap := int(floor((12 + _wave * 3) * (1.0 + 0.2 * _escalation)))
+	var alive_cap := int(floor((16 + _wave * 4) * (1.0 + 0.28 * _escalation))) + 12
 	if _frenzy:
-		alive_cap += 10
-	alive_cap = mini(44, alive_cap)
+		alive_cap += 14
+	alive_cap = mini(64, alive_cap)
 	if _to_spawn <= 0 or _zombies.size() >= alive_cap:
 		return
 	_spawn_delay -= delta
 	if _spawn_delay > 0.0:
 		return
-	var burst := 2 if _frenzy else 1
+	var burst := 3 if _frenzy else 2
 	for i in range(burst):
 		if _to_spawn <= 0 or _zombies.size() >= alive_cap:
 			break
 		_spawn_one(players)
 	_spawn_delay = _spawn_interval * pow(0.8, _escalation)
 	if _frenzy:
-		_spawn_delay *= 0.62
+		_spawn_delay *= 0.55
+	elif _wave >= 4:
+		_spawn_delay *= 0.9
 
 
 func _spawn_one(players: Array) -> void:
@@ -127,8 +136,10 @@ func _spawn_one(players: Array) -> void:
 	zombie.zombie_id = _next_id
 	zombie.name = "Zombie_%d" % _next_id
 	add_child(zombie)
-	zombie.global_position = Vector3(pos.x, 0.06, pos.z)
+	zombie.global_position = Vector3(pos.x, pos.y, pos.z)
 	zombie.setup(_next_id, kind, _wave)
+	zombie.floor_y = pos.y
+	zombie.apply_ability(_choose_ability(kind))
 	zombie.set_frenzy(_frenzy)
 	zombie.attacked_player.connect(_on_zombie_attack)
 	_zombies[_next_id] = zombie
@@ -153,15 +164,39 @@ func _choose_kind() -> String:
 	return "walker"
 
 
+func _choose_ability(kind_id: String) -> String:
+	var climb := 0.1 if _wave >= 2 else 0.0
+	var armor := 0.1 if _wave >= 3 else 0.0
+	var volatile := 0.09 if _wave >= 4 else 0.0
+	if _frenzy:
+		climb += 0.04
+		armor += 0.04
+		volatile += 0.05
+	if kind_id == "crawler":
+		climb += 0.06
+	var roll := _rng.randf()
+	if roll < climb:
+		return "climber"
+	if roll < climb + armor:
+		return "armored"
+	if roll < climb + armor + volatile:
+		return "volatile"
+	return "none"
+
+
 func _choose_spawn(players: Array) -> Vector3:
-	var spawns: Array = _layout.get("zombie_spawns", [])
+	var surface_spawns: Array = _layout.get("zombie_spawns", [])
+	var basement_spawns: Array = _layout.get("basement_spawns", [])
+	var spawns: Array = surface_spawns
+	if _basement_active and not basement_spawns.is_empty():
+		spawns = basement_spawns
 	if spawns.is_empty():
 		return Vector3(0.0, 0.06, 0.0)
 	var alive_positions: Array[Vector3] = []
 	for player in players:
 		if bool(player.get("alive", false)):
 			alive_positions.append(player["pos"])
-	var best := Vector3(spawns[0].x, 0.06, spawns[0].z)
+	var best: Vector3 = spawns[0]
 	var best_score := -1e20
 	var fallback := best
 	var fallback_distance := -1.0
@@ -173,13 +208,13 @@ func _choose_spawn(players: Array) -> Vector3:
 			nearest = minf(nearest, Vector2(candidate.x - pos.x, candidate.z - pos.z).length())
 		if nearest > fallback_distance:
 			fallback_distance = nearest
-			fallback = Vector3(candidate.x, 0.06, candidate.z)
+			fallback = candidate
 		if nearest < 22.0:
 			continue
 		var score := -absf(nearest - 34.0) + _rng.randf_range(0.0, 6.0)
 		if score > best_score:
 			best_score = score
-			best = Vector3(candidate.x, 0.06, candidate.z)
+			best = candidate
 	if best_score < -1e19:
 		return fallback
 	return best
@@ -208,12 +243,70 @@ func _on_zombie_attack(player_id: int, damage: float) -> void:
 	attacked_player.emit(player_id, damage)
 
 
+func _update_basement(players: Array) -> void:
+	var wants := false
+	for player in players:
+		if bool(player.get("alive", false)) and (player["pos"] as Vector3).y < -9.0:
+			wants = true
+			break
+	if wants == _basement_active:
+		return
+	_basement_active = wants
+	if wants:
+		return
+	var spawns: Array = _layout.get("zombie_spawns", [])
+	for zombie in _zombies.values():
+		if not is_instance_valid(zombie) or zombie.floor_y > -9.0:
+			continue
+		zombie.floor_y = 0.06
+		var spot: Vector3 = spawns[_rng.randi_range(0, maxi(0, spawns.size() - 1))] if not spawns.is_empty() else Vector3(0.0, 0.06, -20.0)
+		zombie.global_position = Vector3(spot.x, 0.06, spot.z)
+
+
+func _tick_fusion(delta: float) -> void:
+	if _wave < 2 and not _frenzy:
+		return
+	_fusion_timer -= delta
+	if _fusion_timer > 0.0:
+		return
+	_fusion_timer = maxf(2.2, 5.4 - _wave * 0.3) * (0.6 if _frenzy else 1.0)
+	_try_fusion()
+
+
+func _try_fusion() -> void:
+	var list: Array = []
+	for zombie in _zombies.values():
+		if is_instance_valid(zombie) and zombie.mass < 3:
+			list.append(zombie)
+	for i in range(list.size()):
+		var host: ServerZombie = list[i]
+		if not is_instance_valid(host):
+			continue
+		for j in range(i + 1, list.size()):
+			var prey: ServerZombie = list[j]
+			if not is_instance_valid(prey) or not is_instance_valid(host):
+				continue
+			if host.mass + prey.mass > 3:
+				continue
+			if absf(host.global_position.y - prey.global_position.y) > 2.5:
+				continue
+			if host.global_position.distance_to(prey.global_position) > 6.5:
+				continue
+			host.fuse_with(prey)
+			_zombies.erase(prey.zombie_id)
+			prey.queue_free()
+			fused.emit(host.global_position, host.mass)
+			return
+
+
 func damage_zombie(id: int, amount: float) -> Dictionary:
 	if not _zombies.has(id):
 		return {"ok": false}
 	var zombie: ServerZombie = _zombies[id]
 	var pos := zombie.global_position
 	var kind := zombie.kind
+	var ability := zombie.ability
+	var mass := zombie.mass
 	var killed := zombie.take_damage(amount)
 	var remaining := maxf(0.0, zombie.hp)
 	if killed:
@@ -223,6 +316,8 @@ func damage_zombie(id: int, amount: float) -> Dictionary:
 		"ok": true,
 		"killed": killed,
 		"kind": kind,
+		"ability": ability,
+		"mass": mass,
 		"pos": pos,
 		"remaining": remaining,
 	}
@@ -269,6 +364,12 @@ func pick_safe_spawn(candidates: Array, fallback: Vector3) -> Vector3:
 
 func zombie_count() -> int:
 	return _zombies.size()
+
+
+func zombie_position(id: int) -> Vector3:
+	if _zombies.has(id) and is_instance_valid(_zombies[id]):
+		return _zombies[id].global_position
+	return Vector3(1.0e9, 1.0e9, 1.0e9)
 
 
 func is_active() -> bool:
