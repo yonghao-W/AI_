@@ -10,9 +10,10 @@ signal weapon_selected(weapon_id: String)
 
 var _game_layer: Control
 var _hud_backdrops: Array[Control] = []
-var _mission_backdrop: Control
-var _health_backdrop: Control
-var _ammo_backdrop: Control
+var _ammo_holder: Control
+var _carry_panel: VBoxContainer
+var _minimap_frame: Control
+var _compass: HUDCompass
 var _roster_panel: Control
 var _roster_box: VBoxContainer
 var _roster_count: Label
@@ -89,6 +90,7 @@ var _last_health := 100.0
 var _last_phase := ""
 var _last_wave := 0
 var _banner_tween: Tween
+var _banner_bg: TextureRect
 var _strip_tween: Tween
 var _health_pulse: Tween
 var _carrying_core := false
@@ -121,13 +123,15 @@ func _build() -> void:
 	_game_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_game_layer.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	add_child(_game_layer)
-	_build_hud_backdrops()
+	_build_edge_shades()
+	_build_compass()
 	_build_roster()
 	_build_mission_panel()
 	_build_wave_panel()
 	_build_minimap()
 	_build_health()
 	_build_ammo()
+	_build_carry_panel()
 	_build_weapon_strip()
 	_crosshair = DeadCrosshair.new()
 	_crosshair.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -154,25 +158,50 @@ func _build() -> void:
 	_backpack_overlay.visible = false
 
 
-func _build_hud_backdrops() -> void:
-	_mission_backdrop = _hud_backdrop(Rect2(16, 12, 320, 112), 0.0, 0.0)
-	_health_backdrop = _hud_backdrop(Rect2(18, -90, 264, 78), 0.0, 1.0)
-	_ammo_backdrop = _hud_backdrop(Rect2(-300, -96, 280, 84), 1.0, 1.0)
+func _build_edge_shades() -> void:
+	_add_edge_shade("left", Rect2(0, 0, 420, 0), Vector2(0.0, 0.5), Vector2(1.0, 0.5), 0.62)
+	_add_edge_shade("right", Rect2(-420, 0, 420, 0), Vector2(1.0, 0.5), Vector2(0.0, 0.5), 0.55)
+	_add_edge_shade("bottom", Rect2(0, -250, 0, 250), Vector2(0.5, 1.0), Vector2(0.5, 0.0), 0.72)
+	_add_edge_shade("top", Rect2(0, 0, 0, 140), Vector2(0.5, 0.0), Vector2(0.5, 1.0), 0.55)
 
 
-func _hud_backdrop(rect: Rect2, anchor_x: float, anchor_y: float) -> Control:
-	var panel := PanelContainer.new()
-	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var style := DeadCityUI.panel_style(Color(0.012, 0.016, 0.019, 0.64), 8, Color(0.85, 0.82, 0.76, 0.10), 1)
-	style.content_margin_left = 0.0
-	style.content_margin_right = 0.0
-	style.content_margin_top = 0.0
-	style.content_margin_bottom = 0.0
-	panel.add_theme_stylebox_override("panel", style)
-	_game_layer.add_child(panel)
-	_place(panel, rect, anchor_x, anchor_y)
-	_hud_backdrops.append(panel)
-	return panel
+func _add_edge_shade(name: String, rect: Rect2, from: Vector2, to: Vector2, opacity: float) -> void:
+	var shade := TextureRect.new()
+	shade.name = "EdgeShade_" + name
+	shade.texture = _edge_texture(from, to, opacity)
+	shade.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	shade.stretch_mode = TextureRect.STRETCH_SCALE
+	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_game_layer.add_child(shade)
+	match name:
+		"left":
+			shade.set_anchors_preset(Control.PRESET_LEFT_WIDE)
+			shade.offset_right = 420.0
+		"right":
+			shade.set_anchors_preset(Control.PRESET_RIGHT_WIDE)
+			shade.offset_left = -420.0
+		"bottom":
+			shade.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+			shade.offset_top = -250.0
+		"top":
+			shade.set_anchors_preset(Control.PRESET_TOP_WIDE)
+			shade.offset_bottom = 140.0
+	_hud_backdrops.append(shade)
+
+
+func _edge_texture(from: Vector2, to: Vector2, opacity: float) -> GradientTexture2D:
+	var gradient := Gradient.new()
+	gradient.set_color(0, Color(0.01, 0.014, 0.016, opacity))
+	gradient.add_point(0.55, Color(0.01, 0.014, 0.016, opacity * 0.58))
+	gradient.set_color(gradient.get_point_count() - 1, Color(0.01, 0.014, 0.016, 0.0))
+	var texture := GradientTexture2D.new()
+	texture.gradient = gradient
+	texture.fill = GradientTexture2D.FILL_LINEAR
+	texture.fill_from = from
+	texture.fill_to = to
+	texture.width = 128
+	texture.height = 128
+	return texture
 
 
 func _apply_settings() -> void:
@@ -186,13 +215,14 @@ func _apply_settings() -> void:
 			float(_settings.get_value("crosshair_thickness")),
 			bool(_settings.get_value("hit_marker"))
 		)
+	var show_minimap := bool(_settings.get_value("show_minimap"))
 	if _minimap != null:
-		_minimap.visible = bool(_settings.get_value("show_minimap"))
+		_minimap.visible = show_minimap
+	if _minimap_frame != null:
+		_minimap_frame.visible = show_minimap
 	var show_objective := bool(_settings.get_value("show_objective"))
 	if _mission_panel != null:
 		_mission_panel.visible = show_objective
-	if _mission_backdrop != null:
-		_mission_backdrop.visible = show_objective
 	_hints_enabled = bool(_settings.get_value("hints"))
 	if not _hints_enabled and _interaction_panel != null:
 		_interaction_panel.visible = false
@@ -231,29 +261,45 @@ func _apply_accessibility() -> void:
 			item.add_theme_constant_override("outline_size", 3 if contrast else 1)
 
 
+func _build_compass() -> void:
+	_compass = HUDCompass.new()
+	_game_layer.add_child(_compass)
+	_place(_compass, Rect2(-280, 4, 560, 38), 0.5, 0.0)
+
+
 func _build_roster() -> void:
 	_roster_panel = PanelContainer.new()
 	_roster_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var style := DeadCityUI.panel_style(Color(0.018, 0.023, 0.026, 0.68), 0, Color(0.85, 0.82, 0.76, 0.10), 1)
-	style.content_margin_left = 12.0
-	style.content_margin_right = 12.0
-	style.content_margin_top = 8.0
-	style.content_margin_bottom = 10.0
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0, 0, 0, 0)
+	style.set_border_width_all(0)
+	style.content_margin_left = 0.0
+	style.content_margin_right = 0.0
+	style.content_margin_top = 0.0
+	style.content_margin_bottom = 0.0
 	_roster_panel.add_theme_stylebox_override("panel", style)
 	_game_layer.add_child(_roster_panel)
-	_place(_roster_panel, Rect2(20, 152, 284, 0))
+	_place(_roster_panel, Rect2(36, 36, 260, 0))
 	var content := VBoxContainer.new()
 	content.add_theme_constant_override("separation", 4)
 	_roster_panel.add_child(content)
 	var top := HBoxContainer.new()
-	top.add_theme_constant_override("separation", 8)
+	top.add_theme_constant_override("separation", 7)
 	content.add_child(top)
-	top.add_child(_label("小队", 9, DeadCityUI.MUTED_2))
+	var bar := ColorRect.new()
+	bar.color = DeadCityUI.AMBER
+	bar.custom_minimum_size = Vector2(2, 14)
+	top.add_child(bar)
+	top.add_child(_label("小队", 12, DeadCityUI.TEXT))
 	var top_spacer := Control.new()
 	top_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(top_spacer)
-	_roster_count = _label("1 / 4", 9, DeadCityUI.MUTED_2)
+	_roster_count = _label("1 / 4", 10, DeadCityUI.MUTED)
 	top.add_child(_roster_count)
+	var line := ColorRect.new()
+	line.color = Color(0.9, 0.9, 0.86, 0.19)
+	line.custom_minimum_size = Vector2(0, 1)
+	content.add_child(line)
 	_roster_box = VBoxContainer.new()
 	_roster_box.add_theme_constant_override("separation", 3)
 	content.add_child(_roster_box)
@@ -265,10 +311,12 @@ func _build_mission_panel() -> void:
 	_mission_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_mission_panel.add_theme_constant_override("separation", 3)
 	_game_layer.add_child(_mission_panel)
-	_place(_mission_panel, Rect2(28, 22, 300, 0))
+	_place(_mission_panel, Rect2(880, 36, 214, 0))
 	var top := HBoxContainer.new()
-	top.add_theme_constant_override("separation", 8)
+	top.add_theme_constant_override("separation", 7)
 	_mission_panel.add_child(top)
+	var mission_icon := _icon("res://assets/ui/hud/icons/core.png", 18)
+	top.add_child(mission_icon)
 	var bar := ColorRect.new()
 	bar.color = DeadCityUI.AMBER
 	bar.custom_minimum_size = Vector2(2, 15)
@@ -297,7 +345,7 @@ func _build_mission_panel() -> void:
 		_mission_pips.append(pip)
 	_mission_hint = _label("沿市中心公园坡道下到核心储藏层 B1", 10, Color(0.72, 0.78, 0.76, 0.9))
 	_mission_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_mission_hint.custom_minimum_size = Vector2(286, 0)
+	_mission_hint.custom_minimum_size = Vector2(200, 0)
 	_mission_hint.max_lines_visible = 2
 	_mission_panel.add_child(_mission_hint)
 	_mission_upgrades = _label("", 9, Color(0.5, 0.62, 0.63))
@@ -309,7 +357,7 @@ func _build_interaction() -> void:
 	_interaction_panel = Control.new()
 	_interaction_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_game_layer.add_child(_interaction_panel)
-	_place(_interaction_panel, Rect2(-240, -124, 480, 24), 0.5, 1.0)
+	_place(_interaction_panel, Rect2(-240, -206, 480, 26), 0.5, 1.0)
 	_interaction_label = _label("", 12, DeadCityUI.AMBER)
 	_interaction_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_interaction_label.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.8))
@@ -325,7 +373,7 @@ func _build_wave_panel() -> void:
 	row.add_theme_constant_override("separation", 9)
 	row.alignment = BoxContainer.ALIGNMENT_CENTER
 	_game_layer.add_child(row)
-	_place(row, Rect2(-260, 18, 520, 22), 0.5, 0.0)
+	_place(row, Rect2(-260, 48, 520, 22), 0.5, 0.0)
 	_wave_label = _label("第 1 波", 12, DeadCityUI.TEXT)
 	row.add_child(_wave_label)
 	var dot_a := _label("·", 10, Color(0.6, 0.56, 0.5, 0.7))
@@ -340,11 +388,27 @@ func _build_wave_panel() -> void:
 
 func _build_minimap() -> void:
 	_minimap = DeadMiniMap.new()
-	_minimap.custom_minimum_size = Vector2(188, 188)
-	_minimap.size = Vector2(188, 188)
+	_minimap.custom_minimum_size = Vector2(144, 144)
+	_minimap.size = Vector2(144, 144)
 	_minimap.modulate = Color(1, 1, 1, 0.92)
+	var mask_shader := Shader.new()
+	mask_shader.code = "shader_type canvas_item;\nvoid fragment() { vec2 p = UV - vec2(0.5); if (length(p) > 0.5) { discard; } }"
+	var mask := ShaderMaterial.new()
+	mask.shader = mask_shader
+	_minimap.material = mask
 	_game_layer.add_child(_minimap)
-	_place(_minimap, Rect2(-216, 20, 188, 188), 1.0, 0.0)
+	_place(_minimap, Rect2(-164, 20, 144, 144), 1.0, 0.0)
+	_minimap_frame = PanelContainer.new()
+	_minimap_frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var frame_style := StyleBoxFlat.new()
+	frame_style.bg_color = Color(0, 0, 0, 0)
+	frame_style.border_color = Color(0.84, 0.88, 0.84, 0.52)
+	frame_style.set_border_width_all(1)
+	frame_style.set_corner_radius_all(72)
+	frame_style.anti_aliasing = true
+	_minimap_frame.add_theme_stylebox_override("panel", frame_style)
+	_game_layer.add_child(_minimap_frame)
+	_place(_minimap_frame, Rect2(-164, 20, 144, 144), 1.0, 0.0)
 	_seed_label = _label("", 9, Color(0.5, 0.62, 0.63))
 	_seed_label.visible = false
 	_game_layer.add_child(_seed_label)
@@ -356,60 +420,67 @@ func _build_minimap() -> void:
 func _build_health() -> void:
 	var holder := VBoxContainer.new()
 	holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	holder.add_theme_constant_override("separation", 2)
+	holder.add_theme_constant_override("separation", 3)
 	_game_layer.add_child(holder)
-	_place(holder, Rect2(30, -86, 248, 66), 0.0, 1.0)
-	var top := HBoxContainer.new()
-	top.add_theme_constant_override("separation", 8)
-	holder.add_child(top)
-	top.add_child(_label("生命", 10, DeadCityUI.MUTED))
-	var spacer := Control.new()
-	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	top.add_child(spacer)
-	_health_state = _label("稳定", 10, DeadCityUI.GREEN)
-	top.add_child(_health_state)
+	_place(holder, Rect2(44, -82, 244, 66), 0.0, 1.0)
 	var value_row := HBoxContainer.new()
-	value_row.add_theme_constant_override("separation", 4)
+	value_row.add_theme_constant_override("separation", 6)
 	holder.add_child(value_row)
-	_health_label = _label("100", 28, DeadCityUI.TEXT)
+	value_row.add_child(_icon("res://assets/ui/hud/icons/health.png", 18))
+	_health_label = _label("100", 34, DeadCityUI.TEXT)
 	value_row.add_child(_health_label)
-	var max_label := _label("/ 100", 11, Color(0.74, 0.78, 0.76, 0.95))
+	var max_label := _label("/ 100", 12, Color(0.74, 0.78, 0.76, 0.9))
 	max_label.size_flags_vertical = Control.SIZE_SHRINK_END
 	value_row.add_child(max_label)
 	var value_spacer := Control.new()
 	value_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	value_row.add_child(value_spacer)
-	_conn_label = _label("单人演练 · 本地权威", 8, Color(0.48, 0.56, 0.56, 0.75))
-	_conn_label.size_flags_vertical = Control.SIZE_SHRINK_END
-	value_row.add_child(_conn_label)
+	_health_state = _label("稳定", 10, DeadCityUI.GREEN)
+	_health_state.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	value_row.add_child(_health_state)
 	_health_bar = ProgressBar.new()
 	_health_bar.min_value = 0.0
 	_health_bar.max_value = 100.0
 	_health_bar.value = 100.0
 	_health_bar.show_percentage = false
-	_health_bar.custom_minimum_size = Vector2(220, 3)
-	_health_bar.add_theme_stylebox_override("background", DeadCityUI.meter_style(Color(0.16, 0.17, 0.16, 0.65), 0))
+	_health_bar.custom_minimum_size = Vector2(190, 3)
+	_health_bar.add_theme_stylebox_override("background", DeadCityUI.meter_style(Color(0.16, 0.17, 0.16, 0.6), 0))
 	_health_bar.add_theme_stylebox_override("fill", DeadCityUI.meter_style(DeadCityUI.GREEN, 0))
 	holder.add_child(_health_bar)
+	var bottom := HBoxContainer.new()
+	bottom.add_theme_constant_override("separation", 8)
+	holder.add_child(bottom)
+	bottom.add_child(_label("生命", 10, DeadCityUI.MUTED))
+	var bottom_spacer := Control.new()
+	bottom_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	bottom.add_child(bottom_spacer)
+	_conn_label = _label("单人演练 · 本地权威", 8, Color(0.48, 0.56, 0.56, 0.65))
+	bottom.add_child(_conn_label)
 
 
 func _build_ammo() -> void:
 	var holder := VBoxContainer.new()
+	_ammo_holder = holder
 	holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	holder.add_theme_constant_override("separation", 1)
+	holder.add_theme_constant_override("separation", 2)
 	holder.alignment = BoxContainer.ALIGNMENT_END
 	_game_layer.add_child(holder)
-	_place(holder, Rect2(-298, -92, 268, 72), 1.0, 1.0)
+	_place(holder, Rect2(-300, -86, 280, 70), 1.0, 1.0)
 	var top := HBoxContainer.new()
 	top.add_theme_constant_override("separation", 8)
 	holder.add_child(top)
-	_weapon_title = _label("VX-9 冲锋枪", 10, Color(0.72, 0.74, 0.70, 0.95))
+	_weapon_title = _label("VX-9 冲锋枪", 11, Color(0.72, 0.74, 0.70, 0.95))
 	top.add_child(_weapon_title)
 	var title_spacer := Control.new()
 	title_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(title_spacer)
 	_weapon_mode = _label("全自动", 9, DeadCityUI.AMBER)
 	top.add_child(_weapon_mode)
+	var hairline := ColorRect.new()
+	hairline.color = Color(0.9, 0.9, 0.86, 0.23)
+	hairline.custom_minimum_size = Vector2(0, 1)
+	hairline.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	holder.add_child(hairline)
 	var ammo_row := HBoxContainer.new()
 	ammo_row.add_theme_constant_override("separation", 5)
 	ammo_row.alignment = BoxContainer.ALIGNMENT_END
@@ -417,14 +488,15 @@ func _build_ammo() -> void:
 	var ammo_spacer := Control.new()
 	ammo_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	ammo_row.add_child(ammo_spacer)
-	_ammo_mag = _label("30", 30, DeadCityUI.TEXT)
+	_ammo_mag = _label("30", 36, DeadCityUI.TEXT)
 	ammo_row.add_child(_ammo_mag)
-	_ammo_slash = _label("/", 16, Color(0.72, 0.72, 0.68, 0.95))
+	_ammo_slash = _label("/", 14, Color(0.72, 0.72, 0.68, 0.95))
 	_ammo_slash.size_flags_vertical = Control.SIZE_SHRINK_END
 	ammo_row.add_child(_ammo_slash)
-	_ammo_reserve = _label("90", 15, Color(0.62, 0.66, 0.62, 0.9))
+	_ammo_reserve = _label("90", 14, Color(0.68, 0.72, 0.68, 0.9))
 	_ammo_reserve.size_flags_vertical = Control.SIZE_SHRINK_END
 	ammo_row.add_child(_ammo_reserve)
+	ammo_row.add_child(_icon("res://assets/ui/hud/icons/ammo.png", 18))
 	var state_row := HBoxContainer.new()
 	state_row.add_theme_constant_override("separation", 8)
 	state_row.alignment = BoxContainer.ALIGNMENT_END
@@ -445,6 +517,25 @@ func _build_ammo() -> void:
 	_reload_bar.add_theme_stylebox_override("fill", DeadCityUI.meter_style(DeadCityUI.AMBER, 0))
 	_reload_bar.visible = false
 	holder.add_child(_reload_bar)
+
+
+func _build_carry_panel() -> void:
+	_carry_panel = VBoxContainer.new()
+	_carry_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_carry_panel.alignment = BoxContainer.ALIGNMENT_END
+	_carry_panel.add_theme_constant_override("separation", 2)
+	_game_layer.add_child(_carry_panel)
+	_place(_carry_panel, Rect2(-320, -92, 300, 76), 1.0, 1.0)
+	var title := _label("正在搬运核心", 15, DeadCityUI.TEXT)
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_carry_panel.add_child(title)
+	var sub := _label("无法射击 · 无法换弹", 10, DeadCityUI.MUTED)
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_carry_panel.add_child(sub)
+	var hint := _label("G  放下核心", 10, DeadCityUI.AMBER)
+	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_carry_panel.add_child(hint)
+	_carry_panel.visible = false
 
 
 func _build_weapon_strip() -> void:
@@ -536,6 +627,16 @@ func _center_control(control: Control, control_size: Vector2) -> void:
 	control.offset_bottom = control_size.y * 0.5
 
 
+func _icon(path: String, pixel_size: int) -> TextureRect:
+	var icon := TextureRect.new()
+	icon.texture = load(path)
+	icon.custom_minimum_size = Vector2(pixel_size, pixel_size)
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return icon
+
+
 func _label(text: String, font_size: int, color: Color, font: Font = null) -> Label:
 	var label := Label.new()
 	label.text = text
@@ -557,6 +658,14 @@ func _build_kill_feed() -> void:
 
 
 func _build_banner() -> void:
+	_banner_bg = TextureRect.new()
+	_banner_bg.texture = _banner_texture()
+	_banner_bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_banner_bg.stretch_mode = TextureRect.STRETCH_SCALE
+	_banner_bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_banner_bg.modulate = Color(1, 1, 1, 0)
+	_game_layer.add_child(_banner_bg)
+	_place(_banner_bg, Rect2(-340, 72, 680, 70), 0.5, 0.0)
 	_banner_box = VBoxContainer.new()
 	_banner_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_banner_box.add_theme_constant_override("separation", 1)
@@ -572,6 +681,21 @@ func _build_banner() -> void:
 	_banner_sub = _label("", 11, Color(0.82, 0.85, 0.82, 0.9))
 	_banner_sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_banner_box.add_child(_banner_sub)
+
+
+func _banner_texture() -> GradientTexture2D:
+	var gradient := Gradient.new()
+	gradient.set_color(0, Color(0.01, 0.014, 0.016, 0.68))
+	gradient.add_point(0.58, Color(0.01, 0.014, 0.016, 0.42))
+	gradient.set_color(gradient.get_point_count() - 1, Color(0.01, 0.014, 0.016, 0.0))
+	var texture := GradientTexture2D.new()
+	texture.gradient = gradient
+	texture.fill = GradientTexture2D.FILL_RADIAL
+	texture.fill_from = Vector2(0.5, 0.5)
+	texture.fill_to = Vector2(1.0, 1.0)
+	texture.width = 128
+	texture.height = 64
+	return texture
 
 
 func _overlay(tint: Color) -> Control:
@@ -977,16 +1101,16 @@ func set_roster(players: Array) -> void:
 		name_label.add_theme_color_override("font_color", DeadCityUI.TEXT if alive else Color(0.62, 0.55, 0.52))
 		if not alive:
 			status_label.text = "倒地 %.0fm" % distance if distance > 0.5 else "倒地"
-			status_label.add_theme_color_override("font_color", DeadCityUI.RED)
+			status_label.add_theme_color_override("font_color", DeadCityUI.CORAL)
 		elif health <= 30.0:
 			status_label.text = "危险"
-			status_label.add_theme_color_override("font_color", DeadCityUI.RED)
+			status_label.add_theme_color_override("font_color", DeadCityUI.CORAL)
 		elif distance > 60.0:
 			status_label.text = "脱离 %.0fm" % distance
 			status_label.add_theme_color_override("font_color", DeadCityUI.AMBER)
 		else:
 			status_label.text = "%d 杀" % kills
-			status_label.add_theme_color_override("font_color", DeadCityUI.MUTED_2)
+			status_label.add_theme_color_override("font_color", DeadCityUI.MUTED)
 		bar.value = clampf(health, 0.0, 100.0)
 		bar.add_theme_stylebox_override("fill", DeadCityUI.meter_style(base_color if alive else DeadCityUI.MUTED_2, 0))
 		bar.modulate = Color(1, 1, 1, 1) if alive else Color(0.6, 0.6, 0.6, 0.55)
@@ -999,18 +1123,17 @@ func _rebuild_roster(players: Array) -> void:
 		_roster_box.remove_child(child)
 		child.queue_free()
 	_roster_rows.clear()
+	var index := 2
 	for player in players:
 		var id := int(player.get("id", 0))
 		var color: Color = player.get("color", DeadCityUI.CYAN)
 		var row := HBoxContainer.new()
 		row.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		row.add_theme_constant_override("separation", 7)
+		row.add_theme_constant_override("separation", 8)
 		_roster_box.add_child(row)
-		var dot := ColorRect.new()
-		dot.color = color
-		dot.custom_minimum_size = Vector2(2, 24)
-		dot.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		row.add_child(dot)
+		var number := _label("%02d" % index, 10, DeadCityUI.MUTED_2)
+		number.custom_minimum_size = Vector2(20, 0)
+		row.add_child(number)
 		var info := VBoxContainer.new()
 		info.add_theme_constant_override("separation", 1)
 		info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -1018,24 +1141,31 @@ func _rebuild_roster(players: Array) -> void:
 		var line := HBoxContainer.new()
 		line.add_theme_constant_override("separation", 6)
 		info.add_child(line)
-		var name_label := _label("幸存者", 10, DeadCityUI.TEXT)
+		var name_label := _label("幸存者", 13, DeadCityUI.TEXT)
 		line.add_child(name_label)
 		var line_spacer := Control.new()
 		line_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		line.add_child(line_spacer)
-		var status_label := _label("100", 9, DeadCityUI.MUTED_2)
+		var status_label := _label("", 10, DeadCityUI.MUTED)
 		line.add_child(status_label)
 		var bar := ProgressBar.new()
 		bar.min_value = 0.0
 		bar.max_value = 100.0
 		bar.value = 100.0
 		bar.show_percentage = false
-		bar.custom_minimum_size = Vector2(0, 2)
+		bar.custom_minimum_size = Vector2(180, 2)
 		bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		bar.add_theme_stylebox_override("background", DeadCityUI.meter_style(Color(0.16, 0.17, 0.16, 0.55), 0))
 		bar.add_theme_stylebox_override("fill", DeadCityUI.meter_style(color, 0))
 		info.add_child(bar)
+		var dot := ColorRect.new()
+		dot.color = color
+		dot.custom_minimum_size = Vector2(4, 4)
+		dot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		dot.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		row.add_child(dot)
 		_roster_rows[id] = {"name": name_label, "bar": bar, "status": status_label, "dot": dot}
+		index += 1
 
 
 func set_wave(summary: Dictionary) -> void:
@@ -1070,6 +1200,11 @@ func set_wave(summary: Dictionary) -> void:
 			announce("接触开始", "清空这一波感染者", DeadCityUI.CORAL, 1.5)
 
 
+func set_compass_heading(radians: float) -> void:
+	if _compass != null:
+		_compass.set_heading(radians)
+
+
 func set_score(score: int) -> void:
 	_score_label.text = "得分 %s" % _format_number(score)
 
@@ -1093,7 +1228,7 @@ func set_health(health: float, maximum: float = 100.0) -> void:
 	var previous := _health_state.text
 	_health_label.add_theme_color_override("font_color", color if clamped < maximum else DeadCityUI.TEXT)
 	_health_state.text = state_text
-	_health_state.add_theme_color_override("font_color", color)
+	_health_state.add_theme_color_override("font_color", DeadCityUI.CORAL if state_text == "危险" else color)
 	_health_bar.add_theme_stylebox_override("fill", DeadCityUI.meter_style(color, 0))
 	_vignette.set_low_health(clamped > 0.0 and ratio <= 0.3)
 	if clamped < _last_health - 0.5:
@@ -1121,7 +1256,7 @@ func set_ammo(mag: int, reserve: int, reloading: bool = false, progress: float =
 		_ammo_slash.visible = false
 		_ammo_mag.add_theme_color_override("font_color", DeadCityUI.TEXT)
 	else:
-		_ammo_mag.add_theme_font_size_override("font_size", 30)
+		_ammo_mag.add_theme_font_size_override("font_size", 36)
 		_ammo_slash.visible = true
 		_ammo_mag.text = str(mag)
 		_ammo_reserve.text = str(reserve)
@@ -1155,6 +1290,14 @@ func set_carry_preview(value: bool) -> void:
 	_carry_preview = value
 	_carrying_core = value
 	_update_ammo_state()
+	_update_carry_ui()
+
+
+func _update_carry_ui() -> void:
+	if _carry_panel != null:
+		_carry_panel.visible = _carrying_core
+	if _ammo_holder != null:
+		_ammo_holder.visible = not _carrying_core
 
 
 func set_mission(cores: int, required: int, tokens: int, hint: String, zone_text: String, zone_color: Color, upgrades: Dictionary, carrying: bool, power: int = -1) -> void:
@@ -1182,6 +1325,7 @@ func set_mission(cores: int, required: int, tokens: int, hint: String, zone_text
 	if carrying != _carrying_core:
 		_carrying_core = carrying
 		_update_ammo_state()
+		_update_carry_ui()
 
 
 func set_interaction(text: String) -> void:
@@ -1540,15 +1684,23 @@ func announce(title: String, sub: String = "", color: Color = DeadCityUI.TEXT, d
 	_banner_sub.text = sub
 	_banner_sub.visible = sub != ""
 	_banner_box.modulate = Color(1, 1, 1, 1)
+	if _banner_bg != null:
+		_banner_bg.modulate = Color(1, 1, 1, 1)
 	if _banner_tween != null and _banner_tween.is_valid():
 		_banner_tween.kill()
 	_banner_tween = create_tween()
 	if DeadCityUI.reduced_motion():
 		_banner_tween.tween_interval(duration)
-		_banner_tween.tween_callback(func() -> void: _banner_box.modulate.a = 0.0)
+		_banner_tween.tween_callback(func() -> void:
+			_banner_box.modulate.a = 0.0
+			if _banner_bg != null:
+				_banner_bg.modulate.a = 0.0
+		)
 		return
 	_banner_tween.tween_interval(duration)
 	_banner_tween.tween_property(_banner_box, "modulate:a", 0.0, 0.45)
+	if _banner_bg != null:
+		_banner_tween.parallel().tween_property(_banner_bg, "modulate:a", 0.0, 0.45)
 
 
 func set_down(active: bool, countdown: float = 0.0) -> void:

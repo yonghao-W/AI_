@@ -20,3 +20,8 @@ ui_refactor/phase3/baselines/
 
 # Playtest raw recordings (personal data, never commit)
 ui_refactor/phase3/playtest/raw/
+
+# External HUD art reference pack (kept locally)
+ui_refactor/hud_art_v3/
+# Doc image imports are not runtime assets
+ui_refactor/*.png.import

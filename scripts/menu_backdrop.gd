@@ -266,6 +266,7 @@ func set_high_contrast(value: bool) -> void:
 func _apply_motion_state() -> void:
 	if _dust == null:
 		return
+	_dust.visible = visible and not _reduced
 	_dust.emitting = visible and not _reduced
 	if _reduced:
 		_parallax = Vector2.ZERO

@@ -154,6 +154,7 @@ func _open_game(size: Vector2i) -> void:
 	_viewport = SubViewport.new()
 	_viewport.size = size
 	_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	_viewport.set("gui_disable_input", true)
 	root.add_child(_viewport)
 	_game = load("res://scenes/main.tscn").instantiate()
 	_viewport.add_child(_game)

@@ -899,6 +899,7 @@ func _process(delta: float) -> void:
 		hud.set_ammo(player.mag, player.reserve, player.is_reloading(), player.reload_progress(), player.is_melee_equipped())
 		hud.set_spread(player.get_spread_normalized())
 		hud.set_minimap_entities(player.global_position, player.rotation.y, _minimap_remotes(), _minimap_zombies(), _minimap_markers())
+		hud.set_compass_heading(player.rotation.y)
 		_update_mission_hud()
 	if _demo_active and hud != null:
 		# 截图演示值必须压过真实状态同步，否则低血量/小队截图会退回默认值。

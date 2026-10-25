@@ -13,8 +13,8 @@ var _has_local := false
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	custom_minimum_size = Vector2(188, 188)
-	size = Vector2(188, 188)
+	custom_minimum_size = Vector2(144, 144)
+	size = Vector2(144, 144)
 
 
 func setup(layout: Dictionary) -> void:
@@ -74,31 +74,39 @@ func _draw_triangle(center: Vector2, radius: float, color: Color) -> void:
 
 
 func _draw() -> void:
-	draw_rect(Rect2(Vector2.ZERO, size), Color(0.035, 0.04, 0.04, 0.84))
-	draw_rect(Rect2(Vector2(3, 3), size - Vector2(6, 6)), Color(0.82, 0.78, 0.7, 0.16), false, 1.0)
+	draw_rect(Rect2(Vector2.ZERO, size), Color(0.02, 0.03, 0.033, 0.82))
 	if _layout.is_empty():
 		return
-	var blocks: Array = _layout.get("blocks", [])
-	var block_size := float(_layout.get("block_size", 28.0))
-	for block in blocks:
+	var road_centers: Array = _layout.get("road_centers", [])
+	var road_color := Color(0.36, 0.42, 0.41, 0.42)
+	for x in road_centers:
+		var a := _map_point(Vector3(float(x), 0, -_half))
+		var b := _map_point(Vector3(float(x), 0, _half))
+		draw_line(a, b, road_color, 4.0, true)
+	for z in road_centers:
+		var a := _map_point(Vector3(-_half, 0, float(z)))
+		var b := _map_point(Vector3(_half, 0, float(z)))
+		draw_line(a, b, road_color, 4.0, true)
+	var road_center := Color(0.66, 0.72, 0.68, 0.22)
+	for x in road_centers:
+		var a := _map_point(Vector3(float(x), 0, -_half))
+		var b := _map_point(Vector3(float(x), 0, _half))
+		draw_line(a, b, road_center, 1.0, true)
+	for z in road_centers:
+		var a := _map_point(Vector3(-_half, 0, float(z)))
+		var b := _map_point(Vector3(_half, 0, float(z)))
+		draw_line(a, b, road_center, 1.0, true)
+	for block in _layout.get("blocks", []):
 		var center: Vector2 = block["center"]
+		var block_size := float(_layout.get("block_size", 28.0))
 		var top_left := _map_point(Vector3(center.x - block_size * 0.5, 0, center.y - block_size * 0.5))
 		var bottom_right := _map_point(Vector3(center.x + block_size * 0.5, 0, center.y + block_size * 0.5))
 		var rect := Rect2(top_left, bottom_right - top_left)
 		if block["kind"] == "park":
-			draw_rect(rect, Color("#313b2e"))
-			draw_rect(rect.grow(-2.0), Color("#3b4736"))
+			draw_rect(rect, Color(0.18, 0.25, 0.17, 0.75))
 		else:
-			draw_rect(rect, Color("#282d2e"))
-			for building in block["buildings"]:
-				var b_center: Vector2 = building["center"]
-				var b_size: Vector3 = building["size"]
-				var btl := _map_point(Vector3(b_center.x - b_size.x * 0.5, 0, b_center.y - b_size.z * 0.5))
-				var bbr := _map_point(Vector3(b_center.x + b_size.x * 0.5, 0, b_center.y + b_size.z * 0.5))
-				draw_rect(Rect2(btl, bbr - btl), Color("#3e4544"))
-				draw_rect(Rect2(btl, Vector2(bbr.x - btl.x, 1.0)), Color(0.78, 0.72, 0.62, 0.22))
-		if bool(block.get("fountain", false)):
-			draw_circle(_map_point(Vector3(center.x, 0, center.y)), 3.0, Color("#7fc3ba"))
+			draw_rect(rect, Color(0.1, 0.13, 0.14, 0.42))
+		draw_rect(rect, Color(0.55, 0.62, 0.59, 0.38), false, 1.0)
 	for marker in _markers:
 		var marker_pos: Vector3 = marker.get("pos", Vector3.ZERO)
 		var color: Color = marker.get("color", Color.WHITE)
@@ -153,23 +161,22 @@ func _draw() -> void:
 			draw_arc(p, 4.0, 0.0, TAU, 16, Color(color, 0.55), 1.0)
 			draw_line(p + Vector2(-2.6, -2.6), p + Vector2(2.6, 2.6), DeadCityUI.RED, 1.2)
 			draw_line(p + Vector2(2.6, -2.6), p + Vector2(-2.6, 2.6), DeadCityUI.RED, 1.2)
-	if not _has_local:
-		return
-	var local := _map_point(_local_pos)
-	var forward := Vector2(-sin(_local_yaw), -cos(_local_yaw))
-	var side := Vector2(-forward.y, forward.x)
-	var triangle := PackedVector2Array([
-		local + forward * 7.0,
-		local - forward * 4.0 + side * 4.0,
-		local - forward * 4.0 - side * 4.0,
-	])
-	draw_colored_polygon(triangle, Color(0.06, 0.06, 0.05, 0.85))
-	var inner := PackedVector2Array([
-		local + forward * 5.8,
-		local - forward * 3.0 + side * 3.1,
-		local - forward * 3.0 - side * 3.1,
-	])
-	draw_colored_polygon(inner, Color("#f4f0e6"))
-	draw_circle(local, 1.8, Color("#7fc3ba"))
+	if _has_local:
+		var local := _map_point(_local_pos)
+		var forward := Vector2(-sin(_local_yaw), -cos(_local_yaw))
+		var side := Vector2(-forward.y, forward.x)
+		var triangle := PackedVector2Array([
+			local + forward * 7.0,
+			local - forward * 4.0 + side * 4.0,
+			local - forward * 4.0 - side * 4.0,
+		])
+		draw_colored_polygon(triangle, Color(0.06, 0.06, 0.05, 0.85))
+		var inner := PackedVector2Array([
+			local + forward * 5.8,
+			local - forward * 3.0 + side * 3.1,
+			local - forward * 3.0 - side * 3.1,
+		])
+		draw_colored_polygon(inner, Color("#f4f0e6"))
+		draw_circle(local, 1.8, Color("#7fc3ba"))
 	var font := DeadCityUI.display_font()
-	draw_string(font, Vector2(9, 16), "N", HORIZONTAL_ALIGNMENT_LEFT, -1, 9, Color(0.78, 0.74, 0.66, 0.7))
+	draw_string(font, Vector2(size.x * 0.5 - 5.0, 15.0), "N", HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color(0.9, 0.9, 0.84, 0.8))
