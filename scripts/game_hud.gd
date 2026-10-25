@@ -97,6 +97,7 @@ var _health_pulse: Tween
 var _carrying_core := false
 var _carry_preview := false
 var _last_mag := 0
+var _last_reserve := 0
 var _last_reloading := false
 var _pause_resume: Button
 var _hints_enabled := true
@@ -1066,6 +1067,7 @@ func reset_for_match() -> void:
 	_vignette.set_low_health(false)
 	_last_health = 100.0
 	_last_mag = 0
+	_last_reserve = 0
 	_last_reloading = false
 	_update_ammo_state()
 	if _weapon_strip != null:
@@ -1248,6 +1250,7 @@ func set_ammo(mag: int, reserve: int, reloading: bool = false, progress: float =
 	_ammo_melee = melee
 	_melee_combo_stage = combo_stage
 	_last_mag = mag
+	_last_reserve = reserve
 	_last_reloading = reloading
 	_reload_bar.visible = reloading and not melee and not _carrying_core
 	_reload_bar.value = clampf(progress, 0.0, 1.0) * 100.0
@@ -1290,6 +1293,42 @@ func _update_ammo_state() -> void:
 		_ammo_state.add_theme_color_override("font_color", DeadCityUI.GREEN)
 	if _reload_bar != null:
 		_reload_bar.visible = _last_reloading and not _ammo_melee and not _carrying_core
+
+
+func apply_combat_state(state: Variant) -> void:
+	var carry_changed := bool(state.carrying_core) != _carrying_core and not _carry_preview
+	if carry_changed:
+		set_carrying_state(bool(state.carrying_core))
+	if absf(float(state.health) - _last_health) > 0.01:
+		set_health(float(state.health), float(state.max_health))
+	var weapon_name := String(state.weapon_name)
+	if not weapon_name.is_empty() and _weapon_title != null and _weapon_title.text != weapon_name:
+		_weapon_title.text = weapon_name
+	var weapon_tag := String(state.weapon_tag)
+	if not weapon_tag.is_empty() and _weapon_mode != null and _weapon_mode.text != weapon_tag:
+		_weapon_mode.text = weapon_tag
+	var need_ammo := (
+		int(state.mag) != _last_mag
+		or int(state.reserve) != _last_reserve
+		or bool(state.reloading) != _last_reloading
+		or bool(state.melee) != _ammo_melee
+		or int(state.combo_stage) != _melee_combo_stage
+		or carry_changed
+	)
+	if bool(state.reloading) and _reload_bar != null:
+		need_ammo = need_ammo or absf(_reload_bar.value - float(state.reload_progress) * 100.0) > 0.1
+	if need_ammo:
+		set_ammo(int(state.mag), int(state.reserve), bool(state.reloading), float(state.reload_progress), bool(state.melee), int(state.combo_stage))
+	if bool(state.downed) != _down_active:
+		set_down(bool(state.downed))
+
+
+func set_carrying_state(value: bool) -> void:
+	if _carry_preview or _carrying_core == value:
+		return
+	_carrying_core = value
+	_update_ammo_state()
+	_update_carry_ui()
 
 
 func set_carry_preview(value: bool) -> void:

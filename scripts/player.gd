@@ -829,6 +829,23 @@ func _sync_ammo_state() -> void:
 	_ammo_states[current_weapon_id()] = {"mag": mag, "reserve": reserve}
 
 
+func write_hud_state(state: Variant) -> void:
+	state.health = health
+	state.max_health = 100.0
+	state.weapon_id = current_weapon_id()
+	var profile := WeaponCatalog.data(current_weapon_id())
+	state.weapon_name = String(profile.get("name", ""))
+	state.weapon_tag = String(profile.get("tag", ""))
+	state.mag = mag
+	state.reserve = reserve
+	state.reloading = reloading
+	state.reload_progress = reload_progress()
+	state.melee = is_melee_equipped()
+	state.combo_stage = melee_combo_stage()
+	state.carrying_core = carrying_core
+	state.downed = not alive
+
+
 func melee_combo_stage() -> int:
 	return _melee.active_stage()
 

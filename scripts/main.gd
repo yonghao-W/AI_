@@ -1,5 +1,6 @@
 extends Node
 
+const CombatHudStateScript := preload("res://scripts/combat_hud_state.gd")
 const MAX_PLAYERS := 4
 const RESPAWN_TIME := 8.0
 const SNAPSHOT_INTERVAL := 1.0 / 15.0
@@ -21,6 +22,7 @@ const CARD_POOL := [
 	{"key": "armor", "title": "防弹插板", "desc": "全队受到伤害 -8%", "accent": "#b9a6d9"},
 ]
 
+var _combat_hud_state: Variant = CombatHudStateScript.new()
 var menu: MainMenu
 var hud: GameHUD
 var player: LocalPlayer
@@ -801,8 +803,8 @@ func _prepare_world(world_seed: int) -> bool:
 		_server_reset_mission()
 	hud.setup_world(layout)
 	hud.set_health(100.0)
-	hud.set_ammo(player.mag, player.reserve, false, 0.0, player.is_melee_equipped(), player.melee_combo_stage())
 	hud.set_weapon_strip(player.loadout_summary(), player.weapon_profile())
+	_sync_combat_hud()
 	hud.set_mission(cores_secured, CORES_REQUIRED, draw_tokens,
 		"经西侧楼梯下楼，前往基地补给，再到公园 B1 回收核心", "第一章 · E-07 维护站", DeadCityUI.CYAN, team_upgrades, false, MetaProfile.power_of(team_upgrades))
 	hud.hide_loading()
@@ -877,8 +879,8 @@ func _place_local_player(spawn: Vector3, face_yaw_value: float = PI) -> void:
 	player.auto_pilot = _cli_pilot
 	hud.set_down(false)
 	hud.set_health(100.0)
-	hud.set_ammo(player.mag, player.reserve, false, 0.0, player.is_melee_equipped(), player.melee_combo_stage())
 	hud.set_weapon_strip(player.loadout_summary(), player.weapon_profile())
+	_sync_combat_hud()
 
 
 func _process(delta: float) -> void:
@@ -896,7 +898,7 @@ func _process(delta: float) -> void:
 	elif not is_server:
 		_client_step(delta)
 	if player != null and hud != null:
-		hud.set_ammo(player.mag, player.reserve, player.is_reloading(), player.reload_progress(), player.is_melee_equipped(), player.melee_combo_stage())
+		_sync_combat_hud()
 		hud.set_spread(player.get_spread_normalized())
 		hud.set_minimap_entities(player.global_position, player.rotation.y, _minimap_remotes(), _minimap_zombies(), _minimap_markers())
 		hud.set_compass_heading(player.rotation.y)
@@ -1394,6 +1396,13 @@ func _fail_connection(message: String) -> void:
 		peer.close()
 	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	menu.present(message, true)
+
+
+func _sync_combat_hud() -> void:
+	if player == null or hud == null:
+		return
+	player.write_hud_state(_combat_hud_state)
+	hud.apply_combat_state(_combat_hud_state)
 
 
 func _on_local_zombie_hit(zid: int, headshot: bool, weapon_id: String, combo_stage: int) -> void:
