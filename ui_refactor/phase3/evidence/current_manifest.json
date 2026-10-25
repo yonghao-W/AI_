@@ -29,7 +29,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/menu_settings_1280x720.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "9db4f33b82f101dd273123285eb6a6e651c10363a63b153aabeb204bfd1d362b",
+			"sha256": "aa4e5d8e84311f75497bb3726d97663e665e83af2ddea0db7eb2f802eb765a7d",
 			"state": "menu_settings",
 			"width": 1280
 		},
@@ -40,7 +40,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/menu_armory_1280x720.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "ac4db37c65d164c371529041446e11e07d2d0843ff27841ac9146c1a865b266b",
+			"sha256": "30852434fbec204348465a6483acf9ede49bb059908d94d1c2b5c9b208dd1d60",
 			"state": "menu_armory",
 			"width": 1280
 		},
@@ -51,7 +51,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/lobby_1280x720.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "9eee58fdd1fa32f795f8a30312cfdf9abd05d89e8b08924c9e19d6269e10418c",
+			"sha256": "20577f8ec3f25816bc46fa17355b64d5c82602fef5babbfb87477420b2978c16",
 			"state": "lobby",
 			"width": 1280
 		},
@@ -62,7 +62,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_normal_1280x720.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "352f72a380ba63eed275bf4100802d946ec823bd56b97789430932b2c1f6607f",
+			"sha256": "ba8e391420064bcdeb61d0158cd8d224ddd1d898ba93526f3bd4203eda3ce9bd",
 			"state": "hud_normal",
 			"width": 1280
 		},
@@ -73,7 +73,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/pause_1280x720.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "addd6d8fd2bf522a1714a5049fbc9d31b53b329bc5a6d36fc17d90d223a26b1f",
+			"sha256": "8ed4d3004bd57624b166d94517144610ad23f493df91591695f6d9fb20cfa618",
 			"state": "pause",
 			"width": 1280
 		},
@@ -84,7 +84,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/draw_1280x720.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "ffb2ef4100443f9335556cad94a6cc7f0025b0bdb3e84abc9fcf67857bc693cd",
+			"sha256": "8e528d8885cbd9fac7c96f39c939f4ac8fa0c279ea4692bea035080e1b63b039",
 			"state": "draw",
 			"width": 1280
 		},
@@ -95,7 +95,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/backpack_1280x720.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "e7bb250040b9c3985e24f36718e85b508bfa5099d24f8caea2675fb7bf08e3d6",
+			"sha256": "7b450b8dade109327f94ebbe711531690196fce31442ba40d30b9cc8ee02df13",
 			"state": "backpack",
 			"width": 1280
 		},
@@ -106,7 +106,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/intel_1280x720.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "358609ddd987cb5494d5f0ab7d4052a2d56e1193bfed83236373caeb2ef31059",
+			"sha256": "09556f8dd3bec61e0d8690fbc8931358fa7769552d68b640b4234d7729dc0f63",
 			"state": "intel",
 			"width": 1280
 		},
@@ -117,7 +117,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_low_health_1280x720.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "8af792456d6a791d45ca7791919e74f79c150bab126ad62ad54f046811b55ab0",
+			"sha256": "da36ead9dd98bf87cdfb940701903d5a3eb41b66277da757530e3dde1acc255d",
 			"state": "hud_low_health",
 			"width": 1280
 		},
@@ -128,7 +128,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_carry_1280x720.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "cd2f3cf4064251c38a0b310734554e35543b2be5c51c2a1b257ee6c715a08adf",
+			"sha256": "ef4cfe9de039f4e6018ee818c4e5e59fd2aba5688bbba11da0d9eb1b81208478",
 			"state": "hud_carry",
 			"width": 1280
 		},
@@ -139,7 +139,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_squad_four_1280x720.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "5418636626dd703c59aa203f303a23435c4d26b16a864cd7dc62809a3ed8e9d0",
+			"sha256": "2d8c5f1f82196818661f3daf0dcf71f2b507be66c650c1c41166465972e97136",
 			"state": "hud_squad_four",
 			"width": 1280
 		},
@@ -150,7 +150,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/menu_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "699acb138769b9be0a6dd3e94584ff918396fe1256b497eeb300f4723dc44bae",
+			"sha256": "57f80124f535f69bbc95300698925776417043734ad255ea79bcec5b05e5d888",
 			"state": "menu",
 			"width": 1920
 		},
@@ -161,7 +161,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/menu_coop_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "b85139b5131e654baeeaa339ffd701102f5c9df17c4836adbfa638acadd16b19",
+			"sha256": "e9d3fb32329dc893aa0fd3a6115ec03e696c856be4fc90812a2f29339d48c2ce",
 			"state": "menu_coop",
 			"width": 1920
 		},
@@ -172,7 +172,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/menu_settings_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "b38457ba516ddbdaa00b1930c28d1185feb2632ab6ab8551fe76b4accbe7f54c",
+			"sha256": "b3c3889724f171e4c25f76b9ee830d18621fb217b61148f8af3c55290d29c33c",
 			"state": "menu_settings",
 			"width": 1920
 		},
@@ -183,7 +183,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/menu_armory_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "6e01a0c3724ddf3bbb422bb8b51f8037895bcd9f80d3a28b442bbb01ef91ea33",
+			"sha256": "cad6de740719ef078b702202d73c922f0b046b37a8fb7cc1520c1e24108885f6",
 			"state": "menu_armory",
 			"width": 1920
 		},
@@ -194,7 +194,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/lobby_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "927f5071e7ded6b3c7a3b28f3fd610387d049b36fbeda60320f601bb3fb7ba52",
+			"sha256": "f93d765c0d5d960607e00bcf125a2e9d478d1ce2c3fbd40ea31fb698b217f67c",
 			"state": "lobby",
 			"width": 1920
 		},
@@ -205,7 +205,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_normal_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "25ed509e8e9a0bff3ed319f3928ea53553e1e7e8daeedbfd61dbd6ff98d7064b",
+			"sha256": "48fe162d4297560c273d607c857d64f77214349dbb184c2ae4eff8ff69e9a539",
 			"state": "hud_normal",
 			"width": 1920
 		},
@@ -216,7 +216,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/pause_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "3dd47aaa970e525abae6c339e0f2178cebdb9a29091c2333a11af3c6e05a457d",
+			"sha256": "daaed8fef11a073324b9e2166d929fa0b9ed16d87f0eb6540a256d5ede8afb0a",
 			"state": "pause",
 			"width": 1920
 		},
@@ -227,7 +227,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/draw_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "9ac163543575dcb484da16ea7f69ff36b2cae4eb5621a6dd5a05f4a9e1b05fae",
+			"sha256": "bcbe519ef959a2a2cd59c81b4bc858635c577330d9bd0817da948e832a6e89db",
 			"state": "draw",
 			"width": 1920
 		},
@@ -238,7 +238,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/backpack_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "9ad223fe6b776548169aa0683134c030b95d65bde7ef16d6db823ab635b2f59f",
+			"sha256": "ccf427330d02f4211a4fdc64ae3a821f64b46166b353e360d5813baa6c567089",
 			"state": "backpack",
 			"width": 1920
 		},
@@ -249,7 +249,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/intel_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "cb5e3ab669b40444afc68b8f7970b541b6a46d18fd3490bf8e7db2fcc89adebf",
+			"sha256": "ffafcfa769d72b13d52011806706988db710baea17270721fbb2214791fdb938",
 			"state": "intel",
 			"width": 1920
 		},
@@ -260,7 +260,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_low_health_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "e20bc3c9f13dac269af7085f0f16bf88f6bb2bd4478e0b3626884cba4fd21eb8",
+			"sha256": "857a2f6ad50e4d23a79fc016b84a497aa2b47cb6b276e4c1becdc9fd68697055",
 			"state": "hud_low_health",
 			"width": 1920
 		},
@@ -271,7 +271,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_carry_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "599605303eafae7bd41da7d6df77b30ae231093a5fd58e06cc706877ae3e6893",
+			"sha256": "9192ef396bb4c32924da2d4dde9b82898f227816a9148a05dec9aa6a315a4f7d",
 			"state": "hud_carry",
 			"width": 1920
 		},
@@ -282,7 +282,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_squad_four_1920x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "6bb9b547d522286b40542f45241501d594a7601620056e36018142b86ce2cd34",
+			"sha256": "efe554706aa15e4a731bf9879c7de05d3910459789ca52757fcccb502ec04bad",
 			"state": "hud_squad_four",
 			"width": 1920
 		},
@@ -293,7 +293,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/menu_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "171c0cc5841d3ef5d8f523789d72f0490c8b596296d3fb5c7770e3237fc24297",
+			"sha256": "ed05b0a8d049eb4f910e0df4bdda705d42ad5a5d45ada6eab89b11fbb7133642",
 			"state": "menu",
 			"width": 1920
 		},
@@ -304,7 +304,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/menu_coop_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "378cd1f2ae6fb71341fb46e2ab2972316ae8de3fcacbcb557b3d3419227876a2",
+			"sha256": "c8fd46b1732acb8cfd44d5a90b5e8ec84f377cc9d95df87a9b13fd3240f205fa",
 			"state": "menu_coop",
 			"width": 1920
 		},
@@ -315,7 +315,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/menu_settings_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "5229689dba7987b0c9b0fc28df07ed4e039a4cfc14c2385b745fd43d61bd8243",
+			"sha256": "edb9f6420d15a6fe2565ab82c0f0592b2168355328563828a89647615dfb7e47",
 			"state": "menu_settings",
 			"width": 1920
 		},
@@ -326,7 +326,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/menu_armory_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "95112f84ea14973850ba8279e4f511200fd6160b1960b090254d6e381a2d18da",
+			"sha256": "18e3d1c709ab919be69d9f95441b69250f03ad4da411af3a9d03b8de704c48a2",
 			"state": "menu_armory",
 			"width": 1920
 		},
@@ -337,7 +337,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/lobby_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "ebd374f1faea03711016bc168ad3df8ba6fe7a03a6ae8627b524f39b428cc6c4",
+			"sha256": "9856ad36de027a7990cb820d267e2bba53957ab6ca7772c969256c6d2586ce66",
 			"state": "lobby",
 			"width": 1920
 		},
@@ -348,7 +348,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_normal_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "34543e2c510979cb62b7aa9d4414032c806cae8d37cff6245681a1e46183661e",
+			"sha256": "294566b299128b6f1e0526a85b2eb6780abd59e0bdb3dd8db55183622af29471",
 			"state": "hud_normal",
 			"width": 1920
 		},
@@ -359,7 +359,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/pause_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "f1d9ceb949b1f7de2230e568890224c95fc56e9fa4b24cec8e831b6d2f04ef7e",
+			"sha256": "c80f6b4f90a28e7c8019b98069221d7efcb649930755b639d8f2bf44ea14863f",
 			"state": "pause",
 			"width": 1920
 		},
@@ -370,7 +370,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/draw_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "90bc2c86bbcf10515f739814d07aaa5c62578bd7faeed662d8b89897078da638",
+			"sha256": "1fbd971e3279e2032894d8970dd02f4b43f3938bbff1178a0d387def855d451f",
 			"state": "draw",
 			"width": 1920
 		},
@@ -381,7 +381,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/backpack_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "c0a730cdc47ce7d7b736a858bd36fa2663df1ed5e6391bce6cd57aad3c8797c6",
+			"sha256": "c9c97b35d2b6638b2849c63dbb08993697c0e454207f286fb0a15ee3ea126f34",
 			"state": "backpack",
 			"width": 1920
 		},
@@ -392,7 +392,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/intel_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "669d3b397b4f0edd55703065ddf702db861013609c6fc2084a10915064b5122c",
+			"sha256": "ab2ce5cc2a22b56ffa6d267d3d116154af25afe84b669b4252558ac1b491a010",
 			"state": "intel",
 			"width": 1920
 		},
@@ -403,7 +403,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_low_health_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "9f0f451f678025300f60d4a5e773b5354d5bd4117fe609ac242265df12619120",
+			"sha256": "e7f034b61225a6d57a01f214940042f67855bc55387dcd9fa2275767aef6fe02",
 			"state": "hud_low_health",
 			"width": 1920
 		},
@@ -414,7 +414,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_carry_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "03104b68679951af4e5934e61e1bbdfbf9ac79db1435bd6242ac40c3b44c4439",
+			"sha256": "358d350ce692e311c2b502f99587319d6f2aa6c615e0db321db8be050b5452d6",
 			"state": "hud_carry",
 			"width": 1920
 		},
@@ -425,7 +425,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_squad_four_1920x1200.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "21c503f749a053cf90fccc1f6a8ab608048a2c60d305a9ce220d2c654487e254",
+			"sha256": "86f7ef1284f38a868dee86de04e8da0155228ef86744c723427670d40a5ac77b",
 			"state": "hud_squad_four",
 			"width": 1920
 		},
@@ -436,7 +436,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/menu_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "af78e328414aa519700d695c41ad4294fef22cbc21147304bd8ad6efe06fd074",
+			"sha256": "6a80eb90e189a29c144d1517585e8c57deab712a7ce9f57d803f77a389d53666",
 			"state": "menu",
 			"width": 2560
 		},
@@ -447,7 +447,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/menu_coop_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "5d779ff33ac89d21b5d677d3017cd3202e071494485fc92ff89dfa6b09027847",
+			"sha256": "44bf8f80f7e6d09e084e4dfc4a8f2b60153a2ec255925aaa689a2af9e1b83e48",
 			"state": "menu_coop",
 			"width": 2560
 		},
@@ -458,7 +458,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/menu_settings_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "4f9307d08578406c354ad8d4d78e3b4690b3dd7f12d5cea8b83c112f73be8d45",
+			"sha256": "62ab7f69086cdf66c96ecd0a97440acdda5eb754b4eedae9535d2e8eb684d5fa",
 			"state": "menu_settings",
 			"width": 2560
 		},
@@ -469,7 +469,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/menu_armory_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "a49113d866c2b888db8f9a98af26d8b8b66d24842211289e310f83b5f816e401",
+			"sha256": "f809092cf43a6e34f604907744c515ad617d24e92a05646f0e50f0761ecf5622",
 			"state": "menu_armory",
 			"width": 2560
 		},
@@ -480,7 +480,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/lobby_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "e40a65356e30af3a0db95fc2493a336ef58f849de62ab1684dbf84afa86d20fe",
+			"sha256": "eec361dd8ae15ced599a8b481b0c39c8f3c1520915d51f8fe5f86d1350d2e897",
 			"state": "lobby",
 			"width": 2560
 		},
@@ -491,7 +491,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_normal_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "38ebfd926b6bdeff62d16fb95a31a8d538a108db1a76ffa4f53876ba942104d3",
+			"sha256": "d949ad69a03a240167687ffd7077b784ae6f6263b5bf35a6b028a8e6312da995",
 			"state": "hud_normal",
 			"width": 2560
 		},
@@ -502,7 +502,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/pause_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "590ccdd82ef2d8dc3aeabe87ce2db9fb5783c447a6ba1a817b171d4e0491b3cd",
+			"sha256": "c00497b04420fa13c390548d1252978b3c5cda67771fc8a23a8c790d4da616cd",
 			"state": "pause",
 			"width": 2560
 		},
@@ -513,7 +513,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/draw_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "69a06978b61808437a2655a5e5084b6e50e23f6abb0807ed207e93bfe51f00d5",
+			"sha256": "d97942a6e2a1035cc02cf8d7204eb22f56ec14aeb20956beb8735e9bc0281aef",
 			"state": "draw",
 			"width": 2560
 		},
@@ -524,7 +524,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/backpack_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "a569f40847fbb88ab960c6f5d26dc60cb6b90e770ec6aa631530befdb2394408",
+			"sha256": "b07c93551889960fcb89e73a5158aceda0b222eb2afd931416a959595570473a",
 			"state": "backpack",
 			"width": 2560
 		},
@@ -535,7 +535,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/intel_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "27e36d84b72ad512bcc6641993b51940e83897d42dc403d49d941942f896a960",
+			"sha256": "5d869ec32732d1fe548e9426df0b952f4613fffd4b65183368896cb2a2cbe667",
 			"state": "intel",
 			"width": 2560
 		},
@@ -546,7 +546,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_low_health_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "c86853bd1cb137f793f1eaf86acd2e08e3c0bf34b396e9098ed86fe207298179",
+			"sha256": "da2498f6ee7c17ec3332d149dc4de3fbfb4293509c797a919815146ad6f0e41d",
 			"state": "hud_low_health",
 			"width": 2560
 		},
@@ -557,7 +557,7 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_carry_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "987a94ebdeecbf246595c8a8ace19612b39e0f7908a53ec44d8e77a326d27972",
+			"sha256": "cd83993f6f9f95953803fd3fb0beb953edf651a7739cb6cb07a1301597a4b451",
 			"state": "hud_carry",
 			"width": 2560
 		},
@@ -568,15 +568,15 @@
 			"path": "ui_refactor/phase3/shots/matrix_current/hud_squad_four_2560x1080.png",
 			"reduced_motion": true,
 			"seed": 4242,
-			"sha256": "de8de26f0b401c24bcb8d7a455060853a1369203ec80955b49846293d4272ea5",
+			"sha256": "dd17df94b0b53a5e152949e3b2af3fc250fd0eae931d20a26b16e871b7511244",
 			"state": "hud_squad_four",
 			"width": 2560
 		}
 	],
-	"command": "Godot --path . --headless --script res://ui_refactor/phase3/tools/capture_ui_matrix.gd -- --out=ui_refactor/phase3/shots/matrix_current --manifest=ui_refactor/phase3/evidence/current_manifest.json --commit=0b15fbe",
+	"command": "Godot --path . --headless --script res://ui_refactor/phase3/tools/capture_ui_matrix.gd -- --out=ui_refactor/phase3/shots/matrix_current --manifest=ui_refactor/phase3/evidence/current_manifest.json --commit=3def755",
 	"engine_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
-	"generated_at": "2026-10-24T17:47:50",
-	"git_commit": "0b15fbe",
+	"generated_at": "2026-10-25T02:18:14",
+	"git_commit": "3def755",
 	"godot_version": "4.7.2-stable (official)",
 	"reduced_motion": true,
 	"seed": 4242

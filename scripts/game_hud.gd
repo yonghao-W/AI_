@@ -155,15 +155,15 @@ func _build() -> void:
 
 
 func _build_hud_backdrops() -> void:
-	_mission_backdrop = _hud_backdrop(Rect2(14, 10, 330, 136), 0.0, 0.0)
-	_health_backdrop = _hud_backdrop(Rect2(14, -104, 306, 104), 0.0, 1.0)
-	_ammo_backdrop = _hud_backdrop(Rect2(-320, -110, 320, 110), 1.0, 1.0)
+	_mission_backdrop = _hud_backdrop(Rect2(16, 12, 320, 112), 0.0, 0.0)
+	_health_backdrop = _hud_backdrop(Rect2(18, -90, 264, 78), 0.0, 1.0)
+	_ammo_backdrop = _hud_backdrop(Rect2(-300, -96, 280, 84), 1.0, 1.0)
 
 
 func _hud_backdrop(rect: Rect2, anchor_x: float, anchor_y: float) -> Control:
 	var panel := PanelContainer.new()
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var style := DeadCityUI.panel_style(Color(0.012, 0.016, 0.019, 0.62), 4, Color(0.85, 0.82, 0.76, 0.08), 1)
+	var style := DeadCityUI.panel_style(Color(0.012, 0.016, 0.019, 0.64), 8, Color(0.85, 0.82, 0.76, 0.10), 1)
 	style.content_margin_left = 0.0
 	style.content_margin_right = 0.0
 	style.content_margin_top = 0.0
@@ -362,18 +362,18 @@ func _build_health() -> void:
 	var top := HBoxContainer.new()
 	top.add_theme_constant_override("separation", 8)
 	holder.add_child(top)
-	top.add_child(_label("生命", 9, DeadCityUI.MUTED))
+	top.add_child(_label("生命", 10, DeadCityUI.MUTED))
 	var spacer := Control.new()
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(spacer)
-	_health_state = _label("稳定", 9, DeadCityUI.GREEN)
+	_health_state = _label("稳定", 10, DeadCityUI.GREEN)
 	top.add_child(_health_state)
 	var value_row := HBoxContainer.new()
 	value_row.add_theme_constant_override("separation", 4)
 	holder.add_child(value_row)
-	_health_label = _label("100", 26, DeadCityUI.TEXT)
+	_health_label = _label("100", 28, DeadCityUI.TEXT)
 	value_row.add_child(_health_label)
-	var max_label := _label("/ 100", 10, Color(0.74, 0.78, 0.76, 0.95))
+	var max_label := _label("/ 100", 11, Color(0.74, 0.78, 0.76, 0.95))
 	max_label.size_flags_vertical = Control.SIZE_SHRINK_END
 	value_row.add_child(max_label)
 	var value_spacer := Control.new()
@@ -403,6 +403,8 @@ func _build_ammo() -> void:
 	var top := HBoxContainer.new()
 	top.add_theme_constant_override("separation", 8)
 	holder.add_child(top)
+	_weapon_title = _label("VX-9 冲锋枪", 10, Color(0.72, 0.74, 0.70, 0.95))
+	top.add_child(_weapon_title)
 	var title_spacer := Control.new()
 	title_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(title_spacer)
@@ -427,8 +429,7 @@ func _build_ammo() -> void:
 	state_row.add_theme_constant_override("separation", 8)
 	state_row.alignment = BoxContainer.ALIGNMENT_END
 	holder.add_child(state_row)
-	_weapon_title = _label("VX-9 冲锋枪", 9, Color(0.66, 0.68, 0.64, 0.9))
-	state_row.add_child(_weapon_title)
+	state_row.add_child(_label("弹匣 / 备弹", 9, DeadCityUI.MUTED_2))
 	var state_spacer := Control.new()
 	state_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	state_row.add_child(state_spacer)
