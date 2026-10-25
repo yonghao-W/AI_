@@ -1123,7 +1123,7 @@ func _rebuild_roster(players: Array) -> void:
 		_roster_box.remove_child(child)
 		child.queue_free()
 	_roster_rows.clear()
-	var index := 2
+	var index := 1
 	for player in players:
 		var id := int(player.get("id", 0))
 		var color: Color = player.get("color", DeadCityUI.CYAN)
