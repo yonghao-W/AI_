@@ -1,6 +1,6 @@
 # Phase 3 证据索引
 
-代码基准：`edd19c1` · Godot 4.7.2 · 2026-10-24
+代码基准：`c18b286` · Godot 4.7.2 · 2026-10-25
 
 ## 文件
 
@@ -8,11 +8,11 @@
 |---|---|
 | `baseline_manifest.json` | 13 状态 × 4 分辨率共 52 张基线；commit、分辨率、seed、SHA-256、生成命令 |
 | `current_manifest.json` | 同一矩阵的复跑清单 |
-| `visual_diff.json` | 基线 vs 复跑逐像素差异；阈值 0.1%；本次 0 失败 |
+| `visual_diff.json` | 基线 vs 复跑逐像素差异；阈值 0.15%；本次 0 失败；同代码复跑菜单噪声最高 0.103% |
 | `perf_new_final.json` | 新 UI：菜单/HUD 显示与隐藏的 p50/p95/p99、Draw call、UI 差值 |
 | `perf_old_paused.json` | 旧 UI（`db0b452` worktree）同工具对照 |
 | `perf_new_paused.json` / `perf_new_unpaused.json` / `perf_old_unpaused.json` | 中间采样，保留用于说明测量差异；文档以 `perf_new_final.json` 与 `perf_old_paused.json` 为准 |
-| `contrast_elements.json` | 11 状态、246 个有效文字元素的字号/字色/矩形与文字隐藏后的背景 |
+| `contrast_elements.json` | 11 状态、250 个有效文字元素的字号/字色/矩形与文字隐藏后的背景 |
 | `contrast_report.json` | 逐元素 WCAG 对比度，5 项低于阈值 |
 | `network/adverse_host.txt` | 150ms RTT/2%/30ms 抖动下 300s 房主日志（175 检查） |
 | `network/adverse_client.txt` | 同条件客户端日志（172 检查） |
@@ -21,7 +21,7 @@
 ## 基线图
 
 - 路径：`ui_refactor/phase3/baselines/`。
-- 已在 `.gitignore` 中忽略（52 张 PNG 体积较大）；可用 `baseline_manifest.json` 中的 SHA-256 校验，或按下面命令从 `edd19c1` 重建。
+- 已在 `.gitignore` 中忽略（52 张 PNG 体积较大）；可用 `baseline_manifest.json` 中的 SHA-256 校验，或按下面命令从 `c18b286` 重建（manifest 已记录该提交号）。
 - 视觉比较时使用隔离模式：减少动效、隐藏 3D 世界、暂停 SceneTree、隐藏瞬时波次横幅、固定 seed 4242。
 
 ## 复现命令

@@ -1,6 +1,6 @@
 # E · UI v3 验证报告
 
-- 代码基准：`edd19c1`（UI v3 集成 + 可读性/小地图修复）
+- 代码基准：`c18b286`（HUD Art V3 集成 + 小队编号修正）
 - 引擎：Godot 4.7.2 stable `ed1daf0bf`，Forward+
 - 硬件：NVIDIA RTX 4060 Laptop，Windows 10.0.26200
 - 默认窗口：1280×720；分辨率取证另用离屏 SubViewport
@@ -12,15 +12,15 @@
 |---|---|---|---|
 | 资产加载/结构 | `tests/test_abandoned_house_asset.gd` | 7 / 0 | 725 网格、114,350 顶点 |
 | UI 集成 | `tests/test_ui_integration.gd` | 105 / 0 | 菜单、设置、HUD 真实状态、覆盖层、暂停、清理 |
-| 输入/显示矩阵 | `tests/test_ui_display.gd` | 120 / 0，4 warning | dpi125/dpi150 通过；zoom125/150 为压力提示 |
+| 输入/显示矩阵 | `tests/test_ui_display.gd` | 120 / 0，8 warning | dpi125/dpi150 通过；zoom125/150 为压力提示 |
 | 联机 UI（4 人） | `tests/test_ui_network.gd` | HOST 23 / 3×CLIENT 19，0 失败 | 真实四进程 |
 | 故障网络（2 人，300s） | `tests/test_ui_network.gd` + UDP 代理 | HOST 175 / CLIENT 172，0 失败 | 150ms RTT、2% 丢包、30ms 抖动 |
 | 任务逻辑 | `tests/test_mission.gd` | 150 / 0 | |
 | 第一章 | `tests/test_chapter_one.gd` | 230 / 0 | |
 | 城市布局 | `tests/test_city_layout.gd` | 18 / 0 | |
 | 章节联机 | `tests/test_chapter_network.gd` | 双端通过，2 人 | station_spawn=true |
-| 视觉矩阵 | `tools/capture_ui_matrix.gd` + `visual_diff.py` | 52 / 52，0 差异 | 13 状态 × 4 分辨率 |
-| 渲染像素对比度 | `tools/contrast_audit.gd` + `contrast_report.py` | 243 元素，5 项低于阈值 | 见第 5 节 |
+| 视觉矩阵 | `tools/capture_ui_matrix.gd` + `visual_diff.py` | 52 / 52，0 超阈值 | 13 状态 × 4 分辨率 |
+| 渲染像素对比度 | `tools/contrast_audit.gd` + `contrast_report.py` | 250 元素，5 项低于阈值 | 见第 5 节 |
 
 ## 2. 视觉回归
 
@@ -29,11 +29,11 @@
 - 状态：`menu`、`menu_coop`、`menu_settings`、`menu_armory`、`lobby`、`hud_normal`、`hud_low_health`、`hud_carry`、`hud_squad_four`、`pause`、`draw`、`backpack`、`intel`。
 - 分辨率：1280×720、1920×1080、1920×1200、2560×1080。
 - 稳定化：关闭减少动效以外的随机源；隐藏 3D 世界；暂停 SceneTree；隐藏瞬时波次横幅；固定 seed 4242；HUD 缩放 100%。
-- 比较：SHA-256 + 逐像素差异比例，阈值 0.1%。
+- 比较：SHA-256 + 逐像素差异比例，阈值 0.15%。同一代码多次复跑时，菜单背景的 GPU 重采样边缘噪声最高 0.103%，因此 0.1% 会间歇误报。
 
 **结果**
 
-- 52 张基线 / 52 张复跑，**0 失败**。
+- 52 张基线 / 52 张复跑，**0 失败（阈值 0.15%）**；并非逐位相同，本次最大变化为 `menu_1920x1080` 的 0.086%，其余状态更低。
 - 基线图：`ui_refactor/phase3/baselines/`（按 `.gitignore` 不入库）。
 - 哈希与命令：`evidence/baseline_manifest.json`、`evidence/current_manifest.json`。
 - 差异报告：`evidence/visual_diff.json`。
@@ -60,18 +60,18 @@ python ui_refactor/phase3/tools/visual_diff.py \
 | 1280×720 基准 | 菜单 6 项、HUD 面板、焦点均通过 |
 | DPI 等效 125%（1600×900，逻辑 1280×720） | 通过 |
 | DPI 等效 150%（1920×1080，逻辑 1280×720） | 通过 |
-| UI 放大 125%（1280×720，逻辑 1024×576） | 1 条菜单项越界 warning |
-| UI 放大 150%（1280×720，逻辑 853×480） | 3 条菜单项越界 warning |
+| UI 放大 125%（1280×720，逻辑 1024×576） | 4 条 warning：1 条菜单项、任务面板与 2 个 HUD 标签越界 |
+| UI 放大 150%（1280×720，逻辑 853×480） | 4 条 warning：3 条菜单项、任务面板与 4 个 HUD 标签越界 |
 | 覆盖层开/关 10 次 | 输入锁定/恢复、准星恢复全部通过 |
 
-- 本轮修复：小地图按实际 188px 尺寸重新定位，消除 1280 宽下右缘 2px 越界。
+- 本轮修复：HUD 按 V3 重排为顶部罗盘、右上 144px 圆形小地图、无底板小队/生命/弹药；罗盘标签改为按绝对方位锚定，玩家朝向不是 30° 倍数时也能显示 N/E/S/W 与度数。
 - 限制：dpi125/150 是“放大物理窗口 + 固定逻辑视口”的等效检查，不是修改 Windows 显示缩放后的真实 OS DPI 测试；zoom125/150 是 UI 放大压力，不是任务要求的 1280×720 最小分辨率。手柄未测试，不声明支持。
 
 ## 4. 联机与故障网络
 
 **常规联机**
 
-- 4 人：HOST 19 / 3 个 CLIENT 各 16 检查，0 失败。
+- 4 人：HOST 23 / 3 个 CLIENT 各 19 检查，0 失败。
 - 覆盖大厅四人槽位、准备/取消、房主开始、HUD 4 行、联机暂停不暂停 SceneTree、恢复输入、返回清理。
 
 **故障网络**
@@ -96,11 +96,11 @@ python ui_refactor/phase3/tools/visual_diff.py \
 
 **结果**
 
-- 246 个有效元素，**5 项低于阈值**：
-  - 低血波次横幅 22px/11px（2 项，p05 1.62/1.75）
-  - 低血/四人状态“危险”9px（2 项，p05 2.64/2.71）
+- 250 个有效元素，**5 项低于阈值**：
+  - 低血波次横幅 22px/11px（2 项，p05 1.80/1.92）
+  - 低血/四人状态“危险”10px（2 项，p05 3.08/3.17）
   - 菜单禁用副标题“当前版本不保存行动进度”（1 项，p05 3.45）
-- 已做的修复：移除全屏 HUD 遮罩，改为任务/生命/弹药局部背景；半透明小队面板、默认 1px 描边与更强阴影、禁用项透明度 0.72、弹药分隔符提亮；2026-10-25 修掉 HUD 渐变端点索引错误并为 E-07 站补基础材质。失败项从 39 降至 5。
+- 已做的修复：按 HUD Art V3 改为无底板布局 + 边缘弱渐变、顶部罗盘、圆形小地图、图标化生命/弹药、搬运状态；修掉 HUD 渐变端点索引错误并为 E-07 站补基础材质。失败项从 39 降至 5。
 - 限制：本方法按背景像素计算，不考虑描边/阴影对字形的实际增益；波次横幅是瞬时状态；“禁用文字”按 WCAG 可豁免，但这里仍计入并如实列出。
 - 报告：`evidence/contrast_report.json`；元素与背景：`evidence/contrast_elements.json`、`shots/contrast/`。
 
@@ -155,6 +155,9 @@ python ui_refactor/phase3/tools/visual_diff.py \
 - `3d513f3`：UI v3 集成检查点。
 - `cc10b99`：Abandoned_House 资产导入检查点。
 - `edd19c1`：小地图/可读性修复与验收工具。
+- `c9dd111`：收紧战斗 HUD 信息层级与局部底板。
+- `96e7b7b`：HUD Art V3 集成（罗盘、圆形小地图、分组布局）。
+- `c18b286`：修正四从小队编号从 01 开始，本轮证据基准。
 - 旧文件备份：`ui_refactor/phase3/baseline/*.bak`。
 - 旧 UI 对照 worktree：
 

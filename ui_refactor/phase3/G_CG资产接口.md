@@ -1,6 +1,6 @@
 # G · 主菜单 CG 资产接口
 
-- 代码基准：`edd19c1`
+- 代码基准：`c18b286`
 - 当前实现：`scripts/menu_backdrop.gd`
 - 背景资源：`assets/ui/menu/e07_observation_exterior.webp`（1672×941，概念图占位）
 - 目标：未来替换 Blender CG 时，**只换背景资源，不改菜单布局与交互**。
