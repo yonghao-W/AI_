@@ -1,6 +1,6 @@
 # E · UI v3 验证报告
 
-- 代码基准：`c18b286`（HUD Art V3 集成 + 小队编号修正）
+- 代码基准：`c18b286`（UI 证据）；战斗解耦提交 `734617d..d9db9e7`，见 [K](K_战斗解耦.md)
 - 引擎：Godot 4.7.2 stable `ed1daf0bf`，Forward+
 - 硬件：NVIDIA RTX 4060 Laptop，Windows 10.0.26200
 - 默认窗口：1280×720；分辨率取证另用离屏 SubViewport
@@ -12,7 +12,10 @@
 |---|---|---|---|
 | 资产加载/结构 | `tests/test_abandoned_house_asset.gd` | 7 / 0 | 725 网格、114,350 顶点 |
 | UI 集成 | `tests/test_ui_integration.gd` | 105 / 0 | 菜单、设置、HUD 真实状态、覆盖层、暂停、清理 |
-| 近战三连击 | `tests/test_melee_combo.gd` | 27 / 0 | 阶段、窗口、缓存、命中帧、服务器阶段号、HUD |
+| 近战三连击 | `tests/test_melee_combo.gd` | 35 / 0 | 阶段、窗口、缓存、命中帧、死亡/搬运取消、视图显隐 |
+| 连击纯状态 | `tests/test_melee_combo_state.gd` | 26 / 0 | 不依赖 Player/场景/HUD 的阶段与超时逻辑 |
+| HUD 快照 | `tests/test_hud_state.gd` | 21 / 0 | 生命/武器/弹药/连击/搬运/倒地与兼容层 |
+| 非法命中阶段 | `tests/test_hit_validation.gd` | 4 / 0 | 服务器在目标查询前拒绝 0/4 阶段 |
 | 输入/显示矩阵 | `tests/test_ui_display.gd` | 120 / 0，8 warning | dpi125/dpi150 通过；zoom125/150 为压力提示 |
 | 联机 UI（4 人） | `tests/test_ui_network.gd` | HOST 23 / 3×CLIENT 19，0 失败 | 真实四进程 |
 | 故障网络（2 人，300s） | `tests/test_ui_network.gd` + UDP 代理 | HOST 175 / CLIENT 172，0 失败 | 150ms RTT、2% 丢包、30ms 抖动 |
