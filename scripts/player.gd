@@ -7,6 +7,7 @@ signal damaged(amount: float)
 signal hit_marker(headshot: bool)
 signal died
 signal weapon_changed(weapon_id: String, slot: int)
+signal zombie_hit_requested(zombie_id: int, headshot: bool, weapon_id: String, combo_stage: int)
 
 const WALK_SPEED := 5.2
 const SPRINT_SPEED := 7.3
@@ -25,7 +26,6 @@ const MeleeComboStateScript := preload("res://scripts/melee_combo_state.gd")
 const MeleeRigViewScript := preload("res://scripts/melee_rig_view.gd")
 
 var effects: CombatEffects
-var main_ref: Node
 var audio: Node
 var health := 100.0
 var alive := true
@@ -813,8 +813,7 @@ func _fire() -> void:
 		if flesh_hit:
 			hit_any = true
 			head_any = head_any or headshot
-			if main_ref != null and main_ref.has_method("request_zombie_hit"):
-				main_ref.call("request_zombie_hit", zombie_id, headshot, weapon_id)
+			zombie_hit_requested.emit(zombie_id, headshot, weapon_id, 1)
 	if hit_any:
 		hit_marker.emit(head_any)
 	if audio != null and audio.has_method("play_weapon_shot"):
@@ -914,8 +913,7 @@ func _resolve_melee_hit() -> void:
 		hit_any = true
 		if effects != null:
 			effects.impact(Vector3(entry["pos"]) + Vector3.UP * 1.1, Vector3.UP, true)
-		if main_ref != null and main_ref.has_method("request_zombie_hit"):
-			main_ref.call("request_zombie_hit", int(entry["id"]), false, weapon_id, stage)
+		zombie_hit_requested.emit(int(entry["id"]), false, weapon_id, stage)
 	if hit_any:
 		hit_marker.emit(false)
 		_play_ui("melee_hit", -1.0 + stage * 0.7, [1.02, 1.08, 0.92][stage - 1])

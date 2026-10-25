@@ -9,7 +9,7 @@ class HitRecorder:
 	extends Node
 	var hits: Array = []
 
-	func request_zombie_hit(zid: int, headshot: bool, weapon_id: String, combo_stage: int = 1) -> void:
+	func record_hit(zid: int, headshot: bool, weapon_id: String, combo_stage: int) -> void:
 		hits.append({"id": zid, "headshot": headshot, "weapon": weapon_id, "stage": combo_stage})
 
 
@@ -83,6 +83,8 @@ func _run() -> void:
 	_check(is_equal_approx(WeaponCatalog.melee_stage_damage(0), WeaponCatalog.melee_stage_damage(1)), "stage index clamps below one")
 	_check(is_equal_approx(WeaponCatalog.melee_stage_damage(99), WeaponCatalog.melee_stage_damage(3)), "stage index clamps above three")
 	_check(WeaponCatalog.melee_stage_duration("sledge", 3) > WeaponCatalog.melee_stage_duration("machete", 3), "sledge finisher stays heavier than the machete")
+	_check(WeaponCatalog.is_valid_melee_stage(1) and WeaponCatalog.is_valid_melee_stage(3), "valid melee stages are accepted")
+	_check(not WeaponCatalog.is_valid_melee_stage(0) and not WeaponCatalog.is_valid_melee_stage(4), "server-side stage validation rejects invalid values")
 
 	player.set("_switch_lock", 0.0)
 	player.switch_weapon_slot(2)
@@ -92,7 +94,7 @@ func _run() -> void:
 	root.add_child(target)
 	var recorder := HitRecorder.new()
 	root.add_child(recorder)
-	player.main_ref = recorder
+	player.zombie_hit_requested.connect(recorder.record_hit)
 	player.call("_start_melee_stage")
 	var duration: float = melee.swing_total
 	var hit_at: float = melee.hit_at
@@ -103,7 +105,7 @@ func _run() -> void:
 	if recorder.hits.size() == 1:
 		var hit: Dictionary = recorder.hits[0]
 		_check(int(hit["stage"]) == 1 and String(hit["weapon"]) == "machete", "hit request carries weapon and combo stage")
-	player.main_ref = null
+	player.zombie_hit_requested.disconnect(recorder.record_hit)
 	target.free()
 	recorder.free()
 	melee.cancel()

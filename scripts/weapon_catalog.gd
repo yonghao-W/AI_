@@ -97,6 +97,10 @@ static func melee_stage_index(stage: int) -> int:
 	return clampi(stage, 1, MELEE_COMBO_STAGES) - 1
 
 
+static func is_valid_melee_stage(stage: int) -> bool:
+	return stage >= 1 and stage <= MELEE_COMBO_STAGES
+
+
 static func melee_stage_damage(stage: int) -> float:
 	return float(MELEE_STAGE_DAMAGE[melee_stage_index(stage)])
 

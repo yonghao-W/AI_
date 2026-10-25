@@ -856,7 +856,6 @@ func _spawn_local_player_node() -> void:
 	player.name = "Player"
 	_world.add_child(player)
 	player.effects = effects
-	player.main_ref = self
 	player.audio = audio
 	var bonus := MetaProfile.legacy_bonus(_meta)
 	player.set_meta_bonus(int(bonus["reserve"]), float(bonus["reload_mult"]))
@@ -866,6 +865,7 @@ func _spawn_local_player_node() -> void:
 	player.damaged.connect(_on_local_damaged)
 	player.hit_marker.connect(_on_local_hit_marker)
 	player.weapon_changed.connect(_on_weapon_changed)
+	player.zombie_hit_requested.connect(_on_local_zombie_hit)
 
 
 func _place_local_player(spawn: Vector3, face_yaw_value: float = PI) -> void:
@@ -1396,6 +1396,10 @@ func _fail_connection(message: String) -> void:
 	menu.present(message, true)
 
 
+func _on_local_zombie_hit(zid: int, headshot: bool, weapon_id: String, combo_stage: int) -> void:
+	request_zombie_hit(zid, headshot, weapon_id, combo_stage)
+
+
 func request_zombie_hit(zid: int, headshot: bool, weapon_id: String = "smg", combo_stage: int = 1) -> void:
 	if not game_started or game_over or player == null or not player.alive:
 		return
@@ -1424,7 +1428,9 @@ func _server_apply_hit(shooter_id: int, zid: int, headshot: bool, weapon_id: Str
 	if headshot:
 		damage *= float(weapon.get("headshot", 2.4))
 	if WeaponCatalog.is_melee(weapon_id):
-		damage *= WeaponCatalog.melee_stage_damage(clampi(combo_stage, 1, WeaponCatalog.MELEE_COMBO_STAGES))
+		if not WeaponCatalog.is_valid_melee_stage(combo_stage):
+			return
+		damage *= WeaponCatalog.melee_stage_damage(combo_stage)
 	damage *= 1.0 + 0.14 * int(team_upgrades.get("damage", 0))
 	var result: Dictionary = director.damage_zombie(zid, damage)
 	if not bool(result.get("ok", false)):
