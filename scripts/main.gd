@@ -1425,6 +1425,8 @@ func _server_apply_hit(shooter_id: int, zid: int, headshot: bool, weapon_id: Str
 	if info.is_empty() or not bool(info["alive"]):
 		return
 	var weapon := WeaponCatalog.data(weapon_id)
+	if WeaponCatalog.is_melee(weapon_id) and not WeaponCatalog.is_valid_melee_stage(combo_stage):
+		return
 	if WeaponCatalog.is_melee(weapon_id):
 		var shooter_pos: Vector3 = info.get("pos", Vector3.ZERO)
 		var target_pos := director.zombie_position(zid)
@@ -1437,8 +1439,6 @@ func _server_apply_hit(shooter_id: int, zid: int, headshot: bool, weapon_id: Str
 	if headshot:
 		damage *= float(weapon.get("headshot", 2.4))
 	if WeaponCatalog.is_melee(weapon_id):
-		if not WeaponCatalog.is_valid_melee_stage(combo_stage):
-			return
 		damage *= WeaponCatalog.melee_stage_damage(combo_stage)
 	damage *= 1.0 + 0.14 * int(team_upgrades.get("damage", 0))
 	var result: Dictionary = director.damage_zombie(zid, damage)
