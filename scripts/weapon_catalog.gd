@@ -7,6 +7,16 @@ const DEFAULT_LOADOUT := ["smg", "machete"]
 const DEFAULT_SELECTED := "smg"
 const MAX_CARRY := 2
 
+const MELEE_COMBO_STAGES := 3
+const MELEE_COMBO_WINDOW := 0.45
+const MELEE_STAGE_DAMAGE := [0.62, 0.72, 1.32]
+const MELEE_STAGE_DURATION := [1.0, 0.94, 1.26]
+const MELEE_STAGE_HIT := [0.38, 0.36, 0.48]
+const MELEE_STAGE_RANGE := [1.0, 1.0, 1.08]
+const MELEE_STAGE_ARC := [1.0, 1.12, 0.9]
+const MELEE_STAGE_TARGETS := [2, 2, 3]
+const MELEE_STAGE_LUNGE := [2.6, 2.4, 4.2]
+
 const WEAPONS := {
 	"pistol": {
 		"name": "P-19 手枪", "short": "P-19", "tag": "半自动", "price": 0, "auto": false, "kind": "gun",
@@ -81,6 +91,41 @@ static func rpm(id: String) -> int:
 
 static func is_melee(id: String) -> bool:
 	return String(data(id).get("kind", "gun")) == "melee"
+
+
+static func melee_stage_index(stage: int) -> int:
+	return clampi(stage, 1, MELEE_COMBO_STAGES) - 1
+
+
+static func melee_stage_damage(stage: int) -> float:
+	return float(MELEE_STAGE_DAMAGE[melee_stage_index(stage)])
+
+
+static func melee_stage_duration(id: String, stage: int) -> float:
+	var weapon := data(id)
+	return maxf(0.3, float(weapon.get("interval", 0.6)) * float(MELEE_STAGE_DURATION[melee_stage_index(stage)]))
+
+
+static func melee_stage_hit(stage: int) -> float:
+	return float(MELEE_STAGE_HIT[melee_stage_index(stage)])
+
+
+static func melee_stage_range(id: String, stage: int) -> float:
+	var weapon := data(id)
+	return float(weapon.get("range", 2.9)) * float(MELEE_STAGE_RANGE[melee_stage_index(stage)])
+
+
+static func melee_stage_arc(id: String, stage: int) -> float:
+	var weapon := data(id)
+	return float(weapon.get("arc", 0.65)) * float(MELEE_STAGE_ARC[melee_stage_index(stage)])
+
+
+static func melee_stage_targets(stage: int) -> int:
+	return int(MELEE_STAGE_TARGETS[melee_stage_index(stage)])
+
+
+static func melee_stage_lunge(stage: int) -> float:
+	return float(MELEE_STAGE_LUNGE[melee_stage_index(stage)])
 
 
 static func stat_line(id: String) -> String:

@@ -383,7 +383,7 @@ func _apply_hud_demo(state: String) -> void:
 			if player != null:
 				player.mag = 0
 				player.reloading = false
-			hud.set_ammo(0, player.reserve if player != null else 0, false, 0.0, false)
+			hud.set_ammo(0, player.reserve if player != null else 0, false, 0.0, false, 0)
 		"strip":
 			if player != null:
 				hud.set_weapon_strip(player.loadout_summary(), player.weapon_profile())
@@ -801,7 +801,7 @@ func _prepare_world(world_seed: int) -> bool:
 		_server_reset_mission()
 	hud.setup_world(layout)
 	hud.set_health(100.0)
-	hud.set_ammo(player.mag, player.reserve, false, 0.0, player.is_melee_equipped())
+	hud.set_ammo(player.mag, player.reserve, false, 0.0, player.is_melee_equipped(), player.melee_combo_stage())
 	hud.set_weapon_strip(player.loadout_summary(), player.weapon_profile())
 	hud.set_mission(cores_secured, CORES_REQUIRED, draw_tokens,
 		"经西侧楼梯下楼，前往基地补给，再到公园 B1 回收核心", "第一章 · E-07 维护站", DeadCityUI.CYAN, team_upgrades, false, MetaProfile.power_of(team_upgrades))
@@ -877,7 +877,7 @@ func _place_local_player(spawn: Vector3, face_yaw_value: float = PI) -> void:
 	player.auto_pilot = _cli_pilot
 	hud.set_down(false)
 	hud.set_health(100.0)
-	hud.set_ammo(player.mag, player.reserve, false, 0.0, player.is_melee_equipped())
+	hud.set_ammo(player.mag, player.reserve, false, 0.0, player.is_melee_equipped(), player.melee_combo_stage())
 	hud.set_weapon_strip(player.loadout_summary(), player.weapon_profile())
 
 
@@ -896,7 +896,7 @@ func _process(delta: float) -> void:
 	elif not is_server:
 		_client_step(delta)
 	if player != null and hud != null:
-		hud.set_ammo(player.mag, player.reserve, player.is_reloading(), player.reload_progress(), player.is_melee_equipped())
+		hud.set_ammo(player.mag, player.reserve, player.is_reloading(), player.reload_progress(), player.is_melee_equipped(), player.melee_combo_stage())
 		hud.set_spread(player.get_spread_normalized())
 		hud.set_minimap_entities(player.global_position, player.rotation.y, _minimap_remotes(), _minimap_zombies(), _minimap_markers())
 		hud.set_compass_heading(player.rotation.y)
@@ -908,7 +908,7 @@ func _process(delta: float) -> void:
 		if not _demo_roster.is_empty():
 			hud.set_roster(_demo_roster)
 		if _demo_empty and player != null:
-			hud.set_ammo(0, player.reserve, false, 0.0, player.is_melee_equipped())
+			hud.set_ammo(0, player.reserve, false, 0.0, player.is_melee_equipped(), 0)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -1396,16 +1396,16 @@ func _fail_connection(message: String) -> void:
 	menu.present(message, true)
 
 
-func request_zombie_hit(zid: int, headshot: bool, weapon_id: String = "smg") -> void:
+func request_zombie_hit(zid: int, headshot: bool, weapon_id: String = "smg", combo_stage: int = 1) -> void:
 	if not game_started or game_over or player == null or not player.alive:
 		return
 	if is_server:
-		_server_apply_hit(local_id, zid, headshot, weapon_id)
+		_server_apply_hit(local_id, zid, headshot, weapon_id, combo_stage)
 	else:
-		rpc_id(1, "_net_request_hit", zid, headshot, weapon_id)
+		rpc_id(1, "_net_request_hit", zid, headshot, weapon_id, combo_stage)
 
 
-func _server_apply_hit(shooter_id: int, zid: int, headshot: bool, weapon_id: String = "smg") -> void:
+func _server_apply_hit(shooter_id: int, zid: int, headshot: bool, weapon_id: String = "smg", combo_stage: int = 1) -> void:
 	if not is_server or game_over:
 		return
 	var info: Dictionary = players.get(shooter_id, {})
@@ -1423,6 +1423,8 @@ func _server_apply_hit(shooter_id: int, zid: int, headshot: bool, weapon_id: Str
 	var damage := float(weapon.get("damage", 19.0))
 	if headshot:
 		damage *= float(weapon.get("headshot", 2.4))
+	if WeaponCatalog.is_melee(weapon_id):
+		damage *= WeaponCatalog.melee_stage_damage(clampi(combo_stage, 1, WeaponCatalog.MELEE_COMBO_STAGES))
 	damage *= 1.0 + 0.14 * int(team_upgrades.get("damage", 0))
 	var result: Dictionary = director.damage_zombie(zid, damage)
 	if not bool(result.get("ok", false)):
@@ -1560,11 +1562,11 @@ func _net_submit_state(pos: Vector3, yaw: float) -> void:
 
 
 @rpc("any_peer", "call_remote", "reliable")
-func _net_request_hit(zid: int, headshot: bool, weapon_id: String) -> void:
+func _net_request_hit(zid: int, headshot: bool, weapon_id: String, combo_stage: int = 1) -> void:
 	if not is_server:
 		return
 	var sender := multiplayer.get_remote_sender_id()
-	_server_apply_hit(sender, zid, headshot, weapon_id)
+	_server_apply_hit(sender, zid, headshot, weapon_id, combo_stage)
 
 
 @rpc("authority", "call_remote", "unreliable_ordered")

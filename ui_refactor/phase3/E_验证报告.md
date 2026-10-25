@@ -12,6 +12,7 @@
 |---|---|---|---|
 | 资产加载/结构 | `tests/test_abandoned_house_asset.gd` | 7 / 0 | 725 网格、114,350 顶点 |
 | UI 集成 | `tests/test_ui_integration.gd` | 105 / 0 | 菜单、设置、HUD 真实状态、覆盖层、暂停、清理 |
+| 近战三连击 | `tests/test_melee_combo.gd` | 27 / 0 | 阶段、窗口、缓存、命中帧、服务器阶段号、HUD |
 | 输入/显示矩阵 | `tests/test_ui_display.gd` | 120 / 0，8 warning | dpi125/dpi150 通过；zoom125/150 为压力提示 |
 | 联机 UI（4 人） | `tests/test_ui_network.gd` | HOST 23 / 3×CLIENT 19，0 失败 | 真实四进程 |
 | 故障网络（2 人，300s） | `tests/test_ui_network.gd` + UDP 代理 | HOST 175 / CLIENT 172，0 失败 | 150ms RTT、2% 丢包、30ms 抖动 |

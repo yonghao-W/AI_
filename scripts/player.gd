@@ -88,9 +88,20 @@ var _tp_weapon: Node3D
 var _tp_left_leg: Node3D
 var _tp_right_leg: Node3D
 var _tp_body: Node3D
+var _tp_arm_left: Node3D
+var _tp_arm_right: Node3D
 var _melee_swing_left := 0.0
 var _melee_swing_total := 0.5
 var _melee_weapon_id := ""
+var _melee_stage := 0
+var _melee_combo_left := 0.0
+var _melee_buffered := false
+var _melee_hit_pending := false
+var _melee_hit_at := 0.38
+var _melee_stage_damage := 1.0
+var _melee_forward := Vector3.FORWARD
+var _melee_draw_left := 0.0
+var _melee_camera_punch := 0.0
 var _settings: Node
 var _aim_held := false
 var _aim_toggle := false
@@ -304,7 +315,10 @@ func _build_third_person() -> void:
 		_tp_body.add_child(arm)
 		_part(arm, Vector3(0.15, 0.42, 0.19), Vector3(0.0, -0.18, 0.0), jacket)
 		_part(arm, Vector3(0.13, 0.13, 0.15), Vector3(0.0, -0.42, 0.0), glove)
-		_tp_body.set_meta("arm_%s" % ("l" if side < 0.0 else "r"), arm)
+		if side < 0.0:
+			_tp_arm_left = arm
+		else:
+			_tp_arm_right = arm
 	_tp_left_leg = Node3D.new()
 	_tp_left_leg.position = Vector3(-0.16, 0.88, 0.0)
 	_tp_body.add_child(_tp_left_leg)
@@ -316,7 +330,7 @@ func _build_third_person() -> void:
 	_part(_tp_right_leg, Vector3(0.21, 0.76, 0.25), Vector3(0.0, -0.38, 0.0), pants)
 	_part(_tp_right_leg, Vector3(0.23, 0.16, 0.32), Vector3(0.0, -0.8, -0.04), boots)
 	_tp_weapon_pivot = Node3D.new()
-	_tp_weapon_pivot.position = Vector3(0.36, 1.3, -0.12)
+	_tp_weapon_pivot.position = Vector3(0.46, 1.18, -0.2)
 	_tp_body.add_child(_tp_weapon_pivot)
 
 
@@ -332,9 +346,9 @@ func _build_tp_weapon(id: String) -> void:
 	_part(_tp_weapon, Vector3(0.09, 0.1, 0.32), Vector3(0.0, 0.0, 0.08), wood)
 	_part(_tp_weapon, Vector3(0.13, 0.13, 0.12), Vector3(0.0, -0.02, -0.08), dark)
 	if id == "sledge":
-		_add_barrel(_tp_weapon, -0.16, 0.0, 0.78, 0.04, wood)
-		_part(_tp_weapon, Vector3(0.18, 0.5, 0.24), Vector3(0.0, 0.0, -0.82), steel)
-		_part(_tp_weapon, Vector3(0.2, 0.14, 0.26), Vector3(0.0, 0.28, -0.82), accent)
+		_add_barrel(_tp_weapon, 0.0, -0.64, 0.16, 0.038, wood)
+		_part(_tp_weapon, Vector3(0.18, 0.46, 0.24), Vector3(0.0, 0.0, -0.82), steel)
+		_part(_tp_weapon, Vector3(0.2, 0.12, 0.26), Vector3(0.0, 0.26, -0.82), accent)
 	else:
 		_part(_tp_weapon, Vector3(0.055, 0.16, 0.9), Vector3(0.0, 0.03, -0.48), steel).rotation.x = -0.06
 		_part(_tp_weapon, Vector3(0.07, 0.1, 0.2), Vector3(0.0, 0.02, -0.93), accent)
@@ -444,6 +458,14 @@ func _equip_index(index: int, announce: bool) -> void:
 		if other_root != null:
 			other_root.visible = false
 	_third_person = WeaponCatalog.is_melee(id)
+	_melee_stage = 0
+	_melee_combo_left = 0.0
+	_melee_buffered = false
+	_melee_hit_pending = false
+	_melee_swing_left = 0.0
+	_melee_draw_left = 0.24 if _third_person else 0.0
+	_melee_camera_punch = 0.0
+	_melee_forward = -global_transform.basis.z
 	if _third_person:
 		_viewmodel = null
 		_muzzle = null
@@ -453,8 +475,6 @@ func _equip_index(index: int, announce: bool) -> void:
 		_build_tp_weapon(id)
 		if _tp_root != null:
 			_tp_root.visible = alive and not carrying_core
-		if _melee_swing_left <= 0.0:
-			_melee_swing_left = 0.0
 	else:
 		if _tp_root != null:
 			_tp_root.visible = false
@@ -712,6 +732,7 @@ func _process(delta: float) -> void:
 		if _reload_left <= 0.0:
 			_finish_reload()
 	_switch_lock = maxf(0.0, _switch_lock - delta)
+	_update_melee_state(delta)
 	_update_visuals(delta)
 	var trigger_down := false
 	if auto_pilot and alive and not carrying_core:
@@ -739,7 +760,7 @@ func _update_visuals(delta: float) -> void:
 	_camera.fov = clampf(lerpf(_camera.fov, target_fov, minf(1.0, delta * 11.0)), 20.0, 140.0)
 	var camera_target := Vector3.ZERO
 	if _third_person and alive and not carrying_core:
-		camera_target = Vector3(0.62, 0.5, 3.35)
+		camera_target = Vector3(0.82, 0.55, 3.05)
 		var desired := _head.global_transform * camera_target
 		var query := PhysicsRayQueryParameters3D.create(_head.global_position, desired, 1, [get_rid()])
 		var hit := get_world_3d().direct_space_state.intersect_ray(query)
@@ -779,23 +800,49 @@ func _update_visuals(delta: float) -> void:
 		var show_body := alive and _third_person and not carrying_core
 		_tp_root.visible = show_body
 		if show_body:
-			_melee_swing_left = maxf(0.0, _melee_swing_left - delta)
 			var stride := sin(_bob_time * 2.2) * clampf(horizontal_speed / WALK_SPEED, 0.0, 1.2)
 			_tp_left_leg.rotation.x = stride * 0.6
 			_tp_right_leg.rotation.x = -stride * 0.6
-			var swing_t := 0.0
-			if _melee_swing_left > 0.0:
-				swing_t = 1.0 - _melee_swing_left / maxf(0.01, _melee_swing_total)
-			var smooth := _smooth01(swing_t)
-			var arc := sin(clampf(swing_t * 1.15, 0.0, 1.0) * PI)
-			_tp_weapon_pivot.rotation.y = lerpf(0.6, -1.25, smooth)
-			_tp_weapon_pivot.rotation.z = -0.32 - arc * 0.8
-			_tp_weapon_pivot.rotation.x = 0.18 + arc * 0.55
-			_tp_body.rotation.y = sin(swing_t * PI) * -0.15
-			_tp_body.rotation.x = arc * 0.08
-		else:
-			_tp_weapon_pivot.rotation = Vector3(0.18, 0.6, -0.32)
-			_tp_body.rotation = Vector3.ZERO
+			var idle_pivot := Vector3(0.12, 0.5, -0.2)
+			var pivot_target := idle_pivot + Vector3(sin(_bob_time * 0.7) * 0.008, sin(_bob_time * 0.55) * 0.012, 0.0)
+			var body_target := Vector3.ZERO
+			var arm_left_target := Vector3.ZERO
+			var arm_right_target := Vector3.ZERO
+			var pivot_pos := Vector3(0.46, 1.18 - bob * 0.35, -0.2)
+			var swing_t := melee_combo_progress()
+			if _melee_swing_left > 0.0 and _melee_stage > 0:
+				var pose := _melee_stage_pose(swing_t, _melee_stage)
+				pivot_target = pose
+				var contact_reach := sin(clampf(swing_t / maxf(0.01, _melee_hit_at), 0.0, 1.0) * PI * 0.5)
+				body_target = Vector3(
+					clampf(-pose.x * 0.1, -0.045, 0.14),
+					pose.y * 0.22,
+					pose.z * 0.05
+				)
+				arm_right_target = Vector3(-0.2 - pose.x * 0.45, 0.04, -0.38 + pose.z * 0.3)
+				arm_left_target = Vector3(-0.55 * contact_reach, 0.0, 0.32 * contact_reach)
+				pivot_pos.x -= 0.12 * contact_reach
+				pivot_pos.z -= 0.11 * contact_reach
+			elif moving:
+				arm_left_target.x = -stride * 0.45
+				arm_right_target.x = stride * 0.45
+			if _melee_draw_left > 0.0:
+				var draw_t := _smooth01(1.0 - _melee_draw_left / 0.24)
+				pivot_target = Vector3(-0.55, 0.95, -0.5).lerp(pivot_target, draw_t)
+				arm_right_target = Vector3(-0.5, 0.0, -0.2).lerp(arm_right_target, draw_t)
+				arm_left_target = Vector3(-0.15, 0.0, 0.1).lerp(arm_left_target, draw_t)
+			var swinging := _melee_swing_left > 0.0
+			var pose_speed := 48.0 if swinging else 9.0
+			var body_speed := 24.0 if swinging else 10.0
+			_tp_weapon_pivot.rotation = _tp_weapon_pivot.rotation.lerp(pivot_target, minf(1.0, delta * pose_speed))
+			_tp_weapon_pivot.position = _tp_weapon_pivot.position.lerp(pivot_pos, minf(1.0, delta * (18.0 if swinging else 12.0)))
+			_tp_body.rotation = _tp_body.rotation.lerp(body_target, minf(1.0, delta * body_speed))
+			if _tp_arm_left != null:
+				_tp_arm_left.rotation = _tp_arm_left.rotation.lerp(arm_left_target, minf(1.0, delta * body_speed))
+			if _tp_arm_right != null:
+				_tp_arm_right.rotation = _tp_arm_right.rotation.lerp(arm_right_target, minf(1.0, delta * body_speed))
+		_camera.h_offset = _melee_camera_punch * 0.55
+		_camera.v_offset = -_melee_camera_punch
 
 	if _carry_rig != null:
 		var carry_pose := carrying_core and alive
@@ -817,11 +864,49 @@ func _smooth01(value: float) -> float:
 	return t * t * (3.0 - 2.0 * t)
 
 
+func _melee_stage_pose(t: float, stage: int) -> Vector3:
+	var idle := Vector3(0.12, 0.5, -0.2)
+	var windup: Vector3
+	var contact: Vector3
+	var follow: Vector3
+	var windup_at := 0.26
+	match stage:
+		1:
+			windup = Vector3(-0.35, -0.85, -0.5)
+			contact = Vector3(0.75, -0.55, -0.3)
+			follow = Vector3(0.9, -0.65, -0.2)
+		2:
+			windup = Vector3(0.32, 1.15, 0.65)
+			contact = Vector3(0.42, -1.25, -0.65)
+			follow = Vector3(0.22, -1.45, -0.8)
+		_:
+			windup = Vector3(1.35, 0.1, -0.25)
+			contact = Vector3(-1.1, -0.7, 0.12)
+			follow = Vector3(-0.85, -0.85, 0.22)
+			if current_weapon_id() == "sledge":
+				windup = Vector3(1.55, 0.05, -0.2)
+				contact = Vector3(-0.95, -0.7, 0.18)
+				follow = Vector3(-0.65, -0.85, 0.28)
+			windup_at = 0.32
+	windup_at = minf(windup_at, _melee_hit_at * 0.8)
+	var contact_at := _melee_hit_at
+	var follow_at := minf(0.94, contact_at + 0.2)
+	if t <= windup_at:
+		return idle.lerp(windup, _smooth01(t / maxf(0.01, windup_at)))
+	if t < contact_at:
+		return windup.lerp(contact, _smooth01((t - windup_at) / maxf(0.01, contact_at - windup_at)))
+	if t < follow_at:
+		return contact.lerp(follow, (t - contact_at) / maxf(0.01, follow_at - contact_at))
+	return follow.lerp(idle, _smooth01((t - follow_at) / maxf(0.01, 1.0 - follow_at)))
+
+
 func _fire() -> void:
-	if not alive or reloading or carrying_core or _fire_cooldown > 0.0 or not game_active or _switch_lock > 0.0:
+	if not alive or reloading or carrying_core or not game_active or _switch_lock > 0.0:
 		return
 	if is_melee_equipped():
 		_fire_melee()
+		return
+	if _fire_cooldown > 0.0:
 		return
 	if mag <= 0:
 		if not _trigger_was_down:
@@ -894,15 +979,93 @@ func _sync_ammo_state() -> void:
 	_ammo_states[current_weapon_id()] = {"mag": mag, "reserve": reserve}
 
 
+func melee_combo_stage() -> int:
+	if _melee_stage > 0 and (_melee_swing_left > 0.0 or _melee_combo_left > 0.0):
+		return _melee_stage
+	return 0
+
+
+func melee_combo_progress() -> float:
+	if _melee_swing_left <= 0.0 or _melee_swing_total <= 0.0:
+		return 0.0
+	return clampf(1.0 - _melee_swing_left / _melee_swing_total, 0.0, 1.0)
+
+
 func _fire_melee() -> void:
+	if _melee_swing_left > 0.0:
+		if _melee_swing_left <= 0.2 and _melee_stage < WeaponCatalog.MELEE_COMBO_STAGES:
+			_melee_buffered = true
+		return
+	_start_melee_stage()
+
+
+func _start_melee_stage() -> void:
 	var weapon_id := current_weapon_id()
-	var weapon_range := float(_weapon.get("range", 2.6))
-	var half_arc := float(_weapon.get("arc", 0.65))
-	_fire_cooldown = fire_interval
-	_melee_swing_left = fire_interval
-	_melee_swing_total = fire_interval
-	_gun_kick = clampf(float(_weapon.get("kick", 1.0)), 0.7, 2.0)
-	var forward := -global_transform.basis.z
+	if not WeaponCatalog.is_melee(weapon_id):
+		return
+	var next_stage := 1
+	if _melee_stage > 0 and _melee_stage < WeaponCatalog.MELEE_COMBO_STAGES and _melee_combo_left > 0.0:
+		next_stage = _melee_stage + 1
+	_melee_stage = next_stage
+	_melee_swing_total = WeaponCatalog.melee_stage_duration(weapon_id, _melee_stage)
+	_melee_swing_left = _melee_swing_total
+	_fire_cooldown = _melee_swing_total
+	_melee_hit_at = WeaponCatalog.melee_stage_hit(_melee_stage)
+	_melee_stage_damage = WeaponCatalog.melee_stage_damage(_melee_stage)
+	_melee_hit_pending = true
+	_melee_buffered = false
+	_melee_combo_left = 0.0
+	_melee_draw_left = 0.0
+	_melee_forward = -global_transform.basis.z
+	_melee_forward.y = 0.0
+	if _melee_forward.length_squared() < 0.01:
+		_melee_forward = Vector3.FORWARD
+	_melee_forward = _melee_forward.normalized()
+	_play_ui("melee", -1.0, [0.94, 1.04, 0.82][_melee_stage - 1])
+
+
+func _update_melee_state(delta: float) -> void:
+	_melee_draw_left = maxf(0.0, _melee_draw_left - delta)
+	_melee_camera_punch = move_toward(_melee_camera_punch, 0.0, delta * 0.42)
+	if not is_melee_equipped():
+		_melee_stage = 0
+		_melee_combo_left = 0.0
+		_melee_buffered = false
+		_melee_hit_pending = false
+		_melee_swing_left = 0.0
+		return
+	if _melee_swing_left > 0.0:
+		var before := 1.0 - _melee_swing_left / maxf(0.01, _melee_swing_total)
+		_melee_swing_left = maxf(0.0, _melee_swing_left - delta)
+		var after := 1.0 - _melee_swing_left / maxf(0.01, _melee_swing_total)
+		if _melee_hit_pending and before < _melee_hit_at and after >= _melee_hit_at:
+			_melee_hit_pending = false
+			_resolve_melee_hit()
+		if _melee_swing_left <= 0.0:
+			_melee_hit_pending = false
+			if _melee_stage < WeaponCatalog.MELEE_COMBO_STAGES:
+				_melee_combo_left = WeaponCatalog.MELEE_COMBO_WINDOW
+				if _melee_buffered:
+					_melee_buffered = false
+					_start_melee_stage()
+			else:
+				_melee_stage = 0
+				_melee_combo_left = 0.0
+	elif _melee_stage > 0:
+		_melee_combo_left = maxf(0.0, _melee_combo_left - delta)
+		if _melee_combo_left <= 0.0:
+			_melee_stage = 0
+
+
+func _resolve_melee_hit() -> void:
+	var weapon_id := current_weapon_id()
+	if not WeaponCatalog.is_melee(weapon_id):
+		return
+	var stage := clampi(_melee_stage, 1, WeaponCatalog.MELEE_COMBO_STAGES)
+	var weapon_range := WeaponCatalog.melee_stage_range(weapon_id, stage)
+	var half_arc := WeaponCatalog.melee_stage_arc(weapon_id, stage)
+	var max_targets := WeaponCatalog.melee_stage_targets(stage)
+	var forward := _melee_forward
 	forward.y = 0.0
 	if forward.length_squared() < 0.01:
 		forward = Vector3.FORWARD
@@ -926,7 +1089,7 @@ func _fire_melee() -> void:
 	candidates.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
 		return float(a["distance"]) < float(b["distance"])
 	)
-	var strikes := mini(2, candidates.size())
+	var strikes := mini(max_targets, candidates.size())
 	var hit_any := false
 	for i in range(strikes):
 		var entry: Dictionary = candidates[i]
@@ -934,12 +1097,14 @@ func _fire_melee() -> void:
 		if effects != null:
 			effects.impact(Vector3(entry["pos"]) + Vector3.UP * 1.1, Vector3.UP, true)
 		if main_ref != null and main_ref.has_method("request_zombie_hit"):
-			main_ref.call("request_zombie_hit", int(entry["id"]), false, weapon_id)
+			main_ref.call("request_zombie_hit", int(entry["id"]), false, weapon_id, stage)
 	if hit_any:
 		hit_marker.emit(false)
+		_play_ui("melee_hit", -1.0 + stage * 0.7, [1.02, 1.08, 0.92][stage - 1])
 	if is_on_floor():
-		velocity += forward * (2.6 if weapon_id == "sledge" else 3.2)
-	_play_ui("melee", -1.0, randf_range(0.9, 1.08))
+		var mass_scale := 0.72 if weapon_id == "sledge" else 1.0
+		velocity += forward * WeaponCatalog.melee_stage_lunge(stage) * mass_scale
+	_melee_camera_punch = 0.012 + 0.008 * stage
 	ammo_changed.emit(mag, reserve, false)
 
 

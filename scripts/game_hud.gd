@@ -33,6 +33,7 @@ var _ammo_mag: Label
 var _ammo_reserve: Label
 var _ammo_slash: Label
 var _ammo_melee := false
+var _melee_combo_stage := 0
 var _ammo_state: Label
 var _reload_bar: ProgressBar
 var _crosshair: DeadCrosshair
@@ -1243,8 +1244,9 @@ func set_health(health: float, maximum: float = 100.0) -> void:
 	_last_health = clamped
 
 
-func set_ammo(mag: int, reserve: int, reloading: bool = false, progress: float = 0.0, melee: bool = false) -> void:
+func set_ammo(mag: int, reserve: int, reloading: bool = false, progress: float = 0.0, melee: bool = false, combo_stage: int = 0) -> void:
 	_ammo_melee = melee
+	_melee_combo_stage = combo_stage
 	_last_mag = mag
 	_last_reloading = reloading
 	_reload_bar.visible = reloading and not melee and not _carrying_core
@@ -1271,8 +1273,12 @@ func _update_ammo_state() -> void:
 		_ammo_state.text = "核心搬运中 · 无法开火"
 		_ammo_state.add_theme_color_override("font_color", DeadCityUI.AMBER)
 	elif _ammo_melee:
-		_ammo_state.text = "近战 · 可挥砍"
-		_ammo_state.add_theme_color_override("font_color", DeadCityUI.AMBER)
+		if _melee_combo_stage > 0:
+			_ammo_state.text = "连击 %d / %d" % [_melee_combo_stage, WeaponCatalog.MELEE_COMBO_STAGES]
+			_ammo_state.add_theme_color_override("font_color", DeadCityUI.CORAL if _melee_combo_stage >= WeaponCatalog.MELEE_COMBO_STAGES else DeadCityUI.AMBER)
+		else:
+			_ammo_state.text = "近战 · 三连击就绪"
+			_ammo_state.add_theme_color_override("font_color", DeadCityUI.AMBER)
 	elif _last_reloading:
 		_ammo_state.text = "换弹中"
 		_ammo_state.add_theme_color_override("font_color", DeadCityUI.AMBER)
