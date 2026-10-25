@@ -6,9 +6,9 @@
 
 ## 1. 授权边界
 
-参考对象是 `DeltaForce Melee Pack 0.2.0`（CurseForge/Modrinth，`license="All Right Reserved"`，作者 LesRaisins Studio）。公开页面和 `mods.toml` 都标为 ARR。用户提供的本地 JAR 路径在当前机器上不存在，因此没有读取、解包或导入它的模型、动画、贴图与音效。
+参考对象是 `DeltaForce Melee Pack 0.2.0`（CurseForge/Modrinth，`license="All Right Reserved"`，作者 LesRaisins Studio）。公开页面和 `mods.toml` 都标为 ARR。用户提供的本地 JAR 路径在当前机器上不存在；为核对授权和动作结构，从 Modrinth 公开源把同一个 0.2.0 包下载到工程外缓存 `D:/cache/dfmelee/`，只读取了 `mods.toml`、动画名称、时长以及骨骼/通道数量。
 
-本次只参考其**动作分类**（draw / inspect / melee_1..3 / run），没有复制它的关键帧、时长、曲线或音效。游戏内三段动作、节奏、命中帧、音效和第三人物姿态全部为本工程原创实现。
+没有把任何关键帧、曲线、模型、贴图或音效复制进工程，也没有作为资源导入 Godot。工程外缓存不属于交付物。本次只参考其**动作分类**（draw / inspect / melee_1..3 / run）；游戏内三段动作、节奏、命中帧、音效和第三人物姿态全部为本工程原创实现。
 
 ## 2. 玩法与节奏
 
