@@ -42,7 +42,6 @@ func _run() -> void:
 
 	player.call("_start_melee_stage")
 	_check(player.melee_combo_stage() == 1, "first attack starts stage 1")
-	_check(absf(player.get("_melee_stage_damage") - WeaponCatalog.melee_stage_damage(1)) < 0.001, "stage 1 uses the catalog multiplier")
 	_check(player.get("_melee_swing_left") > 0.0, "stage 1 has a live swing timer")
 	_check(not bool(player.get("_melee_buffered")), "a fresh swing starts without a buffered follow-up")
 
@@ -51,7 +50,6 @@ func _run() -> void:
 	_check(player.get("_melee_combo_left") > 0.0, "finishing stage 1 opens the combo window")
 	player.call("_start_melee_stage")
 	_check(player.melee_combo_stage() == 2, "clicking inside the window advances to stage 2")
-	_check(absf(player.get("_melee_stage_damage") - WeaponCatalog.melee_stage_damage(2)) < 0.001, "stage 2 uses the catalog multiplier")
 
 	player.set("_melee_swing_left", 0.15)
 	player.call("_fire_melee")
@@ -60,7 +58,6 @@ func _run() -> void:
 	player.set("_melee_swing_left", 0.0001)
 	player.call("_update_melee_state", 0.01)
 	_check(player.melee_combo_stage() == 3, "buffered input chains into the finisher")
-	_check(absf(player.get("_melee_stage_damage") - WeaponCatalog.melee_stage_damage(3)) < 0.001, "finisher uses the catalog multiplier")
 
 	player.set("_melee_swing_left", 0.0001)
 	player.call("_update_melee_state", 0.01)

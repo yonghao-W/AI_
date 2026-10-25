@@ -92,13 +92,11 @@ var _tp_arm_left: Node3D
 var _tp_arm_right: Node3D
 var _melee_swing_left := 0.0
 var _melee_swing_total := 0.5
-var _melee_weapon_id := ""
 var _melee_stage := 0
 var _melee_combo_left := 0.0
 var _melee_buffered := false
 var _melee_hit_pending := false
 var _melee_hit_at := 0.38
-var _melee_stage_damage := 1.0
 var _melee_forward := Vector3.FORWARD
 var _melee_draw_left := 0.0
 var _melee_camera_punch := 0.0
@@ -354,7 +352,6 @@ func _build_tp_weapon(id: String) -> void:
 		_part(_tp_weapon, Vector3(0.07, 0.1, 0.2), Vector3(0.0, 0.02, -0.93), accent)
 		_part(_tp_weapon, Vector3(0.035, 0.05, 0.5), Vector3(0.0, 0.1, -0.5), accent)
 	_tp_weapon.rotation = Vector3(0.2, -0.2, -0.12)
-	_melee_weapon_id = id
 
 
 func set_loadout(owned: Array, selected: String) -> void:
@@ -1011,7 +1008,6 @@ func _start_melee_stage() -> void:
 	_melee_swing_left = _melee_swing_total
 	_fire_cooldown = _melee_swing_total
 	_melee_hit_at = WeaponCatalog.melee_stage_hit(_melee_stage)
-	_melee_stage_damage = WeaponCatalog.melee_stage_damage(_melee_stage)
 	_melee_hit_pending = true
 	_melee_buffered = false
 	_melee_combo_left = 0.0
