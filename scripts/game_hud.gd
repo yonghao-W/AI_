@@ -1296,6 +1296,8 @@ func _update_ammo_state() -> void:
 
 
 func apply_combat_state(state: Variant) -> void:
+	if _game_over:
+		return
 	var carry_changed := bool(state.carrying_core) != _carrying_core and not _carry_preview
 	if carry_changed:
 		set_carrying_state(bool(state.carrying_core))

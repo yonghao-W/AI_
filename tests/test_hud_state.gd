@@ -69,6 +69,11 @@ func _run() -> void:
 	hud.apply_combat_state(state)
 	_check(not bool(hud.get("_down_active")), "snapshot clears downed state")
 
+	hud.show_game_over("测试结束", false)
+	state.downed = true
+	hud.apply_combat_state(state)
+	_check(bool(hud.get("_game_over")) and not hud.get("_death_overlay").visible, "combat snapshot does not override game over")
+
 	var old_loadout := [{"slot": 1, "id": "smg", "name": "VX-9", "full_name": "VX-9 冲锋枪", "accent": Color.WHITE, "active": true, "mag": 3, "reserve": 9, "mag_size": 36}]
 	hud.set_health(88.0, 100.0)
 	hud.set_ammo(3, 9, false, 0.0, false, 0)
