@@ -40,31 +40,32 @@ func _run() -> void:
 	_check(player.get("_melee_draw_left") > 0.0, "equipping melee starts the draw blend")
 	_check(player.melee_combo_stage() == 0, "combo starts at zero")
 
+	var melee: Variant = player.get("_melee")
 	player.call("_start_melee_stage")
 	_check(player.melee_combo_stage() == 1, "first attack starts stage 1")
-	_check(player.get("_melee_swing_left") > 0.0, "stage 1 has a live swing timer")
-	_check(not bool(player.get("_melee_buffered")), "a fresh swing starts without a buffered follow-up")
+	_check(melee.is_swinging(), "stage 1 has a live swing timer")
+	_check(not melee.buffered, "a fresh swing starts without a buffered follow-up")
 
-	player.set("_melee_swing_left", 0.0001)
+	melee.swing_left = 0.0001
 	player.call("_update_melee_state", 0.01)
-	_check(player.get("_melee_combo_left") > 0.0, "finishing stage 1 opens the combo window")
+	_check(melee.combo_left > 0.0, "finishing stage 1 opens the combo window")
 	player.call("_start_melee_stage")
 	_check(player.melee_combo_stage() == 2, "clicking inside the window advances to stage 2")
 
-	player.set("_melee_swing_left", 0.15)
+	melee.swing_left = 0.15
 	player.call("_fire_melee")
-	_check(bool(player.get("_melee_buffered")), "a late click is buffered instead of dropped")
+	_check(melee.buffered, "a late click is buffered instead of dropped")
 	_check(player.melee_combo_stage() == 2, "buffering does not start stage 3 before stage 2 ends")
-	player.set("_melee_swing_left", 0.0001)
+	melee.swing_left = 0.0001
 	player.call("_update_melee_state", 0.01)
 	_check(player.melee_combo_stage() == 3, "buffered input chains into the finisher")
 
-	player.set("_melee_swing_left", 0.0001)
+	melee.swing_left = 0.0001
 	player.call("_update_melee_state", 0.01)
 	_check(player.melee_combo_stage() == 0, "finisher resets the chain")
 
 	player.call("_start_melee_stage")
-	player.set("_melee_swing_left", 0.0001)
+	melee.swing_left = 0.0001
 	player.call("_update_melee_state", 0.01)
 	player.call("_update_melee_state", WeaponCatalog.MELEE_COMBO_WINDOW + 0.1)
 	_check(player.melee_combo_stage() == 0, "expired combo window returns to idle")
@@ -74,7 +75,7 @@ func _run() -> void:
 	player.set("_switch_lock", 0.0)
 	player.switch_weapon_slot(1)
 	_check(player.current_weapon_id() == "smg", "switching back to the smg succeeds")
-	_check(player.melee_combo_stage() == 0 and float(player.get("_melee_swing_left")) == 0.0, "switching away clears the melee chain")
+	_check(player.melee_combo_stage() == 0 and melee.swing_left == 0.0, "switching away clears the melee chain")
 
 	_check(is_equal_approx(WeaponCatalog.melee_stage_damage(0), WeaponCatalog.melee_stage_damage(1)), "stage index clamps below one")
 	_check(is_equal_approx(WeaponCatalog.melee_stage_damage(99), WeaponCatalog.melee_stage_damage(3)), "stage index clamps above three")
@@ -90,8 +91,8 @@ func _run() -> void:
 	root.add_child(recorder)
 	player.main_ref = recorder
 	player.call("_start_melee_stage")
-	var duration := float(player.get("_melee_swing_total"))
-	var hit_at := float(player.get("_melee_hit_at"))
+	var duration: float = melee.swing_total
+	var hit_at: float = melee.hit_at
 	player.call("_update_melee_state", duration * maxf(0.0, hit_at - 0.05))
 	_check(recorder.hits.is_empty(), "melee does not damage before the contact frame")
 	player.call("_update_melee_state", duration * 0.1)
@@ -102,9 +103,24 @@ func _run() -> void:
 	player.main_ref = null
 	target.free()
 	recorder.free()
-	player.set("_melee_swing_left", 0.0)
-	player.set("_melee_stage", 0)
-	player.set("_melee_combo_left", 0.0)
+	melee.cancel()
+
+	player.set("_switch_lock", 0.0)
+	player.switch_weapon_slot(2)
+	player.call("_start_melee_stage")
+	player.set_carrying(true)
+	_check(player.melee_combo_stage() == 0 and melee.swing_left == 0.0, "picking up a core cancels the melee chain")
+	player.set_carrying(false)
+
+	player.respawn_at(Vector3.ZERO)
+	player.set_game_active(true)
+	player.set("_switch_lock", 0.0)
+	player.switch_weapon_slot(2)
+	player.call("_start_melee_stage")
+	player.set_down()
+	_check(player.melee_combo_stage() == 0, "going down cancels the melee chain")
+	player.respawn_at(Vector3.ZERO)
+	_check(player.alive and player.melee_combo_stage() == 0, "respawn starts with a cleared melee chain")
 
 	var hud: GameHUD = load("res://scripts/game_hud.gd").new()
 	root.add_child(hud)

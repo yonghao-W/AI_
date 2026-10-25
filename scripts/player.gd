@@ -21,6 +21,7 @@ const GROUND_ACCEL := 48.0
 const AIR_ACCEL := 18.0
 const HIT_MASK := 1 | 4
 const SENSITIVITY := 0.0022
+const MeleeComboStateScript := preload("res://scripts/melee_combo_state.gd")
 
 var effects: CombatEffects
 var main_ref: Node
@@ -90,13 +91,7 @@ var _tp_right_leg: Node3D
 var _tp_body: Node3D
 var _tp_arm_left: Node3D
 var _tp_arm_right: Node3D
-var _melee_swing_left := 0.0
-var _melee_swing_total := 0.5
-var _melee_stage := 0
-var _melee_combo_left := 0.0
-var _melee_buffered := false
-var _melee_hit_pending := false
-var _melee_hit_at := 0.38
+var _melee: Variant = MeleeComboStateScript.new()
 var _melee_forward := Vector3.FORWARD
 var _melee_draw_left := 0.0
 var _melee_camera_punch := 0.0
@@ -455,11 +450,7 @@ func _equip_index(index: int, announce: bool) -> void:
 		if other_root != null:
 			other_root.visible = false
 	_third_person = WeaponCatalog.is_melee(id)
-	_melee_stage = 0
-	_melee_combo_left = 0.0
-	_melee_buffered = false
-	_melee_hit_pending = false
-	_melee_swing_left = 0.0
+	_melee.cancel()
 	_melee_draw_left = 0.24 if _third_person else 0.0
 	_melee_camera_punch = 0.0
 	_melee_forward = -global_transform.basis.z
@@ -806,11 +797,11 @@ func _update_visuals(delta: float) -> void:
 			var arm_left_target := Vector3.ZERO
 			var arm_right_target := Vector3.ZERO
 			var pivot_pos := Vector3(0.46, 1.18 - bob * 0.35, -0.2)
-			var swing_t := melee_combo_progress()
-			if _melee_swing_left > 0.0 and _melee_stage > 0:
-				var pose := _melee_stage_pose(swing_t, _melee_stage)
+			var swing_t: float = _melee.progress()
+			if _melee.is_swinging():
+				var pose := _melee_stage_pose(swing_t, _melee.stage)
 				pivot_target = pose
-				var contact_reach := sin(clampf(swing_t / maxf(0.01, _melee_hit_at), 0.0, 1.0) * PI * 0.5)
+				var contact_reach := sin(clampf(swing_t / maxf(0.01, _melee.hit_at), 0.0, 1.0) * PI * 0.5)
 				body_target = Vector3(
 					clampf(-pose.x * 0.1, -0.045, 0.14),
 					pose.y * 0.22,
@@ -828,7 +819,7 @@ func _update_visuals(delta: float) -> void:
 				pivot_target = Vector3(-0.55, 0.95, -0.5).lerp(pivot_target, draw_t)
 				arm_right_target = Vector3(-0.5, 0.0, -0.2).lerp(arm_right_target, draw_t)
 				arm_left_target = Vector3(-0.15, 0.0, 0.1).lerp(arm_left_target, draw_t)
-			var swinging := _melee_swing_left > 0.0
+			var swinging: bool = _melee.is_swinging()
 			var pose_speed := 48.0 if swinging else 9.0
 			var body_speed := 24.0 if swinging else 10.0
 			_tp_weapon_pivot.rotation = _tp_weapon_pivot.rotation.lerp(pivot_target, minf(1.0, delta * pose_speed))
@@ -885,8 +876,8 @@ func _melee_stage_pose(t: float, stage: int) -> Vector3:
 				contact = Vector3(-0.95, -0.7, 0.18)
 				follow = Vector3(-0.65, -0.85, 0.28)
 			windup_at = 0.32
-	windup_at = minf(windup_at, _melee_hit_at * 0.8)
-	var contact_at := _melee_hit_at
+	windup_at = minf(windup_at, _melee.hit_at * 0.8)
+	var contact_at: float = _melee.hit_at
 	var follow_at := minf(0.94, contact_at + 0.2)
 	if t <= windup_at:
 		return idle.lerp(windup, _smooth01(t / maxf(0.01, windup_at)))
@@ -977,21 +968,16 @@ func _sync_ammo_state() -> void:
 
 
 func melee_combo_stage() -> int:
-	if _melee_stage > 0 and (_melee_swing_left > 0.0 or _melee_combo_left > 0.0):
-		return _melee_stage
-	return 0
+	return _melee.active_stage()
 
 
 func melee_combo_progress() -> float:
-	if _melee_swing_left <= 0.0 or _melee_swing_total <= 0.0:
-		return 0.0
-	return clampf(1.0 - _melee_swing_left / _melee_swing_total, 0.0, 1.0)
+	return _melee.progress()
 
 
 func _fire_melee() -> void:
-	if _melee_swing_left > 0.0:
-		if _melee_swing_left <= 0.2 and _melee_stage < WeaponCatalog.MELEE_COMBO_STAGES:
-			_melee_buffered = true
+	if _melee.is_swinging():
+		_melee.buffer_attack()
 		return
 	_start_melee_stage()
 
@@ -1000,64 +986,39 @@ func _start_melee_stage() -> void:
 	var weapon_id := current_weapon_id()
 	if not WeaponCatalog.is_melee(weapon_id):
 		return
-	var next_stage := 1
-	if _melee_stage > 0 and _melee_stage < WeaponCatalog.MELEE_COMBO_STAGES and _melee_combo_left > 0.0:
-		next_stage = _melee_stage + 1
-	_melee_stage = next_stage
-	_melee_swing_total = WeaponCatalog.melee_stage_duration(weapon_id, _melee_stage)
-	_melee_swing_left = _melee_swing_total
-	_fire_cooldown = _melee_swing_total
-	_melee_hit_at = WeaponCatalog.melee_stage_hit(_melee_stage)
-	_melee_hit_pending = true
-	_melee_buffered = false
-	_melee_combo_left = 0.0
+	var stage: int = _melee.next_stage()
+	_melee.begin(
+		WeaponCatalog.melee_stage_duration(weapon_id, stage),
+		WeaponCatalog.melee_stage_hit(stage),
+		stage
+	)
 	_melee_draw_left = 0.0
 	_melee_forward = -global_transform.basis.z
 	_melee_forward.y = 0.0
 	if _melee_forward.length_squared() < 0.01:
 		_melee_forward = Vector3.FORWARD
 	_melee_forward = _melee_forward.normalized()
-	_play_ui("melee", -1.0, [0.94, 1.04, 0.82][_melee_stage - 1])
+	_play_ui("melee", -1.0, [0.94, 1.04, 0.82][stage - 1])
 
 
 func _update_melee_state(delta: float) -> void:
 	_melee_draw_left = maxf(0.0, _melee_draw_left - delta)
 	_melee_camera_punch = move_toward(_melee_camera_punch, 0.0, delta * 0.42)
 	if not is_melee_equipped():
-		_melee_stage = 0
-		_melee_combo_left = 0.0
-		_melee_buffered = false
-		_melee_hit_pending = false
-		_melee_swing_left = 0.0
+		_melee.cancel()
 		return
-	if _melee_swing_left > 0.0:
-		var before := 1.0 - _melee_swing_left / maxf(0.01, _melee_swing_total)
-		_melee_swing_left = maxf(0.0, _melee_swing_left - delta)
-		var after := 1.0 - _melee_swing_left / maxf(0.01, _melee_swing_total)
-		if _melee_hit_pending and before < _melee_hit_at and after >= _melee_hit_at:
-			_melee_hit_pending = false
-			_resolve_melee_hit()
-		if _melee_swing_left <= 0.0:
-			_melee_hit_pending = false
-			if _melee_stage < WeaponCatalog.MELEE_COMBO_STAGES:
-				_melee_combo_left = WeaponCatalog.MELEE_COMBO_WINDOW
-				if _melee_buffered:
-					_melee_buffered = false
-					_start_melee_stage()
-			else:
-				_melee_stage = 0
-				_melee_combo_left = 0.0
-	elif _melee_stage > 0:
-		_melee_combo_left = maxf(0.0, _melee_combo_left - delta)
-		if _melee_combo_left <= 0.0:
-			_melee_stage = 0
+	_melee.tick(delta)
+	if _melee.hit_this_tick:
+		_resolve_melee_hit()
+	if _melee.chain_requested:
+		_start_melee_stage()
 
 
 func _resolve_melee_hit() -> void:
 	var weapon_id := current_weapon_id()
 	if not WeaponCatalog.is_melee(weapon_id):
 		return
-	var stage := clampi(_melee_stage, 1, WeaponCatalog.MELEE_COMBO_STAGES)
+	var stage := clampi(_melee.hit_stage, 1, WeaponCatalog.MELEE_COMBO_STAGES)
 	var weapon_range := WeaponCatalog.melee_stage_range(weapon_id, stage)
 	var half_arc := WeaponCatalog.melee_stage_arc(weapon_id, stage)
 	var max_targets := WeaponCatalog.melee_stage_targets(stage)
@@ -1225,6 +1186,7 @@ func set_down() -> void:
 		_viewmodel.visible = false
 	if _carry_rig != null:
 		_carry_rig.visible = false
+	_melee.cancel()
 	if _tp_root != null:
 		_tp_root.visible = false
 	died.emit()
@@ -1263,6 +1225,7 @@ func respawn_at(pos: Vector3, face_yaw: float = 0.0) -> void:
 	alive = true
 	reloading = false
 	carrying_core = false
+	_melee.cancel()
 	_aim_held = false
 	_aim_toggle = false
 	_yaw = face_yaw
@@ -1285,6 +1248,7 @@ func set_carrying(value: bool) -> void:
 		return
 	carrying_core = value
 	if value:
+		_melee.cancel()
 		reloading = false
 		aiming = false
 		_aim_held = false
