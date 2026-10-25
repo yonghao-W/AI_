@@ -37,7 +37,9 @@ func _run() -> void:
 	root.add_child(player)
 	player.set_loadout(["smg", "machete"], "machete")
 	_check(player.is_melee_equipped(), "machete equips as melee")
-	_check(player.get("_melee_draw_left") > 0.0, "equipping melee starts the draw blend")
+	var view: Variant = player.get("_melee_view")
+	_check(view != null and view.draw_left > 0.0, "equipping melee starts the draw blend")
+	_check(view.visible, "melee rig is visible in third person")
 	_check(player.melee_combo_stage() == 0, "combo starts at zero")
 
 	var melee: Variant = player.get("_melee")
@@ -75,6 +77,7 @@ func _run() -> void:
 	player.set("_switch_lock", 0.0)
 	player.switch_weapon_slot(1)
 	_check(player.current_weapon_id() == "smg", "switching back to the smg succeeds")
+	_check(not view.visible, "switching to a gun hides the melee rig")
 	_check(player.melee_combo_stage() == 0 and melee.swing_left == 0.0, "switching away clears the melee chain")
 
 	_check(is_equal_approx(WeaponCatalog.melee_stage_damage(0), WeaponCatalog.melee_stage_damage(1)), "stage index clamps below one")
@@ -110,7 +113,9 @@ func _run() -> void:
 	player.call("_start_melee_stage")
 	player.set_carrying(true)
 	_check(player.melee_combo_stage() == 0 and melee.swing_left == 0.0, "picking up a core cancels the melee chain")
+	_check(not view.visible, "carrying a core hides the melee rig")
 	player.set_carrying(false)
+	_check(view.visible, "dropping the core restores the melee rig")
 
 	player.respawn_at(Vector3.ZERO)
 	player.set_game_active(true)
@@ -119,8 +124,10 @@ func _run() -> void:
 	player.call("_start_melee_stage")
 	player.set_down()
 	_check(player.melee_combo_stage() == 0, "going down cancels the melee chain")
+	_check(not view.visible, "going down hides the melee rig")
 	player.respawn_at(Vector3.ZERO)
 	_check(player.alive and player.melee_combo_stage() == 0, "respawn starts with a cleared melee chain")
+	_check(view.visible, "respawn restores the melee rig")
 
 	var hud: GameHUD = load("res://scripts/game_hud.gd").new()
 	root.add_child(hud)
